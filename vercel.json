@@ -1,16 +1,1 @@
-{
-  "version": 2,
-  "public": true,
-  "buildCommand": "echo 'Static files ready'",
-  "outputDirectory": "public",
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/public/$1"
-    }
-  ]
-}
+{}
