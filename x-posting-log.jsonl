@@ -1,0 +1,2 @@
+{"postId":2,"product":"b","timestamp":"2026-04-07T08:05:01.145Z","status":"FAILED","error":"HTTP 403: {\n  \"title\": \"Unsupported Authentication\",\n  \"detail\": \"Authenticating with OAuth 2.0 Application-Only is forbidden for this endpoint.  Supported authentication types are [OAuth 1.0a User Context, OAuth 2.0 User Context].\",\n  \"type\": \"https://api.twitter.com/2/problems/unsupported-authentication\",\n  \"status\": 403\n}"}
+{"postId":2,"product":"b","timestamp":"2026-04-07T08:06:50.709Z","status":"FAILED","error":"Request failed with code 401"}
