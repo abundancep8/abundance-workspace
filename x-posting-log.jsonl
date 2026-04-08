@@ -20,3 +20,4 @@
 {"postId":14,"product":"b","timestamp":"2026-04-08T14:06:50.720Z","status":"FAILED","error":"Request failed with code 401"}
 {"postId":15,"product":"c","timestamp":"2026-04-08T16:35:01.177Z","status":"FAILED","error":"HTTP 403: {\n  \"title\": \"Unsupported Authentication\",\n  \"detail\": \"Authenticating with OAuth 2.0 Application-Only is forbidden for this endpoint.  Supported authentication types are [OAuth 1.0a User Context, OAuth 2.0 User Context].\",\n  \"type\": \"https://api.twitter.com/2/problems/unsupported-authentication\",\n  \"status\": 403\n}"}
 {"postId":15,"product":"c","timestamp":"2026-04-08T16:36:50.796Z","status":"FAILED","error":"Request failed with code 401"}
+{"timestamp":"2026-04-08T11:20:48.093116","post_number":2,"tweet_id":"2041944361529683972","status":"LIVE"}
