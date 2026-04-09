@@ -39,6 +39,8 @@
 
 **2026-04-07:** Created MEMORY.md as central long-term memory hub. Established pattern for daily learning capture and weekly consolidation.
 
+**2026-04-09:** Created API_COST_TRACKER.md to separate external API costs (X, Printify, Etsy, Stripe, Gumroad) from OpenClaw token costs. Integrated hourly monitoring rules. Prevents repeat of Apr 8 X API credit depletion ($50 spent without warning).
+
 ---
 
 ## APRIL 8 STATUS (11:28 AM PDT)
