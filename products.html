@@ -216,9 +216,9 @@
                     </div>
                 </div>
                 
-                <button class="btn-buy" onclick="buyProduct('ai-lifestyle-os', 'https://gumroad.com/l/ai-lifestyle-os')">
+                <a href="/checkout-product-1.html" class="btn-buy" style="display: block; text-align: center; text-decoration: none;">
                     Enroll Now
-                </button>
+                </a>
                 <p style="text-align: center; margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.5);">30-day money-back guarantee</p>
             </div>
             
@@ -247,9 +247,9 @@
                     </div>
                 </div>
                 
-                <button class="btn-buy" onclick="buyProduct('ugc-creator-playbook', 'https://gumroad.com/l/ugc-creator-playbook')">
+                <a href="/checkout-product-2.html" class="btn-buy" style="display: block; text-align: center; text-decoration: none;">
                     Get Playbook
-                </button>
+                </a>
                 <p style="text-align: center; margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.5);">30-day money-back guarantee</p>
             </div>
             
@@ -278,9 +278,9 @@
                     </div>
                 </div>
                 
-                <button class="btn-buy" onclick="buyProduct('viral-content-blueprint', 'https://gumroad.com/l/viral-content-blueprint')">
+                <a href="/checkout-product-3.html" class="btn-buy" style="display: block; text-align: center; text-decoration: none;">
                     Get Blueprint
-                </button>
+                </a>
                 <p style="text-align: center; margin-top: 12px; font-size: 12px; color: rgba(255,255,255,0.5);">30-day money-back guarantee</p>
             </div>
         </div>
@@ -292,23 +292,8 @@
     </div>
     
     <script>
-        function buyProduct(productName, gumroadLink) {
-            // Log the purchase attempt (for analytics)
-            console.log('Attempting to purchase:', productName);
-            
-            // Track conversion
-            if (window.gtag) {
-                gtag('event', 'purchase_attempt', { product: productName });
-            }
-            
-            // Redirect to Gumroad
-            window.location.href = gumroadLink;
-        }
-        
         // Track page view
-        if (window.gtag) {
-            gtag('pageview', '/products');
-        }
+        console.log('Products page loaded');
     </script>
 </body>
 </html>
