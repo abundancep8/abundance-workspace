@@ -1,0 +1,174 @@
+AI LIFESTYLE OS - PROMPT LIBRARY
+50+ Copy-Paste Ready Prompts for Business Automation
+
+---
+
+## CONTENT CREATION PROMPTS
+
+### YouTube Script Generation
+1. "Write a 60-second YouTube Shorts script about [topic]. Include hook, problem, solution, and CTA. Target audience: [audience]. Tone: [tone]"
+
+2. "Create a 90-second YouTube video script that teaches [topic] in a simple way. Include 3 key insights and 1 actionable takeaway. Start with a hook that makes people stop scrolling."
+
+3. "Generate 5 different hooks for a video about [topic]. Make them curious, surprising, or emotionally resonant. Each hook should be 1-2 sentences max."
+
+### Email Copy
+4. "Write a subject line for an email about [topic]. Make it curiosity-driven, not clickbaity. The goal is [goal]."
+
+5. "Write a 3-email sequence for [audience] who just signed up. Email 1: Welcome + value. Email 2: Problem identification. Email 3: Solution + offer. Each should be 150-200 words."
+
+6. "Create an email that converts readers into customers for [product]. Include pain point, solution, proof, and CTA. Use social proof (testimonials/numbers) to build trust."
+
+### Social Media
+7. "Write 3 different Twitter/X posts about [topic] that are designed to go viral. Make them witty, insightful, or controversial (but not offensive). Include hashtags that actually work."
+
+8. "Create a 5-tweet thread about [topic]. Start with a hook that makes people want to read all 5. Build tension and end with a CTA."
+
+9. "Write a LinkedIn post about [topic] for [audience]. Include a personal story, lesson learned, and call-to-action. Keep it professional but authentic."
+
+### Landing Pages
+10. "Write headline + subheadline for a landing page selling [product] to [audience]. The headline should create curiosity or promise clear benefit."
+
+11. "Write the 'above the fold' section of a landing page for [product]. Include: benefit-focused headline, subheadline, customer testimonial, CTA button text."
+
+12. "Create a FAQ section for a landing page about [product]. Include 5 common questions and answers that address objections and build trust."
+
+---
+
+## BUSINESS AUTOMATION PROMPTS
+
+### Product Development
+13. "Help me create a digital product idea for [audience] who want [outcome]. Suggest 3 product formats (course, template, template, playbook, etc.) with pros/cons of each."
+
+14. "I want to sell [type of product]. Create a pricing strategy with 3 tiers (basic/pro/premium). Explain the value add at each tier and estimated customer distribution."
+
+15. "Generate a product launch sequence - email subjects and content for 5 emails that announce [product], build hype, and drive sales."
+
+### Audience Research
+16. "I'm targeting [audience]. Create 5 customer avatars with demographics, pain points, aspirations, and messaging that resonates with them."
+
+17. "What are the top 10 questions [audience] asks about [topic]? Rank by search volume and suggest content angles for each."
+
+18. "Create a customer ICP (Ideal Customer Profile) for [product]. Include: job title, salary, pain points, buying triggers, decision makers, etc."
+
+### Sales & Negotiation
+19. "I'm pitching [product] to [type of customer]. Draft a 2-minute pitch that leads with benefit (not features). Include objection handling."
+
+20. "Help me negotiate a deal for [service/product]. Create 3 ask-first positions (what I want), 3 fallback positions, and my walk-away price."
+
+---
+
+## PRODUCTIVITY & WORKFLOW PROMPTS
+
+### System Building
+21. "I spend 10 hours/week on [task]. Help me automate it with [tool]. Create a step-by-step workflow including: current process, AI solution, integration points, ROI calculation."
+
+22. "Create an ideal daily schedule for a content creator/business owner. Include: content creation, strategic work, admin, breaks, sleep. Assume 8 hours available per day."
+
+23. "I want to delegate [task] to an AI/tool. Write a detailed prompt that an AI could execute well. Include context, constraints, and desired output format."
+
+### Learning & Skill Building
+24. "Create a 30-day learning plan for someone who wants to master [skill]. Include: daily lessons, practice exercises, milestones, resources, and expected proficiency level."
+
+25. "Explain [complex topic] like I'm 12 years old. Use analogies and simple examples. Then escalate to a professional-level explanation."
+
+---
+
+## MARKETING AUTOMATION PROMPTS
+
+### Campaign Strategy
+26. "Create a 7-day marketing campaign for [product]. Include: daily messaging theme, channel (email/social/ads), content type, and expected KPIs."
+
+27. "I have [audience size] email subscribers. Create a segmentation strategy (3-5 segments) based on behavior/interest. Suggest different messaging for each."
+
+28. "Design a referral program for [product]. What incentive structure (discounts, commissions, etc.) would drive the most word-of-mouth growth?"
+
+### Paid Ads
+29. "Write 5 different Facebook/TikTok ad headlines for [product] targeting [audience]. Each should highlight different benefits and emotional triggers."
+
+30. "Create an ad copy that sells [product]. Include: problem statement, social proof, specific benefit, urgency/scarcity, CTA. Keep it under 100 words."
+
+### Analytics
+31. "What are the top 5 metrics I should track for [business model]? Explain why each matters and what 'good' looks like for each."
+
+32. "Create a dashboard tracking template for [type of business]. Include: revenue, traffic, conversion rate, customer acquisition cost, lifetime value, churn."
+
+---
+
+## AI-SPECIFIC AUTOMATION PROMPTS
+
+### Prompt Engineering
+33. "I want to create [type of content] using AI. Write me a detailed system prompt that will produce high-quality, brand-aligned output consistently."
+
+34. "Create a prompt template that I can use repeatedly to generate [type of content]. Include placeholders for [variables] and quality guidelines."
+
+### Integration & Workflows
+35. "I want to connect [Tool A] + [Tool B] + [Tool C] to create a workflow that [desired outcome]. What integration method should I use and what are the steps?"
+
+36. "Build a content pipeline where I input [raw material] and AI outputs [desired format] for [platform]. What tools would I need and how would I set it up?"
+
+---
+
+## NICHE-SPECIFIC PROMPTS
+
+### For Coaches/Consultants
+37. "Create a lead magnet offer for [coaching niche]. What would [your ideal client] want to learn? What format would work best?"
+
+38. "Write a 'case study' email for my coaching services. Include: client challenge, solution provided, results achieved, how they can replicate."
+
+### For E-commerce/Sellers
+39. "Optimize my product description for [product name]. Include: benefit-driven headline, feature bullet points, pain point addressing, social proof, urgency/scarcity."
+
+40. "Create a post-purchase email sequence for an e-commerce store. Email 1: Thank you + shipping. Email 2: How to maximize value. Email 3: Related products."
+
+### For Agencies/Freelancers
+41. "Write a service page for my [agency type]. Include: what I do, who I help, why I'm different, social proof, pricing tiers, booking CTA."
+
+42. "Create a proposal template for [service]. Include: client challenge, proposed solution, deliverables, timeline, pricing, terms."
+
+---
+
+## ADVANCED AUTOMATION PROMPTS
+
+### Data Analysis
+43. "Analyze this data [paste data]: What are the top 3 insights? What's the story? What should I do about it?"
+
+44. "Create a data-driven report about [topic] from public sources. Include: key statistics, trends, forecasts, implications for businesses."
+
+### Research
+45. "Research [topic] and create a competitive analysis of the top 5 players. Include: positioning, pricing, strengths, weaknesses, market gaps."
+
+46. "Find market trends for [industry] in 2026. What's emerging? What's dying? Where is money being spent?"
+
+### Strategy
+47. "I have [current situation]. My goal is [desired outcome] in [timeframe]. Create a step-by-step strategic plan with milestones and KPIs."
+
+48. "Analyze my [business/content/product] and identify the top 3 growth opportunities. For each, explain the effort required and potential upside."
+
+### Copywriting
+49. "Write a viral hook for [topic] on [platform]. Make it curiosity-driven, surprising, or emotionally resonant. Include 3 variations."
+
+50. "Create a sales page for [product]. Include: power headline, emotional hook, problem/agitation, solution, social proof, pricing, CTA. Make it conversion-optimized."
+
+---
+
+## HOW TO USE THESE PROMPTS
+
+1. Copy any prompt
+2. Replace [bracketed sections] with your specific details
+3. Paste into ChatGPT, Claude, or Gemini
+4. Refine the output (AI gives 80%, you perfect the 20%)
+5. Use immediately in your business
+
+The more specific you are with [brackets], the better the output.
+
+---
+
+## BONUS: PROMPT ENGINEERING TIPS
+
+- Be specific: "Write a 500-word blog post about social media marketing for solopreneurs" is better than "Write about marketing"
+- Include context: "I sell to busy entrepreneurs aged 30-50 who want to scale without hiring"
+- Ask for format: "Create a bulleted list with 5 tips, each with a 1-sentence explanation"
+- Iterate: If output isn't perfect, ask: "Make it more [tone], add [element], remove [element]"
+
+Happy prompting!
