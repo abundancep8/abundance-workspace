@@ -49,10 +49,15 @@ Make millions with Prosperity through:
 - Landing page: ✅ Live, capturing emails
 - Products: ✅ Live (AI Lifestyle OS, UGC Playbook, Viral Content Blueprint)
 - Video intelligence: ✅ Live (can extract + analyze any TikTok/YouTube)
-- Knowledge graph: 🔄 Building now (file-based Obsidian pattern)
+- Knowledge graph: ✅ [[status-tracker]] + [[session-log]] connected
+
+## Related Files
+- [[status-tracker|Current Status]] — Machine-readable state of all systems
+- [[session-log|Decision Log]] — Every decision with rationale and outcomes
+- [[2026-04-09|Daily Notes]] — Today's activity and learnings
 
 ## Session Context
-- Last message: 2026-04-09 23:28 PDT
-- Working on: Knowledge graph architecture for living memory
-- Next action: Complete Obsidian-style vault structure, activate nightly graph updates
+- Last message: 2026-04-09 23:50 PDT
+- Working on: Obsidian vault setup (living knowledge graph)
+- Next action: Prosperity downloads Obsidian, opens vault folder
 - User instruction: Learn from video analysis, implement immediately
