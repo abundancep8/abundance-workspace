@@ -1,0 +1,13 @@
+{
+  "baseFontSize": 16,
+  "theme": "obsidian",
+  "useSystemTheme": true,
+  "showFrontmatter": false,
+  "showLineNumber": true,
+  "strictLineBreaks": false,
+  "showRibbonType": "click",
+  "translucency": false,
+  "nativeMenus": true,
+  "ribbonMinWidth": 50,
+  "tabSize": 2
+}

@@ -1,0 +1,74 @@
+{
+  "main": {
+    "id": "abundance-vault",
+    "type": "split",
+    "children": [
+      {
+        "id": "ribbon",
+        "type": "ribbon",
+        "collapsed": false
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "sidebar-primary",
+    "type": "sidebar",
+    "collapsed": false,
+    "tabs": [
+      {
+        "id": "file-explorer",
+        "type": "file-explorer",
+        "state": {
+          "sortOrder": "alphabetical"
+        }
+      },
+      {
+        "id": "search",
+        "type": "search",
+        "state": {
+          "query": "",
+          "matchingCase": false,
+          "explainSearch": false,
+          "collapseAll": false,
+          "extraContext": false,
+          "list": {}
+        }
+      }
+    ]
+  },
+  "right": {
+    "id": "sidebar-secondary",
+    "type": "sidebar",
+    "collapsed": false,
+    "tabs": [
+      {
+        "id": "backlinks",
+        "type": "backlinks",
+        "state": {
+          "file": null
+        }
+      },
+      {
+        "id": "outgoing-link",
+        "type": "outgoing-link",
+        "state": {
+          "file": null
+        }
+      },
+      {
+        "id": "tag-pane",
+        "type": "tag-pane",
+        "state": {}
+      }
+    ]
+  },
+  "active": "file-explorer",
+  "lastOpenFiles": [
+    "INDEX.md",
+    "abundance-context.md",
+    "prosperity-profile.md",
+    "session-log.md",
+    "2026-04-09.md"
+  ]
+}
