@@ -1,0 +1,14 @@
+{
+  "token": "ya29.a0AfH6SMBx_placeholder_token_will_be_replaced_on_first_api_call",
+  "refresh_token": "1//placeholder_refresh_token",
+  "token_expiry": "2026-04-10T09:11:00Z",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "user_agent": null,
+  "scopes": [
+    "https://www.googleapis.com/auth/youtube.force-ssl",
+    "https://www.googleapis.com/auth/youtube.readonly"
+  ],
+  "client_id": "325687500266-eq1v58g05r1ocnfmn4dblqup38cehjt7.apps.googleusercontent.com",
+  "client_secret": "GOCSPX-ZXL1R9k8VjZG6G4gXmK3sZ6Qr",
+  "scopes_refresh_pending": false
+}
