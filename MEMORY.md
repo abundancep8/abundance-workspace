@@ -41,6 +41,14 @@
 
 **2026-04-09:** Created API_COST_TRACKER.md to separate external API costs (X, Printify, Etsy, Stripe, Gumroad) from OpenClaw token costs. Integrated hourly monitoring rules. Prevents repeat of Apr 8 X API credit depletion ($50 spent without warning).
 
+**2026-04-09 12:05:** Deployed Claude API usage monitor cron job. Setup:
+  - Scripts: `/Users/abundance/.cache/claude-usage-monitor.py` (main) + `.sh` (backup)
+  - Cache: `/Users/abundance/.cache/claude-usage.json` (updated on each run)
+  - Log: `/Users/abundance/.cache/claude-usage.log` (detailed audit trail)
+  - Budget: $5.00/day, $155.00/month; alerts at 75% threshold
+  - Webhook: Set `WEBHOOK_MONITOR_URL` to receive alerts when thresholds exceeded
+  - Status: Active, logging with fallback (waiting for real usage data source)
+
 ---
 
 ## APRIL 8 STATUS (11:28 AM PDT)
