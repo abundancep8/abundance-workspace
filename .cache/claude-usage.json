@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-04-10T05:04:00Z",
+  "fetch_status": "FAILED_NO_CREDENTIALS",
+  "error": "Anthropic console login required. No API credentials found in environment or workspace.",
+  "required_setup": {
+    "option_1": "Set ANTHROPIC_API_KEY environment variable to use Anthropic API for usage queries",
+    "option_2": "Login to Anthropic console (https://console.anthropic.com) and set OpenClaw auth cookie",
+    "option_3": "Add Anthropic credentials to workspace/secrets or .env file"
+  },
+  "tokens_today": null,
+  "cost_today": null,
+  "tokens_month": null,
+  "cost_month": null,
+  "budget_daily": 5.00,
+  "budget_monthly": 155.00,
+  "status": "AWAITING_AUTHENTICATION"
+}

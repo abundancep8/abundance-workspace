@@ -1,6 +1,6 @@
 {
-  "id": "abundance-ai-memory-vault",
-  "name": "Abundance AI Memory",
+  "id": "abundance-memory-vault",
+  "name": "Abundance Memory",
   "type": "folder",
-  "dir": "/Users/abundance/.openclaw/workspace/memory"
+  "path": "/Users/abundance/.openclaw/workspace/memory"
 }
