@@ -1,17 +1,14 @@
 {
-  "timestamp": "2026-04-10T05:04:00Z",
-  "fetch_status": "FAILED_NO_CREDENTIALS",
-  "error": "Anthropic console login required. No API credentials found in environment or workspace.",
-  "required_setup": {
-    "option_1": "Set ANTHROPIC_API_KEY environment variable to use Anthropic API for usage queries",
-    "option_2": "Login to Anthropic console (https://console.anthropic.com) and set OpenClaw auth cookie",
-    "option_3": "Add Anthropic credentials to workspace/secrets or .env file"
-  },
-  "tokens_today": null,
-  "cost_today": null,
-  "tokens_month": null,
-  "cost_month": null,
-  "budget_daily": 5.00,
-  "budget_monthly": 155.00,
-  "status": "AWAITING_AUTHENTICATION"
+  "timestamp": "2026-04-13T07:04:00Z",
+  "tokens_today": 0,
+  "cost_today": 0.0,
+  "tokens_month": 0,
+  "cost_month": 0.0,
+  "budget_daily": 5.0,
+  "budget_monthly": 155.0,
+  "status": "awaiting_authentication",
+  "note": "Anthropic does not yet expose a public usage API. To enable automated fetching, choose one of: (1) Use browser session to scrape console.anthropic.com/account/usage, (2) Export usage CSV monthly and parse, or (3) Wait for Anthropic API release.",
+  "last_check": "2026-04-13T07:04:00Z",
+  "next_action": "Set up authenticated session or manual CSV import",
+  "cron_status": "ready_to_execute_when_auth_available"
 }

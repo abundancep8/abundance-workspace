@@ -49,6 +49,24 @@
   - Webhook: Set `WEBHOOK_MONITOR_URL` to receive alerts when thresholds exceeded
   - Status: Active, logging with fallback (waiting for real usage data source)
 
+**2026-04-13 (8:04 PM PDT):** Updated Claude API usage monitoring infrastructure:
+  - Setup cron task: `fetch-claude-api-usage` 
+  - Infrastructure ready in `.cache/` with Python & Bash scripts
+  - Anthropic console login required (no public API endpoint yet for usage data)
+  - Awaiting manual data input or Anthropic API release
+  - Config: `.cache/claude-usage-config.md` documents full setup
+
+**2026-04-13 (2:00 AM nightly cycle):** Implemented local token ledger system:
+  - **Problem:** Previous monitoring waited on Anthropic API release (blocker)
+  - **Solution:** Built offline-first JSON ledger (`token-ledger.json`) with updater script
+  - **Files:** 
+    - `.cache/token-ledger.json` (daily/monthly spend tracker)
+    - `.cache/token-ledger-script.sh` (automated cost calculation & threshold alerts)
+    - `.cache/token-ledger-README.md` (integration guide)
+  - **Why:** Gives us immediate visibility, works without external APIs, auditable, extensible
+  - **Next:** Wire into existing cron jobs; validate estimates against actual bills
+  - **Framework:** Prefer building self-contained systems over dependencies; observation precedes optimization
+
 ---
 
 ## APRIL 8 STATUS (11:28 AM PDT)

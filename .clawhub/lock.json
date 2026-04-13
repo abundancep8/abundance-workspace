@@ -1,0 +1,221 @@
+{
+  "version": 1,
+  "skills": {
+    "deploy-agent": {
+      "version": "1.1.0",
+      "installedAt": 1776032884863
+    },
+    "agent-directory": {
+      "version": "1.2.0",
+      "installedAt": 1776032891910
+    },
+    "automation-workflows": {
+      "version": "0.1.0",
+      "installedAt": 1776032894012
+    },
+    "arc-workflow-orchestrator": {
+      "version": "1.1.0",
+      "installedAt": 1776033182787
+    },
+    "auto-workflow-builder": {
+      "version": "1.0.0",
+      "installedAt": 1776033185493
+    },
+    "agentic-workflow-automation": {
+      "version": "0.1.0",
+      "installedAt": 1776033187731
+    },
+    "agent-builder": {
+      "version": "1.0.0",
+      "installedAt": 1776033190610
+    },
+    "structured-workflow": {
+      "version": "1.0.0",
+      "installedAt": 1776033193397
+    },
+    "lead-hunter": {
+      "version": "1.0.1",
+      "installedAt": 1776033196172
+    },
+    "outbound-prospecting": {
+      "version": "1.0.0",
+      "installedAt": 1776033198815
+    },
+    "linkedin-api": {
+      "version": "1.0.6",
+      "installedAt": 1776033201294
+    },
+    "cold-email-prospecting-agent": {
+      "version": "1.0.4",
+      "installedAt": 1776033203953
+    },
+    "yc-cold-outreach": {
+      "version": "1.0.1",
+      "installedAt": 1776033206591
+    },
+    "linkedin-bulk-connect": {
+      "version": "1.1.0",
+      "installedAt": 1776033209185
+    },
+    "lead-scorer": {
+      "version": "1.0.0",
+      "installedAt": 1776033211400
+    },
+    "explorium-sales-prospecting": {
+      "version": "1.0.0",
+      "installedAt": 1776033214513
+    },
+    "lead-extractor": {
+      "version": "1.0.6",
+      "installedAt": 1776033216794
+    },
+    "lead-researcher": {
+      "version": "1.0.0",
+      "installedAt": 1776033219286
+    },
+    "lead-radar": {
+      "version": "1.3.5",
+      "installedAt": 1776033222863
+    },
+    "sales-mastery": {
+      "version": "1.0.0",
+      "installedAt": 1776033226939
+    },
+    "sales-pipeline-tracker": {
+      "version": "1.0.0",
+      "installedAt": 1776033229752
+    },
+    "sales-dialogue": {
+      "version": "1.0.0",
+      "installedAt": 1776033232385
+    },
+    "email-outreach-ops": {
+      "version": "1.0.0",
+      "installedAt": 1776033235065
+    },
+    "email-outreach-automation": {
+      "version": "1.0.1",
+      "installedAt": 1776033238135
+    },
+    "appointment-scheduler": {
+      "version": "1.0.0",
+      "installedAt": 1776033242003
+    },
+    "phone-caller": {
+      "version": "1.0.0",
+      "installedAt": 1776033244947
+    },
+    "openclaw-client-onboarding": {
+      "version": "1.0.0",
+      "installedAt": 1776033247538
+    },
+    "client-tracker": {
+      "version": "1.0.2",
+      "installedAt": 1776033251823
+    },
+    "client-project-tracker": {
+      "version": "1.0.0",
+      "installedAt": 1776033254856
+    },
+    "local-business-appointment-agent": {
+      "version": "1.0.0",
+      "installedAt": 1776033257520
+    },
+    "appointment-booking-system": {
+      "version": "1.0.1",
+      "installedAt": 1776033260462
+    },
+    "crm-in-a-box": {
+      "version": "0.1.0",
+      "installedAt": 1776033263281
+    },
+    "crm-management": {
+      "version": "0.1.0",
+      "installedAt": 1776033266022
+    },
+    "zoho-crm-integration": {
+      "version": "1.0.2",
+      "installedAt": 1776033268685
+    },
+    "afrexai-business-automation": {
+      "version": "1.0.0",
+      "installedAt": 1776033271420
+    },
+    "smart-scheduler": {
+      "version": "0.1.0",
+      "installedAt": 1776033274203
+    },
+    "revenue-tracker": {
+      "version": "1.0.0",
+      "installedAt": 1776033277137
+    },
+    "ai-revenue-tracker": {
+      "version": "1.0.0",
+      "installedAt": 1776033279956
+    },
+    "agent-revenue-tracker": {
+      "version": "1.0.1",
+      "installedAt": 1776033282762
+    },
+    "revenue-calculator": {
+      "version": "1.0.0",
+      "installedAt": 1776033285681
+    },
+    "revenue-monitor": {
+      "version": "1.0.0",
+      "installedAt": 1776033290459
+    },
+    "b2b-lead-engine": {
+      "version": "1.0.0",
+      "installedAt": 1776033293429
+    },
+    "b2b-first-ten": {
+      "version": "1.0.0",
+      "installedAt": 1776033296296
+    },
+    "gingiris-b2b-growth": {
+      "version": "1.7.3",
+      "installedAt": 1776033300689
+    },
+    "service-dominant-business-model-design": {
+      "version": "1.0.0",
+      "installedAt": 1776033303493
+    },
+    "market-research-agent": {
+      "version": "1.0.0",
+      "installedAt": 1776033306259
+    },
+    "in-depth-research": {
+      "version": "1.0.0",
+      "installedAt": 1776033308959
+    },
+    "data-analyst-pro": {
+      "version": "0.1.0",
+      "installedAt": 1776033311665
+    },
+    "business-writing": {
+      "version": "0.1.0",
+      "installedAt": 1776033313776
+    },
+    "email-marketing": {
+      "version": "1.0.0",
+      "installedAt": 1776033316459
+    },
+    "marketing-strategy-pmm": {
+      "version": "2.1.1",
+      "installedAt": 1776033319279
+    },
+    "linkedin-cli": {
+      "version": "1.0.0",
+      "installedAt": 1776033321863
+    },
+    "vercel-deploy": {
+      "version": "1.0.0",
+      "installedAt": 1776033324945
+    },
+    "react-email-skills": {
+      "version": "1.1.0",
+      "installedAt": 1776033327941
+    }
+  }
+}

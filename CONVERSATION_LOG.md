@@ -6,6 +6,21 @@
 
 ---
 
+## 2026-04-13
+
+### Local Token Ledger System (02:00 AM)
+- **Decision:** Build offline token tracking instead of waiting for Anthropic API
+- **Rationale:** Previous infrastructure depended on external API release; created bottleneck
+- **Insight:** Local JSON-based tracking provides immediate visibility, auditability, and control
+- **Implementation:** 
+  - `token-ledger.json` (daily/monthly spend tracking)
+  - `token-ledger-script.sh` (updater with threshold alerts)
+  - `token-ledger-README.md` (integration guide)
+- **Framework:** Prefer self-contained systems over external dependencies; build for observation before relying on external APIs
+- **Next:** Integrate ledger updates into hourly cron tasks; validate cost calculations against actual Anthropic bills
+
+---
+
 ## 2026-04-10
 
 ### Token Monitoring (00:02)
