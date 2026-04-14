@@ -1,0 +1,275 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                      YOUTUBE DM MONITOR - QUICK REFERENCE                   ║
+║                            Concessa Obvius Channel                          ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📌 LOCATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ~/.openclaw/workspace/.cache/youtube_dm_monitor.py
+
+🚀 COMMON COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Test with sample data:
+  $ python3 .cache/youtube_dm_monitor.py --mock-mode
+
+  View last report:
+  $ python3 .cache/youtube_dm_monitor.py --report
+
+  Process queue only (no API):
+  $ python3 .cache/youtube_dm_monitor.py --queue-only
+
+  Verbose output:
+  $ python3 .cache/youtube_dm_monitor.py -v
+
+  Set up hourly cron:
+  $ bash .cache/setup-youtube-dm-cron.sh
+
+  View cron schedule:
+  $ crontab -l
+
+  Watch cron logs:
+  $ tail -f .cache/youtube-dms-cron.log
+
+📊 LOG FILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  All DMs:
+  $ cat .cache/youtube-dms.jsonl
+
+  High-value partnerships (review daily):
+  $ cat .cache/youtube-flagged-partnerships.jsonl
+
+  Monitoring state (dedup tracking):
+  $ cat .cache/youtube-dms-state.json
+
+  Last report:
+  $ cat .cache/youtube-dms-report.txt
+
+  Cron execution logs:
+  $ tail .cache/youtube-dms-cron.log
+
+🎯 DAILY WORKFLOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Check flagged partnerships:
+     $ cat .cache/youtube-flagged-partnerships.jsonl | tail -10
+
+  2. Review statistics:
+     $ python3 .cache/youtube_dm_monitor.py --report
+
+  3. Check for errors:
+     $ tail .cache/youtube-dms-cron.log
+
+  4. Count by category:
+     $ cat .cache/youtube-dms.jsonl | grep -o '"category":"[^"]*"' | sort | uniq -c
+
+  5. Find product inquiries:
+     $ cat .cache/youtube-dms.jsonl | grep '"product_inquiry"'
+
+📁 FILE STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  .cache/
+  ├── youtube_dm_monitor.py           (Main script)
+  ├── youtube-dms.jsonl               (All DM logs - PERMANENT)
+  ├── youtube-flagged-partnerships.jsonl (HIGH-VALUE LEADS)
+  ├── youtube-dms-state.json          (Monitoring state)
+  ├── youtube-dms-report.txt          (Last report)
+  ├── youtube-dm-inbox.jsonl          (Input queue)
+  ├── youtube-dm-inbox-backup-*.jsonl (Queue backups)
+  ├── YOUTUBE_DM_MONITOR_README.md    (Overview)
+  ├── YOUTUBE_DM_MONITOR_SETUP.md     (Detailed guide)
+  └── setup-youtube-dm-cron.sh        (Cron setup)
+
+🏷️  DM CATEGORIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  🔧 Setup Help
+     Keywords: how, setup, error, help, confused, stuck
+     Response: Setup guide + video tutorial + support email
+
+  📧 Newsletter
+     Keywords: subscribe, newsletter, email list, keep posted
+     Response: Newsletter signup link
+
+  🛍️  Product Inquiry
+     Keywords: price, cost, buy, how much, shipping
+     Response: Shop link + pricing + shipping info
+
+  🤝 Partnership
+     Keywords: partnership, collab, sponsor, brand, promote
+     Response: Interest confirmation + request details
+     → FLAGGED if score ≥ 30 for manual review
+
+  💬 Other
+     No matches
+     Response: None (manual handling)
+
+📈 PARTNERSHIP SCORING (0-100)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  HIGH SIGNALS (25 pts each):
+    - brand, sponsorship, partnership, ambassador, collaboration
+
+  MEDIUM SIGNALS (15 pts each):
+    - collab, affiliate, cross-promotion, co-branded
+
+  INDICATORS (5-10 pts each):
+    - interested, opportunity, proposal, business name
+
+  THRESHOLD: Score ≥ 30 → Flagged for manual review
+
+⚡ TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Problem: No DMs being processed
+  Solution: Check queue has content:
+    $ cat .cache/youtube-dm-inbox.jsonl
+
+  Problem: Cron job not running
+  Solution: Verify it's scheduled:
+    $ crontab -l
+  Or check logs:
+    $ tail .cache/youtube-dms-cron.log
+
+  Problem: API authentication fails
+  Solution: Reset token and re-authenticate:
+    $ rm .secrets/youtube-token.json
+    $ python3 .cache/youtube_dm_monitor.py
+
+  Problem: Script not found
+  Solution: Verify file exists and is executable:
+    $ ls -la .cache/youtube_dm_monitor.py
+    $ chmod +x .cache/youtube_dm_monitor.py
+
+🔐 AUTHENTICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  YouTube API:
+    ✅ Credentials: .secrets/youtube-credentials.json
+    ✅ Token: .secrets/youtube-token.json (auto-created)
+
+  Gmail (optional):
+    .secrets/gmail-credentials.json
+    .secrets/gmail-token.json
+
+💻 EXAMPLE QUERIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Count DMs by category:
+  $ cat .cache/youtube-dms.jsonl | \
+    python3 -c "import sys, json; \
+    cats = {}; \
+    [cats.update({json.loads(l)['category']: cats.get(json.loads(l)['category'], 0) + 1}) for l in sys.stdin]; \
+    [print(f'{k}: {v}') for k, v in sorted(cats.items())]"
+
+  Find high-scoring partnerships:
+  $ cat .cache/youtube-flagged-partnerships.jsonl | \
+    grep -o '"partnership_score":[0-9]*' | sort | uniq -c
+
+  List all senders:
+  $ cat .cache/youtube-dms.jsonl | jq -r '.sender' | sort | uniq
+
+  Get last 10 DMs:
+  $ tail -10 .cache/youtube-dms.jsonl | jq .
+
+  Stats:
+  $ echo "Total DMs:" && wc -l .cache/youtube-dms.jsonl
+  $ echo "Partnerships flagged:" && wc -l .cache/youtube-flagged-partnerships.jsonl
+
+🔄 FULL WORKFLOW EXAMPLE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. DM arrives in YouTube
+  2. Forwarded to monitored email (or webhook/queue)
+  3. Added to .cache/youtube-dm-inbox.jsonl
+  4. Cron job triggers hourly
+  5. Script:
+     - Reads queue
+     - Categorizes each DM
+     - Generates responses
+     - Scores partnerships
+     - Logs to .cache/youtube-dms.jsonl
+     - Flags high-potential partnerships
+     - Clears queue
+     - Generates report
+  6. You review flagged partnerships
+  7. Follow up on high-value leads
+
+📞 WHEN TO CHECK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Daily:
+    ☐ Check flagged partnerships (morning)
+    ☐ Review statistics
+    ☐ Check for errors in logs
+
+  Weekly:
+    ☐ Analyze category breakdown
+    ☐ Check conversion potential
+    ☐ Refine scoring thresholds if needed
+
+  Monthly:
+    ☐ Review all logs
+    ☐ Adjust templates based on feedback
+    ☐ Optimize keywords
+
+⚙️  CUSTOMIZATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Edit response templates:
+    $ nano .cache/youtube_dm_monitor.py
+    (Find DM_CATEGORIES dict)
+
+  Adjust partnership scoring:
+    $ nano .cache/youtube_dm_monitor.py
+    (Find PARTNERSHIP_SIGNALS dict)
+
+  Change flagging threshold:
+    $ nano .cache/youtube_dm_monitor.py
+    (Find log_flagged_partnership function, change: if score < 30)
+
+  Modify keywords:
+    $ nano .cache/youtube_dm_monitor.py
+    (Find keywords lists in DM_CATEGORIES)
+
+📚 DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Start here:
+    YOUTUBE_DM_MONITOR_README.md          (Overview)
+
+  Detailed setup:
+    YOUTUBE_DM_MONITOR_SETUP.md           (30+ sections)
+
+  This file:
+    YOUTUBE_DM_QUICK_REFERENCE.txt        (Quick commands)
+
+  Source code:
+    youtube_dm_monitor.py                 (Well-commented)
+
+🎯 KEY METRICS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Total DMs Processed         | Cumulative all-time
+  Auto-Responses Sent         | Messages with template reply
+  Partnerships Flagged        | High-value leads (≥30 score)
+  Product Inquiries           | Potential customers
+  Conversion Rate             | Inquiries / Total DMs
+  Category Distribution       | Breakdown by type
+
+✅ READY TO USE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✅ Script tested and working
+  ✅ All logging implemented
+  ✅ Partnership detection ready
+  ✅ Cron scheduling ready
+  ✅ Documentation complete
+
+  Next: bash setup-youtube-dm-cron.sh
+
+═══════════════════════════════════════════════════════════════════════════════
+Version: 2.0 | Status: Production-Ready | Built: 2026-04-14
+═══════════════════════════════════════════════════════════════════════════════

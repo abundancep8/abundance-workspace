@@ -1,5 +1,9 @@
 # MEMORY.md — Long-Term Learning Log
 
+**See also:** [[DECISIONS.md|Strategic Decisions]] | [[PATTERNS.md|Emergent Patterns]] | [[SOUL.md|Identity & Principles]] | [[OBSIDIAN.md|Knowledge System Setup]]
+
+---
+
 ## Current Projects
 
 ### Campaign 1: X Marketing + Landing Page
@@ -66,6 +70,21 @@
   - **Why:** Gives us immediate visibility, works without external APIs, auditable, extensible
   - **Next:** Wire into existing cron jobs; validate estimates against actual bills
   - **Framework:** Prefer building self-contained systems over dependencies; observation precedes optimization
+
+**2026-04-14 (2:00 AM nightly cycle):** Created System Status Dashboard to prevent 80% done syndrome:
+  - **Problem:** Multiple systems deployed in last 48h (token ledger, YouTube monitor, gs2ai research) but stalled at 80% completion. No visibility on blockers or next actions.
+  - **Solution:** Built `SYSTEMS_STATUS.md` — real-time tracker for all active infrastructure
+  - **System:** 3-tier status (PRODUCTION READY | DEPLOYED BUT INCOMPLETE | BLOCKED), specific blockers, time-bounded actions, ownership assignment
+  - **Why:** Mental overhead of half-finished systems kills productivity. Clear status prevents limbo. Makes quick wins obvious (e.g., "5 min to wire ledger into cron").
+  - **Impact:** 
+    - Reveals 3 quick wins (token ledger integration, YouTube OAuth refresh, gs2ai framework)
+    - Prevents future systems from getting stuck
+    - Daily heartbeat now includes system status check
+  - **Files Created:** 
+    - `SYSTEMS_STATUS.md` (deployment tracker + integration checklist)
+    - Updated `HEARTBEAT.md` (system status as daily check item)
+    - `memory/2026-04-14.md` (daily summary)
+  - **Framework:** Never let systems sit in gray zones. Three clear states: running, running-with-workaround, or blocked. Review daily.
 
 ---
 

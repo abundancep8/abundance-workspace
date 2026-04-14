@@ -1,0 +1,180 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                    YOUTUBE COMMENT MONITOR - QUICK REFERENCE                    ║
+║                           Concessa Obvius Channel                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+📋 SETUP (First Time)
+─────────────────────
+1. Get OAuth2 credentials from Google Cloud Console
+   → Save to: ~/.openclaw/youtube-credentials.json
+
+2. Install Python libraries
+   → pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+3. Test setup
+   → bash scripts/test-youtube-monitor.sh
+
+4. Install scheduler
+   → bash scripts/install-monitor.sh
+
+✅ MONITOR WILL RUN AUTOMATICALLY EVERY 30 MINUTES
+
+
+📊 VIEW RESULTS
+────────────────
+
+Last 20 comments:
+  tail -20 .cache/youtube-comments.jsonl | jq '.'
+
+Full stats:
+  bash scripts/test-youtube-monitor.sh
+
+Sales inquiries (flagged):
+  python3 - <<'EOF'
+  import json
+  from pathlib import Path
+  log = Path(".cache/youtube-comments.jsonl")
+  data = [json.loads(line) for line in open(log) if line.strip()]
+  for s in [d for d in data if d['response_status'] == 'flagged_for_review']:
+    print(f"{s['commenter']}: {s['text']}")
+  EOF
+
+Execution log:
+  tail -50 .cache/youtube-monitor.log
+
+
+🔧 MANAGE MONITOR
+──────────────────
+
+Status:              launchctl list | grep youtube-monitor
+Start:               launchctl start com.youtube-monitor
+Stop:                launchctl stop com.youtube-monitor
+Unload (disable):    launchctl unload ~/Library/LaunchAgents/com.youtube-monitor.plist
+Reload (after edit): launchctl unload ... && launchctl load ...
+Manual run:          python3 scripts/youtube-comment-monitor.py
+
+
+🎯 AUTO-RESPONSE LOGIC
+───────────────────────
+
+QUESTIONS (auto-respond):
+  • How do I...? / What is...? / What are...?
+  • Cost, price, fee, timeline, tools
+  • Ends with ?
+
+PRAISE (auto-respond):
+  • Amazing, awesome, brilliant, inspiring
+  • Thank you, grateful
+  • Love this
+
+SPAM (no response):
+  • Crypto, Bitcoin, NFT
+  • MLM, pyramid scheme
+  • Casino, gambling
+
+SALES (flag for review):
+  • Partnership, collaboration
+  • Sponsorship
+  • Affiliate, commission
+  • Business opportunity
+
+OTHER (no response):
+  • Doesn't match patterns
+
+
+📁 FILES
+─────────
+
+/scripts/youtube-comment-monitor.py .......... Main script
+/scripts/youtube-monitor.sh .................. Cron wrapper
+/scripts/test-youtube-monitor.sh ............ Setup tester
+/scripts/install-monitor.sh ................. Auto-installer
+/.cache/youtube-comments.jsonl .............. Comment log (grows daily)
+/.cache/youtube-monitor.log ................. Execution log
+/com.youtube-monitor.plist .................. LaunchAgent config
+/YOUTUBE-MONITOR-README.md .................. Full guide
+/YOUTUBE-MONITOR-SETUP.md ................... Detailed setup
+/YOUTUBE-MONITOR-DASHBOARD.md ............... Commands & reports
+/YOUTUBE-MONITOR-QUICK-REF.txt .............. This file
+
+
+🔐 SECURITY NOTES
+──────────────────
+
+Credentials stored:    ~/.openclaw/youtube-credentials.json (don't commit)
+Token stored:          ~/.openclaw/youtube-token.json (auto-generated, don't commit)
+Runs with:            Your user permissions (no sudo needed)
+API scope:            Read-only (comments) + write replies
+
+
+⚠️  TROUBLESHOOTING
+────────────────────
+
+"Module not found: google"
+  → pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+"Credentials not found"
+  → Download OAuth2 JSON from Google Cloud Console
+  → Save to ~/.openclaw/youtube-credentials.json
+
+"Monitor not running"
+  → launchctl list | grep youtube-monitor
+  → launchctl start com.youtube-monitor
+
+"No comments found"
+  → Normal if no new comments since last check
+  → Check log: tail .cache/youtube-monitor.log
+
+Authorization expired
+  → rm ~/.openclaw/youtube-token.json
+  → Run manually to re-authorize: python3 scripts/youtube-comment-monitor.py
+
+
+📞 USEFUL COMMANDS
+────────────────────
+
+export WORKSPACE="/Users/abundance/.openclaw/workspace"
+
+# View latest comments
+jq '.text' $WORKSPACE/.cache/youtube-comments.jsonl | tail -5
+
+# Count by category
+jq -s 'group_by(.category) | map({category: .[0].category, count: length})' \
+  $WORKSPACE/.cache/youtube-comments.jsonl
+
+# Export to CSV
+python3 -c "
+import json, csv
+from pathlib import Path
+log = Path('$WORKSPACE/.cache/youtube-comments.jsonl')
+data = [json.loads(line) for line in open(log)]
+with open('$WORKSPACE/.cache/youtube-comments.csv', 'w') as f:
+  w = csv.DictWriter(f, fieldnames=['timestamp','commenter','text','category','response_status'])
+  w.writeheader()
+  w.writerows(data)
+print(f'Exported {len(data)} entries')
+"
+
+# Watch live
+watch -n 30 'tail -5 $WORKSPACE/.cache/youtube-comments.jsonl | jq "."'
+
+
+📚 DOCUMENTATION
+─────────────────
+
+Quick Reference (this file):
+  YOUTUBE-MONITOR-QUICK-REF.txt
+
+Main Guide:
+  YOUTUBE-MONITOR-README.md
+
+Setup Instructions:
+  YOUTUBE-MONITOR-SETUP.md
+
+Commands & Reports:
+  YOUTUBE-MONITOR-DASHBOARD.md
+
+
+═════════════════════════════════════════════════════════════════════════════════
+Last updated: 2026-04-14 08:30 UTC
+Monitor deployed and active ✅

@@ -1,7 +1,26 @@
 {
   "last_dm_id": null,
-  "last_check": "2026-04-12T22:03:52-07:00",
+  "last_check": "2026-04-14T08:03:56.187663Z",
   "auth_required": true,
-  "last_run": "2026-04-12T22:03:52Z",
-  "dms_fetched_count": 0
+  "last_run": "2026-04-14T04:03:52Z",
+  "dms_fetched_count": 0,
+  "dms_processed": 0,
+  "auto_responses_sent": 12,
+  "status": "success",
+  "total_dms_processed": 12,
+  "partnerships_flagged": 3,
+  "processed_hashes": [
+    "3e7b1a960c4a",
+    "7112a4910fb0",
+    "f0381c3d6d68",
+    "b89f70b99032",
+    "651a9ab1b495",
+    "2892894b7708",
+    "de5ce957cf9b",
+    "25f28de32add",
+    "c01b2e743e56",
+    "fdeffd67b412",
+    "6a58118bcae1",
+    "6b675e710d52"
+  ]
 }

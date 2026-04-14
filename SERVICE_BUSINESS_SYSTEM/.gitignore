@@ -1,0 +1,37 @@
+# Credentials & Secrets
+.env
+.env.local
+.env.*.local
+.secrets/
+credentials.json
+*-credentials.json
+*_api_key*
+*_token*
+*_password*
+
+# Logs & Cache
+*.log
+.cache/
+logs/
+*.tmp
+
+# Environment
+.venv/
+venv/
+node_modules/
+
+# System
+.DS_Store
+*.pyc
+__pycache__/
+.idea/
+.vscode/
+
+# Test files (but keep test configs)
+test_results/
+*.test.json
+
+# Sensitive business data
+*-revenue-*
+*-client-*.json
+*confidential*

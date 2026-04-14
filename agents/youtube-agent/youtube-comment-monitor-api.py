@@ -184,7 +184,7 @@ def process_comments():
         }
         
         # Reply if applicable
-        if categorization['should_auto_replied']:
+        if categorization['should_auto_reply']:
             success = reply_to_comment(youtube, comment_id, categorization['response'])
             if success:
                 print(f"✅ Replied to {author}: {categorization['category']}")
