@@ -35,13 +35,17 @@ function parseScriptBatch(filePath) {
   sections.forEach((section, index) => {
     const lines = section.trim().split('\n');
     const header = lines[0];
-    const hook = lines.find(l => l.includes('**Hook:**')).replace('**Hook:** ', '').replace(/["`]/g, '');
-    const duration = lines.find(l => l.includes('**Duration:**')).match(/\d+/)[0];
-    const format = lines.find(l => l.includes('**Format:**')).replace('**Format:** ', '');
+    const hookLine = lines.find(l => l.includes('**Hook:**'));
+    const durationLine = lines.find(l => l.includes('**Duration:**'));
+    const formatLine = lines.find(l => l.includes('**Format:**'));
+    
+    const hook = hookLine ? hookLine.replace('**Hook:** ', '').replace(/["`]/g, '') : 'N/A';
+    const duration = durationLine ? parseInt(durationLine.match(/\d+/)[0]) : 30;
+    const format = formatLine ? formatLine.replace('**Format:** ', '') : 'Blotato default';
     
     // Extract transcript (everything after **Transcript:** until next section)
     const transcriptStart = section.indexOf('**Transcript:**');
-    const transcript = section.substring(transcriptStart).split('\n').slice(1).join('\n').trim();
+    const transcript = transcriptStart >= 0 ? section.substring(transcriptStart).split('\n').slice(1).join('\n').trim() : '';
     
     scripts.push({
       id: index + 1,

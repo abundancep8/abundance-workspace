@@ -1,0 +1,6 @@
+#!/bin/bash
+# YouTube Comment Monitor - Cron Launcher
+# Runs every 30 minutes
+
+cd /Users/abundance/.openclaw/workspace
+python3 scripts/youtube-comment-monitor.py >> .cache/youtube-monitor.log 2>&1

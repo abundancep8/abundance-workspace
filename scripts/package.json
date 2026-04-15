@@ -1,0 +1,13 @@
+{
+  "name": "youtube-monitor",
+  "version": "1.0.0",
+  "description": "Monitor YouTube comments and auto-respond",
+  "main": "youtube-monitor.js",
+  "scripts": {
+    "auth": "node youtube-auth.js",
+    "monitor": "node youtube-monitor.js"
+  },
+  "dependencies": {
+    "googleapis": "^118.0.0"
+  }
+}

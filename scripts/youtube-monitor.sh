@@ -1,24 +1,21 @@
 #!/bin/bash
-# Wrapper script for YouTube Comment Monitor
-# Runs every 30 minutes via cron
+# YouTube Comment Monitor - Cron Wrapper
+# Runs every 30 minutes via macOS LaunchAgent
+# Logs to .cache/youtube-comments.jsonl
 
-set -e
+WORKSPACE="$HOME/.openclaw/workspace"
+CACHE_DIR="$WORKSPACE/.cache"
+SCRIPT="$CACHE_DIR/youtube-comment-monitor-v2.py"
+LOG="$CACHE_DIR/youtube-monitor.log"
 
-WORKSPACE="${HOME}/.openclaw/workspace"
-SCRIPT="${WORKSPACE}/scripts/youtube-comment-monitor.py"
-LOG="${WORKSPACE}/.cache/youtube-monitor.log"
+# Create directories if needed
+mkdir -p "$CACHE_DIR"
 
-# Ensure directories exist
-mkdir -p "${WORKSPACE}/.cache"
+# Add timestamp and run
+{
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] ==== YouTube Comment Monitor Run ===="
+  python3 "$SCRIPT" 2>&1
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] ==== Run Complete ===="
+} >> "$LOG" 2>&1
 
-# Run monitor with error handling
-echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Monitor run started" >> "$LOG"
-
-if python3 "$SCRIPT" >> "$LOG" 2>&1; then
-    echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Monitor run completed successfully" >> "$LOG"
-else
-    echo "[$(date -u +'%Y-%m-%dT%H:%M:%SZ')] Monitor run FAILED" >> "$LOG"
-fi
-
-# Keep log size manageable (last 1000 lines)
-tail -1000 "$LOG" > "${LOG}.tmp" && mv "${LOG}.tmp" "$LOG"
+exit 0

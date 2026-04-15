@@ -1,0 +1,82 @@
+[03:30:27] Starting YouTube Comment Monitor...
+[ERROR] Failed to initialize YouTube API: ('invalid_client: The provided client secret is invalid.', {'error': 'invalid_client', 'error_description': 'The provided client secret is invalid.'})
+[03:30:27] YouTube API unavailable, using demo mode...
+[03:30:27] Found 1 comments. Processing...
+
+============================================================
+YouTube Comment Monitor Report
+Channel: Concessa Obvius (UC32674)
+Time: 2026-04-14 03:30:27
+============================================================
+
+Total Comments Processed: 1
+Auto-Responses Sent: 1
+Flagged for Review: 0
+Spam Filtered: 0
+
+By Category:
+  questions: 1
+
+Log: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+============================================================
+
+[03:30:27] Monitor complete. Next run in 30 minutes.
+/Users/abundance/.openclaw/workspace/.cache/youtube-dm-monitor.py:241: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  report.append(f"Time: {datetime.utcnow().isoformat()}Z")
+======================================================================
+YOUTUBE DM MONITOR REPORT
+======================================================================
+Time: 2026-04-14T12:03:47.992553Z
+Status: SUCCESS
+
+THIS RUN
+----------------------------------------------------------------------
+New DMs in Queue: 0
+DMs Processed: 0
+Auto-Responses Sent: 0
+
+CUMULATIVE STATS (All Time)
+----------------------------------------------------------------------
+Total DMs Processed: 12
+Total Auto-Responses Sent: 12
+Total Partnerships Flagged: 3
+
+CONVERSION POTENTIAL
+----------------------------------------------------------------------
+Product Inquiries (This Run): 0
+Estimated Conversion Value: 0 potential customers
+
+CATEGORY BREAKDOWN (This Run)
+----------------------------------------------------------------------
+  Newsletter.............................. 0
+  Other................................... 0
+  Partnership............................. 0
+  Product Inquiry......................... 0
+  Setup Help.............................. 0
+
+SETUP INSTRUCTIONS FOR LIVE DM INGESTION
+----------------------------------------------------------------------
+To enable live DM monitoring, use ONE of these methods:
+
+1. EMAIL FORWARDING (Recommended)
+   - Forward YouTube DMs to a monitored email
+   - Use an email-to-queue parser script
+   - Writes to: .cache/youtube-dm-inbox.jsonl
+
+2. WEBHOOK INTEGRATION
+   - Set up webhook on YouTube Community/Messaging
+   - POST JSON to: localhost:8000/youtube-dm
+   - Handler appends to: .cache/youtube-dm-inbox.jsonl
+
+3. MANUAL QUEUE
+   - Append DM JSON objects to: .cache/youtube-dm-inbox.jsonl
+   - Monitor script processes each line
+
+Queue Format (JSONL):
+{
+  "sender_name": "John Doe",
+  "sender_id": "UCxxxxx",
+  "text": "How do I set this up?",
+  "received_at": "2026-04-14T05:03:00Z"
+}
+======================================================================

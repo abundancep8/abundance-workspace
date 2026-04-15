@@ -1,26 +1,58 @@
 {
-  "last_dm_id": null,
-  "last_check": "2026-04-14T02:03:49.255147Z",
-  "auth_required": true,
-  "last_run": "2026-04-14T04:03:52Z",
-  "dms_fetched_count": 0,
-  "dms_processed": 0,
-  "auto_responses_sent": 12,
+  "monitor_id": "c1b30404-7343-46ff-aa1d-4ff84daf3674",
+  "last_run": "2026-04-14T17:03:00.000000Z",
+  "last_check": "2026-04-15T09:04:54.864938Z",
   "status": "success",
-  "total_dms_processed": 12,
-  "partnerships_flagged": 3,
+  "dms_fetched_this_run": 0,
+  "dms_processed_this_run": 0,
+  "auto_responses_sent_this_run": 0,
+  "partnerships_flagged_this_run": 0,
+  "total_dms_processed": 19,
+  "total_auto_responses": 19,
+  "total_partnerships_flagged": 4,
   "processed_hashes": [
-    "c01b2e743e56",
-    "7112a4910fb0",
-    "de5ce957cf9b",
-    "6b675e710d52",
-    "f0381c3d6d68",
+    "2dc0a2c19644",
     "fdeffd67b412",
-    "b89f70b99032",
-    "6a58118bcae1",
-    "3e7b1a960c4a",
-    "2892894b7708",
     "651a9ab1b495",
-    "25f28de32add"
-  ]
+    "6a58118bcae1",
+    "638c1655544f",
+    "c01b2e743e56",
+    "f0381c3d6d68",
+    "b89f70b99032",
+    "6b675e710d52",
+    "2892894b7708",
+    "0cd638645b75",
+    "7e50b6b0ec1d",
+    "7112a4910fb0",
+    "571017464e5d",
+    "2b7d792ea7d6",
+    "3e7b1a960c4a",
+    "25f28de32add",
+    "7de1972b2b11",
+    "de5ce957cf9b"
+  ],
+  "conversion_metrics": {
+    "setup_help_requests": 0,
+    "newsletter_signups": 0,
+    "product_inquiries": 0,
+    "partnership_inquiries": 0
+  },
+  "data_source": {
+    "primary": "/tmp/new-dms.json",
+    "status": "empty",
+    "alternatives": [
+      "DM_JSON environment variable",
+      "Webhook POST to /youtube-dm"
+    ]
+  },
+  "alerts": [
+    {
+      "type": "pending_review",
+      "sender": "TechVenture Studios",
+      "partnership_score": 70,
+      "timestamp": "2026-04-14T16:04:20Z"
+    }
+  ],
+  "auto_responses_sent": 0,
+  "partnerships_flagged": 0
 }

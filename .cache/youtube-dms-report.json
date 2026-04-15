@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-04-14T21:03:58.835Z",
+  "total_dms_processed": 3,
+  "auto_responses_sent": 3,
+  "conversion_potential": {
+    "product_inquiries": 1,
+    "partnerships_flagged": 1
+  },
+  "partnerships_for_review": [
+    {
+      "sender": "user_789",
+      "text": "I'd love to collaborate on a partnership opportunity!",
+      "timestamp": "2026-04-14T21:03:58.834Z",
+      "flag": "REVIEW_NEEDED"
+    }
+  ]
+}

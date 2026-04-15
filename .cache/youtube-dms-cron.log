@@ -1,0 +1,1083 @@
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-14T15:04:52.653074Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        12
+Total Auto-Responses:       12
+Total Partnerships Flagged: 3
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-14 15:04:52 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-14T16:04:52.762627Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       16
+Total Partnerships Flagged: 4
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-14 16:04:52 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-14T17:04:52.868576Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       16
+Total Partnerships Flagged: 4
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-14 17:04:52 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-14T18:04:52.985328Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       16
+Total Partnerships Flagged: 4
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-14 18:04:52 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-14T19:04:53.099436Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       16
+Total Partnerships Flagged: 4
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-14 19:04:53 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-14T20:04:53.225321Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       16
+Total Partnerships Flagged: 4
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-14 20:04:53 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-14T21:04:53.336043Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       16
+Total Partnerships Flagged: 4
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-14 21:04:53 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-14T22:04:53.452450Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       16
+Total Partnerships Flagged: 4
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-14 22:04:53 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-14T23:04:53.574682Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       16
+Total Partnerships Flagged: 4
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-14 23:04:53 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-15T00:04:53.716292Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       0
+Total Partnerships Flagged: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-15 00:04:53 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-15T01:04:53.871174Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       0
+Total Partnerships Flagged: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-15 01:04:53 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-15T02:04:53.996558Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       0
+Total Partnerships Flagged: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-15 02:04:53 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-15T03:04:54.138820Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       0
+Total Partnerships Flagged: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-15 03:04:54 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-15T04:04:54.257492Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        16
+Total Auto-Responses:       0
+Total Partnerships Flagged: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-15 04:04:54 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-15T05:04:54.391508Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        19
+Total Auto-Responses:       0
+Total Partnerships Flagged: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-15 05:04:54 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-15T06:04:54.508028Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        19
+Total Auto-Responses:       0
+Total Partnerships Flagged: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-15 06:04:54 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-15T07:04:54.622044Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        19
+Total Auto-Responses:       0
+Total Partnerships Flagged: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-15 07:04:54 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-15T08:04:54.753713Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        19
+Total Auto-Responses:       0
+Total Partnerships Flagged: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-15 08:04:54 UTC
+================================================================================
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-15T09:04:54.865315Z
+✅ Status: SUCCESS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           0
+DMs Processed:              0
+Duplicates Skipped:         0
+Auto-Responses Sent:        0
+Partnerships Flagged:       0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        19
+Total Auto-Responses:       0
+Total Partnerships Flagged: 0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries (This Run): 0
+Total New Leads (This Run):   0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📂 CATEGORY BREAKDOWN (This Run)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Setup Help 🔧......................................  0
+Newsletter Signup 📧...............................  0
+Product Inquiries 🛍️..............................  0
+Partnership Opportunities 🤝.......................  0
+Other 💬...........................................  0
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 NEXT STEPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Check flagged partnerships in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+2. ✅ Review all DMs logged in:
+   → /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+3. ✅ Set up DM ingestion (choose one):
+   a) Email Forwarding → youtube-dm-email-parser.py
+   b) Webhook Receiver → youtube-dm-webhook.py
+   c) Manual Queue → .cache/youtube-dm-inbox.jsonl
+
+4. ✅ Schedule hourly cron job:
+   0 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_dm_monitor.py >> .cache/youtube-dms-cron.log 2>&1
+
+================================================================================
+End of Report - 2026-04-15 09:04:54 UTC
+================================================================================

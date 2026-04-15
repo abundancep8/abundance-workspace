@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-04-14T15:31:07.787969",
+  "total_processed": 6,
+  "auto_responded": 3,
+  "flagged_review": 1,
+  "spam_ignored": 1,
+  "general_logged": 1,
+  "flagged_comments": [
+    {
+      "commenter": "Alex Martinez",
+      "text": "I'm interested in a partnership opportunity to collaborate. Would love to discuss sponsorship options.",
+      "category": 4
+    }
+  ]
+}

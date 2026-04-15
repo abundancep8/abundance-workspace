@@ -1,0 +1,78 @@
+{
+  "cron_id": "c1b30404-7343-46ff-aa1d-4ff84daf3674",
+  "name": "YouTube DM Monitor",
+  "description": "Monitor Concessa Obvius DMs, categorize, auto-respond, and log",
+  "schedule": "0 * * * *",
+  "schedule_description": "Every hour at the top of the hour",
+  "timezone": "America/Los_Angeles",
+  "enabled": true,
+  "command": "cd /Users/abundance/.openclaw/workspace && node .cache/youtube-dms-monitor.js",
+  "log_file": ".cache/youtube-dms-cron.log",
+  "report_file": ".cache/youtube-dms-report.json",
+  "output": {
+    "log_format": "JSONL",
+    "location": ".cache/youtube-dms.jsonl",
+    "fields": [
+      "timestamp",
+      "sender",
+      "sender_id",
+      "text",
+      "category",
+      "response_sent",
+      "response_template"
+    ]
+  },
+  "categories": [
+    {
+      "id": "setup_help",
+      "name": "Setup help",
+      "keywords": ["how to", "help", "confused", "error", "broken", "not working", "setup", "install", "stuck", "guide", "tutorial"],
+      "response_template": "Hey! 👋 Thanks for reaching out about setup. I've got detailed guides that should help:\n\n📚 Full setup guide: [link to guide]\n🎥 Step-by-step video: [link to video]\n💬 Common issues: [link to FAQ]\n\nIf you get stuck on a specific step, reply with what's giving you trouble and I'll help!"
+    },
+    {
+      "id": "newsletter",
+      "name": "Newsletter",
+      "keywords": ["subscribe", "email list", "updates", "news", "mailing list", "follow", "sign up"],
+      "response_template": "Thanks for wanting to stay in the loop! 🔔\n\n✉️ **Join the newsletter:** [link]\n📱 You'll get:\n- Weekly tips & updates\n- Early access to new features\n- Exclusive member content\n\nSee you there!"
+    },
+    {
+      "id": "product_inquiry",
+      "name": "Product inquiry",
+      "keywords": ["price", "cost", "buy", "purchase", "product", "sell", "available", "pricing", "order"],
+      "response_template": "Great question! 🏃\n\n📦 **Product info & pricing:** [link]\n💰 We have options for every budget\n❓ Let me know:\n- What's your use case?\n- Budget range?\n- Team size?\n\nHappy to help you find the perfect fit!"
+    },
+    {
+      "id": "partnership",
+      "name": "Partnership",
+      "keywords": ["collaborate", "partnership", "sponsor", "collaboration", "business", "work together", "opportunity"],
+      "response_template": "Ooh, interesting! 🤝 I love hearing partnership ideas.\n\nFor collab/sponsorship inquiries, let's take this to email so we can dive deeper:\n\n📧 [partnership@concessa.com]\n\nTell me a bit about what you have in mind and we'll explore it!",
+      "flag_for_review": true
+    }
+  ],
+  "reporting": {
+    "metrics": [
+      "total_dms_processed",
+      "auto_responses_sent",
+      "product_inquiries",
+      "partnerships_flagged"
+    ],
+    "review_threshold": 1,
+    "send_report_to": null
+  },
+  "data_source": {
+    "method": "file",
+    "location": "/tmp/new-dms.json",
+    "alternative_methods": [
+      {
+        "method": "environment_variable",
+        "variable": "DM_JSON",
+        "format": "json_array"
+      },
+      {
+        "method": "webhook",
+        "endpoint": "http://localhost:3000/youtube-dm",
+        "format": "json"
+      }
+    ]
+  }
+}

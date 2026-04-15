@@ -1,0 +1,23 @@
+# YouTube DM Monitor - Cron Configuration
+# 
+# Add this line to your crontab:
+# crontab -e
+# Then paste:
+
+0 * * * * cd /Users/abundance/.openclaw/workspace && /usr/bin/python3 .cache/youtube-dm-monitor.py >> .cache/youtube-dm-monitor.log 2>&1
+
+# This runs at minute 0 of every hour (every hour on the hour)
+# 
+# Cron format: minute hour day-of-month month day-of-week
+# 0 * * * * = 00:00, 01:00, 02:00, etc.
+# 
+# For different schedules:
+# Every 30 minutes: */30 * * * * ...
+# Every 6 hours: 0 */6 * * * ...
+# Daily at 9 AM: 0 9 * * * ...
+# 
+# Verify cron is running:
+# crontab -l
+#
+# Monitor the log:
+# tail -f .cache/youtube-dm-monitor.log

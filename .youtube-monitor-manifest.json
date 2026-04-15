@@ -1,0 +1,96 @@
+{
+  "name": "YouTube Comment Monitor",
+  "channel": "Concessa Obvius",
+  "interval": "*/30 * * * *",
+  "interval_human": "Every 30 minutes",
+  "status": "ready_pending_auth",
+  "installed_at": "2026-04-14T14:30:00Z",
+  "components": {
+    "monitor_script": {
+      "path": "scripts/youtube-comment-monitor.py",
+      "type": "Python 3",
+      "executable": true,
+      "status": "ready"
+    },
+    "cron_launcher": {
+      "path": "scripts/youtube-monitor-cron.sh",
+      "type": "Bash",
+      "executable": true,
+      "status": "ready"
+    },
+    "auth_helper": {
+      "path": "scripts/youtube-setup-auth.py",
+      "type": "Python 3",
+      "executable": true,
+      "status": "ready_pending_use"
+    },
+    "secrets": {
+      "credentials": ".secrets/youtube-credentials.json",
+      "token": ".secrets/youtube-token.json",
+      "token_status": "expired_requires_refresh"
+    }
+  },
+  "logging": {
+    "comments_log": ".cache/youtube-comments.jsonl",
+    "monitor_log": ".cache/youtube-monitor.log",
+    "state_file": ".cache/.youtube-monitor-state.json",
+    "readme": ".cache/youtube-monitor-README.txt"
+  },
+  "capabilities": {
+    "fetch_comments": true,
+    "categorize": true,
+    "auto_respond_questions": true,
+    "auto_respond_praise": true,
+    "flag_sales": true,
+    "logging": true,
+    "state_tracking": true,
+    "error_recovery": true
+  },
+  "categories": {
+    "questions": {
+      "detect_keywords": ["how", "what", "when", "where", "why", "help", "cost", "price", "timeline", "tools"],
+      "action": "auto_respond",
+      "template": "question"
+    },
+    "praise": {
+      "detect_keywords": ["amazing", "awesome", "inspiring", "love", "great", "brilliant", "thank you"],
+      "action": "auto_respond",
+      "template": "praise"
+    },
+    "spam": {
+      "detect_keywords": ["crypto", "bitcoin", "ethereum", "mlm", "pyramid", "forex", "click here"],
+      "action": "log_only",
+      "template": null
+    },
+    "sales": {
+      "detect_keywords": ["partnership", "collaboration", "sponsorship", "advertise", "brand deal"],
+      "action": "flag_for_review",
+      "template": null
+    },
+    "general": {
+      "detect_keywords": [],
+      "action": "log_only",
+      "template": null
+    }
+  },
+  "setup_steps": [
+    "1. Run: python3 scripts/youtube-setup-auth.py (ONE TIME)",
+    "2. Authorize in browser when prompted",
+    "3. Monitor will start running automatically every 30 minutes",
+    "4. View comments: tail -f .cache/youtube-comments.jsonl",
+    "5. Check flagged sales: grep 'sales' .cache/youtube-comments.jsonl | jq ."
+  ],
+  "metrics_template": {
+    "timestamp": "ISO 8601",
+    "total_comments_processed": "number",
+    "auto_responses_sent": "number",
+    "flagged_for_review": "number",
+    "spam_logged": "number",
+    "general_logged": "number"
+  },
+  "documentation": {
+    "setup_guide": "YOUTUBE-MONITOR-SETUP.md",
+    "readme": ".cache/youtube-monitor-README.txt",
+    "this_file": ".youtube-monitor-manifest.json"
+  }
+}

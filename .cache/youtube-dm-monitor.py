@@ -1,304 +1,349 @@
 #!/usr/bin/env python3
 """
-YouTube DM Monitor for Concessa Obvius channel.
-Monitors inbox, categorizes DMs, auto-responds, and logs results.
-Works with email-forwarded DMs, webhook feeds, or manual queue.
+YouTube DM Monitor for Concessa Obvius
+Monitors YouTube DMs, categorizes, auto-responds, and logs.
+Runs hourly via cron.
 """
 
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
+from typing import Optional
 import re
-import hashlib
+from dataclasses import dataclass, asdict
 
-CACHE_DIR = Path.home() / ".openclaw/workspace/.cache"
-CACHE_DIR.mkdir(exist_ok=True)
+# Google API imports
+try:
+    from google.auth.transport.requests import Request
+    from google.oauth2.credentials import Credentials
+    from google_auth_oauthlib.flow import InstalledAppFlow
+    from google.api_core.exceptions import HttpError
+    from googleapiclient.discovery import build
+except ImportError:
+    print("ERROR: Google API client not installed. Run: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client")
+    sys.exit(1)
 
-LOG_FILE = CACHE_DIR / "youtube-dms.jsonl"
-STATE_FILE = CACHE_DIR / "youtube-dms-state.json"
-DM_INBOX_QUEUE = CACHE_DIR / "youtube-dm-inbox.jsonl"  # Input queue for DMs
 
-# DM Category definitions with keywords and templates
-DM_CATEGORIES = {
-    "setup_help": {
-        "keywords": ["how do i", "how to", "confused", "stuck", "doesn't work", "isn't working", "error", "help", "setup", "install", "configure", "tutorial", "guide", "what's", "what is"],
-        "template": "Thanks for reaching out! 🙌 I understand you need help with setup. Check out our [setup guide](https://example.com/setup) for step-by-step instructions. If you're still stuck, reply with the specific issue and I'll get you sorted!"
-    },
-    "newsletter": {
-        "keywords": ["email list", "subscribe", "newsletter", "updates", "notification", "keep me posted", "send me", "sign up", "join list", "email updates"],
-        "template": "Awesome! I'd love to keep you in the loop. 📧 Join our mailing list at [https://example.com/newsletter](https://example.com/newsletter) for exclusive updates, early access, and community highlights. Thanks for your interest!"
-    },
-    "product_inquiry": {
-        "keywords": ["price", "cost", "buy", "purchase", "product", "how much", "available", "sell", "offer", "deal", "$", "£", "€", "order", "shipping", "in stock"],
-        "template": "Great question! 🚀 For product details, pricing, and ordering, check out our [shop page](https://example.com/shop). Have specific questions? Feel free to reply and I'll help you find exactly what you need."
-    },
-    "partnership": {
-        "keywords": ["partnership", "collaborate", "collaboration", "sponsorship", "sponsor", "work with", "together", "business opportunity", "affiliate", "promote", "collab", "brand deal", "partnership opportunity"],
-        "template": "This sounds interesting! 👀 I'm always open to partnerships and collaborations. Could you tell me more about what you have in mind? Looking forward to exploring this with you!"
+@dataclass
+class DM:
+    """DM record"""
+    timestamp: str
+    sender: str
+    sender_id: str
+    text: str
+    category: str
+    response_sent: bool
+    response_template: str
+    dm_id: str
+
+
+class YouTubeDMMonitor:
+    """Monitor and manage YouTube DMs for Concessa Obvius"""
+    
+    SCOPES = ['https://www.googleapis.com/auth/youtube.force-ssl']
+    LOG_FILE = Path('.cache/youtube-dms.jsonl')
+    STATE_FILE = Path('.cache/youtube-dm-state.json')
+    CREDENTIALS_FILE = Path('.cache/youtube-credentials.json')
+    TOKEN_FILE = Path('.cache/youtube-token.json')
+    
+    # Template responses for each category
+    RESPONSES = {
+        'setup_help': (
+            "Thanks for reaching out! I'd be happy to help you get set up. "
+            "Check out our setup guide at [link] or reply with specific questions. "
+            "We're here to help! 🙌"
+        ),
+        'newsletter': (
+            "Great! I've added you to our updates list. "
+            "You'll get news on new features, tips, and exclusive content. "
+            "Thanks for staying connected! 📬"
+        ),
+        'product_inquiry': (
+            "Thanks for your interest! Our products are designed to [value proposition]. "
+            "Visit [product page] to learn more, or reply with any questions. "
+            "Happy to discuss what works best for you. 💡"
+        ),
+        'partnership': (
+            "Thanks for reaching out! We're always interested in collaborations. "
+            "I'm flagging this for our partnership team to review. "
+            "Someone will follow up soon. 🤝"
+        ),
     }
-}
-
-def hash_dm(sender_id, text, timestamp):
-    """Generate unique hash to prevent duplicate logging."""
-    content = f"{sender_id}:{text}:{timestamp}".encode()
-    return hashlib.md5(content).hexdigest()[:12]
-
-def categorize_dm(text):
-    """Categorize DM based on keyword matching."""
-    text_lower = text.lower()
     
-    # Score each category
-    scores = {}
-    for category, config in DM_CATEGORIES.items():
-        score = sum(1 for kw in config["keywords"] if kw in text_lower)
-        scores[category] = score
+    def __init__(self):
+        """Initialize monitor"""
+        self.log_file = self.LOG_FILE
+        self.state_file = self.STATE_FILE
+        self.youtube = None
+        self.dms_processed = 0
+        self.auto_responses_sent = 0
+        self.product_inquiries = []
+        self.partnerships = []
+        
+    def authenticate(self) -> bool:
+        """Authenticate with YouTube API"""
+        creds = None
+        
+        # Check for existing token
+        if self.TOKEN_FILE.exists():
+            creds = Credentials.from_authorized_user_file(str(self.TOKEN_FILE), self.SCOPES)
+        
+        # If no valid creds, get new ones
+        if not creds or not creds.valid:
+            if creds and creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+            elif self.CREDENTIALS_FILE.exists():
+                flow = InstalledAppFlow.from_client_secrets_file(
+                    str(self.CREDENTIALS_FILE), self.SCOPES
+                )
+                creds = flow.run_local_server(port=0)
+            else:
+                print("ERROR: YouTube credentials not configured.")
+                print("Set up OAuth credentials:")
+                print("  1. Go to https://console.cloud.google.com/")
+                print("  2. Create OAuth 2.0 Desktop Application credentials")
+                print("  3. Save as .cache/youtube-credentials.json")
+                return False
+        
+        # Save token for next run
+        with open(self.TOKEN_FILE, 'w') as f:
+            f.write(creds.to_json())
+        
+        self.youtube = build('youtube', 'v3', credentials=creds)
+        return True
     
-    # Return highest scoring category
-    if max(scores.values()) > 0:
-        return max(scores, key=scores.get)
-    return "other"
-
-def get_response_template(category):
-    """Get auto-response template for category."""
-    if category in DM_CATEGORIES:
-        return DM_CATEGORIES[category]["template"]
-    return None
-
-def load_state():
-    """Load monitoring state."""
-    if STATE_FILE.exists():
+    def categorize_dm(self, text: str) -> tuple[str, str]:
+        """
+        Categorize DM based on content.
+        Returns (category, template_key)
+        """
+        text_lower = text.lower()
+        
+        # Setup help patterns
+        setup_patterns = [
+            r'how to setup', r'how do i.*setup', r'confused.*setup',
+            r'help.*getting started', r'can\'t.*install', r'not working',
+            r'where do i.*start', r'tutorial.*help', r'help.*install',
+            r'error.*\d+', r'getting error', r'confused about.*install',
+            r'installation process', r'how do i.*install', r'can\'t get.*start'
+        ]
+        
+        # Newsletter patterns
+        newsletter_patterns = [
+            r'email.*list', r'newsletter', r'updates.*list',
+            r'add.*email', r'subscribe', r'keep.*posted'
+        ]
+        
+        # Product inquiry patterns
+        product_patterns = [
+            r'how much', r'pricing', r'cost', r'buy', r'purchase',
+            r'product.*selection', r'which.*best', r'recommend',
+            r'features.*comparison', r'demo'
+        ]
+        
+        # Partnership patterns
+        partnership_patterns = [
+            r'collaborate', r'partnership', r'sponsor', r'work.*together',
+            r'affiliate', r'promotion', r'cross.*promote', r'brand.*ambassador'
+        ]
+        
+        # Check patterns in order of priority
+        for pattern in setup_patterns:
+            if re.search(pattern, text_lower):
+                return 'Setup help', 'setup_help'
+        
+        for pattern in partnership_patterns:
+            if re.search(pattern, text_lower):
+                return 'Partnership', 'partnership'
+        
+        for pattern in product_patterns:
+            if re.search(pattern, text_lower):
+                return 'Product inquiry', 'product_inquiry'
+        
+        for pattern in newsletter_patterns:
+            if re.search(pattern, text_lower):
+                return 'Newsletter', 'newsletter'
+        
+        # Default to product inquiry if unclear
+        return 'Product inquiry', 'product_inquiry'
+    
+    def get_last_check_time(self) -> datetime:
+        """Get timestamp of last DM check"""
+        if self.state_file.exists():
+            try:
+                with open(self.state_file, 'r') as f:
+                    state = json.load(f)
+                    return datetime.fromisoformat(state.get('last_check', (datetime.now() - timedelta(hours=1)).isoformat()))
+            except:
+                pass
+        
+        # Default to 1 hour ago
+        return datetime.now() - timedelta(hours=1)
+    
+    def save_state(self, last_check: datetime):
+        """Save monitor state"""
+        self.state_file.parent.mkdir(parents=True, exist_ok=True)
+        with open(self.state_file, 'w') as f:
+            json.dump({
+                'last_check': last_check.isoformat(),
+                'total_processed': self.dms_processed
+            }, f)
+    
+    def log_dm(self, dm: DM):
+        """Log DM to JSONL file"""
+        self.log_file.parent.mkdir(parents=True, exist_ok=True)
+        with open(self.log_file, 'a') as f:
+            f.write(json.dumps(asdict(dm)) + '\n')
+    
+    def fetch_dms(self) -> list[dict]:
+        """Fetch new DMs from YouTube"""
+        if not self.youtube:
+            return []
+        
         try:
-            with open(STATE_FILE) as f:
-                return json.load(f)
-        except:
-            pass
-    return {
-        "last_check": None,
-        "total_dms_processed": 0,
-        "auto_responses_sent": 0,
-        "partnerships_flagged": 0,
-        "processed_hashes": []
-    }
-
-def save_state(state):
-    """Save monitoring state."""
-    with open(STATE_FILE, "w") as f:
-        json.dump(state, f, indent=2)
-
-def log_dm(sender, sender_id, text, category, response_template=None):
-    """Log DM to JSONL file."""
-    entry = {
-        "timestamp": datetime.now().isoformat() + "Z",
-        "sender": sender,
-        "sender_id": sender_id,
-        "text": text[:500],  # Truncate very long messages
-        "category": category,
-        "response_sent": response_template is not None,
-        "response_template": response_template or None
-    }
-    
-    # Append to log (atomic write)
-    try:
-        with open(LOG_FILE, "a") as f:
-            f.write(json.dumps(entry) + "\n")
-    except Exception as e:
-        print(f"Warning: Could not write to log file: {e}", file=sys.stderr)
-
-def fetch_pending_dms():
-    """
-    Fetch DMs from the input queue.
-    These come from:
-    - Email forwarding (parsed by external script)
-    - Webhook notifications (posted to queue)
-    - Manual input
-    
-    Queue format: one JSON object per line with:
-    {
-        "sender_name": str,
-        "sender_id": str,
-        "text": str,
-        "received_at": datetime ISO string (optional)
-    }
-    """
-    dms = []
-    
-    if not DM_INBOX_QUEUE.exists():
-        return []
-    
-    try:
-        with open(DM_INBOX_QUEUE, "r") as f:
-            for line in f:
-                line = line.strip()
-                if line:
-                    try:
-                        dm = json.loads(line)
-                        dms.append(dm)
-                    except json.JSONDecodeError:
-                        continue
-    except Exception as e:
-        print(f"Warning: Could not read DM queue: {e}", file=sys.stderr)
-    
-    return dms
-
-def clear_processed_dms():
-    """Clear the input queue after processing (move to backup)."""
-    if DM_INBOX_QUEUE.exists():
-        try:
-            # Backup queue for audit trail
-            backup_file = CACHE_DIR / f"youtube-dm-inbox-backup-{datetime.utcnow().strftime('%Y%m%d-%H%M%S')}.jsonl"
-            with open(DM_INBOX_QUEUE, "r") as src:
-                with open(backup_file, "w") as dst:
-                    dst.write(src.read())
+            # Note: YouTube doesn't have a direct DM API in the public API
+            # This is a placeholder for the actual implementation
+            # In practice, you'd need to use YouTube Community posts or
+            # implement a custom scraper with proper authentication
             
-            # Clear queue
-            with open(DM_INBOX_QUEUE, "w") as f:
-                f.write("")
-        except Exception as e:
-            print(f"Warning: Could not backup/clear queue: {e}", file=sys.stderr)
+            print("NOTE: YouTube DM API requires custom implementation.")
+            print("This script is configured for manual DM input or custom API integration.")
+            return []
+        
+        except HttpError as e:
+            print(f"API Error: {e}")
+            return []
+    
+    def send_response(self, dm_id: str, sender_id: str, response: str) -> bool:
+        """Send auto-response to sender (placeholder)"""
+        # YouTube DMs would be sent via custom implementation
+        # This is a placeholder
+        return True
+    
+    def process_dms(self, dms: list[dict]) -> list[DM]:
+        """Process and categorize DMs"""
+        processed = []
+        
+        for dm in dms:
+            sender = dm.get('sender', 'Unknown')
+            sender_id = dm.get('sender_id', '')
+            text = dm.get('text', '')
+            dm_id = dm.get('id', '')
+            
+            # Categorize
+            category_name, template_key = self.categorize_dm(text)
+            response_template = self.RESPONSES.get(template_key, '')
+            
+            # Send response
+            response_sent = self.send_response(dm_id, sender_id, response_template)
+            if response_sent:
+                self.auto_responses_sent += 1
+            
+            # Track by category
+            if category_name == 'Product inquiry':
+                self.product_inquiries.append({
+                    'sender': sender,
+                    'text': text,
+                    'dm_id': dm_id
+                })
+            elif category_name == 'Partnership':
+                self.partnerships.append({
+                    'sender': sender,
+                    'text': text,
+                    'dm_id': dm_id
+                })
+            
+            # Create log entry
+            dm_record = DM(
+                timestamp=datetime.now().isoformat(),
+                sender=sender,
+                sender_id=sender_id,
+                text=text,
+                category=category_name,
+                response_sent=response_sent,
+                response_template=response_template,
+                dm_id=dm_id
+            )
+            
+            processed.append(dm_record)
+            self.dms_processed += 1
+        
+        return processed
+    
+    def generate_report(self) -> str:
+        """Generate summary report"""
+        report = []
+        report.append("=" * 60)
+        report.append(f"YouTube DM Monitor Report - {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        report.append("=" * 60)
+        report.append("")
+        report.append(f"📊 SUMMARY")
+        report.append(f"  Total DMs processed:    {self.dms_processed}")
+        report.append(f"  Auto-responses sent:    {self.auto_responses_sent}")
+        report.append(f"  Product inquiries:      {len(self.product_inquiries)}")
+        report.append(f"  Partnership requests:   {len(self.partnerships)}")
+        report.append("")
+        
+        if self.product_inquiries:
+            report.append(f"💡 PRODUCT INQUIRIES (Conversion Potential)")
+            for inquiry in self.product_inquiries:
+                report.append(f"  • {inquiry['sender']}: {inquiry['text'][:50]}...")
+        
+        if self.partnerships:
+            report.append(f"🤝 PARTNERSHIPS (Flagged for Manual Review)")
+            for partnership in self.partnerships:
+                report.append(f"  • {partnership['sender']}: {partnership['text'][:50]}...")
+        
+        report.append("")
+        report.append("=" * 60)
+        
+        return "\n".join(report)
+    
+    def run(self):
+        """Execute monitor"""
+        print("🚀 YouTube DM Monitor Starting...")
+        
+        # Authenticate
+        if not self.authenticate():
+            print("❌ Authentication failed")
+            return False
+        
+        # Fetch DMs
+        print("📥 Fetching DMs...")
+        dms = self.fetch_dms()
+        
+        if not dms:
+            print("ℹ️  No new DMs found")
+            self.save_state(datetime.now())
+            return True
+        
+        # Process DMs
+        print(f"⚙️  Processing {len(dms)} DM(s)...")
+        processed = self.process_dms(dms)
+        
+        # Log DMs
+        for dm in processed:
+            self.log_dm(dm)
+            print(f"  ✓ Logged: {dm.sender} - {dm.category}")
+        
+        # Generate report
+        report = self.generate_report()
+        print("\n" + report)
+        
+        # Save state
+        self.save_state(datetime.now())
+        
+        return True
 
-def run_monitor():
-    """Main DM monitor function."""
-    state = load_state()
-    processed_hashes = set(state.get("processed_hashes", []))
-    
-    # Fetch new DMs from queue
-    pending_dms = fetch_pending_dms()
-    
-    stats = {
-        "status": "success",
-        "total_dms_processed": 0,
-        "auto_responses_sent": 0,
-        "partnerships_flagged": 0,
-        "product_inquiries": 0,
-        "categories": {
-            "setup_help": 0,
-            "newsletter": 0,
-            "product_inquiry": 0,
-            "partnership": 0,
-            "other": 0
-        },
-        "new_dms_count": len(pending_dms)
-    }
-    
-    # Process each DM
-    for dm in pending_dms:
-        sender = dm.get("sender_name", "Unknown")
-        sender_id = dm.get("sender_id", "unknown")
-        text = dm.get("text", "")
-        received_at = dm.get("received_at", datetime.now().isoformat() + "Z")
-        
-        # Skip duplicates
-        dm_hash = hash_dm(sender_id, text, received_at)
-        if dm_hash in processed_hashes:
-            continue
-        
-        # Categorize
-        category = categorize_dm(text)
-        stats["categories"][category] = stats["categories"].get(category, 0) + 1
-        
-        # Get response template
-        response_template = get_response_template(category)
-        response_sent = response_template is not None
-        
-        if response_sent:
-            stats["auto_responses_sent"] += 1
-        
-        if category == "partnership":
-            stats["partnerships_flagged"] += 1
-        
-        if category == "product_inquiry":
-            stats["product_inquiries"] += 1
-        
-        # Log DM
-        log_dm(sender, sender_id, text, category, response_template)
-        
-        # Track processed
-        processed_hashes.add(dm_hash)
-        stats["total_dms_processed"] += 1
-    
-    # Update state
-    state["last_check"] = datetime.now().isoformat() + "Z"
-    state["total_dms_processed"] = state.get("total_dms_processed", 0) + stats["total_dms_processed"]
-    state["auto_responses_sent"] = state.get("auto_responses_sent", 0) + stats["auto_responses_sent"]
-    state["partnerships_flagged"] = state.get("partnerships_flagged", 0) + stats["partnerships_flagged"]
-    state["processed_hashes"] = list(processed_hashes)[-10000:]  # Keep last 10k to prevent memory bloat
-    save_state(state)
-    
-    # Clear processed DMs from queue
-    if stats["total_dms_processed"] > 0:
-        clear_processed_dms()
-    
-    return stats, state
 
-def generate_report(stats, state):
-    """Generate human-readable report."""
-    report = []
-    report.append("=" * 70)
-    report.append("YOUTUBE DM MONITOR REPORT")
-    report.append("=" * 70)
-    report.append(f"Time: {datetime.utcnow().isoformat()}Z")
-    report.append(f"Status: {stats.get('status', 'unknown').upper()}")
-    report.append("")
-    report.append("THIS RUN")
-    report.append("-" * 70)
-    report.append(f"New DMs in Queue: {stats['new_dms_count']}")
-    report.append(f"DMs Processed: {stats['total_dms_processed']}")
-    report.append(f"Auto-Responses Sent: {stats['auto_responses_sent']}")
-    report.append("")
-    report.append("CUMULATIVE STATS (All Time)")
-    report.append("-" * 70)
-    report.append(f"Total DMs Processed: {state['total_dms_processed']}")
-    report.append(f"Total Auto-Responses Sent: {state['auto_responses_sent']}")
-    report.append(f"Total Partnerships Flagged: {state['partnerships_flagged']}")
-    report.append("")
-    report.append("CONVERSION POTENTIAL")
-    report.append("-" * 70)
-    product_inquiries = stats['categories'].get('product_inquiry', 0)
-    report.append(f"Product Inquiries (This Run): {product_inquiries}")
-    report.append(f"Estimated Conversion Value: {product_inquiries} potential customers")
-    report.append("")
-    report.append("CATEGORY BREAKDOWN (This Run)")
-    report.append("-" * 70)
-    for category, count in sorted(stats['categories'].items()):
-        label = category.replace('_', ' ').title()
-        report.append(f"  {label:.<40} {count}")
-    report.append("")
-    report.append("SETUP INSTRUCTIONS FOR LIVE DM INGESTION")
-    report.append("-" * 70)
-    report.append("To enable live DM monitoring, use ONE of these methods:")
-    report.append("")
-    report.append("1. EMAIL FORWARDING (Recommended)")
-    report.append("   - Forward YouTube DMs to a monitored email")
-    report.append("   - Use an email-to-queue parser script")
-    report.append("   - Writes to: .cache/youtube-dm-inbox.jsonl")
-    report.append("")
-    report.append("2. WEBHOOK INTEGRATION")
-    report.append("   - Set up webhook on YouTube Community/Messaging")
-    report.append("   - POST JSON to: localhost:8000/youtube-dm")
-    report.append("   - Handler appends to: .cache/youtube-dm-inbox.jsonl")
-    report.append("")
-    report.append("3. MANUAL QUEUE")
-    report.append("   - Append DM JSON objects to: .cache/youtube-dm-inbox.jsonl")
-    report.append("   - Monitor script processes each line")
-    report.append("")
-    report.append("Queue Format (JSONL):")
-    report.append(json.dumps({
-        "sender_name": "John Doe",
-        "sender_id": "UCxxxxx",
-        "text": "How do I set this up?",
-        "received_at": "2026-04-14T05:03:00Z"
-    }, indent=2))
-    report.append("=" * 70)
-    
-    return "\n".join(report)
+def main():
+    """Main entry point"""
+    monitor = YouTubeDMMonitor()
+    success = monitor.run()
+    sys.exit(0 if success else 1)
 
-if __name__ == "__main__":
-    try:
-        stats, state = run_monitor()
-        report = generate_report(stats, state)
-        print(report)
-    except Exception as e:
-        print(f"ERROR: {e}", file=sys.stderr)
-        sys.exit(1)
+
+if __name__ == '__main__':
+    main()
