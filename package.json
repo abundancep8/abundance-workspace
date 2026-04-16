@@ -1,0 +1,39 @@
+{
+  "name": "openclaw-agent-supabase-mailgun",
+  "version": "1.0.0",
+  "description": "Supabase + Mailgun integration for OpenClaw agent logging, memory storage, and email",
+  "main": "supabase-integration.js",
+  "scripts": {
+    "sync": "node supabase-sync.js",
+    "test": "npm run test:supabase && npm run test:mailgun",
+    "test:supabase": "node -e \"const {supabase} = require('./supabase-integration'); console.log('Testing Supabase connection...'); supabase.from('task_log').select('count', { count: 'exact' }).limit(1).then(r => console.log(r.error ? 'ERROR: ' + r.error.message : 'OK: Supabase connected'));\"",
+    "test:mailgun": "node -e \"const {sendEmail} = require('./supabase-integration'); console.log('Sending test email...'); sendEmail({to: process.env.ALERT_EMAIL, subject: 'Test', html: '<h1>Test</h1>'}).then(() => console.log('Email sent!'));\"",
+    "export": "node -e \"const {exportDashboardData} = require('./supabase-integration'); exportDashboardData().then(data => console.log(JSON.stringify(data, null, 2)));\"",
+    "metrics": "node -e \"const {calculateMetrics} = require('./supabase-integration'); calculateMetrics().then(m => console.log(JSON.stringify(m, null, 2)));\"",
+    "logs": "node -e \"const {getRecentTasks} = require('./supabase-integration'); getRecentTasks(50).then(tasks => console.log(JSON.stringify(tasks, null, 2)));\""
+  },
+  "keywords": [
+    "openclaw",
+    "supabase",
+    "mailgun",
+    "logging",
+    "metrics",
+    "email",
+    "ai-agent"
+  ],
+  "author": "Abundance",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0",
+    "form-data": "^4.0.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}

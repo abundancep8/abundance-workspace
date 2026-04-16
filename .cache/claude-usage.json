@@ -1,20 +1,21 @@
 {
-  "timestamp": "2026-04-14T03:04:00Z",
-  "tokens_today": {
-    "input": 87,
-    "output": 4500
-  },
-  "cost_today": 0.0057,
-  "tokens_month": {
-    "input": 87,
-    "output": 4500
-  },
-  "cost_month": 0.0057,
-  "budget_daily": 5.00,
-  "budget_monthly": 155.00,
-  "threshold_daily": 3.75,
-  "threshold_monthly": 116.25,
-  "status": "ok",
-  "alert_triggered": false,
-  "note": "Data from current cron session. Anthropic console requires auth. For production, provide ANTHROPIC_INPUT_TOKENS_TODAY/MONTH and ANTHROPIC_OUTPUT_TOKENS_TODAY/MONTH env vars."
+  "timestamp": "2026-04-16T09:06:45.333476+00:00Z",
+  "date": "2026-04-16",
+  "tokens_today": 0,
+  "tokens_today_input": 0,
+  "tokens_today_output": 0,
+  "cost_today": 0.0,
+  "tokens_month": 15240,
+  "cost_month": 0.012192,
+  "budget_daily": 5.0,
+  "budget_monthly": 155.0,
+  "alert_threshold_daily": 3.75,
+  "alert_threshold_monthly": 116.25,
+  "percent_daily": 0.0,
+  "percent_monthly": 0.0,
+  "status": "OK",
+  "rates": {
+    "input_per_million": 0.4,
+    "output_per_million": 1.2
+  }
 }

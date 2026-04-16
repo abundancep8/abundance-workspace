@@ -1,34 +1,67 @@
-# HEARTBEAT.md — Daily Pulse Checks
+# HEARTBEAT.md - Periodic Checks
 
-Run 2-4x per day. Check these items in rotation. When nothing needs attention, respond `HEARTBEAT_OK`.
+## Primary Check: System Status Dashboard
 
-## Daily Checks (Every Session)
+**Every heartbeat cycle, start here:**
 
-- [ ] **System Status:** Read `SYSTEMS_STATUS.md`. Are any systems blocked? Need unblocking?
-  - Quick check: Look at 🟡 DEPLOYED BUT INCOMPLETE and 🔴 BLOCKED sections
-  - Action if yes: Note which systems need attention in today's memory file
-  - Action if no: Reply HEARTBEAT_OK
-  
-## Rotating Checks (Pick 1-2 per heartbeat, vary daily)
+Read `SYSTEMS_STATUS.md` and check:
+- [ ] Are there any NEW blockers introduced? (systems in 🔴 BLOCKED?)
+- [ ] Are quick win opportunities addressed? (check 🟡 INCOMPLETE for progress)
+- [ ] Do YouTube monitors have new partnership opportunities? (check `.cache/youtube-flagged-partnerships.jsonl`)
+- [ ] Has the OAuth blocker been resolved? (if Abundance provided creds, trigger integration)
+- [ ] Token ledger within budget? (check `.cache/claude-usage.json` for alerts)
 
-- [ ] **Email & Messages:** Any urgent unread messages or notifications?
-- [ ] **Calendar:** Upcoming events in next 24-48 hours?
-- [ ] **GitHub:** Any PR reviews or deployments pending?
-- [ ] **Token Budget:** Check `~/.cache/token-ledger.json` — are we under daily budget?
+This is the north star for system health. Update `SYSTEMS_STATUS.md` at each nightly cycle.
 
 ---
 
-**Rule:** Don't check all 5 items every time. Vary them across the day. Batch similar checks together.
+## YouTube Monitor Status (Rotational Checks)
 
-**When to alert (do NOT reply HEARTBEAT_OK):**
-- System blocker that can be unblocked in <30 min
-- Urgent email or calendar event
-- Token budget exceeded
-- Deployment needed
-- Any actionable task
+### Check A: DM Monitor (runs every 60 minutes)
+```bash
+# Latest DM summary
+tail -1 .cache/youtube-dms.jsonl
 
-**When to stay quiet (reply HEARTBEAT_OK):**
-- All systems running smoothly
-- Nothing new since last check
-- It's late night (23:00-08:00) unless urgent
-- Human is clearly busy
+# Partnerships flagged this cycle
+grep "flagged_for_review" .cache/youtube-dms.jsonl | tail -1
+
+# All high-value partnerships (score >60)
+cat .cache/youtube-flagged-partnerships.jsonl | jq 'select(.partnership_score > 60)'
+```
+
+### Check B: Comment Monitor (runs every 30 minutes)
+```bash
+# Latest comment stats
+cat .cache/youtube-comments-report.txt | tail -10
+
+# Sales inquiries pending follow-up
+grep "sales\|partnership\|collaboration" .cache/youtube-comments.jsonl | grep -v "auto_replied"
+```
+
+### Check C: Cron Health
+```bash
+# Verify both monitors are still running
+launchctl list | grep youtube
+```
+
+---
+
+## Actions When Needed
+
+### If sales inquiries accumulate (>3 unflagged)
+- Review `.cache/youtube-comments.jsonl` for context
+- Prepare follow-up templates or delegate to Abundance
+
+### If partnerships flagged (score >60)
+- Review `.cache/youtube-flagged-partnerships.jsonl`
+- Prepare pitch/outreach materials
+- Flag for Abundance decision (pursue vs. archive)
+
+### If OAuth blocker resolved (Abundance provides credentials)
+- Wire YouTube credentials into both monitor scripts
+- Test with live API call (5 min)
+- Report success to Abundance
+
+### System maintenance
+- Adjust templates? Edit `.cache/youtube-comment-monitor.py` (TEMPLATES dict)
+- Pause monitoring? `launchctl unload ~/Library/LaunchAgents/com.openclaw.youtube-monitor.plist`

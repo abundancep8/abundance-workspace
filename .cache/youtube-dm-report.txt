@@ -1,0 +1,15 @@
+YouTube DM Monitor Report — Concessa Obvius
+Generated: 2026-04-15 19:03:46 UTC
+
+📊 This Run
+  DMs Processed: 0
+  Auto-Responses Sent: 0
+  Flagged for Review: 0
+
+📈 Lifetime Totals
+  Total DMs: 6
+  Total Auto-Responses: 4
+  Total Flagged: 2
+
+✅ Status: Operational
+Last run: 2026-04-15T19:03:46.791214

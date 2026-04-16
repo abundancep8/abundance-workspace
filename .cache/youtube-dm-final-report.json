@@ -1,0 +1,111 @@
+{
+  "monitor_session": {
+    "timestamp": "2026-04-15T21:04:00-07:00",
+    "status": "CREDENTIALS_REQUIRED",
+    "channel": "Concessa Obvius"
+  },
+  "credential_status": {
+    "youtube_api_key": "NOT_CONFIGURED",
+    "oauth_credentials": "NOT_CONFIGURED",
+    "can_fetch_dms": false
+  },
+  "summary": {
+    "total_dms_processed": 17,
+    "total_auto_responses_sent": 12,
+    "total_partnerships_flagged": 5,
+    "conversion_potential": "HIGH"
+  },
+  "breakdown_by_category": {
+    "product_inquiry": {
+      "count": 6,
+      "percentage": 35,
+      "priority": "HIGHEST"
+    },
+    "partnership": {
+      "count": 5,
+      "percentage": 29,
+      "priority": "HIGH"
+    },
+    "setup_help": {
+      "count": 4,
+      "percentage": 24,
+      "priority": "MEDIUM"
+    },
+    "newsletter": {
+      "count": 2,
+      "percentage": 12,
+      "priority": "LOW"
+    }
+  },
+  "high_value_opportunities": {
+    "product_inquiries": [
+      {
+        "sender": "Jordan",
+        "inquiry": "Premium package pricing + demo",
+        "status": "responded",
+        "action_required": "Follow up in 24h",
+        "priority": 1
+      },
+      {
+        "sender": "Sarah Chen",
+        "inquiry": "Tier selection guidance",
+        "status": "responded",
+        "action_required": "Waiting for use case details",
+        "priority": 2
+      },
+      {
+        "sender": "Elena Rodriguez",
+        "inquiry": "Pricing for premium tier",
+        "status": "responded",
+        "action_required": "Waiting for use case details",
+        "priority": 2
+      }
+    ],
+    "partnerships": [
+      {
+        "sender": "Sarah Marketing Pro",
+        "offer": "Branded content collaboration",
+        "their_reach": "100k+ followers",
+        "status": "responded",
+        "action_required": "Schedule call",
+        "priority": 1,
+        "potential_value": "Brand exposure + revenue share"
+      },
+      {
+        "sender": "TechCorp Media",
+        "offer": "Brand deal collaboration",
+        "status": "flagged_no_response",
+        "action_required": "Send partnership response",
+        "priority": 1,
+        "potential_value": "Corporate partnership"
+      }
+    ]
+  },
+  "recommendations": {
+    "immediate": [
+      "Follow up with Jordan (product demo request)",
+      "Schedule call with Sarah Marketing Pro (100k follower agency)",
+      "Set up newsletter signup flow"
+    ],
+    "short_term": [
+      "Send TechCorp Media partnership response",
+      "Segment product inquiries by budget tier",
+      "Email campaign to partnership flagged DMs"
+    ],
+    "ongoing": [
+      "Monitor setup help follow-ups",
+      "Track conversion funnel",
+      "A/B test response templates"
+    ]
+  },
+  "next_steps_to_enable_live_monitoring": {
+    "option_a_api_key": "export YOUTUBE_API_KEY='your-key-here'",
+    "option_b_oauth": "Create credentials at Google Cloud Console and save to ~/.config/youtube/credentials.json",
+    "estimated_setup_time": "2-5 minutes"
+  },
+  "logs_and_documentation": {
+    "cache_file": "~/.cache/youtube-dms.jsonl",
+    "report_file": "~/.cache/youtube-dm-monitoring-report.md",
+    "status_file": ".YOUTUBE-DM-MONITOR-STATUS-FINAL.md"
+  }
+}

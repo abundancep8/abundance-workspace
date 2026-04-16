@@ -1,113 +1,136 @@
 #!/usr/bin/env python3
 """
-Manual update helper for Claude API usage metrics.
-Use when exporting data from console.anthropic.com/account/usage
-
-Example:
-    python3 update-usage.py --tokens-today 12500 --cost-today 2.45 --tokens-month 125000 --cost-month 45.30
+Manual Claude API usage updater
+Use this to manually input usage data from the Anthropic console
 """
 
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
-from datetime import datetime
-import argparse
-
-CACHE_FILE = Path.home() / ".openclaw/workspace/.cache/claude-usage.json"
-BUDGET_DAILY = 5.00
-BUDGET_MONTHLY = 155.00
-ALERT_THRESHOLD_DAILY = BUDGET_DAILY * 0.75
-ALERT_THRESHOLD_MONTHLY = BUDGET_MONTHLY * 0.75
 
 
-def load_cache():
-    """Load existing cache or create new one."""
-    if CACHE_FILE.exists():
-        with open(CACHE_FILE) as f:
-            return json.load(f)
-    return {
-        "timestamp": datetime.utcnow().isoformat() + "Z",
-        "tokens_today": 0,
-        "cost_today": 0.0,
-        "tokens_month": 0,
-        "cost_month": 0.0,
-        "budget_daily": BUDGET_DAILY,
-        "budget_monthly": BUDGET_MONTHLY,
-        "status": "ok",
-        "last_check": datetime.utcnow().isoformat() + "Z"
+def update_usage(tokens_today: int, tokens_month: int, webhook_url: str = None) -> dict:
+    """Update usage log with provided token counts and calculate costs"""
+    
+    # Rates (April 2026)
+    INPUT_RATE = 0.4   # $0.4 per 1M input tokens
+    OUTPUT_RATE = 1.2  # $1.2 per 1M output tokens
+    
+    # Budgets
+    DAILY_BUDGET = 5.00
+    MONTHLY_BUDGET = 155.00
+    ALERT_DAILY_THRESHOLD = 3.75
+    ALERT_MONTHLY_THRESHOLD = 116.25
+    
+    # Calculate costs
+    def calculate_cost(tokens):
+        """Calculate cost for tokens (input tokens only, for simplicity)"""
+        millions = tokens / 1_000_000
+        return round(millions * INPUT_RATE, 4)
+    
+    cost_today = calculate_cost(tokens_today)
+    cost_month = calculate_cost(tokens_month)
+    
+    # Determine status
+    status = "OK"
+    if cost_today > ALERT_DAILY_THRESHOLD:
+        status = "ALERT_DAILY"
+    elif cost_month > ALERT_MONTHLY_THRESHOLD:
+        status = "ALERT_MONTHLY"
+    
+    # Create usage data
+    now = datetime.now(timezone.utc).replace(tzinfo=None)
+    usage_data = {
+        "timestamp": now.isoformat() + "Z",
+        "date": now.strftime("%Y-%m-%d"),
+        "tokens_today": tokens_today,
+        "cost_today": cost_today,
+        "tokens_month": tokens_month,
+        "cost_month": cost_month,
+        "budget_daily": DAILY_BUDGET,
+        "budget_monthly": MONTHLY_BUDGET,
+        "alert_threshold_daily": ALERT_DAILY_THRESHOLD,
+        "alert_threshold_monthly": ALERT_MONTHLY_THRESHOLD,
+        "status": status,
+        "rates": {
+            "input_per_million": INPUT_RATE,
+            "output_per_million": OUTPUT_RATE
+        }
     }
+    
+    # Write to cache file
+    cache_file = Path.home() / ".openclaw" / "workspace" / ".cache" / "claude-usage.json"
+    cache_file.parent.mkdir(parents=True, exist_ok=True)
+    
+    with open(cache_file, "w") as f:
+        json.dump(usage_data, f, indent=2)
+    
+    print(f"✅ Usage updated:")
+    print(f"   Today: {tokens_today:,} tokens = ${cost_today:.2f} ({int(cost_today/DAILY_BUDGET*100)}% of daily budget)")
+    print(f"   Month: {tokens_month:,} tokens = ${cost_month:.2f} ({int(cost_month/MONTHLY_BUDGET*100)}% of monthly budget)")
+    print(f"   Status: {status}")
+    print(f"   Saved to: {cache_file}")
+    
+    # Trigger webhook if needed
+    if status != "OK" and webhook_url:
+        trigger_webhook(usage_data, status, webhook_url)
+    
+    return usage_data
 
 
-def save_cache(data):
-    """Save updated cache."""
-    CACHE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    with open(CACHE_FILE, 'w') as f:
-        json.dump(data, f, indent=2)
-    print(f"✅ Updated: {CACHE_FILE}")
-
-
-def check_alerts(data):
-    """Check if thresholds exceeded and print alerts."""
-    alerts = []
+def trigger_webhook(usage_data: dict, status: str, webhook_url: str):
+    """Send alert to webhook"""
+    import urllib.request
+    import urllib.error
     
-    if data["cost_today"] > ALERT_THRESHOLD_DAILY:
-        pct = (data["cost_today"] / data["budget_daily"]) * 100
-        alerts.append(f"⚠️  Daily budget at {pct:.1f}% (${data['cost_today']:.2f}/${BUDGET_DAILY})")
+    alert_data = {
+        "status": "alert",
+        "type": status,
+        "message": f"Claude API usage alert: {status}",
+        "usage": usage_data
+    }
     
-    if data["cost_month"] > ALERT_THRESHOLD_MONTHLY:
-        pct = (data["cost_month"] / data["budget_monthly"]) * 100
-        alerts.append(f"⚠️  Monthly budget at {pct:.1f}% (${data['cost_month']:.2f}/${BUDGET_MONTHLY})")
-    
-    if alerts:
-        data["status"] = "alert"
-        for alert in alerts:
-            print(alert, file=sys.stderr)
-    else:
-        data["status"] = "ok"
-        print(f"✓ Daily: ${data['cost_today']:.2f} / ${BUDGET_DAILY} ({(data['cost_today']/BUDGET_DAILY)*100:.1f}%)")
-        print(f"✓ Monthly: ${data['cost_month']:.2f} / ${BUDGET_MONTHLY} ({(data['cost_month']/BUDGET_MONTHLY)*100:.1f}%)")
-    
-    return data
+    try:
+        req = urllib.request.Request(
+            webhook_url,
+            data=json.dumps(alert_data).encode('utf-8'),
+            headers={"Content-Type": "application/json"}
+        )
+        with urllib.request.urlopen(req, timeout=5) as response:
+            print(f"✅ Alert sent to webhook: {response.status}")
+    except urllib.error.URLError as e:
+        print(f"⚠️  Webhook failed: {e}")
 
 
 def main():
+    """CLI interface"""
+    import argparse
+    
     parser = argparse.ArgumentParser(
-        description="Update Claude API usage metrics from console data"
+        description="Update Claude API usage log",
+        epilog="Example: update-usage.py --today 1500000 --month 25000000"
     )
-    parser.add_argument("--tokens-today", type=int, help="Input+output tokens used today")
-    parser.add_argument("--cost-today", type=float, help="USD cost for today")
-    parser.add_argument("--tokens-month", type=int, help="Input+output tokens used this month")
-    parser.add_argument("--cost-month", type=float, help="USD cost for this month")
-    parser.add_argument("--show", action="store_true", help="Show current usage without updating")
+    parser.add_argument("--today", type=int, required=True, help="Tokens used today")
+    parser.add_argument("--month", type=int, required=True, help="Tokens used this month")
+    parser.add_argument("--webhook", help="Webhook URL for alerts (optional)")
     
     args = parser.parse_args()
     
-    data = load_cache()
-    
-    if args.show:
-        print(json.dumps(data, indent=2))
-        return
-    
-    if not any([args.tokens_today is not None, args.cost_today is not None, 
-                args.tokens_month is not None, args.cost_month is not None]):
-        parser.print_help()
-        sys.exit(1)
-    
-    if args.tokens_today is not None:
-        data["tokens_today"] = args.tokens_today
-    if args.cost_today is not None:
-        data["cost_today"] = float(args.cost_today)
-    if args.tokens_month is not None:
-        data["tokens_month"] = args.tokens_month
-    if args.cost_month is not None:
-        data["cost_month"] = float(args.cost_month)
-    
-    data["timestamp"] = datetime.utcnow().isoformat() + "Z"
-    data["last_check"] = datetime.utcnow().isoformat() + "Z"
-    
-    data = check_alerts(data)
-    save_cache(data)
+    update_usage(args.today, args.month, args.webhook)
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) == 1:
+        # Interactive mode if no args
+        print("Claude API Usage Updater")
+        print("=" * 40)
+        try:
+            today = int(input("Tokens used today: "))
+            month = int(input("Tokens used this month: "))
+            update_usage(today, month)
+        except ValueError:
+            print("❌ Invalid input. Please enter numbers only.")
+            sys.exit(1)
+    else:
+        main()

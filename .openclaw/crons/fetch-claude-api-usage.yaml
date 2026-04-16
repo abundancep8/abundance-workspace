@@ -1,0 +1,30 @@
+---
+id: fetch-claude-api-usage
+schedule: "0 * * * *"  # Hourly at the top of each hour
+description: "Fetch Claude API usage from Anthropic console"
+
+task:
+  command:
+    - python3
+    - .cache/fetch-claude-usage-enhanced.py
+  
+  cwd: ~/.openclaw/workspace
+  
+  env:
+    WEBHOOK_MONITOR_URL: "${WEBHOOK_MONITOR_URL}"
+  
+  timeout: 30
+
+notify:
+  on_success: false  # Only notify on alert
+  on_failure: true
+  
+webhook:
+  url: "${WEBHOOK_MONITOR_URL}"
+  on_alert: true  # Only webhook when status != OK
+  include_logs: false
+
+logging:
+  file: .cache/claude-usage-cron.log
+  keep_days: 30
+  compress: true

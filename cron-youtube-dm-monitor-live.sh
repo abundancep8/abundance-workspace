@@ -10,6 +10,7 @@ MONITOR_SCRIPT="${WORKSPACE}/youtube-dm-monitor-live.py"
 LOG_FILE="${CACHE_DIR}/youtube-dms.jsonl"
 REPORT_FILE="${CACHE_DIR}/youtube-dm-report.json"
 CRON_LOG="${CACHE_DIR}/youtube-dm-monitor.log"
+VENV="${WORKSPACE}/venv"
 
 # Ensure cache directory exists
 mkdir -p "$CACHE_DIR"
@@ -29,23 +30,35 @@ if [ ! -f "$MONITOR_SCRIPT" ]; then
     exit 1
 fi
 
-# Check if Python 3 is available
-if ! command -v python3 &> /dev/null; then
-    log "❌ ERROR: Python 3 not found"
+# Activate virtual environment
+if [ ! -d "$VENV" ]; then
+    log "Setting up virtual environment..."
+    python3 -m venv "$VENV" || {
+        log "❌ ERROR: Failed to create virtual environment"
+        exit 1
+    }
+fi
+
+log "Activating virtual environment..."
+source "$VENV/bin/activate"
+
+# Check if Python is available in venv
+if ! command -v python &> /dev/null; then
+    log "❌ ERROR: Python not found in virtual environment"
     exit 1
 fi
 
 # Install dependencies if needed
 log "Checking dependencies..."
-python3 -c "import playwright" 2>/dev/null || {
+python -c "import playwright" 2>/dev/null || {
     log "Installing Playwright..."
-    python3 -m pip install playwright -q
-    python3 -m playwright install chromium -q
+    pip install -q playwright
+    python -m playwright install chromium
 }
 
 # Run the monitor
 log "Starting DM monitor..."
-python3 "$MONITOR_SCRIPT" --report >> "$CRON_LOG" 2>&1
+python "$MONITOR_SCRIPT" --report >> "$CRON_LOG" 2>&1
 
 # Check if monitor ran successfully
 if [ $? -eq 0 ]; then
@@ -55,7 +68,7 @@ else
 fi
 
 # Generate report JSON for Discord/API consumption
-python3 << 'PYTHON_REPORT'
+python << 'PYTHON_REPORT'
 import json
 import os
 from datetime import datetime

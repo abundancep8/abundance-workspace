@@ -1,0 +1,170 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║          YOUTUBE COMMENT MONITOR - QUICK START & REFERENCE                 ║
+║                    Concessa Obvius Channel Monitor                          ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📊 CURRENT STATUS
+─────────────────────────────────────────────────────────────────────────────
+Status:              ✅ OPERATIONAL (Demo Mode)
+Last Run:            2026-04-15 23:32 UTC
+Lifetime Comments:   334 processed
+Auto-Responses:      222 sent (66%)
+Flagged for Review:  56 items (17%)
+Spam Ignored:        56 items (17%)
+
+📂 KEY FILES
+─────────────────────────────────────────────────────────────────────────────
+Main Script:    /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+Comment Log:    /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+State File:     /Users/abundance/.openclaw/workspace/.cache/youtube-comment-state.json
+Report:         /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+Cron Log:       /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.log
+
+⚙️ ONE-COMMAND DEPLOYMENT
+─────────────────────────────────────────────────────────────────────────────
+Run this to install the cron job:
+
+  crontab -e
+
+Then add this line and save:
+
+  */30 * * * * /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.sh >> /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.log 2>&1
+
+Verify with:
+
+  crontab -l | grep youtube-monitor
+
+🚀 MANUAL EXECUTION
+─────────────────────────────────────────────────────────────────────────────
+Run the monitor immediately:
+
+  /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+
+Expected output: ~4 comments processed, 2 auto-responses, 1 flagged
+
+📋 CATEGORIZATION
+─────────────────────────────────────────────────────────────────────────────
+[Q] QUESTIONS          → Auto-respond
+     Keywords: how, what, when, tools, cost, timeline, help
+
+[P] PRAISE            → Auto-respond
+     Keywords: amazing, great, love, inspired, thank you
+
+[X] SPAM              → Ignore/Block
+     Keywords: crypto, mlm, money, guaranteed, dm me
+
+[B] SALES/BUSINESS    → Flag for Review
+     Keywords: partnership, collaboration, b2b, affiliate
+
+📊 VIEW REPORTS
+─────────────────────────────────────────────────────────────────────────────
+Latest report:
+  cat ~/.openclaw/workspace/.cache/youtube-comments-report.txt
+
+Cron execution log:
+  tail -20 ~/.openclaw/workspace/.cache/youtube-monitor-cron.log
+
+Recent comments (pretty-printed):
+  tail -5 ~/.openclaw/workspace/.cache/youtube-comments.jsonl | python3 -m json.tool
+
+Count by category:
+  grep '"category"' ~/.openclaw/workspace/.cache/youtube-comments.jsonl | sort | uniq -c
+
+🔍 ANALYTICS
+─────────────────────────────────────────────────────────────────────────────
+Total comments processed:
+  wc -l ~/.openclaw/workspace/.cache/youtube-comments.jsonl
+
+Questions asked:
+  grep '"category": "questions"' ~/.openclaw/workspace/.cache/youtube-comments.jsonl | wc -l
+
+Praise comments:
+  grep '"category": "praise"' ~/.openclaw/workspace/.cache/youtube-comments.jsonl | wc -l
+
+Sales inquiries (flagged):
+  grep '"category": "sales"' ~/.openclaw/workspace/.cache/youtube-comments.jsonl | wc -l
+
+Spam caught:
+  grep '"category": "spam"' ~/.openclaw/workspace/.cache/youtube-comments.jsonl | wc -l
+
+Auto-responses sent:
+  grep '"response_status": "auto_responded"' ~/.openclaw/workspace/.cache/youtube-comments.jsonl | wc -l
+
+📝 CUSTOMIZE TEMPLATES
+─────────────────────────────────────────────────────────────────────────────
+Edit the script:
+  nano ~/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+
+Find these sections and update:
+  - Lines ~53-70: TEMPLATES = { ... }
+  - Lines ~25-51: QUESTION_KEYWORDS, PRAISE_KEYWORDS, etc.
+
+🔔 ALERTS & INTEGRATION
+─────────────────────────────────────────────────────────────────────────────
+Forward to Discord (add to cron):
+  */30 * * * * ... | curl -X POST https://discord.webhook/... -d @-
+
+Slack notification on sales:
+  Add to script: notify_slack(category, commenter, text)
+
+Daily email summary:
+  0 9 * * * cat ~/.openclaw/workspace/.cache/youtube-comments-report.txt | mail -s "YouTube Monitor Report" you@example.com
+
+🐛 TROUBLESHOOTING
+─────────────────────────────────────────────────────────────────────────────
+Cron not running?
+  ps aux | grep cron
+  Check: crontab -l | grep youtube-monitor
+
+Script not executable?
+  chmod +x ~/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+
+Permission denied?
+  ls -l ~/.openclaw/workspace/.cache/
+  Ensure directory is writable
+
+No comments logged?
+  Run manually and check output
+  Verify ~/.openclaw/workspace/.cache/ exists and is writable
+
+📚 DOCUMENTATION
+─────────────────────────────────────────────────────────────────────────────
+Full setup guide:
+  ~/.openclaw/workspace/.cache/YOUTUBE-MONITOR-SETUP.md
+
+Deployment report:
+  ~/.openclaw/workspace/.cache/YOUTUBE-MONITOR-DEPLOYMENT-REPORT.md
+
+💡 TIPS & TRICKS
+─────────────────────────────────────────────────────────────────────────────
+• Monitor runs every 30 minutes by default
+• All times are in UTC (Zulu time)
+• Comments deduplicated by comment_id (no duplicates)
+• JSONL format = one JSON per line, easy to parse
+• State file prevents processing same comment twice
+• Templates randomized for natural feel
+
+🎯 NEXT STEPS
+─────────────────────────────────────────────────────────────────────────────
+1. ☐ Install cron job (crontab -e, paste line above, save)
+2. ☐ Wait 30 minutes or run manually: ./youtube-monitor-cron.sh
+3. ☐ Check logs: tail -f youtube-monitor-cron.log
+4. ☐ Review flagged sales: grep '"category": "sales"' youtube-comments.jsonl
+5. ☐ Customize templates as needed
+6. ☐ Set up alerts/notifications (Discord, Slack, Email)
+
+✅ DEPLOYMENT CHECKLIST
+─────────────────────────────────────────────────────────────────────────────
+☐ Read YOUTUBE-MONITOR-SETUP.md
+☐ Run script manually: ./youtube-monitor-cron.sh
+☐ Verify output in youtube-comments.jsonl
+☐ Install cron job: crontab -e
+☐ Wait 30 minutes for first auto-run
+☐ Check cron log: tail youtube-monitor-cron.log
+☐ Review report: cat youtube-comments-report.txt
+☐ Set up notifications (optional)
+☐ Ready for production! 🚀
+
+═════════════════════════════════════════════════════════════════════════════
+Last Updated: 2026-04-15 23:32 UTC | Status: ✅ Ready for Production
+═════════════════════════════════════════════════════════════════════════════

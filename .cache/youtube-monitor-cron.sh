@@ -1,24 +1,17 @@
 #!/bin/bash
-# YouTube Comment Monitor - Cron Wrapper
-# Runs every 30 minutes
+# YouTube Comment Monitor - Cron wrapper
+# Add to crontab with: */30 * * * * /path/to/youtube-monitor-cron.sh
 
-set -e
+export YOUTUBE_API_KEY="${YOUTUBE_API_KEY}"
+export YOUTUBE_CHANNEL_ID="${YOUTUBE_CHANNEL_ID}"
+export PATH="/usr/local/bin:$PATH"
 
-WORKSPACE="$HOME/.openclaw/workspace"
-SCRIPT="$WORKSPACE/.cache/youtube-monitor.py"
-LOG_DIR="$WORKSPACE/.cache"
-LOG_FILE="$LOG_DIR/youtube-monitor.log"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+LOG_FILE="${SCRIPT_DIR}/youtube-monitor.log"
 
-# Ensure log directory exists
-mkdir -p "$LOG_DIR"
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting monitor..." >> "$LOG_FILE"
+node "$SCRIPT_DIR/youtube-monitor.js" >> "$LOG_FILE" 2>&1
+RESULT=$?
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Monitor finished (exit code: $RESULT)" >> "$LOG_FILE"
 
-# Run the monitor and append output to log
-{
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    echo "Run: $(date '+%Y-%m-%d %H:%M:%S %Z')"
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    python3 "$SCRIPT" 2>&1
-    echo ""
-} >> "$LOG_FILE"
-
-exit 0
+exit $RESULT

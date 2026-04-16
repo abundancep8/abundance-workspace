@@ -1,0 +1,183 @@
+# CRON JOB CONFIGURATION
+# Kimi K2.5 Integration - Automated Task Routing
+
+version: 1.0
+enabled: true
+timezone: America/Los_Angeles
+
+# Job Definition
+job:
+  name: kimi-router-worker
+  description: Smart task router between Kimi K2.5 (cost-optimized) and Claude 3.5 (quality-critical)
+  
+  # Schedule (cron expression)
+  # Check for and process queued tasks every 5 minutes
+  schedule: "*/5 * * * *"
+  
+  # Command to run
+  command: |
+    cd /Users/abundance/.openclaw/workspace/kimi-integration && \
+    node router.js process-queue
+  
+  # Environment variables
+  env:
+    OPENROUTER_API_KEY: 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
+    LOG_DIR: /Users/abundance/.openclaw/workspace/kimi-integration/logs
+    DASHBOARD_PATH: /Users/abundance/.openclaw/workspace/kimi-integration/dashboards/dashboard.html
+
+# Monitoring
+monitoring:
+  enabled: true
+  alert_on_failure: true
+  slack_webhook: null  # Configure with actual webhook if needed
+  
+  # Health check: ensure at least one task processes per hour
+  health_check:
+    enabled: true
+    min_tasks_per_hour: 5
+
+# Performance Targets
+targets:
+  # Expected daily cost reduction
+  daily_cost_target: 0.16  # USD (from $0.30)
+  
+  # Success rate target
+  success_rate_target: 0.99  # 99%
+  
+  # Average execution time
+  avg_execution_time_target_ms: 2000  # 2 seconds
+
+# Task Queue Processing
+queue:
+  # Poll interval (ms) - check for new tasks every 30 seconds
+  poll_interval_ms: 30000
+  
+  # Batch process up to N tasks per cron run
+  batch_size: 25
+  
+  # Timeout per task (seconds)
+  task_timeout_seconds: 300
+  
+  # Retry failed tasks up to N times
+  max_retries: 3
+  
+  # Backoff strategy: exponential (1s, 2s, 4s)
+  retry_backoff: exponential
+
+# Logging
+logging:
+  level: info  # debug, info, warn, error
+  format: json  # json, text
+  
+  # Log rotation
+  rotation:
+    enabled: true
+    max_size_mb: 50
+    max_files: 10
+    retention_days: 30
+
+# Reporting
+reporting:
+  # Generate performance report
+  daily_summary:
+    enabled: true
+    time: "23:00"  # Generate at 11 PM PDT
+    send_to: dashboard
+  
+  # Weekly deep analysis
+  weekly_analysis:
+    enabled: true
+    day: friday
+    time: "18:00"
+    send_to: dashboard
+
+# Routing Rules (can be updated without restart)
+routing:
+  # Research tasks → Kimi (cost optimization)
+  research:
+    model: kimi
+    priority: high
+  
+  # Batch processing → Kimi (long context, high tokens)
+  batch_processing:
+    model: kimi
+    priority: high
+  
+  # Long context → Kimi (memory synthesis, pattern extraction)
+  long_context:
+    model: kimi
+    priority: high
+  
+  # Discord → Claude (real-time requirement)
+  discord:
+    model: claude
+    priority: critical
+  
+  # JARVIS → Claude (system integration)
+  jarvis:
+    model: claude
+    priority: critical
+  
+  # Quality-critical → Claude (customer-facing)
+  quality_critical:
+    model: claude
+    priority: high
+  
+  # General tasks → Claude (default)
+  general:
+    model: claude
+    priority: normal
+  
+  # Token-based routing: >10k tokens → Kimi
+  token_threshold:
+    tokens: 10000
+    model: kimi
+    priority: normal
+
+# Integration Points
+integrations:
+  # Log to local JSONL file
+  performance_logger:
+    type: file
+    path: /Users/abundance/.openclaw/workspace/kimi-integration/logs/performance.jsonl
+    format: jsonl
+  
+  # Update dashboard
+  dashboard:
+    type: file
+    path: /Users/abundance/.openclaw/workspace/kimi-integration/dashboards/dashboard.html
+    auto_update: true
+  
+  # Discord notifications (optional)
+  discord:
+    enabled: false
+    webhook_url: null
+    notify_on: ['daily_summary', 'cost_milestone']
+  
+  # Telegram alerts (optional)
+  telegram:
+    enabled: false
+    bot_token: null
+    chat_id: null
+
+# Deployment Instructions
+deployment:
+  # Add to system crontab
+  crontab_entry: |
+    # Kimi K2.5 Router
+    */5 * * * * /Users/abundance/.openclaw/workspace/kimi-integration/cron-runner.sh
+  
+  # Installation
+  steps:
+    - "1. Copy cron-runner.sh to: /usr/local/bin/"
+    - "2. Make executable: chmod +x /usr/local/bin/cron-runner.sh"
+    - "3. Add to crontab: crontab -e"
+    - "4. Paste the crontab_entry above"
+    - "5. Save and exit"
+    - "6. Verify: crontab -l | grep kimi"
+  
+  # Verification
+  verify:
+    - "Check logs: tail -f /Users/abundance/.openclaw/workspace/kimi-integration/logs/performance.jsonl"
+    - "View dashboard: open /Users/abundance/.openclaw/workspace/kimi-integration/dashboards/dashboard.html"
+    - "Run test: node /Users/abundance/.openclaw/workspace/kimi-integration/tests/test-suite.js"
