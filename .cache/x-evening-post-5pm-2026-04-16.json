@@ -1,0 +1,53 @@
+{
+  "cron_job_id": "6be0f0e6-5fa9-4040-abbc-997c1d323ea8",
+  "execution_time": "2026-04-16T17:00:42Z",
+  "post_slot": "evening_5pm",
+  "thread_title": "My Automation Stack",
+  "status": "executed",
+  "posting_schedule": {
+    "time": "5:00 PM PDT",
+    "timestamp": "2026-04-17T00:00 UTC",
+    "frequency": "daily"
+  },
+  "content": {
+    "format": "5 tweets + 5 Blotato videos",
+    "psychology_hooks": [
+      "transparency",
+      "insight",
+      "democratization"
+    ],
+    "narrative": "My Automation Stack rotation variation"
+  },
+  "target": {
+    "account": "@AbundanceP9267",
+    "platform": "X/Twitter"
+  },
+  "metrics": {
+    "expected_reach_impressions": 8000,
+    "expected_conversions": 16,
+    "expected_revenue_usd": 80,
+    "queue_log_entries": 448,
+    "daily_posts_queued": 4,
+    "daily_tweets_queued": 20,
+    "daily_videos_queued": 20
+  },
+  "system_status": {
+    "queue_logging": "active",
+    "daily_multi_posting": "deployed",
+    "autonomous_mode": "enabled",
+    "effort_required": "zero"
+  },
+  "projections": {
+    "monthly_posts": 112,
+    "monthly_tweets": 560,
+    "monthly_videos": 560,
+    "monthly_impressions": 896000,
+    "monthly_conversions": 450,
+    "monthly_revenue_low_usd": 900,
+    "monthly_revenue_high_usd": 4500,
+    "additional_monthly_revenue_vs_3x_week": {
+      "low": 400,
+      "high": 2500
+    }
+  }
+}

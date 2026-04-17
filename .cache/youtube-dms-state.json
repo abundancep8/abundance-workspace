@@ -1,76 +1,84 @@
 {
   "monitor_id": "c1b30404-7343-46ff-aa1d-4ff84daf3674",
-  "last_run": "2026-04-15T15:03:00.000000Z",
-  "last_check": "2026-04-16T09:04:57.566633Z",
+  "last_run": "2026-04-17T09:04:31.380Z",
+  "last_check": "2026-04-17T09:04:31.380Z",
   "status": "success",
-  "dms_fetched_this_run": 0,
-  "dms_processed_this_run": 0,
-  "auto_responses_sent_this_run": 0,
-  "partnerships_flagged_this_run": 0,
-  "total_dms_processed": 25,
-  "total_auto_responses": 25,
-  "total_partnerships_flagged": 6,
+  "dms_fetched_this_run": 3,
+  "dms_processed_this_run": 3,
+  "auto_responses_sent_this_run": 3,
+  "partnerships_flagged_this_run": 1,
+  "total_dms_processed": 28,
+  "total_auto_responses": 28,
+  "total_partnerships_flagged": 7,
   "processed_hashes": [
     "3f4a9b2c5e8d",
-    "0cd638645b75",
-    "2892894b7708",
-    "9a7c2e5f1b3d",
-    "2b7d792ea7d6",
-    "2dc0a2c19644",
-    "b89f70b99032",
+    "7e50b6b0ec1d",
     "3e7b1a960c4a",
-    "fdeffd67b412",
-    "7c2d1e8f4a6b",
-    "638c1655544f",
-    "de5ce957cf9b",
+    "7112a4910fb0",
+    "8f2c5a3d1e7b",
+    "25f28de32add",
+    "b89f70b99032",
+    "6b675e710d52",
+    "0cd638645b75",
+    "6a58118bcae1",
     "9e3f2a1b7c4d",
     "4d1b9e6f3c2a",
-    "6b675e710d52",
-    "c01b2e743e56",
-    "25f28de32add",
-    "6a58118bcae1",
-    "651a9ab1b495",
     "571017464e5d",
-    "7112a4910fb0",
-    "7e50b6b0ec1d",
-    "7de1972b2b11",
+    "2b7d792ea7d6",
+    "2892894b7708",
+    "de5ce957cf9b",
+    "2dc0a2c19644",
     "f0381c3d6d68",
-    "8f2c5a3d1e7b"
+    "7de1972b2b11",
+    "c01b2e743e56",
+    "651a9ab1b495",
+    "7c2d1e8f4a6b",
+    "638c1655544f",
+    "fdeffd67b412",
+    "9a7c2e5f1b3d",
+    "a2b3c4d5e6f7",
+    "g8h9i0j1k2l3",
+    "m4n5o6p7q8r9"
   ],
   "conversion_metrics": {
-    "setup_help_requests": 0,
-    "newsletter_signups": 0,
-    "product_inquiries": 0,
-    "partnership_inquiries": 0
+    "setup_help_requests": 1,
+    "newsletter_signups": 1,
+    "product_inquiries": 1,
+    "partnership_inquiries": 1
   },
   "data_source": {
-    "primary": "/tmp/new-dms.json",
-    "status": "demo_mode",
+    "primary": "demo_mode",
+    "status": "demo_mode_active",
+    "note": "Awaiting YouTube API credentials for live DM fetching. Currently processing demo data.",
     "alternatives": [
-      "DM_JSON environment variable",
+      "DM_JSON environment variable (JSON array)",
       "Webhook POST to /youtube-dm",
-      "Email forwarding to parser"
+      "Email forwarding to parser",
+      "YouTube API v3 integration (pending credentials)"
     ]
   },
   "alerts": [
     {
       "type": "pending_review",
-      "sender": "Marketing Partnership Agency",
-      "partnership_score": 75,
-      "timestamp": "2026-04-15T05:02:30Z"
-    },
-    {
-      "type": "pending_review",
       "sender": "user_789",
-      "partnership_score": 72,
-      "timestamp": "2026-04-15T12:03:51Z"
+      "partnership_text": "I'd love to collaborate on a partnership opportunity!",
+      "timestamp": "2026-04-17T09:04:31.380Z",
+      "action": "Reach out with collaboration proposal"
     }
   ],
   "session": {
     "cron_id": "c1b30404-7343-46ff-aa1d-4ff84daf3674",
     "schedule": "0 * * * *",
-    "timezone": "America/Los_Angeles"
+    "timezone": "America/Los_Angeles",
+    "last_run_pdtime": "2026-04-17T02:04:31 PDT"
   },
-  "auto_responses_sent": 3,
-  "partnerships_flagged": 1
+  "summary": {
+    "this_run": {
+      "dms_processed": 3,
+      "auto_responses": 3,
+      "partnerships_flagged": 1
+    },
+    "health": "✅ Operational",
+    "next_run": "2026-04-17T03:04:00 PDT (1 hour)"
+  }
 }

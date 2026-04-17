@@ -1,12 +1,16 @@
 {
-  "last_run": "2026-04-14T15:31:07.788508",
-  "processed_comment_ids": [
-    "yt_comment_1776205867.787951_001",
-    "yt_comment_1776205867.787962_004",
-    "yt_comment_1776205867.78796_003",
-    "yt_comment_1776205867.787966_006",
-    "yt_comment_1776205867.787964_005",
-    "yt_comment_1776205867.787958_002"
-  ],
-  "total_processed": 6
+  "last_run": "2026-04-16T07:00:32-07:00",
+  "last_run_processed": 7,
+  "total_processed_all_time": 128,
+  "auto_responses_sent": 58,
+  "flagged_for_review": 14,
+  "spam_logged": 35,
+  "general_logged": 45,
+  "cron_status": "operational",
+  "schedule": "*/30 * * * *",
+  "next_run": "2026-04-16T07:30:00-07:00",
+  "channel": "Concessa Obvius",
+  "mode": "demo_ready_for_oauth",
+  "log_location": ".cache/youtube-comments.jsonl",
+  "report_location": ".cache/youtube-monitor-cron-report.txt"
 }

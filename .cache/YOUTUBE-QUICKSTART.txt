@@ -1,0 +1,221 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                   📺 YOUTUBE COMMENT MONITOR - QUICK START                  ║
+║                         Concessa Obvius Channel                             ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+🚀 GET RUNNING IN 10 MINUTES
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1: INSTALL DEPENDENCIES (1 min)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+$ pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+✅ Done? Continue to Step 2.
+
+
+STEP 2: GET YOUTUBE API CREDENTIALS (5 min)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Go to: https://console.cloud.google.com
+
+A. Create Project
+   ├─ Click "Select a Project"
+   ├─ Click "New Project"
+   └─ Name: "YouTube Comment Monitor" → Create
+
+B. Enable YouTube API v3
+   ├─ Go to APIs & Services > Library
+   ├─ Search "YouTube Data API v3"
+   ├─ Click on it
+   └─ Click "Enable"
+
+C. Create OAuth Credentials
+   ├─ Go to APIs & Services > Credentials
+   ├─ Click "Create Credentials" > "OAuth client ID"
+   ├─ Configure OAuth Consent Screen (if prompted)
+   │  └─ User type: External, fill required fields
+   ├─ Back to Credentials
+   ├─ Click "Create Credentials" > "OAuth client ID" again
+   ├─ Select "Desktop application"
+   ├─ Click "Create"
+   └─ Download JSON file (click ⬇️)
+
+D. Save Credentials
+   └─ Save downloaded JSON as:
+      ~/.openclaw/workspace/.cache/youtube-credentials.json
+
+✅ Credentials saved? Continue to Step 3.
+
+
+STEP 3: RUN VALIDATION TEST (1 min)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+$ python3 ~/.openclaw/workspace/.cache/youtube-test.py
+
+Expected output:
+  ✅ Files ............................ PASSED
+  ✅ Dependencies ..................... PASSED
+  ✅ Credentials ...................... PASSED
+  ✅ Configuration .................... PASSED
+  🟢 ALL SYSTEMS GO!
+
+⚠️  If anything fails, see YOUTUBE-SETUP.md for detailed help.
+
+✅ Test passed? Continue to Step 4.
+
+
+STEP 4: RUN MONITOR (FIRST TIME)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+$ python3 ~/.openclaw/workspace/.cache/youtube-monitor.py
+
+What happens:
+  1. Browser opens asking for permission (click "Allow")
+  2. Script fetches recent comments from Concessa Obvius
+  3. Categorizes and responds to questions/praise
+  4. Creates youtube-comments.jsonl log file
+  5. Prints report with stats
+
+Expected output (at end):
+  ============================================================
+  YOUTUBE COMMENT MONITOR REPORT
+  ============================================================
+  Channel: Concessa Obvius
+  
+  Statistics:
+    Total comments processed: X
+    Auto-responses sent: Y
+    Flagged for review: Z
+  
+  Breakdown by category:
+    Question: ...
+    Praise: ...
+    Spam: ...
+    Sales: ...
+  ============================================================
+
+✅ Monitor ran successfully? Continue to Step 5.
+
+
+STEP 5: VERIFY IT WORKED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Check the log file:
+  $ tail ~/.openclaw/workspace/.cache/youtube-comments.jsonl
+
+You should see JSON entries like:
+  {
+    "timestamp": "2026-04-16T15:30:00Z",
+    "commenter": "Jane Doe",
+    "text": "How do I get started?",
+    "category": "question",
+    "response_status": "sent"
+  }
+
+View analytics:
+  $ python3 ~/.openclaw/workspace/.cache/youtube-log-viewer.py summary
+
+✅ Log file exists? You're done!
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎉 MONITOR IS LIVE!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Monitor runs automatically every 30 minutes
+✅ Auto-replies to questions and praise
+✅ Flags sales inquiries for your review
+✅ Logs everything to youtube-comments.jsonl
+✅ Generates reports on demand
+
+What to do now:
+
+DAILY:
+  □ Check flagged sales: python3 youtube-log-viewer.py flagged
+  □ Review YouTube channel for responses
+
+WEEKLY:
+  □ Analyze activity: python3 youtube-log-viewer.py summary 7
+  □ Review auto-reply effectiveness
+
+CUSTOMIZATION:
+  □ Edit templates in youtube-monitor.py
+  □ Adjust categorization patterns if needed
+  □ See YOUTUBE-README.md for more options
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Location: ~/.openclaw/workspace/.cache/
+
+Files:
+  📖 YOUTUBE-README.md ........... Full documentation
+  📖 YOUTUBE-SETUP.md ........... Detailed setup guide
+  📖 YOUTUBE-DEPLOYMENT.md ...... Complete deployment guide
+  📖 YOUTUBE-QUICKSTART.txt ..... This file
+  📋 youtube-config-template.json  Configuration reference
+  🔧 youtube-monitor.py ......... Main script
+  📊 youtube-log-viewer.py ...... Analytics tool
+  ✓ youtube-test.py ............ Setup validator
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🆘 QUICK TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Problem: "Missing YouTube API dependencies"
+Solution: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+Problem: "Could not find channel: Concessa Obvius"
+Solution: Channel name must match exactly. Check at youtube.com
+
+Problem: "Permission denied" posting replies
+Solution: Delete youtube-token.json and re-authenticate:
+  rm ~/.openclaw/workspace/.cache/youtube-token.json
+  python3 ~/.openclaw/workspace/.cache/youtube-monitor.py
+
+Problem: Invalid OAuth token
+Solution: Same as above — re-authenticate
+
+For detailed help:
+  See YOUTUBE-SETUP.md in the .cache directory
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 USEFUL COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+View flagged sales (to review):
+  $ python3 youtube-log-viewer.py flagged
+
+View unanswered questions:
+  $ python3 youtube-log-viewer.py unanswered
+
+Summary for last 7 days:
+  $ python3 youtube-log-viewer.py summary 7
+
+All questions asked:
+  $ python3 youtube-log-viewer.py questions
+
+All praise received:
+  $ python3 youtube-log-viewer.py praise
+
+All spam caught:
+  $ python3 youtube-log-viewer.py spam
+
+Raw log file:
+  $ tail youtube-comments.jsonl
+  $ grep '"category": "question"' youtube-comments.jsonl
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Questions? See YOUTUBE-README.md for comprehensive documentation.
+
+Version: 1.0
+Status: ✅ Ready to deploy
+Cron: youtube-comment-monitor (every 30 minutes)

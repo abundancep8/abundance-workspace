@@ -1,0 +1,51 @@
+{
+  "channel": {
+    "name": "Concessa Obvius",
+    "description": "Target YouTube channel to monitor"
+  },
+  "monitoring": {
+    "check_interval_minutes": 30,
+    "lookback_minutes": 35,
+    "batch_size": 100
+  },
+  "responses": {
+    "enabled": true,
+    "question": {
+      "enabled": true,
+      "template": "Thanks for the question! Here are the key answers:\n\n**Getting Started:** Check out our [Getting Started Guide](link)\n**Tools:** We recommend [Tool List](link)\n**Cost:** See our [Pricing Page](link)\n**Timeline:** Most users see results within [X] timeframe\n\nFeel free to reply if you need more details! 🚀"
+    },
+    "praise": {
+      "enabled": true,
+      "template": "Thank you so much for the kind words! 🙏 We're thrilled this resonated with you. Keep us posted on your journey!"
+    }
+  },
+  "categorization": {
+    "patterns": {
+      "question": "how|what|when|where|why|which|help|can i|do you|is it|cost|price|tools|timeline|steps|start|beginner|confused|don't understand",
+      "praise": "amazing|awesome|inspiring|love|great|excellent|fantastic|incredible|thanks|perfect|game.?chang",
+      "spam": "crypto|bitcoin|nft|mlm|click here|buy now|limited time|work from home|passive income|dropship|forex",
+      "sales": "partnership|collaborate|sponsor|business|opportunity|interested in working|let's partner|brand deal|interested in promoting"
+    },
+    "case_sensitive": false,
+    "priority_order": ["spam", "sales", "question", "praise"]
+  },
+  "logging": {
+    "jsonl_file": "~/.openclaw/workspace/.cache/youtube-comments.jsonl",
+    "state_file": "~/.openclaw/workspace/.cache/youtube-monitor-state.json",
+    "max_file_size_mb": 500
+  },
+  "notifications": {
+    "flagged_sales": {
+      "enabled": true,
+      "method": "log"
+    },
+    "failed_responses": {
+      "enabled": true,
+      "method": "log"
+    }
+  },
+  "rate_limiting": {
+    "responses_per_minute": 10,
+    "api_quota_per_day": 10000
+  }
+}

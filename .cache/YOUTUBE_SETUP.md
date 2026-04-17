@@ -1,76 +1,113 @@
 # YouTube Comment Monitor Setup
 
-## Status: Ready for Configuration
-
-The monitoring script is ready but requires YouTube API setup before it can run.
-
 ## Prerequisites
 
-### 1. Install Python Dependencies
+### 1. Install Dependencies
+
 ```bash
-pip install google-api-python-client google-auth-oauthlib google-auth-httplib2
+pip install google-api-python-client
 ```
 
-### 2. Get YouTube Data API Credentials
+### 2. Get YouTube API Key
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Create a new project (or use existing)
-3. Enable "YouTube Data API v3":
-   - Search for "YouTube Data API"
+3. Enable **YouTube Data API v3**:
+   - Search for "YouTube Data API v3"
    - Click "Enable"
-4. Create API credentials:
-   - Go to "Credentials" → "Create Credentials" → "API Key"
-   - Copy the API key
+4. Create credentials:
+   - Go to "Credentials" → "Create Credentials"
+   - Choose "API Key" (restrict later for production)
+   - Copy the key
 
 ### 3. Set Environment Variable
 
-Add to your shell profile (~/.zshrc or ~/.bash_profile):
+Add to your shell profile (`~/.zshrc`, `~/.bashrc`, etc.):
+
 ```bash
 export YOUTUBE_API_KEY="your-api-key-here"
 ```
 
 Then reload:
 ```bash
-source ~/.zshrc
+source ~/.zshrc  # or ~/.bashrc
 ```
 
-## Running the Monitor
+### 4. Test the Script
 
-### Manual Test
 ```bash
-python .cache/youtube-monitor.py
+python /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.py
 ```
 
-### Automated (Cron)
-The cron job is already configured to run every 30 minutes.
+### 5. Set Up Cron Job (Every 30 Minutes)
 
-## Output
+Edit your crontab:
+```bash
+crontab -e
+```
 
-- **Log file:** `.cache/youtube-comments.jsonl`
-  - Each line is a JSON object with: timestamp, commenter, text, category, response_status
+Add this line:
+```
+*/30 * * * * source ~/.zshrc && python /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.py >> /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log 2>&1
+```
+
+## Output Files
+
+- **youtube-comments.jsonl** — Log of all comments, categories, and responses
+- **youtube-last-check.json** — Timestamp of last check (prevents duplicates)
+- **youtube-monitor.log** — Cron execution log
+
+## Monitoring Logs
+
+View recent runs:
+```bash
+tail -f /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log
+```
+
+View logged comments:
+```bash
+tail -20 /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl | jq '.'
+```
+
+## Customization
+
+Edit `youtube-monitor.py` to:
+
+1. **Change templates** — Update `RESPONSE_TEMPLATES` dict
+2. **Adjust patterns** — Modify `PATTERNS` dict for better categorization
+3. **Change channel** — Update `CHANNEL_NAME` variable
+4. **Modify categories** — Add/remove categories as needed
+
+## Limitations
+
+- **Read-only mode**: Current implementation only reads comments. To auto-post responses, you'd need:
+  - OAuth2 authentication (instead of API key)
+  - Channel owner's authorization
+  - Additional Google API scopes
   
-- **State file:** `.cache/youtube-monitor-state.json`
-  - Tracks last check time to avoid duplicates
+- **Rate limits**: YouTube API has quota limits (~10,000 units/day for free tier)
 
-## Categories
+## Troubleshooting
 
-1. **Question** - How-to, tools, cost, timeline questions
-2. **Praise** - Positive, inspiring, appreciative comments
-3. **Spam** - Crypto, MLM, promotional spam
-4. **Sales** - Partnership, collaboration inquiries (flagged for manual review)
-5. **General** - Everything else
+**"Could not find channel"**
+- Double-check channel name spelling
+- Channel must be public
 
-## Auto-Responses
+**"Permission denied" when posting**
+- You need OAuth2 auth + channel owner authorization
+- Current setup is read-only
 
-- **Questions**: Template response with FAQ link
-- **Praise**: Thank you message
-- **Sales**: Flagged for review (no auto-response)
-- **Spam/General**: No response
+**"Quota exceeded"**
+- YouTube API has rate limits
+- Increase monitoring interval to 1+ hour
+- Consider upgrading to paid YouTube API tier
 
-## Current Status
+## Next Steps
 
-**API Key:** ❌ Not configured  
-**Dependency:** google-api-python-client  
-**Lookback Window:** 35 minutes (30 min + 5 min buffer)
+For **auto-posting responses**, we'd need to:
+1. Switch to OAuth2 authentication
+2. Add `youtube` scope for comment writing
+3. Implement comment reply logic using `commentThreads().insert()`
+4. Store refresh tokens securely
 
-Once API key is set, the monitor will be fully operational.
+Ask if you want to enable that feature.

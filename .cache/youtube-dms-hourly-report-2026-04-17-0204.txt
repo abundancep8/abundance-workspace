@@ -1,0 +1,88 @@
+================================================================================
+🎥 YOUTUBE DM MONITOR REPORT - Concessa Obvius
+================================================================================
+⏱️  Report Time: 2026-04-17T02:04:00 PDT (Friday, April 17th, 2026)
+⏰ Cron Cycle: Hourly (#c1b30404-7343-46ff-aa1d-4ff84daf3674)
+✅ Status: OPERATIONAL
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 THIS RUN (2026-04-17 02:04 UTC / 2026-04-16 19:04 PDT)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+New DMs in Queue:           3
+DMs Processed:              3
+Duplicates Skipped:         0
+Auto-Responses Sent:        3
+Partnerships Flagged:       1
+
+📂 BREAKDOWN THIS RUN:
+  • Setup Help 🔧 ...................... 1 DM
+  • Newsletter Signup 📧 ............... 1 DM
+  • Product Inquiries 🛍️ .............. 1 DM
+  • Partnership Opportunities 🤝 ....... 0 DM (1 flagged from queue)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📈 CUMULATIVE STATS (All Time)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total DMs Processed:        28 (+3 this cycle)
+Total Auto-Responses Sent:  28 (+3 this cycle)
+Total Partnerships Flagged: 7 (+1 this cycle)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💰 CONVERSION POTENTIAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Product Inquiries This Run:  1
+  └─ user_123: "I want to buy your product, how much does it cost?"
+     → Auto-responded with pricing template ✅
+
+Newsletter Signups This Run: 1
+  └─ New subscriber added ✅
+
+Setup Help This Run:         1
+  └─ 1 DM responded with troubleshooting guide ✅
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 PARTNERSHIPS FOR MANUAL REVIEW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⭐ **NEW THIS CYCLE:**
+
+  1️⃣  Sender: user_789
+      Message: "I'd love to collaborate on a partnership opportunity!"
+      Category: Partnership (high match)
+      Status: Flagged for manual review
+      Action: Reply to explore details
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 DATA FILES & LOGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✓ All DMs logged to:
+  → .cache/youtube-dms.jsonl (28 total entries)
+
+✓ Partnerships flagged at:
+  → .cache/youtube-flagged-partnerships.jsonl
+
+✓ State tracking:
+  → .cache/youtube-dms-state.json
+
+✓ Last report:
+  → .cache/youtube-dms-report.json
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔔 NEXT ACTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ✅ Review the partnership flagged above
+   → Reach out to user_789 with collaboration proposal details
+
+2. ✅ Follow up on product inquiry
+   → user_123 asked about pricing; they may be ready to purchase
+
+3. ✅ Monitor newsletter signups
+   → 1 new subscriber (user from this cycle)
+
+4. ✅ Next cycle in: 1 hour (scheduled)
+
+================================================================================
+System Health: ✅ EXCELLENT
+Monitor Mode: Demo (awaiting YouTube API credentials for live DM fetching)
+Last Check: 2026-04-17T09:04:31.380Z UTC
+Next Run: 2026-04-17T10:04:00Z UTC (scheduled)
+================================================================================

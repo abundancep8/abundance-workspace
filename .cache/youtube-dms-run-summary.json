@@ -1,0 +1,89 @@
+{
+  "cron_job_id": "c1b30404-7343-46ff-aa1d-4ff84daf3674",
+  "run_timestamp": "2026-04-16T22:04:35-07:00",
+  "run_timestamp_utc": "2026-04-17T05:04:35Z",
+  "run_type": "hourly_automated",
+  "status": "success",
+  "new_dms_this_run": 0,
+  "this_run_metrics": {
+    "dms_processed": 0,
+    "auto_responses_sent": 0,
+    "partnerships_flagged": 0,
+    "duplicates_skipped": 0
+  },
+  "lifetime_metrics": {
+    "total_dms_processed": 10,
+    "total_auto_responses_sent": 7,
+    "total_partnerships_flagged": 3,
+    "conversion_leads": 4
+  },
+  "category_breakdown": {
+    "Product Inquiry": 4,
+    "Partnership": 3,
+    "Setup Help": 2,
+    "Newsletter": 1
+  },
+  "partnerships_flagged_details": [
+    {
+      "sender": "TechVentures Collective",
+      "interest": "Sponsorship collaboration",
+      "date": "2026-04-16T02:04:40Z",
+      "priority": "high"
+    },
+    {
+      "sender": "Marketing Pulse",
+      "interest": "Co-branded sponsored series",
+      "date": "2026-04-16T20:15:00Z",
+      "priority": "very_high"
+    },
+    {
+      "sender": "Alex Turner",
+      "interest": "Advanced features setup/partnership inquiry",
+      "date": "2026-04-16T20:05:00Z",
+      "priority": "medium"
+    }
+  ],
+  "conversion_leads": [
+    {
+      "rank": 1,
+      "sender": "Elena Rodriguez",
+      "organization": "Mid-size team (200 users)",
+      "interest": "Enterprise pricing + custom integrations",
+      "potential_arr": "5000-20000",
+      "status": "auto_responded"
+    },
+    {
+      "rank": 2,
+      "sender": "James Liu",
+      "organization": "Large enterprise (500 users)",
+      "interest": "Enterprise pricing + custom integrations",
+      "potential_arr": "15000-50000",
+      "status": "auto_responded",
+      "priority": "HOTTEST"
+    },
+    {
+      "rank": 3,
+      "sender": "news_outlet",
+      "organization": "Media outlet",
+      "interest": "Partnership + product adoption",
+      "potential_arr": "unknown",
+      "status": "auto_responded"
+    },
+    {
+      "rank": 4,
+      "sender": "curious_fan",
+      "organization": "Individual/Small",
+      "interest": "Video bundle pricing",
+      "potential_arr": "29-99",
+      "status": "auto_responded"
+    }
+  ],
+  "data_sources": {
+    "primary_log": ".cache/youtube-dms.jsonl",
+    "state_file": ".cache/.youtube-dms-state.json",
+    "partnerships_log": ".cache/youtube-flagged-partnerships.jsonl",
+    "report_file": ".cache/youtube-dms-hourly-report-2026-04-16-2204.txt"
+  },
+  "next_run": "2026-04-16T23:00:00-07:00",
+  "cron_schedule": "0 * * * * (every hour at :00 minutes)"
+}

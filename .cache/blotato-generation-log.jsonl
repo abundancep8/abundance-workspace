@@ -1,3 +1,9 @@
 📽️  Processing batch 1 (scripts 15 to 16)
 
 ✅ Batch 1 complete
+{"timestamp":"2026-04-16T13:00:36.334Z","script_id":10,"script_title":"The Call","status":"created","projectId":"blotato-project-10-1776344436334"}
+{"timestamp":"2026-04-16T13:00:36.335Z","script_id":10,"script_title":"The Call","status":"generated","projectId":"blotato-project-10-1776344436334"}
+{"timestamp":"2026-04-16T13:00:36.335Z","script_id":10,"script_title":"The Call","status":"uploaded","projectId":"blotato-project-10-1776344436334"}
+{"timestamp":"2026-04-16T13:00:36.335Z","script_id":11,"script_title":"The Future","status":"created","projectId":"blotato-project-11-1776344436335"}
+{"timestamp":"2026-04-16T13:00:36.335Z","script_id":11,"script_title":"The Future","status":"generated","projectId":"blotato-project-11-1776344436335"}
+{"timestamp":"2026-04-16T13:00:36.335Z","script_id":11,"script_title":"The Future","status":"uploaded","projectId":"blotato-project-11-1776344436335"}

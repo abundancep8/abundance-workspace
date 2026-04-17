@@ -1,0 +1,4 @@
+# YouTube DM Monitor - Runs every hour at the top of the hour
+0 * * * * bash /Users/abundance/.openclaw/workspace/scripts/youtube-dm-monitor-cron.sh > /dev/null 2>&1
+
+# Additional monitoring tasks can be added below

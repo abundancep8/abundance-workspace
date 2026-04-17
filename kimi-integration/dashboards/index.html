@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kimi K2.5 Deployment Dashboard</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 20px; background: #0d1117; color: #c9d1d9; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1 { color: #58a6ff; border-bottom: 2px solid #30363d; padding-bottom: 10px; }
+    .status { padding: 20px; background: #161b22; border-radius: 6px; margin: 20px 0; border-left: 4px solid #238636; }
+    .status.warning { border-left-color: #d29922; }
+    .status.error { border-left-color: #f85149; }
+    .metric { display: inline-block; margin-right: 30px; margin-bottom: 15px; }
+    .metric-value { font-size: 24px; font-weight: bold; color: #58a6ff; }
+    .metric-label { font-size: 12px; color: #8b949e; text-transform: uppercase; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+    th, td { padding: 10px; text-align: left; border-bottom: 1px solid #30363d; }
+    th { background: #0d1117; color: #58a6ff; font-weight: 600; }
+    .success { color: #3fb950; }
+    .cost { color: #ffa657; }
+    .kimi { background: rgba(88, 166, 255, 0.1); }
+    .claude { background: rgba(63, 185, 80, 0.1); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Kimi K2.5 Production Deployment</h1>
+    
+    <div class="status ">
+      <div class="metric">
+        <div class="metric-value">Active</div>
+        <div class="metric-label">Status</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">6</div>
+        <div class="metric-label">Tasks Processed</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">$0.04933</div>
+        <div class="metric-label cost">Total Cost</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">$0.1468</div>
+        <div class="metric-label success">Estimated Savings</div>
+      </div>
+    </div>
+    
+    <h2>Integrated Cron Jobs</h2>
+    <table>
+      <tr>
+        <th>Job Name</th>
+        <th>Model</th>
+        <th>Status</th>
+        <th>Found</th>
+      </tr>
+      
+        <tr>
+          <td>hourly-token-check</td>
+          <td class="kimi">KIMI</td>
+          <td>✓ Enabled</td>
+          <td>✓ Yes</td>
+        </tr>
+      
+        <tr>
+          <td>weekly-synthesis-patterns</td>
+          <td class="kimi">KIMI</td>
+          <td>✓ Enabled</td>
+          <td>✓ Yes</td>
+        </tr>
+      
+        <tr>
+          <td>youtube-comment-monitor</td>
+          <td class="kimi">KIMI</td>
+          <td>✓ Enabled</td>
+          <td>✓ Yes</td>
+        </tr>
+      
+        <tr>
+          <td>daily-blotato-video-generation</td>
+          <td class="claude">CLAUDE</td>
+          <td>✓ Enabled</td>
+          <td>✓ Yes</td>
+        </tr>
+      
+        <tr>
+          <td>nightly-self-improvement</td>
+          <td class="kimi">KIMI</td>
+          <td>✓ Enabled</td>
+          <td>✓ Yes</td>
+        </tr>
+      
+    </table>
+    
+    <h2>Performance by Job</h2>
+    <table>
+      <tr>
+        <th>Job</th>
+        <th>Runs</th>
+        <th>Cost</th>
+        <th>Tokens</th>
+        <th>Avg Exec (ms)</th>
+      </tr>
+      
+        <tr>
+          <td>hourly-token-check</td>
+          <td>1</td>
+          <td class="cost">$0.00113</td>
+          <td>3180</td>
+          <td>1245ms</td>
+        </tr>
+      
+        <tr>
+          <td>youtube-comment-monitor</td>
+          <td>1</td>
+          <td class="cost">$0.00276</td>
+          <td>5350</td>
+          <td>2340ms</td>
+        </tr>
+      
+        <tr>
+          <td>daily-blotato-video-generation</td>
+          <td>1</td>
+          <td class="cost">$0.03465</td>
+          <td>5600</td>
+          <td>3100ms</td>
+        </tr>
+      
+        <tr>
+          <td>nightly-self-improvement</td>
+          <td>1</td>
+          <td class="cost">$0.00161</td>
+          <td>3850</td>
+          <td>1890ms</td>
+        </tr>
+      
+        <tr>
+          <td>weekly-synthesis-patterns</td>
+          <td>1</td>
+          <td class="cost">$0.00918</td>
+          <td>9700</td>
+          <td>4560ms</td>
+        </tr>
+      
+    </table>
+    
+    <h2>Cost Breakdown</h2>
+    <table>
+      <tr>
+        <th>Model</th>
+        <th>Tasks</th>
+        <th>Cost</th>
+        <th>% of Total</th>
+      </tr>
+      
+        <tr class="kimi">
+          <td>KIMI</td>
+          <td>4</td>
+          <td class="cost">$0.01468</td>
+          <td>29.8%</td>
+        </tr>
+      
+        <tr class="claude">
+          <td>CLAUDE</td>
+          <td>1</td>
+          <td class="cost">$0.03465</td>
+          <td>70.2%</td>
+        </tr>
+      
+    </table>
+    
+    <div style="margin-top: 40px; color: #8b949e; font-size: 12px;">
+      <p>Last updated: 2026-04-16T19:12:40.909Z</p>
+      <p>Estimated daily cost: $1.18392</p>
+      <p>Dashboard auto-updates with each cron job execution</p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,15 +1,16 @@
-YouTube DM Monitor Report — Concessa Obvius
-Generated: 2026-04-15 19:03:46 UTC
 
-📊 This Run
-  DMs Processed: 0
-  Auto-Responses Sent: 0
-  Flagged for Review: 0
+╔════════════════════════════════════════════════════════════════╗
+║          YouTube DM Monitor Report - 2026-04-16T20:06:58.268310+00:00          ║
+╚════════════════════════════════════════════════════════════════╝
 
-📈 Lifetime Totals
-  Total DMs: 6
-  Total Auto-Responses: 4
-  Total Flagged: 2
+📊 SUMMARY
+  Total DMs processed: 0
+  Auto-responses sent: 0
 
-✅ Status: Operational
-Last run: 2026-04-15T19:03:46.791214
+📂 BY CATEGORY
+
+💰 CONVERSION POTENTIAL
+  Product inquiries: 0
+  Est. conversion (15%): 0.0 potential customers
+
+📝 Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl

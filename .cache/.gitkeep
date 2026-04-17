@@ -1,0 +1,7 @@
+# Cache directory for YouTube DM Monitor
+# Contains:
+# - youtube-dms.jsonl (DM log)
+# - youtube-dm-report.txt (latest report)
+# - youtube-dm-monitor.log (execution logs)
+# - youtube-token.json (OAuth token, gitignore)
+# - youtube-credentials.json (OAuth credentials, gitignore)

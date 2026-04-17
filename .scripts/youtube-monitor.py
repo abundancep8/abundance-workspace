@@ -16,6 +16,8 @@ import hashlib
 try:
     from googleapiclient.discovery import build
     from google.oauth2.service_account import Credentials
+    from google.auth.transport.requests import Request
+    from google.oauth2.credentials import Credentials as OAuthCredentials
     YOUTUBE_AVAILABLE = True
 except ImportError:
     YOUTUBE_AVAILABLE = False
@@ -51,23 +53,66 @@ class CommentMonitor:
             print("❌ YouTube API libraries not available")
             return False
         
-        # Look for service account JSON
-        creds_path = Path.home() / ".openclaw" / "credentials" / "youtube-api.json"
+        # Look for credentials in multiple locations
+        creds_paths = [
+            Path("/Users/abundance/.openclaw/workspace/.secrets/youtube-credentials.json"),
+            Path.home() / ".openclaw" / "credentials" / "youtube-api.json",
+            Path.home() / ".openclaw" / "workspace" / ".secrets" / "youtube-credentials.json",
+        ]
         
-        if not creds_path.exists():
-            print(f"❌ YouTube API credentials not found at {creds_path}")
+        creds_path = None
+        for path in creds_paths:
+            if path.exists():
+                creds_path = path
+                break
+        
+        if not creds_path or not creds_path.exists():
+            print(f"❌ YouTube API credentials not found")
+            print("   Checked locations:")
+            for path in creds_paths:
+                print(f"   - {path}")
             print("   To use this monitor, set up credentials:")
             print("   1. Go to https://console.cloud.google.com/")
             print("   2. Create a service account or OAuth 2.0 credentials")
-            print("   3. Save to ~/.openclaw/credentials/youtube-api.json")
+            print("   3. Save to ~/.openclaw/workspace/.secrets/youtube-credentials.json")
             return False
         
         try:
-            creds = Credentials.from_service_account_file(str(creds_path))
-            self.youtube = build('youtube', 'v3', credentials=creds)
-            return True
+            # Try service account first
+            try:
+                creds = Credentials.from_service_account_file(str(creds_path))
+                self.youtube = build('youtube', 'v3', credentials=creds)
+                return True
+            except Exception:
+                # Try OAuth credentials with token
+                import io
+                with open(creds_path, 'r') as f:
+                    creds_dict = json.load(f)
+                
+                # Check for token file
+                token_path = Path("/Users/abundance/.openclaw/workspace/.secrets/youtube-token.json")
+                if token_path.exists():
+                    with open(token_path, 'r') as f:
+                        token_info = json.load(f)
+                    
+                    # Create OAuth credentials from token
+                    creds = OAuthCredentials.from_authorized_user_info(token_info)
+                    
+                    # Refresh if needed
+                    if creds.expired and creds.refresh_token:
+                        creds.refresh(Request())
+                    
+                    self.youtube = build('youtube', 'v3', credentials=creds)
+                    return True
+                else:
+                    print(f"⚠️  No token file found. Trying without authentication.")
+                    # Build without auth for public data
+                    self.youtube = build('youtube', 'v3', developerKey=os.environ.get('YOUTUBE_API_KEY'))
+                    return self.youtube is not None
         except Exception as e:
             print(f"❌ Failed to initialize YouTube API: {e}")
+            import traceback
+            traceback.print_exc()
             return False
     
     def categorize_comment(self, text: str) -> str:

@@ -1,0 +1,21 @@
+{
+  "jobId": "youtube-comment-monitor",
+  "schedule": "*/30 * * * *",
+  "description": "Monitor Concessa Obvius YouTube channel for new comments every 30 minutes",
+  "command": "cd /Users/abundance/.openclaw/workspace && python .cache/youtube-monitor.py",
+  "enabled": false,
+  "timezone": "America/Los_Angeles",
+  "environment": {
+    "YOUTUBE_CREDS_FILE": "/Users/abundance/.openclaw/credentials/youtube.json",
+    "YOUTUBE_CHANNEL": "UCOvviuslyTWXJSPvRCRl-rQ"
+  },
+  "notifications": {
+    "onSuccess": false,
+    "onFailure": true,
+    "channel": "discord"
+  },
+  "logging": {
+    "stdout": "/Users/abundance/.openclaw/workspace/.cache/youtube-cron.log",
+    "stderr": "/Users/abundance/.openclaw/workspace/.cache/youtube-cron-error.log"
+  }
+}

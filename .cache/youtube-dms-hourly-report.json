@@ -1,0 +1,42 @@
+{
+  "timestamp": "2026-04-16T15:04:19.422327",
+  "channel": "Concessa Obvius",
+  "summary": {
+    "total_dms_processed": 7,
+    "auto_responses_sent": 6,
+    "partnerships_flagged": 1,
+    "product_inquiries_count": 3
+  },
+  "breakdown_by_category": {
+    "setup_help": 2,
+    "newsletter": 1,
+    "product_inquiry": 3,
+    "partnership": 1
+  },
+  "flagged_partnerships": [
+    {
+      "sender": "TechVentures Collective",
+      "text": "Hi Concessa! We're interested in a partnership opportunity. We work with creators and would love to collaborate on a sponsorship. Would love to discuss the possibilities!",
+      "timestamp": "2026-04-16T02:04:40.197921",
+      "category": "partnership"
+    }
+  ],
+  "product_inquiries": [
+    {
+      "sender": "Elena Rodriguez",
+      "text": "What's your pricing for enterprise teams? We have about 200 users and need custom integrations. Also interested in a demo.",
+      "timestamp": "2026-04-16T02:04:40.197913"
+    },
+    {
+      "sender": "news_outlet",
+      "text": "We'd love to partner on this. Your product aligns with our audience.",
+      "timestamp": "2026-04-16T20:06:53.965040"
+    },
+    {
+      "sender": "curious_fan",
+      "text": "What's the pricing? Interested in the video bundle.",
+      "timestamp": "2026-04-16T20:06:53.965150"
+    }
+  ],
+  "status": "monitoring_active"
+}

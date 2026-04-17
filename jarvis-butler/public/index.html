@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS - AI Neural Assistant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        /* Neural Visualization */
+        .neural-section {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .neural-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            background: #0a0e27;
+            border: 2px solid rgba(0, 204, 255, 0.3);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 204, 255, 0.1), 
+                        inset 0 0 20px rgba(0, 204, 255, 0.05);
+        }
+
+        #neural-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .neural-label {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            font-size: 12px;
+            color: #00ccff;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
+        }
+
+        .neural-state-indicator {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: rgba(0, 204, 255, 0.1);
+            border: 1px solid rgba(0, 204, 255, 0.3);
+            border-radius: 20px;
+            font-size: 11px;
+            color: #00ccff;
+        }
+
+        .state-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ccff;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Chat Section */
+        .chat-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+            background: rgba(26, 31, 58, 0.5);
+            border: 1px solid rgba(0, 204, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 204, 255, 0.1);
+        }
+
+        .jarvis-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #00ccff 0%, #0099ff 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .chat-title {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-title h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #00ccff;
+        }
+
+        .chat-title p {
+            font-size: 11px;
+            color: #00aa88;
+            margin-top: 2px;
+        }
+
+        /* Messages */
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-right: 8px;
+        }
+
+        .messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .messages::-webkit-scrollbar-thumb {
+            background: rgba(0, 204, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        .messages::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 204, 255, 0.5);
+        }
+
+        .message {
+            display: flex;
+            gap: 12px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 75%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .message.assistant .message-content {
+            background: rgba(0, 204, 255, 0.1);
+            border: 1px solid rgba(0, 204, 255, 0.2);
+            color: #e0e0e0;
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(135deg, rgba(0, 204, 255, 0.2) 0%, rgba(0, 150, 255, 0.1) 100%);
+            border: 1px solid rgba(0, 204, 255, 0.3);
+            color: #ffffff;
+        }
+
+        .message.system .message-content {
+            background: rgba(100, 100, 100, 0.1);
+            border: 1px solid rgba(100, 100, 100, 0.2);
+            color: #aaaaaa;
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        /* Input Area */
+        .input-area {
+            display: flex;
+            gap: 10px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 204, 255, 0.1);
+        }
+
+        .input-field {
+            flex: 1;
+            padding: 12px 14px;
+            background: rgba(10, 14, 39, 0.8);
+            border: 1px solid rgba(0, 204, 255, 0.2);
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: rgba(0, 204, 255, 0.6);
+            background: rgba(10, 14, 39, 0.95);
+            box-shadow: 0 0 10px rgba(0, 204, 255, 0.1);
+        }
+
+        .input-field::placeholder {
+            color: #666666;
+        }
+
+        .send-btn {
+            padding: 12px 18px;
+            background: linear-gradient(135deg, #00ccff 0%, #0099ff 100%);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 204, 255, 0.3);
+        }
+
+        .send-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, #00ddff 0%, #00aaff 100%);
+            box-shadow: 0 6px 20px rgba(0, 204, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .send-btn:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .send-btn.loading {
+            background: linear-gradient(135deg, #00aa88 0%, #008866 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .send-btn.loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+            border-radius: 12px;
+            font-size: 10px;
+            color: #00ff00;
+            margin-top: 8px;
+        }
+
+        /* Error state */
+        .error-message {
+            color: #ff4444;
+            font-size: 12px;
+            padding: 8px;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        /* Loading indicator */
+        .loading-dots {
+            display: inline-flex;
+            gap: 3px;
+        }
+
+        .loading-dot {
+            width: 4px;
+            height: 4px;
+            background: #00ccff;
+            border-radius: 50%;
+            animation: dot-bounce 1.4s infinite;
+        }
+
+        .loading-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loading-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes dot-bounce {
+            0%, 80%, 100% { opacity: 0.3; }
+            40% { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .chat-section {
+                height: 500px;
+            }
+
+            .message-content {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Neural Visualization -->
+        <div class="neural-section">
+            <div class="neural-container">
+                <canvas id="neural-canvas"></canvas>
+                <div class="neural-label">Neural Network</div>
+                <div class="neural-state-indicator">
+                    <div class="state-dot"></div>
+                    <span id="state-label">standby</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Interface -->
+        <div class="chat-section">
+            <div class="chat-header">
+                <div class="jarvis-icon">🤖</div>
+                <div class="chat-title">
+                    <h1>JARVIS</h1>
+                    <p>Neural Assistant Online</p>
+                </div>
+            </div>
+
+            <div class="messages" id="messages"></div>
+
+            <div class="input-area">
+                <input 
+                    type="text" 
+                    class="input-field" 
+                    id="message-input"
+                    placeholder="Say something..."
+                    autocomplete="off"
+                >
+                <button class="send-btn" id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="neural.js"></script>
+    <script>
+        // Global state
+        let neural = null;
+        let isConnected = false;
+        let isSending = false;
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeNeural();
+            setupEventListeners();
+            checkConnection();
+        });
+
+        function initializeNeural() {
+            const canvas = document.getElementById('neural-canvas');
+            neural = new NeuralNetwork(canvas);
+            addSystemMessage('JARVIS Neural System Initialized');
+        }
+
+        function setupEventListeners() {
+            const input = document.getElementById('message-input');
+            const sendBtn = document.getElementById('send-btn');
+
+            input.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !isSending) {
+                    sendMessage();
+                }
+            });
+
+            sendBtn.addEventListener('click', sendMessage);
+        }
+
+        async function checkConnection() {
+            try {
+                const response = await fetch('/api/health', { 
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    isConnected = true;
+                    addSystemMessage('✅ Connected to JARVIS Backend');
+                    neural.setState('idle');
+                } else {
+                    throw new Error('Backend unavailable');
+                }
+            } catch (error) {
+                isConnected = false;
+                addSystemMessage('⚠️ Backend connection failed. Retrying...');
+                setTimeout(checkConnection, 3000);
+            }
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('message-input');
+            const message = input.value.trim();
+
+            if (!message) return;
+            if (isSending || !isConnected) return;
+
+            // Add user message
+            addMessage(message, 'user');
+            input.value = '';
+
+            // Update neural state
+            neural.setState('firing');
+            updateStateLabel('firing');
+
+            isSending = true;
+            document.getElementById('send-btn').disabled = true;
+            document.getElementById('send-btn').classList.add('loading');
+
+            try {
+                // Call backend API
+                neural.setState('processing');
+                updateStateLabel('processing');
+
+                const response = await fetch('/api/message', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API error: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                // Pattern matched phase
+                neural.setState('matched');
+                updateStateLabel('matched');
+                await delay(200);
+
+                // Add assistant response
+                neural.setState('responding');
+                updateStateLabel('responding');
+                addMessage(data.message, 'assistant');
+
+                // Continue animation for a bit
+                await delay(1000);
+
+                // Back to idle
+                neural.setState('idle');
+                updateStateLabel('standby');
+
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage(`Error: ${error.message}`, 'system');
+                neural.setState('idle');
+                updateStateLabel('error');
+            } finally {
+                isSending = false;
+                document.getElementById('send-btn').disabled = false;
+                document.getElementById('send-btn').classList.remove('loading');
+                document.getElementById('message-input').focus();
+            }
+        }
+
+        function addMessage(text, sender = 'assistant') {
+            const messagesDiv = document.getElementById('messages');
+            const messageEl = document.createElement('div');
+            messageEl.className = `message ${sender}`;
+            
+            const contentEl = document.createElement('div');
+            contentEl.className = 'message-content';
+            contentEl.textContent = text;
+            
+            messageEl.appendChild(contentEl);
+            messagesDiv.appendChild(messageEl);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function addSystemMessage(text) {
+            addMessage(text, 'system');
+        }
+
+        function updateStateLabel(state) {
+            const label = document.getElementById('state-label');
+            const states = {
+                'idle': '⏸ standby',
+                'firing': '⚡ firing',
+                'processing': '🔄 processing',
+                'matched': '✓ matched',
+                'responding': '💬 responding',
+                'error': '⚠ error'
+            };
+            label.textContent = states[state] || state;
+        }
+
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // Handle visibility changes
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                neural.stop();
+            } else {
+                neural.start();
+            }
+        });
+
+        // Cleanup
+        window.addEventListener('beforeunload', () => {
+            if (neural) neural.stop();
+        });
+    </script>
+</body>
+</html>

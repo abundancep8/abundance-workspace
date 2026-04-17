@@ -1,0 +1,37 @@
+{
+  "timestamp": 1776370980247,
+  "activeContext": [
+    {
+      "content": "learning about AI",
+      "weight": 0.9,
+      "addedAt": 1776370980246
+    }
+  ],
+  "firedPatterns": [
+    {
+      "pattern": "test-pattern",
+      "confidence": 0.85,
+      "firedAt": 1776370980246,
+      "relatedContext": "test input"
+    }
+  ],
+  "activeQueries": [
+    {
+      "query": "What is AI?",
+      "startedAt": 1776370980246,
+      "status": "processing"
+    }
+  ],
+  "attentionWeights": {
+    "learning about AI": 0.9
+  },
+  "recentInsights": [
+    {
+      "insight": "AI is powerful",
+      "discoveredAt": 1776370980247,
+      "source": "active_reasoning"
+    }
+  ],
+  "thinkingDepth": 0,
+  "recursionStack": []
+}

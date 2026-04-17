@@ -1,0 +1,135 @@
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃     YouTube Comment Monitor - Quick Start Guide              ┃
+┃     "Concessa Obvius" Channel Automation                     ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+📋 WHAT YOU GET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Automatic comment categorization (Questions, Praise, Spam, Sales)
+✅ Auto-responses to questions & praise
+✅ Spam filtering (crypto, MLM, suspicious)
+✅ Sales flagging for your manual review
+✅ Complete audit logging (JSONL format)
+✅ Daily reports with statistics
+
+🚀 3-STEP SETUP
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Get YouTube API Key (2 min)
+  ▸ Go to: https://console.cloud.google.com/
+  ▸ Create new project
+  ▸ Search: "YouTube Data API v3"
+  ▸ Click: Enable
+  ▸ Go to: Credentials → Create Credentials → API Key
+  ▸ Copy your key
+
+Step 2: Set Environment Variable (30 sec)
+  ▸ Run: export YOUTUBE_API_KEY='your-key-here'
+
+Step 3: Run the Monitor (30 sec)
+  ▸ Run: python3 ~/.openclaw/workspace/.cache/youtube_monitor.py
+  ▸ Done!
+
+📊 WHAT HAPPENS AUTOMATICALLY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+┌────────────┬──────────────────────┬──────────────┐
+│ Category   │ Detection Keywords   │ Action       │
+├────────────┼──────────────────────┼──────────────┤
+│ QUESTIONS  │ how, what, tools,    │ ✅ Auto-send │
+│            │ cost, timeline, ?    │ helpful reply│
+├────────────┼──────────────────────┼──────────────┤
+│ PRAISE     │ amazing, inspiring,  │ ✅ Auto-send │
+│            │ love, awesome,       │ thanks reply │
+│            │ thank you            │              │
+├────────────┼──────────────────────┼──────────────┤
+│ SPAM       │ bitcoin, crypto,     │ 🔕 Ignore    │
+│            │ mlm, casino, lottery │ (no response)│
+├────────────┼──────────────────────┼──────────────┤
+│ SALES      │ partnership, collab, │ 🚩 Flag for  │
+│            │ sponsor, affiliate   │ your review  │
+└────────────┴──────────────────────┴──────────────┘
+
+📁 FILE LOCATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+~/.openclaw/workspace/.cache/
+  ├─ youtube_monitor.py         (main script)
+  ├─ youtube_monitor_demo.py    (test script)
+  ├─ youtube-comments.jsonl     (log file)
+  ├─ REPORT.md                  (detailed report)
+  ├─ YOUTUBE_SETUP.md           (setup guide)
+  ├─ analyze_comments.sh        (analysis tool)
+  └─ QUICKSTART.txt             (this file)
+
+🔍 COMMON COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Run the monitor (production)
+python3 ~/.openclaw/workspace/.cache/youtube_monitor.py
+
+# Run the demo (test mode, no API needed)
+python3 ~/.openclaw/workspace/.cache/youtube_monitor_demo.py
+
+# Analyze logs
+bash ~/.openclaw/workspace/.cache/analyze_comments.sh
+
+# View all logs
+cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | jq .
+
+# Find flagged items (needs your review)
+cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | \
+  jq 'select(.response_status == "flagged")'
+
+# Find all questions
+cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | \
+  jq 'select(.category == "questions")'
+
+# Count auto-responses
+cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | \
+  jq '[.[] | select(.response_status == "auto_responded")] | length'
+
+💰 COST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ FREE: 10,000 API quota units per day
+✅ Reading comments costs minimal quota (1 unit per request)
+✅ You get 500+ free monitoring runs per day
+
+❌ NOT FREE: Posting replies (requires paid tier + YouTube Partner)
+
+⚙️ DEMO MODE (Test Without API)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Want to see it work before setting up API?
+
+Run this:
+  python3 ~/.openclaw/workspace/.cache/youtube_monitor_demo.py
+
+This runs with realistic mock data, shows how categorization works,
+and demonstrates the full reporting system. No API key needed!
+
+🆘 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Error: YOUTUBE_API_KEY not set
+  → Run: export YOUTUBE_API_KEY='your-key-here'
+
+Error: Channel 'Concessa Obvius' not found
+  → Check spelling (case-sensitive)
+  → Try the channel URL instead
+
+Error: 403 Forbidden
+  → Your API key doesn't have YouTube Data API v3 enabled
+  → Check Google Cloud Console settings
+
+Error: Quota exceeded
+  → Wait 24 hours for quota reset
+  → Or increase quota in Google Cloud Console
+
+📞 SUPPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Full guide:     ~/.openclaw/workspace/.cache/YOUTUBE_SETUP.md
+Detailed info:  ~/.openclaw/workspace/.cache/REPORT.md
+Analysis tool:  bash ~/.openclaw/workspace/.cache/analyze_comments.sh
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  Ready to go? Get your API key and run:                      ┃
+┃  python3 ~/.openclaw/workspace/.cache/youtube_monitor.py    ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛

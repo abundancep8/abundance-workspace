@@ -3148,3 +3148,1683 @@ Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
 ======================================================================
 ✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
 [2026-04-16 02:00:48] ==== Run Complete ====
+[2026-04-16 02:30:48] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T09:30:48.779530
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 02:30:48] ==== Run Complete ====
+[2026-04-16 03:00:48] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T10:00:48.878018
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 03:00:48] ==== Run Complete ====
+[2026-04-16 03:30:48] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T10:30:48.965003
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 03:30:48] ==== Run Complete ====
+[2026-04-16 04:00:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T11:00:49.055007
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 04:00:49] ==== Run Complete ====
+[2026-04-16 04:30:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T11:30:49.155359
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 04:30:49] ==== Run Complete ====
+[2026-04-16 05:00:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T12:00:49.238469
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 05:00:49] ==== Run Complete ====
+[2026-04-16 05:30:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T12:30:49.322139
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 05:30:49] ==== Run Complete ====
+[2026-04-16 06:00:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T13:00:49.408338
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 06:00:49] ==== Run Complete ====
+[2026-04-16 06:30:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T13:30:49.487904
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 06:30:49] ==== Run Complete ====
+[2026-04-16 07:00:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T14:00:49.569130
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 07:00:49] ==== Run Complete ====
+[2026-04-16 07:30:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T14:30:49.650791
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 07:30:49] ==== Run Complete ====
+[2026-04-16 08:00:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T15:00:49.736383
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 08:00:49] ==== Run Complete ====
+[2026-04-16 08:30:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T15:30:49.831835
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 08:30:49] ==== Run Complete ====
+[2026-04-16 09:00:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T16:00:49.915982
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 09:00:49] ==== Run Complete ====
+[2026-04-16 09:30:49] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T16:30:50.002310
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 09:30:50] ==== Run Complete ====
+[2026-04-16 10:00:50] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T17:00:50.094328
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 10:00:50] ==== Run Complete ====
+[2026-04-16 10:30:50] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T17:30:50.182711
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 10:30:50] ==== Run Complete ====
+[2026-04-16 11:00:50] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T18:00:50.275092
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 11:00:50] ==== Run Complete ====
+[2026-04-16 11:30:50] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T18:30:50.369158
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 11:30:50] ==== Run Complete ====
+[2026-04-16 12:00:50] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T19:00:50.454268
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 12:00:50] ==== Run Complete ====
+[2026-04-16 12:30:50] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T19:30:50.548085
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 12:30:50] ==== Run Complete ====
+[2026-04-16 13:00:50] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T20:00:50.648108
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 13:00:50] ==== Run Complete ====
+[2026-04-16 13:30:50] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T20:30:50.758996
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 13:30:50] ==== Run Complete ====
+[2026-04-16 14:00:50] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T21:00:50.870220
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 14:00:50] ==== Run Complete ====
+[2026-04-16 14:30:50] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T21:30:50.976760
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 14:30:50] ==== Run Complete ====
+[2026-04-16 15:00:51] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T22:00:51.087965
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 15:00:51] ==== Run Complete ====
+[2026-04-16 15:30:51] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T22:30:51.194830
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 15:30:51] ==== Run Complete ====
+[2026-04-16 16:00:51] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T23:00:51.335149
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 16:00:51] ==== Run Complete ====
+[2026-04-16 16:30:51] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-16T23:30:51.461148
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 16:30:51] ==== Run Complete ====
+[2026-04-16 17:00:51] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T00:00:51.585218
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 17:00:51] ==== Run Complete ====
+[2026-04-16 17:30:51] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T00:30:51.706314
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 17:30:51] ==== Run Complete ====
+[2026-04-16 18:00:51] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T01:00:51.835391
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 18:00:51] ==== Run Complete ====
+[2026-04-16 18:30:51] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T01:30:51.957819
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 18:30:51] ==== Run Complete ====
+[2026-04-16 19:00:51] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T02:00:52.085543
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 19:00:52] ==== Run Complete ====
+[2026-04-16 19:30:52] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T02:30:52.210951
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 19:30:52] ==== Run Complete ====
+[2026-04-16 20:00:52] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T03:00:52.336873
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 20:00:52] ==== Run Complete ====
+[2026-04-16 20:30:52] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T03:30:52.468100
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 20:30:52] ==== Run Complete ====
+[2026-04-16 21:00:52] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T04:00:52.620454
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 21:00:52] ==== Run Complete ====
+[2026-04-16 21:30:52] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T04:30:52.811498
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 21:30:52] ==== Run Complete ====
+[2026-04-16 22:00:52] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T05:00:52.981997
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 22:00:52] ==== Run Complete ====
+[2026-04-16 22:30:53] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T05:30:53.120129
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 22:30:53] ==== Run Complete ====
+[2026-04-16 23:00:53] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T06:00:53.260112
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 23:00:53] ==== Run Complete ====
+[2026-04-16 23:30:53] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T06:30:53.502181
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-16 23:30:53] ==== Run Complete ====
+[2026-04-17 00:00:53] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T07:00:53.663877
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-17 00:00:53] ==== Run Complete ====
+[2026-04-17 00:30:53] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T07:30:53.844336
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-17 00:30:53] ==== Run Complete ====
+[2026-04-17 01:00:53] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T08:00:54.033574
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-17 01:00:54] ==== Run Complete ====
+[2026-04-17 01:30:54] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T08:30:54.187408
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-17 01:30:54] ==== Run Complete ====
+[2026-04-17 02:00:54] ==== YouTube Comment Monitor Run ====
+⚠️ YouTube API libraries not available. Install: pip install google-auth-oauthlib google-api-python-client
+🎬 YouTube Comment Monitor v2 Starting...
+⚠️ Using demo mode (YouTube API unavailable or not authenticated)
+📥 Fetched 4 comments
+======================================================================
+YOUTUBE COMMENT MONITOR REPORT
+======================================================================
+Run Time:  2026-04-17T09:00:54.357081
+Channel:   https://www.youtube.com/channel/UC326742c_CXvNQ6IcnZ8Jkw
+Mode:      DEMO
+
+SUMMARY
+----------------------------------------------------------------------
+Total Comments Processed:        4
+Auto-Responses Sent:             2
+  • Questions auto-replied:      1
+  • Praise auto-replied:         1
+Flagged for Manual Review:       2
+  • Sales/Partnerships:          0
+  • Spam/Suspicious:             2
+  • Other:                       0
+
+DETAILS
+----------------------------------------------------------------------
+✅ Auto-replied       | questions    | Curious Cat
+✅ Auto-replied       | praise       | Fan True
+🚩 Flagged            | spam         | Spam Bot
+🚩 Flagged            | spam         | Business Joe
+
+======================================================================
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+======================================================================
+✅ Complete! Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+[2026-04-17 02:00:54] ==== Run Complete ====

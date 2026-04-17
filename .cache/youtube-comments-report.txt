@@ -1,5 +1,5 @@
 YouTube Comment Monitor Report
-Generated: 2026-04-16T09:01:40.259367+00:00
+Generated: 2026-04-17T09:01:46.164179+00:00
 Channel: Concessa Obvius
 Monitor Mode: DEMO
 
@@ -9,9 +9,9 @@ Auto-Responses Sent: 4
 Flagged for Review: 1
 
 === LIFETIME STATS ===
-Total Processed (Lifetime): 471
-Total Auto-Replied (Lifetime): 313
-Total Flagged (Lifetime): 79
+Total Processed (Lifetime): 777
+Total Auto-Replied (Lifetime): 518
+Total Flagged (Lifetime): 129
 
 === BREAKDOWN BY CATEGORY ===
   PRAISE: 2

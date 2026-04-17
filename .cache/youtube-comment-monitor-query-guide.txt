@@ -1,0 +1,140 @@
+===============================================================================
+YOUTUBE COMMENT MONITOR - QUICK QUERY GUIDE
+===============================================================================
+
+All comments are logged to: ~/.cache/youtube-comments.jsonl
+Each line is a complete JSON object (JSONL format).
+
+===============================================================================
+BASIC QUERIES
+===============================================================================
+
+View the last 5 comments:
+  tail -5 ~/.cache/youtube-comments.jsonl
+
+View the first 5 comments:
+  head -5 ~/.cache/youtube-comments.jsonl
+
+Count total comments processed:
+  wc -l ~/.cache/youtube-comments.jsonl
+
+===============================================================================
+FILTER BY CATEGORY
+===============================================================================
+
+View all QUESTIONS:
+  grep '"category": "questions"' ~/.cache/youtube-comments.jsonl
+
+View all PRAISE:
+  grep '"category": "praise"' ~/.cache/youtube-comments.jsonl
+
+View all SPAM:
+  grep '"category": "spam"' ~/.cache/youtube-comments.jsonl
+
+View all SALES (flagged for review):
+  grep '"category": "sales"' ~/.cache/youtube-comments.jsonl
+
+===============================================================================
+FILTER BY RESPONSE STATUS
+===============================================================================
+
+View all auto-responded comments:
+  grep '"response_status": "auto_responded"' ~/.cache/youtube-comments.jsonl
+
+View all flagged items:
+  grep '"response_status": "flagged_for_review"' ~/.cache/youtube-comments.jsonl
+
+View all spam that was processed:
+  grep '"response_status": "processed"' ~/.cache/youtube-comments.jsonl
+
+===============================================================================
+PRETTY-PRINT (Requires jq)
+===============================================================================
+
+View last comment formatted nicely:
+  tail -1 ~/.cache/youtube-comments.jsonl | jq '.'
+
+View all comments by category:
+  grep '"category":' ~/.cache/youtube-comments.jsonl | jq '.category' | sort | uniq -c
+
+View comments from specific user:
+  grep '"commenter": "Sarah Chen"' ~/.cache/youtube-comments.jsonl | jq '.'
+
+===============================================================================
+ADVANCED QUERIES
+===============================================================================
+
+Count by category:
+  echo "Questions: $(grep -c '"category": "questions"' ~/.cache/youtube-comments.jsonl)"
+  echo "Praise: $(grep -c '"category": "praise"' ~/.cache/youtube-comments.jsonl)"
+  echo "Spam: $(grep -c '"category": "spam"' ~/.cache/youtube-comments.jsonl)"
+  echo "Sales: $(grep -c '"category": "sales"' ~/.cache/youtube-comments.jsonl)"
+
+Count by response status:
+  echo "Auto-responded: $(grep -c '"response_status": "auto_responded"' ~/.cache/youtube-comments.jsonl)"
+  echo "Flagged: $(grep -c '"response_status": "flagged_for_review"' ~/.cache/youtube-comments.jsonl)"
+
+Find comments with specific keywords:
+  grep -i "partnership\|collaboration\|sponsor" ~/.cache/youtube-comments.jsonl
+
+Find most recent timestamp:
+  tail -1 ~/.cache/youtube-comments.jsonl | jq '.timestamp'
+
+===============================================================================
+EXPORT & ANALYSIS
+===============================================================================
+
+Export to CSV (basic):
+  echo "Timestamp,Commenter,Category,Text" > export.csv
+  grep '"timestamp"' ~/.cache/youtube-comments.jsonl | \
+    jq -r '[.timestamp, .commenter, .category, .text] | @csv' >> export.csv
+
+Export flagged items for review:
+  grep '"flagged_for_review"' ~/.cache/youtube-comments.jsonl > flagged-items.jsonl
+
+Export specific category:
+  grep '"category": "sales"' ~/.cache/youtube-comments.jsonl > sales-inquiries.jsonl
+
+===============================================================================
+MONITOR STATUS
+===============================================================================
+
+View the current report:
+  cat ~/.cache/youtube-comments-report.txt
+
+Check if monitor is configured:
+  ls -la ~/.cache/youtube-monitor-state.json
+  ls -la ~/.cache/youtube-comments.jsonl
+
+Check cron logs:
+  tail ~/.cache/youtube-monitor.log
+
+===============================================================================
+NOTES
+===============================================================================
+
+- All times in the log are ISO 8601 format (UTC)
+- Comments are deduplicated (same user + same text won't be logged twice)
+- Auto-responses are tracked in the "response_status" field
+- Use jq (install with: brew install jq) for pretty-printing JSON
+- Comments are processed in order received
+- Spam/suspicious comments are still logged for analysis
+
+===============================================================================
+Example jq Usage (if installed):
+===============================================================================
+
+# View all question responses
+jq 'select(.category=="questions")' ~/.cache/youtube-comments.jsonl
+
+# List unique commenters
+jq '.commenter' ~/.cache/youtube-comments.jsonl | sort | uniq
+
+# Find high-priority items (sales)
+jq 'select(.category=="sales")' ~/.cache/youtube-comments.jsonl | jq -r '.text'
+
+# Count responses by category
+jq '[.category] | group_by(.) | map({category: .[0], count: length})' \
+  <(grep -v '^#' ~/.cache/youtube-comments.jsonl)
+
+===============================================================================

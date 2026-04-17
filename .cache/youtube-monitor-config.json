@@ -1,16 +1,38 @@
 {
-  "channel_name": "Concessa Obvius",
-  "channel_id": "UCxxxxxxxxxxxxxxxxxxxxxxxxxx",
-  "api_key": "",
-  "credentials_file": "",
-  "auto_respond_enabled": true,
-  "response_templates": {
-    "question": "Thank you for the question! Here are some resources that might help:\n- Check our FAQ: [link to FAQ]\n- Getting started guide: [link]\n- Feel free to reply with more questions!",
-    "praise": "Thank you so much for the kind words! We really appreciate your support and feedback. 😊"
+  "channel": {
+    "name": "Concessa Obvius",
+    "id": "YOUR_CHANNEL_ID_HERE",
+    "description": "Monitor this channel for new comments"
   },
-  "review_category": "sales",
-  "log_file": ".cache/youtube-comments.jsonl",
-  "stats_file": ".cache/youtube-monitor-stats.jsonl",
-  "max_comments_per_run": 50,
-  "check_interval_minutes": 30
+  "categories": {
+    "questions": {
+      "keywords": ["how do i", "how to", "tools", "cost", "price", "timeline", "steps", "where", "what", "can i", "do i"],
+      "auto_response": true,
+      "template": "Thanks for the question! I appreciate your interest. Could you share more about what you're trying to achieve? That way I can give you a more personalized answer. Feel free to check our FAQ or contact us directly for more details."
+    },
+    "praise": {
+      "keywords": ["amazing", "inspiring", "love", "awesome", "great", "excellent", "thank you", "brilliant", "incredible"],
+      "auto_response": true,
+      "template": "Thank you so much for the kind words! This means the world. I'm grateful you found value in the content. Please keep the feedback coming — it helps us improve! 🙏"
+    },
+    "spam": {
+      "keywords": ["crypto", "bitcoin", "ethereum", "mlm", "nft", "buy now", "limited offer", "click here"],
+      "auto_response": false,
+      "action": "auto_hide"
+    },
+    "sales": {
+      "keywords": ["partnership", "collaboration", "sponsor", "advertise", "brand deal", "affiliate", "joint venture"],
+      "auto_response": false,
+      "action": "flag_for_review"
+    }
+  },
+  "logging": {
+    "cache_file": ".cache/youtube-comments.jsonl",
+    "report_to": "stdout",
+    "retention_days": 30
+  },
+  "schedule": {
+    "interval_minutes": 30,
+    "timezone": "America/Los_Angeles"
+  }
 }

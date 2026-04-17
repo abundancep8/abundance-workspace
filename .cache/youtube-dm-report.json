@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-04-16T18:03:47.491391",
+  "status": "completed",
+  "total_dms_processed": 7,
+  "total_this_run": 0,
+  "auto_responses_sent": 6,
+  "by_category": {
+    "Setup help": 1,
+    "Newsletter": 1,
+    "Product inquiry": 1,
+    "Partnership": 1,
+    "setup_help": 1,
+    "product_inquiry": 2
+  },
+  "partnerships_flagged": 0,
+  "interesting_partnerships": [],
+  "product_inquiries_count": 2,
+  "conversion_potential": "2 lead(s) ready to follow up"
+}

@@ -1,77 +1,43 @@
 #!/bin/bash
-# YouTube Monitor Cron Installer
+# YouTube Comment Monitor - Cron Installation Script
+# This script installs the 30-minute monitoring job
 
 set -e
 
-# Colors
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
+echo "🚀 Installing YouTube Comment Monitor Cron Job..."
+echo ""
 
-echo -e "${BLUE}YouTube Comment Monitor - Cron Installer${NC}"
-echo
+# Create temporary cron file
+TEMP_CRON=$(mktemp)
+trap "rm -f $TEMP_CRON" EXIT
 
-# Check if already configured
-if grep -q "youtube-monitor" /var/spool/cron/tabs/$USER 2>/dev/null; then
-    echo -e "${YELLOW}⚠ Cron already configured${NC}"
-    echo "Run 'crontab -e' to view or modify"
+# Get existing crontab (if any)
+echo "📋 Reading existing crontab..."
+crontab -l > "$TEMP_CRON" 2>/dev/null || true
+
+# Check if job already exists
+if grep -q "youtube-monitor-cron" "$TEMP_CRON"; then
+    echo "✅ YouTube monitor job already installed!"
+    echo ""
+    crontab -l | grep youtube
     exit 0
 fi
 
-# Create environment file
-ENV_FILE="$HOME/.config/openclaw/youtube-monitor.env"
-mkdir -p "$(dirname "$ENV_FILE")"
+# Add new job
+echo "" >> "$TEMP_CRON"
+echo "# YouTube Comment Monitor - Concessa Obvius (Every 30 minutes)" >> "$TEMP_CRON"
+echo "*/30 * * * * $HOME/.openclaw/workspace/.cache/youtube-monitor-cron.sh >> $HOME/.openclaw/workspace/.cache/youtube-monitor-cron.log 2>&1" >> "$TEMP_CRON"
 
-echo -e "${BLUE}Setting up environment file: $ENV_FILE${NC}"
-
-if [ ! -f "$ENV_FILE" ]; then
-    read -p "Enter YouTube API Key: " API_KEY
-    read -p "Enter YouTube Channel ID (or press Enter for default): " CHANNEL_ID
-    
-    cat > "$ENV_FILE" << EOF
-export YOUTUBE_API_KEY="$API_KEY"
-export YOUTUBE_CHANNEL_ID="${CHANNEL_ID:-UCH-I6yRUDqt8TL-d7gGp7ow}"
-EOF
-    
-    chmod 600 "$ENV_FILE"
-    echo -e "${GREEN}✓ Created $ENV_FILE${NC}"
-else
-    echo -e "${YELLOW}✓ Using existing $ENV_FILE${NC}"
-fi
-
-# Get workspace path
-WORKSPACE="/Users/abundance/.openclaw/workspace"
-
-# Create cron entry
-CRON_ENTRY="*/30 * * * * cd $WORKSPACE && source $ENV_FILE && python3 .cache/youtube-monitor.py >> .cache/youtube-monitor.log 2>&1"
-
-# Install cron
-echo -e "${BLUE}Installing cron job (every 30 minutes)...${NC}"
-
-# Get current crontab or create empty
-TEMP_CRON=$(mktemp)
-crontab -l 2>/dev/null > "$TEMP_CRON" || true
-
-# Add new entry
-echo "$CRON_ENTRY" >> "$TEMP_CRON"
-
-# Install
+# Install crontab
+echo "📝 Installing cron job..."
 crontab "$TEMP_CRON"
-rm "$TEMP_CRON"
 
-echo -e "${GREEN}✓ Cron installed successfully${NC}"
-echo
-echo -e "${BLUE}Cron Details:${NC}"
-echo "  Schedule:   Every 30 minutes"
-echo "  Script:     $WORKSPACE/.cache/youtube-monitor.py"
-echo "  Log File:   $WORKSPACE/.cache/youtube-monitor.log"
-echo "  Environment: $ENV_FILE"
-echo
-echo -e "${BLUE}Management:${NC}"
-echo "  View crontab:    crontab -l"
-echo "  Edit crontab:    crontab -e"
-echo "  Remove cron:     crontab -r"
-echo "  Check log:       tail -f .cache/youtube-monitor.log"
-echo
-echo -e "${GREEN}✓ Setup complete!${NC}"
+# Verify
+echo "✅ Installation complete!"
+echo ""
+echo "📋 Installed job:"
+crontab -l | grep youtube
+echo ""
+echo "⏰ Monitor will run every 30 minutes starting now"
+echo "📊 Check progress: cat ~/.openclaw/workspace/.cache/youtube-comments-report.txt"
+echo ""

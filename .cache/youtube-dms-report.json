@@ -1,60 +1,17 @@
 {
-  "report_timestamp": "2026-04-15T15:03:45Z",
-  "monitor_id": "c1b30404-7343-46ff-aa1d-4ff84daf3674",
-  "channel": "Concessa Obvius",
-  "schedule": "Every hour at the top of the hour (0 * * * *)",
-  "timezone": "America/Los_Angeles",
-  "metrics": {
-    "new_dms_processed": 3,
-    "auto_responses_sent": 3,
-    "partnership_flags_this_run": 1
+  "timestamp": "2026-04-17T09:04:31.380Z",
+  "total_dms_processed": 3,
+  "auto_responses_sent": 3,
+  "conversion_potential": {
+    "product_inquiries": 1,
+    "partnerships_flagged": 1
   },
-  "cumulative": {
-    "total_dms_processed": 25,
-    "total_auto_responses": 25,
-    "product_inquiries": 5,
-    "conversion_potential": "High - 5 product inquiries indicate strong commercial interest"
-  },
-  "categorization": {
-    "setup_help_requests": 3,
-    "newsletter_signups": 1,
-    "product_inquiries": 5,
-    "partnership_inquiries": 6,
-    "total_categories": 15
-  },
-  "partnership_alerts": [
+  "partnerships_for_review": [
     {
-      "priority": "HIGH",
       "sender": "user_789",
-      "score": 72,
-      "timestamp": "2026-04-15T12:03:51Z",
-      "message": "I'd love to collaborate on a partnership opportunity!",
-      "action": "Flagged for business development review",
-      "flagged_at": "2026-04-15T15:03:45Z"
-    },
-    {
-      "priority": "HIGH",
-      "sender": "Marketing Partnership Agency",
-      "score": 75,
-      "timestamp": "2026-04-15T05:02:30Z",
-      "message": "We're a 100k+ follower marketing agency interested in collaborating on branded content...",
-      "action": "Under review by BD team",
-      "status": "2+ hours elapsed since initial contact"
+      "text": "I'd love to collaborate on a partnership opportunity!",
+      "timestamp": "2026-04-17T09:04:31.380Z",
+      "flag": "REVIEW_NEEDED"
     }
-  ],
-  "data_sources_active": [
-    "Direct file input (/tmp/new-dms.json)",
-    "Environment variable (DM_JSON)",
-    "Webhook endpoint (/youtube-dm)",
-    "Email parser (youtube-dm-email-parser.py)"
-  ],
-  "status": "OPERATIONAL",
-  "next_run": "2026-04-15T16:03:00Z",
-  "output_files": {
-    "state": "~/.openclaw/workspace/.cache/youtube-dms-state.json",
-    "log": "~/.openclaw/workspace/.cache/youtube-dms.jsonl",
-    "partnerships": "~/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl",
-    "report_text": "~/.openclaw/workspace/.cache/youtube-dms-report.txt",
-    "report_json": "~/.openclaw/workspace/.cache/youtube-dms-report.json"
-  }
+  ]
 }

@@ -1,0 +1,28 @@
+{
+  "name": "@abundance/neural-engine",
+  "version": "1.0.0",
+  "description": "Live Neural Engine - Active Reasoning Brain with Obsidian Integration",
+  "main": "neural-engine-main.js",
+  "scripts": {
+    "test": "node test-neural-engine.js",
+    "demo": "node demo.js",
+    "demo:query": "node demo.js",
+    "start": "node neural-engine-main.js"
+  },
+  "keywords": [
+    "neural-engine",
+    "reasoning",
+    "ai",
+    "obsidian",
+    "thinking",
+    "jarvis"
+  ],
+  "author": "Abundance",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.24.3"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

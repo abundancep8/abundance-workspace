@@ -6,6 +6,22 @@
 
 ---
 
+## 2026-04-17
+
+### Friction-Reduction Framework: YouTube OAuth Setup (02:00 AM)
+- **Decision:** Build an interactive OAuth setup script instead of waiting for user to manually navigate Google Cloud
+- **Rationale:** 3-day-old blocker ($675–11.6k/mo revenue at stake) wasn't happening due to setup friction (5+ manual steps across multiple platforms)
+- **Insight:** When blockers depend on user action but have high friction, build the guidance tool first. Reduces time from "I should do this" to "It's done" from days to minutes.
+- **Implementation:**
+  - `.cache/youtube-oauth-setup.sh` (interactive, walks through entire Google Cloud flow)
+  - `.cache/YOUTUBE-OAUTH-SETUP-GUIDE.md` (reference + troubleshooting)
+  - Auto-detection built into monitors (no manual integration needed)
+  - Graceful fallback modes and error handling
+- **Framework:** Friction-removal > passive waiting. When user action is blocked, make the action trivial.
+- **Next:** Abundance runs setup script → systems auto-migrate to live mode → revenue starts flowing within 24h
+
+---
+
 ## 2026-04-14
 
 ### System Status Dashboard Framework (02:00 AM)

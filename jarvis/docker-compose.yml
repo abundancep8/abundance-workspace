@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jarvis-backend
+    ports:
+      - "8000:8000"
+    environment:
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      VAULT_PATH: /workspace/vault
+      MEMORY_PATH: /workspace/memory
+      BUDGET_DAILY: 50.0
+      LOG_LEVEL: info
+    volumes:
+      - vault-data:/workspace/vault
+      - memory-data:/workspace/memory
+      - ./jarvis/backend:/app/backend
+    command: python server.py
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+  frontend-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend-dev
+    container_name: jarvis-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./jarvis/frontend:/app
+      - /app/node_modules
+    environment:
+      VITE_API_URL: http://localhost:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  vault-data:
+    driver: local
+  memory-data:
+    driver: local
+
+networks:
+  default:
+    name: jarvis-network
