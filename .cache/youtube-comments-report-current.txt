@@ -1,0 +1,14 @@
+YouTube Comment Monitor Report
+Channel: Concessa Obvius
+Report Time: 2026-04-18T09:01:38.758543
+
+📊 Statistics:
+  Total Comments Processed: 0
+  Auto-Responses Sent: 0
+  Flagged for Review: 0
+
+📈 Breakdown by Category:
+  Questions: 0
+  Praise: 0
+  Spam: 0
+  Sales/Partnerships: 0

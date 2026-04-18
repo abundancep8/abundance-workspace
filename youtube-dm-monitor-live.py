@@ -371,7 +371,11 @@ class YouTubeDMMonitor:
         
         print(f"\n📂 By Category:")
         for cat, count in report['by_category'].items():
-            print(f"  • {cat.replace('_', ' ').title()}: {count}")
+            if isinstance(cat, str) and isinstance(count, int):
+                print(f"  • {cat.replace('_', ' ').title()}: {count}")
+            elif isinstance(count, str):
+                # Handle malformed category data
+                print(f"  • {str(cat).replace('_', ' ').title()}: {count}")
         
         print(f"\n🤝 Partnerships Flagged: {report['partnerships_flagged']}")
         if report['interesting_partnerships']:

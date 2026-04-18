@@ -1,0 +1,17 @@
+#!/usr/bin/env openclaw-cron
+# YouTube Comment Monitor - Every 30 minutes
+# Monitors Concessa Obvius channel for new comments, categorizes, and auto-responds
+
+schedule: "*/30 * * * *"
+description: "Monitor YouTube comments on Concessa Obvius channel"
+
+task: |
+  python3 scripts/youtube-comment-monitor.py
+
+on_success: |
+  Report generated. Comments processed and logged to .cache/youtube-comments.jsonl
+
+on_error: |
+  Error in YouTube comment monitor. Check logs/youtube-monitor.log for details.
+
+timeout: 300

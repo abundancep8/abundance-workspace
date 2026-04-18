@@ -52,6 +52,21 @@
 
 ---
 
+## 2026-04-18
+
+### Nightly Cycle Formalization (02:00 AM)
+- **Decision:** Ensure nightly cycle outputs are always documented in CONVERSATION_LOG.md + SYSTEMS_STATUS.md timestamp updates
+- **Rationale:** Frameworks (Friction-Reduction, System Status Dashboard, Token Ledger) created, but nightly findings weren't consistently captured. Gap creates blind spot where decisions/improvements don't persist.
+- **Insight:** A system without documented output is a system that drifts. Nightly cycle must log to same files it reviews.
+- **Implementation:**
+  - Added template to nightly cycle: Always update SYSTEMS_STATUS.md timestamp + CONVERSATION_LOG.md entry
+  - Formalized "state of systems" snapshot as mandatory part of cycle
+  - Creates audit trail: Can now see exactly when status changed and what triggered it
+- **Framework:** Autonomous cycles must be self-documenting. If it ran, it logged. If it changed something, the change is recorded.
+- **Next:** Each nightly cycle updates timestamp in SYSTEMS_STATUS.md; every significant change gets CONVERSATION_LOG.md entry
+
+---
+
 ## 2026-04-10
 
 ### Token Monitoring (00:02)

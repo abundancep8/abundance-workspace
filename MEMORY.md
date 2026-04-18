@@ -13,6 +13,16 @@
 - **Key Decision:** Use environment variables for credentials, not prompts. Vercel auto-deploy from git branch.
 - **Expected:** 10-day campaign, 2-3 posts/day, revenue tracking $2,860–$11,600
 
+### Campaign 2: YouTube Comment Monitor (Concessa Obvius)
+- **Status:** ✅ Production-ready (April 17)
+- **Setup:** Complete automation system with categorization, auto-reply, and logging
+- **Files:** `.cron/youtube-comment-monitor.py`, `.cron/youtube-report.py`, full docs in `.cron/YOUTUBE_MONITORING.md`
+- **Schedule:** Every 30 minutes via cron (`*/30 * * * *`)
+- **Categories:** Questions (auto-reply), Praise (auto-reply), Spam (log), Sales (flag for review)
+- **Data:** All comments logged to `.cache/youtube-comments.jsonl` with timestamp, commenter, category, response status
+- **Next Step:** Configure YouTube API credentials from Google Cloud Console, test first run, enable cron
+- **Key Decision:** Keyword-based categorization for speed; AI-based option available for future enhancement
+
 ## Patterns & Systems
 
 ### Daily Workflow

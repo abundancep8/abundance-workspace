@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-04-17T12:30:45.293150",
+  "total_comments": 7,
+  "auto_responses_sent": 6,
+  "flagged_for_review": 0,
+  "spam_deleted": 0,
+  "by_category": {
+    "Questions": 5,
+    "Praise": 1,
+    "Spam": 1
+  }
+}

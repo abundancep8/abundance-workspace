@@ -1,0 +1,48 @@
+{
+  "metadata": {
+    "created": "2026-04-17T19:02:00-07:00",
+    "timezone": "America/Los_Angeles",
+    "budget_daily_usd": 5.00,
+    "budget_monthly_usd": 155.00,
+    "alert_threshold_percent": 75,
+    "alert_threshold_usd": 3.75,
+    "pricing_model": "claude-haiku-4-5",
+    "input_cost_per_1m": 0.80,
+    "output_cost_per_1m": 4.00
+  },
+  "daily_ledger": {
+    "2026-04-17": {
+      "date": "2026-04-17",
+      "sessions": [
+        {
+          "session_id": "cron:5b8e5733-64b6-47aa-9dc9-7f0da1c98d4d",
+          "type": "hourly-token-check",
+          "timestamp": "2026-04-17T19:02:00-07:00",
+          "tokens_in": 24,
+          "tokens_out": 868,
+          "tokens_total": 892,
+          "estimated_cost_usd": 0.0036,
+          "status": "completed"
+        }
+      ],
+      "summary": {
+        "total_tokens_in": 24,
+        "total_tokens_out": 868,
+        "total_tokens": 892,
+        "total_cost_usd": 0.0036,
+        "session_count": 1,
+        "percent_of_budget": 0.07,
+        "status": "🟢 SAFE"
+      }
+    }
+  },
+  "monthly_ledger": {
+    "2026-04": {
+      "month": "2026-04",
+      "total_cost_usd": 0.0036,
+      "daily_breakdown": {
+        "2026-04-17": 0.0036
+      }
+    }
+  }
+}

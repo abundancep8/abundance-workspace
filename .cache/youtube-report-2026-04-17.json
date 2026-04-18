@@ -1,0 +1,78 @@
+{
+  "date": "2026-04-17",
+  "timestamp": "2026-04-17T15:01:00-07:00",
+  "comments": {
+    "total_processed": 118,
+    "auto_responses_sent": 62,
+    "flagged_for_review": 12,
+    "categories": {
+      "questions": 28,
+      "praise": 32,
+      "spam": 24,
+      "sales": 14,
+      "other": 20
+    },
+    "trending_questions": [
+      "How do I get started with this? What tools do I need?",
+      "What's the timeline for implementation? When can I start?",
+      "How do I start building my own system like this?",
+      "How do I implement this system for my business? What's the cost?",
+      "What's your pricing for enterprise teams?"
+    ],
+    "sentiment_breakdown": {
+      "positive": 64,
+      "neutral": 28,
+      "spam": 24,
+      "engagement_rate": "54%"
+    }
+  },
+  "dms": {
+    "total_processed": 17,
+    "categories": {
+      "setup_help": 3,
+      "product_inquiry": 5,
+      "partnership": 3,
+      "newsletter": 2,
+      "other": 4
+    },
+    "product_inquiries": 5,
+    "estimated_conversions": 3,
+    "estimated_revenue_low": "$15",
+    "estimated_revenue_high": "$60",
+    "estimated_revenue_mid": "$37.50",
+    "flagged_for_manual_review": 3,
+    "flagged_items": [
+      {
+        "sender": "TechVentures Collective",
+        "type": "Partnership",
+        "reason": "Sponsorship opportunity"
+      },
+      {
+        "sender": "Marketing Pulse",
+        "type": "Partnership",
+        "reason": "Sponsored series collaboration"
+      },
+      {
+        "sender": "Alex Turner",
+        "type": "Support",
+        "reason": "Advanced features configuration"
+      }
+    ]
+  },
+  "daily_summary": {
+    "total_engagement": 135,
+    "responses_sent": 76,
+    "response_rate": "56%",
+    "conversion_potential": "22%",
+    "priority_actions": [
+      "Review 3 partnership inquiries for potential collaboration",
+      "Follow up on 5 product inquiries to drive conversions",
+      "Address 3 setup/tech support DMs to reduce churn"
+    ]
+  },
+  "discord_report_sent": {
+    "channel_id": "1480354255033466932",
+    "message_id": "1494714729183318056",
+    "timestamp": "2026-04-17T15:01:00-07:00"
+  }
+}

@@ -1,0 +1,629 @@
+usage: youtube-dm-monitor-live.py [-h] [--report] [--demo]
+youtube-dm-monitor-live.py: error: unrecognized arguments: --run-now
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T05:04:51.473329
+
+✅ Total DMs (all time): 13
+✉️  This run: 0
+📤 Auto-responses sent: 10
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 2
+  • Product Inquiry: 3
+  • Partnership: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  3 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T06:04:51.738705
+
+✅ Total DMs (all time): 13
+✉️  This run: 0
+📤 Auto-responses sent: 10
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 2
+  • Product Inquiry: 3
+  • Partnership: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  3 lead(s) ready to follow up
+==================================================
+
+📊 YouTube DM Monitor Test
+
+✓ Logged DM from Alice_Creator (setup_help)
+  From: Alice_Creator
+  Category: setup_help
+
+✓ Logged DM from marketing_guy (partnership)
+  From: marketing_guy
+  Category: partnership
+
+✓ Logged DM from subscriber_jane (newsletter)
+  From: subscriber_jane
+  Category: newsletter
+
+✓ Logged DM from potential_buyer (product_inquiry)
+  From: potential_buyer
+  Category: product_inquiry
+
+
+📈 REPORT
+Total DMs processed: 17
+Auto-responses sent: 14
+By category: {'Setup help': 1, 'Newsletter': 1, 'Product inquiry': 1, 'Partnership': 1, 'setup_help': 3, 'product_inquiry': 4, 4: 2, 3: 1, 'partnership': 2, 'newsletter': 1}
+Partnerships flagged: 0
+Conversion potential: 4 product inquiries to follow up on
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T07:04:51.945356
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T08:04:52.251242
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T09:04:52.537378
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+=== YouTube DM Monitor Run ===
+Time: 2026-04-17 17:03:45 UTC
+
+🧪 TEST MODE: Running with sample data (no YouTube credentials found)
+   To enable: Download OAuth credentials to /Users/abundance/.openclaw/workspace/.cache/youtube-credentials.json
+
+
+╔════════════════════════════════════════════════════════════════╗
+║          YouTube DM Monitor Report - 2026-04-17T17:03:46.054240+00:00          ║
+╚════════════════════════════════════════════════════════════════╝
+
+📊 SUMMARY
+  Total DMs processed: 0
+  Auto-responses sent: 0
+
+📂 BY CATEGORY
+
+💰 CONVERSION POTENTIAL
+  Product inquiries: 0
+  Est. conversion (15%): 0.0 potential customers
+
+📝 Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+✅ Test run complete. Report saved to /Users/abundance/.openclaw/workspace/.cache/youtube-dm-report.txt
+   DM log: /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+📋 To enable real monitoring:
+   1. Set up Google OAuth credentials
+   2. Save to: /Users/abundance/.openclaw/workspace/.cache/youtube-credentials.json
+   3. See: docs/YOUTUBE-DM-MONITOR-SETUP.md
+
+Status: Success
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T10:04:52.788228
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T11:04:53.047143
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T12:04:53.250765
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T13:04:53.465811
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T14:04:53.640473
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T15:04:53.882059
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T16:04:54.170792
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T17:04:54.379544
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T18:04:54.660287
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T19:04:55.019198
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T20:04:55.174199
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T21:04:55.415634
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T22:04:55.644210
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-17T23:04:55.849302
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-18T00:04:56.059275
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-18T01:04:56.272275
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-18T02:04:56.449853
+
+✅ Total DMs (all time): 17
+✉️  This run: 0
+📤 Auto-responses sent: 14
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 3
+  • Product Inquiry: 4
+  • Partnership: 2
+  • Newsletter: 1
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  4 lead(s) ready to follow up
+==================================================
+

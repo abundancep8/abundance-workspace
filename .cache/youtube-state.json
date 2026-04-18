@@ -1,6 +1,19 @@
 {
-  "last_comment_id": null,
-  "processed_count": 0,
-  "last_run": null,
-  "created_at": "2026-04-17T09:02:00Z"
+  "last_run": "2026-04-17T05:00:26-07:00",
+  "last_run_processed": 63,
+  "total_processed_all_time": 128,
+  "auto_responses_sent": 34,
+  "flagged_for_review": 7,
+  "questions_logged": 17,
+  "praise_logged": 17,
+  "spam_logged": 17,
+  "sales_logged": 7,
+  "cron_status": "operational",
+  "schedule": "*/30 * * * *",
+  "next_run": "2026-04-17T05:30:00-07:00",
+  "channel": "Concessa Obvius",
+  "mode": "demo_awaiting_oauth",
+  "log_location": ".cache/youtube-comments.jsonl",
+  "report_location": ".cache/youtube-comment-monitor-cron-report-2026-04-17-0500.txt",
+  "notes": "Running in demo mode. To activate full YouTube API access with real comments, set YOUTUBE_API_KEY and YOUTUBE_CHANNEL_ID environment variables and configure OAuth2 authentication."
 }

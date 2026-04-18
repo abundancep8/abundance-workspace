@@ -1,289 +1,315 @@
-# 🎥 YouTube Comment Monitor System
+# YouTube Comment Monitor
 
-**Status:** Ready to deploy | **Version:** 1.0.0 | **Run Interval:** Every 30 minutes
+Automated YouTube comment monitoring, classification, and auto-response system for the "Concessa Obvius" channel.
 
-## What This Does
+## Overview
 
-Monitors the **Concessa Obvius** YouTube channel for new comments, automatically categorizes them, and responds to legitimate inquiries while flagging sales pitches for review.
-
-### Automatic Processing
-
-Each comment is categorized into:
-
-1. **Questions** (40 comment templates for how-to, pricing, timeline, tools)
-   - ✅ Auto-responds with helpful resources
-   - 📝 Logged with response status
-
-2. **Praise** (amazing, inspiring, awesome, etc.)
-   - ✅ Auto-responds with appreciation message
-   - 📝 Logged with response status
-
-3. **Spam** (crypto, MLM, schemes, etc.)
-   - ⏭️ Skipped (not logged by default, can be enabled)
-   - 📝 Labeled for easy filtering
-
-4. **Sales** (partnerships, sponsorships, collaborations)
-   - 🚩 Flagged for manual review
-   - 📝 Logged separately for action
-
-5. **Other**
-   - 📝 Logged only, no response
+This system:
+- ✅ Fetches new comments from a YouTube channel
+- 🏷️ Classifies comments into: QUESTION, PRAISE, SPAM, SALES
+- 💬 Auto-responds to QUESTION & PRAISE comments
+- 🚩 Flags SALES inquiries for manual review
+- 📝 Logs all comments to JSONL for auditing
+- 📊 Tracks state and reports statistics
 
 ## Files
 
-### Core Scripts
+### Scripts
 
-- **`youtube-monitor.py`** — Main monitoring script
-  - Fetches latest comments from channel
-  - Categorizes each using pattern matching
-  - Logs results to JSONL
-  - Generates reports
-  
-- **`setup-youtube-monitor.sh`** — One-click setup
-  - Installs dependencies
-  - Validates API key
-  - Tests configuration
-  - Provides cron instructions
-
-### Configuration & Docs
-
-- **`YOUTUBE_SETUP.md`** — Detailed setup guide
-  - API key creation
-  - Environment variables
-  - Cron configuration
-  - Troubleshooting
-
-- **`YOUTUBE_MONITOR_README.md`** — This file
-  - Overview and usage
-  - Output format
-  - Customization
+- **`youtube_monitor.py`** - Main monitoring script. Run every 30 minutes via cron.
+- **`youtube_helper.py`** - Helper module with classification, templating, and logging functions.
 
 ### Data Files
 
-- **`youtube-comments.jsonl`** — All comments log
-  ```json
-  {
-    "timestamp": "2026-04-17T01:30:00",
-    "commenter": "Jane Doe",
-    "text": "How do I get started?",
-    "category": "questions",
-    "response_status": "auto_responded (questions)",
-    "video_id": "abc123"
-  }
-  ```
+- **`youtube-comments.jsonl`** - Append-only log of all processed comments (JSONL format).
+- **`youtube-monitor-state.json`** - State tracking: last check time, processed count.
 
-- **`youtube-last-check.json`** — Last run timestamp (prevents re-processing)
+## Running the Monitor
 
-- **`youtube-monitor.log`** — Cron execution log (when running via cron)
+### Basic Usage (Test Mode)
+```bash
+cd /Users/abundance/.openclaw/workspace
+python3 .cache/youtube_monitor.py --test
+```
 
-## Quick Start
+### Real YouTube API (when configured)
+```bash
+# Set API key
+export YOUTUBE_API_KEY="your-youtube-api-key-here"
 
-### 1. Run Setup
+# Run monitor
+python3 .cache/youtube_monitor.py --channel "Concessa Obvius"
+```
+
+### Cron Setup (Every 30 Minutes)
+
+The cron job should invoke the monitor like this:
 
 ```bash
-bash /Users/abundance/.openclaw/workspace/.cache/setup-youtube-monitor.sh
+0,30 * * * * cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube_monitor.py >> .cache/youtube_monitor.log 2>&1
 ```
 
-### 2. Set API Key
+This runs at :00 and :30 minutes of every hour.
+
+**Cron ID:** `114e5c6d-ac8b-47ca-a695-79ac31b5c076`
+
+## Comment Classification
+
+Comments are classified using keyword matching:
+
+### QUESTION
+Keywords: "how", "tools", "cost", "timeline", "where", "what", "can i", "do i", "should i", "help", "?"
+- **Auto-response:** YES
+- **Template:** "Thanks for the great question! Check our FAQ or feel free to ask for specifics. We're here to help! 🙌"
+
+### PRAISE
+Keywords: "amazing", "inspiring", "love", "great", "awesome", "incredible", "thank you", "thanks", "brilliant", "excellent"
+- **Auto-response:** YES
+- **Template:** "Thank you so much! We're thrilled this resonated with you. Your support means everything! 🙏"
+
+### SPAM
+Keywords: "crypto", "nft", "bitcoin", "mlm", "affiliate", "click here", "link in bio", "casino", "poker", "forex"
+- **Auto-response:** NO
+- **Action:** Skipped (not logged for response, but recorded in history)
+
+### SALES
+Keywords: "partnership", "collaboration", "sponsorship", "promote", "interested in working", "brand deal", "sponsor"
+- **Auto-response:** NO
+- **Action:** Flagged for manual review
+
+## Data Format
+
+### youtube-comments.jsonl
+
+Each line is a valid JSON object:
+
+```json
+{
+  "timestamp": "2026-04-18T04:00:00Z",
+  "comment_id": "ABC123",
+  "commenter": "John Doe",
+  "text": "How do I get started?",
+  "category": "QUESTION",
+  "response_status": "sent",
+  "response_text": "Thanks for the great question!..."
+}
+```
+
+**Fields:**
+- `timestamp` - ISO 8601 timestamp (UTC)
+- `comment_id` - Unique YouTube comment ID
+- `commenter` - YouTube username of commenter
+- `text` - Full comment text
+- `category` - QUESTION | PRAISE | SPAM | SALES
+- `response_status` - sent | skipped | flagged | pending
+- `response_text` - The auto-response text sent (null if no response)
+
+### youtube-monitor-state.json
+
+Tracks monitor state:
+
+```json
+{
+  "last_check": "2026-04-18T04:00:00Z",
+  "last_comment_id": "XYZ789",
+  "processed_count": 42
+}
+```
+
+**Fields:**
+- `last_check` - ISO 8601 timestamp of last monitor run
+- `last_comment_id` - ID of most recent comment processed
+- `processed_count` - Total comments processed (cumulative)
+
+## Configuration
+
+### Setting YouTube API Key
 
 ```bash
-export YOUTUBE_API_KEY="your-key-from-google-cloud-console"
+# Add to your shell profile (~/.zshrc or ~/.bash_profile)
+export YOUTUBE_API_KEY="your-api-key-here"
+
+# Or set inline
+YOUTUBE_API_KEY="your-key" python3 .cache/youtube_monitor.py
 ```
 
-Add to `~/.zshrc` or `~/.bashrc` to persist.
+To get a YouTube API key:
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project
+3. Enable "YouTube Data API v3"
+4. Create credentials (API key or OAuth 2.0)
+5. Set the environment variable
 
-### 3. Test
+### Customizing Keywords
 
-```bash
-python /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.py
+Edit `youtube_helper.py`:
+
+```python
+KEYWORDS = {
+    "QUESTION": [...],
+    "PRAISE": [...],
+    "SPAM": [...],
+    "SALES": [...]
+}
 ```
 
-Expected output:
-```
-🔍 Looking up 'Concessa Obvius' channel...
-✓ Found channel: UC...
-📝 Checking for comments since: 2026-04-17T01:00:00
-✓ Found 3 new comment(s)
-  ✓ Auto-response queued: Questions
-  ✓ Auto-response queued: Praise
-  ⚠️  Flagged for review: Sales
+### Customizing Auto-Response Templates
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📊 YouTube Comment Monitor Report
-...
-```
-
-### 4. Schedule (Cron)
-
-Edit crontab:
-```bash
-crontab -e
-```
-
-Add:
-```
-*/30 * * * * source ~/.zshrc && python /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.py >> /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log 2>&1
-```
-
-This runs every 30 minutes.
-
-## Viewing Results
-
-### Recent Comments
-
-```bash
-tail -20 /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl | jq '.'
-```
-
-### Cron Log
-
-```bash
-tail -f /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log
-```
-
-### Stats
-
-```bash
-jq -s 'group_by(.category) | map({category: .[0].category, count: length})' /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
-```
-
-## Customization
-
-### Change Response Templates
-
-Edit `youtube-monitor.py`, find `RESPONSE_TEMPLATES`:
+Edit `youtube_helper.py`:
 
 ```python
 RESPONSE_TEMPLATES = {
-    "questions": """Your custom question response here...""",
-    "praise": """Your custom praise response here..."""
+    "QUESTION": "Your custom question response...",
+    "PRAISE": "Your custom praise response...",
 }
 ```
 
-### Adjust Categorization Patterns
+## Output & Reporting
 
-Edit `PATTERNS` dict to match different phrases:
+Each run generates a report like:
 
-```python
-PATTERNS = {
-    "questions": [
-        r"how\s+(do\s+i|can\s+i)",  # Add your patterns
-    ],
-    ...
-}
+```
+============================================================
+📊 YOUTUBE COMMENT MONITOR - RUN REPORT
+============================================================
+
+✅ Comments processed this run: 5
+  • Questions: 1
+  • Praise: 2
+  • Sales inquiries: 1
+  • Spam: 1
+
+📝 Auto-responses sent: 3
+   (1 QUESTION + 2 PRAISE)
+
+🚩 Flagged for review (SALES): 1
+
+🚫 Spam skipped: 1
+
+📊 Cumulative statistics (all-time):
+  • Total comments processed: 5
+  • Questions: 1
+  • Praise: 2
+  • Sales: 1
+  • Spam: 1
+  • Total responses sent: 3
+
+⏰ Last check: 2026-04-18T04:01:27Z
+🔄 Run time: 2026-04-18T04:01:27Z
+
+============================================================
 ```
 
-### Monitor Different Channel
+## Logging
 
-Change `CHANNEL_NAME`:
-
-```python
-CHANNEL_NAME = "Your Channel Name"
-```
-
-### Change Run Interval
-
-In crontab, change `*/30` to:
-- `*/5` — Every 5 minutes
-- `0 * * * *` — Hourly (top of hour)
-- `0 9 * * *` — Daily at 9 AM
-
-## Limitations & Known Issues
-
-### Current Limitations
-
-1. **Read-only mode** — Script only reads comments, doesn't post yet
-2. **No reply threading** — Logs responses but doesn't post them (requires OAuth2)
-3. **Rate limits** — YouTube API has quotas
-4. **Simple categorization** — Pattern matching only (no ML/NLP)
-
-### To Enable Auto-Posting
-
-Requires:
-- OAuth2 authentication (instead of API key)
-- YouTube channel owner authorization
-- Storing refresh tokens
-- Adding `youtube` scope
-
-Ask to enable this feature — I can upgrade the script.
-
-## Monitoring & Alerts
-
-### Check Status
+By default, the monitor logs to stdout. For cron jobs, redirect to a log file:
 
 ```bash
-echo "Last check:" && jq .last_check /Users/abundance/.openclaw/workspace/.cache/youtube-last-check.json
+python3 .cache/youtube_monitor.py >> .cache/youtube_monitor.log 2>&1
 ```
 
-### Count Categories
-
+View recent logs:
 ```bash
-echo "By category:" && jq -r '.category' /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl | sort | uniq -c
+tail -f .cache/youtube_monitor.log
 ```
 
-### Filter by Category
+## Idempotency
 
-```bash
-# Show all sales inquiries (flagged for review)
-jq 'select(.category=="sales")' /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
-```
+All files are designed to be idempotent — safe to run multiple times:
+- Comments are deduplicated by `comment_id`
+- State tracking prevents reprocessing
+- JSONL is append-only
 
 ## Troubleshooting
 
-### "Could not find channel"
-- Check spelling of `CHANNEL_NAME`
-- Ensure channel is public
-- Wait a few minutes and try again
+### No comments found
+- Channel name might be wrong (check `--channel` parameter)
+- API key might be invalid or lacking permissions
+- Comment fetching endpoint might need adjustment
 
-### "Permission denied"
-- Your API key needs YouTube Data API enabled
-- Go to Google Cloud Console → APIs & Services
-- Search "YouTube Data API v3" and enable it
+### Comments not classified correctly
+- Review keywords in `youtube_helper.py`
+- Check if comment text contains exact keyword match (case-insensitive)
+- Consider adding new keywords
 
-### "Quota exceeded"
-- YouTube API has daily limits (~10,000 units)
-- Reduce monitoring frequency
-- Consider upgrading API tier
+### API quota exceeded
+- YouTube API has quotas. Monitor your usage in Google Cloud Console.
+- Reduce check frequency or use pagination offsets.
 
-## API Key Security
+### State file corruption
+- Delete `.cache/youtube-monitor-state.json` to reset
+- Monitor will restart from scratch on next run
 
-### Best Practices
+## Architecture
 
-1. **Never commit to git** — Keep in environment variables only
-2. **Use Application Restrictions** — In Google Cloud Console:
-   - Set to "IP addresses" (your home IP)
-   - Or "HTTP referrers" (localhost)
-3. **Rotate regularly** — Delete old keys, create new ones
-4. **Monitor usage** — Check Google Cloud Console for unusual activity
-
-### Production Setup
-
-For production:
-```bash
-# Use secrets manager
-export YOUTUBE_API_KEY=$(aws secretsmanager get-secret-value --secret-id youtube-api-key --query SecretString --output text)
+```
+┌─────────────────────────────────────────────────────────┐
+│                   Cron Job (every 30 min)               │
+└────────────────────┬────────────────────────────────────┘
+                     │
+                     ▼
+    ┌────────────────────────────────┐
+    │   youtube_monitor.py (main)    │
+    │  • Fetch comments              │
+    │  • Filter by timestamp         │
+    └────────────┬───────────────────┘
+                 │
+        ┌────────┴────────┐
+        ▼                 ▼
+    ┌──────────────────────────────────────┐
+    │  youtube_helper.py (utilities)       │
+    │  • classify_comment()                │
+    │  • get_response_text()               │
+    │  • log_comment()                     │
+    │  • load/save state                   │
+    │  • get_stats()                       │
+    └────────┬───────────────────┬────────┘
+             │                   │
+        ┌────▼──────┐      ┌─────▼──────────────┐
+        ▼            ▼      ▼                   ▼
+    ┌─────────────────────────────────────────────────────┐
+    │         Persistent Data Layer                       │
+    │  • youtube-comments.jsonl (audit log)              │
+    │  • youtube-monitor-state.json (state)              │
+    └─────────────────────────────────────────────────────┘
 ```
 
-## Success Metrics
+## Future Enhancements
 
-This system tracks:
-- ✅ Total comments processed
-- ✅ Auto-responses sent
-- ✅ Items flagged for review
-- ✅ Categorization accuracy
-- ✅ Response coverage (% with auto-reply)
+- [ ] YouTube API integration (currently uses mock data for testing)
+- [ ] Custom response templates per comment type
+- [ ] Reply threading (respond to specific comment threads)
+- [ ] Rate limiting (max responses per hour)
+- [ ] Dashboard/web UI for monitoring
+- [ ] Email notifications for SALES comments
+- [ ] Machine learning classification refinement
+- [ ] Multi-channel support
 
-Check `youtube-monitor.log` for each run's report.
+## Support & Debugging
 
-## Next Steps
+For detailed logs, enable verbose mode (edit `youtube_monitor.py` to add `--verbose` flag):
 
-1. ✅ Run `setup-youtube-monitor.sh`
-2. ✅ Set `YOUTUBE_API_KEY`
-3. ✅ Test with `python youtube-monitor.py`
-4. ✅ Add to crontab for every 30 minutes
-5. 📊 Monitor with `tail -f youtube-monitor.log`
-6. 🎯 Customize templates and patterns as needed
+```bash
+python3 .cache/youtube_monitor.py --verbose --test
+```
+
+Check state at any time:
+```bash
+cat .cache/youtube-monitor-state.json
+```
+
+Count comments by category:
+```bash
+grep -o '"category":"[^"]*"' .cache/youtube-comments.jsonl | sort | uniq -c
+```
+
+View all flagged comments awaiting review:
+```bash
+grep '"response_status":"flagged"' .cache/youtube-comments.jsonl
+```
 
 ---
 
-**Need help?** Check `YOUTUBE_SETUP.md` for detailed troubleshooting.
+**Created:** 2026-04-18  
+**Last Updated:** 2026-04-18  
+**Version:** 1.0.0

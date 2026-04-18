@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.openclaw.youtube-dm-monitor</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/abundance/.openclaw/workspace/youtube-dm-monitor-live.py</string>
+        <string>--report</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/abundance/.openclaw/workspace</string>
+    <key>StartInterval</key>
+    <integer>3600</integer>
+    <key>StandardOutPath</key>
+    <string>/Users/abundance/.openclaw/workspace/.cache/youtube-dm-monitor.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/abundance/.openclaw/workspace/.cache/youtube-dm-monitor-error.log</string>
+</dict>
+</plist>

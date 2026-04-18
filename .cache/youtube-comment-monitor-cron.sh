@@ -1,28 +1,30 @@
 #!/bin/bash
-# YouTube Comment Monitor - Cron Wrapper
-# Runs every 30 minutes via OpenClaw cron
-# Logs to .cache/youtube-comments.jsonl and generates report
 
-set -e
+# YouTube Comment Monitor Cron Script (30-minute intervals)
+# This script runs the Python monitor and logs output
 
-WORKSPACE="$HOME/.openclaw/workspace"
-CACHE_DIR="$WORKSPACE/.cache"
-SCRIPT="$CACHE_DIR/youtube-comment-monitor-v2.py"
-LOG="$CACHE_DIR/youtube-monitor-cron.log"
-REPORT="$CACHE_DIR/youtube-comments-report.txt"
+SCRIPT_DIR="$HOME/.openclaw/workspace/.cache"
+MONITOR_SCRIPT="$SCRIPT_DIR/youtube-comment-monitor.py"
+LOG_DIR="$SCRIPT_DIR/logs"
+LOG_FILE="$LOG_DIR/youtube-comment-monitor-$(date +%Y%m%d).log"
 
-# Create cache dir if needed
-mkdir -p "$CACHE_DIR"
+# Create log directory if needed
+mkdir -p "$LOG_DIR"
 
-# Run monitor
-echo "[$(date)] Starting YouTube Comment Monitor..." >> "$LOG"
-python3 "$SCRIPT" >> "$LOG" 2>&1
-
-# Check report
-if [ -f "$REPORT" ]; then
-    echo "[$(date)] Monitor completed successfully" >> "$LOG"
-else
-    echo "[$(date)] WARNING: Report not generated" >> "$LOG"
-fi
+# Run the monitor with error handling
+{
+    echo "=== YouTube Comment Monitor Cron Run ==="
+    echo "Start Time: $(date '+%Y-%m-%d %H:%M:%S %Z')"
+    echo ""
+    
+    cd "$SCRIPT_DIR"
+    python3 "$MONITOR_SCRIPT" 2>&1
+    
+    EXIT_CODE=$?
+    echo ""
+    echo "End Time: $(date '+%Y-%m-%d %H:%M:%S %Z')"
+    echo "Exit Code: $EXIT_CODE"
+    
+} >> "$LOG_FILE" 2>&1
 
 exit 0

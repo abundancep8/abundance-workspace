@@ -1,0 +1,141 @@
+{
+  "task_classification": {
+    "research": {
+      "keywords": [
+        "search",
+        "research",
+        "find out",
+        "what is",
+        "tell me about",
+        "investigate",
+        "analyze"
+      ],
+      "optimal_router": "kimi",
+      "confidence": 0.95,
+      "reasoning": "Kimi excels at research and data gathering"
+    },
+    "batch": {
+      "keywords": [
+        "list all",
+        "summarize",
+        "process",
+        "review all",
+        "batch",
+        "bulk",
+        "multiple"
+      ],
+      "optimal_router": "kimi",
+      "confidence": 0.90,
+      "reasoning": "Kimi handles batch operations efficiently"
+    },
+    "long_context": {
+      "keywords": [
+        "review this code",
+        "summarize this",
+        "analyze this document",
+        "read this"
+      ],
+      "optimal_router": "kimi",
+      "confidence": 0.85,
+      "reasoning": "Kimi has excellent long-context understanding"
+    },
+    "real_time": {
+      "keywords": [
+        "quick",
+        "fast",
+        "right now",
+        "immediately",
+        "quickly",
+        "asap"
+      ],
+      "optimal_router": "claude",
+      "confidence": 0.95,
+      "reasoning": "Claude provides faster real-time responses"
+    },
+    "critical": {
+      "keywords": [
+        "money",
+        "legal",
+        "contract",
+        "financial",
+        "medical",
+        "privacy",
+        "secure",
+        "dangerous"
+      ],
+      "optimal_router": "claude",
+      "confidence": 0.99,
+      "reasoning": "Critical decisions require Claude's quality and reliability"
+    },
+    "creative": {
+      "keywords": [
+        "write",
+        "create",
+        "design",
+        "brainstorm",
+        "story",
+        "poem",
+        "generate",
+        "imagine"
+      ],
+      "optimal_router": "claude",
+      "confidence": 0.80,
+      "reasoning": "Claude slightly better at creative tasks"
+    },
+    "code": {
+      "keywords": [
+        "code",
+        "debug",
+        "fix",
+        "build",
+        "programming",
+        "function",
+        "class",
+        "refactor",
+        "test"
+      ],
+      "optimal_router": "claude",
+      "confidence": 0.85,
+      "reasoning": "Claude more reliable for code generation"
+    },
+    "planning": {
+      "keywords": [
+        "plan",
+        "organize",
+        "schedule",
+        "workflow",
+        "roadmap",
+        "strategy",
+        "prioritize"
+      ],
+      "optimal_router": "kimi",
+      "confidence": 0.75,
+      "reasoning": "Kimi efficient for planning at lower cost"
+    }
+  },
+  "cost_model": {
+    "kimi_k2_5": {
+      "input_per_1m_tokens": 0.14,
+      "output_per_1m_tokens": 0.42,
+      "note": "Cost-optimized model"
+    },
+    "claude_haiku": {
+      "input_per_1m_tokens": 3.0,
+      "output_per_1m_tokens": 15.0,
+      "note": "Quality-focused model"
+    }
+  },
+  "distribution_targets": {
+    "kimi": 0.70,
+    "claude": 0.30,
+    "adjustment_strategy": "Gradually shift tasks toward Kimi unless classification confidence < 0.7"
+  },
+  "budget_management": {
+    "daily_limit_usd": 50.0,
+    "alert_thresholds": {
+      "warning": 0.75,
+      "critical": 0.90
+    },
+    "over_budget_strategy": "Route all non-critical tasks to Kimi until budget resets next day"
+  }
+}

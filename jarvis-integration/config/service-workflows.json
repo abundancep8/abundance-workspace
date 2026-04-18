@@ -1,0 +1,186 @@
+{
+  "workflows": {
+    "lead_qualification": {
+      "name": "Qualify a New Lead",
+      "description": "Take a new lead through qualification process",
+      "steps": [
+        {
+          "step": 1,
+          "action": "add_lead",
+          "prompt": "Add lead to database",
+          "required_fields": ["name", "email", "company", "title", "source"]
+        },
+        {
+          "step": 2,
+          "action": "research",
+          "prompt": "Research company and role (use Kimi router)",
+          "router": "kimi"
+        },
+        {
+          "step": 3,
+          "action": "score_fit",
+          "prompt": "Evaluate fit score (0.0-1.0)",
+          "default": 0.5
+        },
+        {
+          "step": 4,
+          "action": "create_deal",
+          "prompt": "Create deal record if qualified",
+          "condition": "fit_score > 0.6"
+        }
+      ]
+    },
+    "deal_progression": {
+      "name": "Move Deal Through Pipeline",
+      "description": "Progress deal from prospect to close",
+      "stages": [
+        {
+          "stage": "prospect",
+          "actions": ["send_introduction_email", "log_first_contact"]
+        },
+        {
+          "stage": "qualified",
+          "actions": ["schedule_discovery_call", "send_pre_call_briefing"]
+        },
+        {
+          "stage": "engaged",
+          "actions": ["document_requirements", "create_proposal"]
+        },
+        {
+          "stage": "proposed",
+          "actions": ["schedule_proposal_review", "log_send_date"]
+        },
+        {
+          "stage": "negotiating",
+          "actions": ["document_objections", "prepare_responses"]
+        },
+        {
+          "stage": "closed_won",
+          "actions": ["log_signature", "create_project_record", "send_thank_you"]
+        }
+      ]
+    },
+    "email_outreach_sequence": {
+      "name": "Cold Email Outreach Sequence",
+      "description": "Multi-step email sequence to nurture leads",
+      "sequence": [
+        {
+          "day": 0,
+          "email": "introduction",
+          "subject": "Quick thought on [Company Name]",
+          "template": "personalized_intro"
+        },
+        {
+          "day": 3,
+          "email": "follow_up_1",
+          "subject": "Checking in - [Specific Value]",
+          "template": "value_proposition"
+        },
+        {
+          "day": 7,
+          "email": "follow_up_2",
+          "subject": "Case study: How [Similar Company] saw X results",
+          "template": "social_proof"
+        },
+        {
+          "day": 10,
+          "email": "follow_up_3",
+          "subject": "Last touch - Happy to help",
+          "template": "soft_close"
+        }
+      ]
+    },
+    "proposal_generation": {
+      "name": "Generate & Send Proposal",
+      "description": "Create and send customized proposal",
+      "steps": [
+        {
+          "step": 1,
+          "action": "gather_requirements",
+          "prompt": "Collect deal and lead information"
+        },
+        {
+          "step": 2,
+          "action": "select_template",
+          "prompt": "Choose proposal template (default, web, consulting, custom)",
+          "options": ["default", "web", "consulting", "custom"]
+        },
+        {
+          "step": 3,
+          "action": "generate_proposal",
+          "prompt": "Generate proposal from template"
+        },
+        {
+          "step": 4,
+          "action": "review",
+          "prompt": "Review and customize proposal"
+        },
+        {
+          "step": 5,
+          "action": "send",
+          "prompt": "Send proposal and log date"
+        }
+      ]
+    },
+    "pipeline_health_check": {
+      "name": "Weekly Pipeline Review",
+      "description": "Review and update pipeline health",
+      "metrics": [
+        {
+          "metric": "total_pipeline",
+          "target": 250000,
+          "alert": "If below target"
+        },
+        {
+          "metric": "qualified_percentage",
+          "target": 0.4,
+          "alert": "If below 40% qualified"
+        },
+        {
+          "metric": "average_deal_size",
+          "calculation": "total_pipeline / number_of_deals"
+        },
+        {
+          "metric": "stale_deals",
+          "alert": "Deals not updated > 7 days"
+        }
+      ]
+    }
+  },
+  "email_templates": {
+    "personalized_intro": {
+      "subject": "Quick thought on [Company]",
+      "body": "Hi [First Name],\n\nI noticed [Company] is doing great work in [Industry]. We've helped similar companies [Specific Benefit].\n\nMight be worth a quick conversation?\n\nBest,\n[Your Name]"
+    },
+    "value_proposition": {
+      "subject": "How [Company] could achieve [X]% improvement",
+      "body": "Hi [First Name],\n\nFollowing up on my previous note. We recently helped [Similar Company] [Specific Result].\n\nWould love to share how we did it.\n\nBest,\n[Your Name]"
+    },
+    "social_proof": {
+      "subject": "Case study: [Company] achieved [Result]",
+      "body": "Hi [First Name],\n\nThought you might find this interesting - similar company achieved [Metric].\n\nHappy to discuss how this could apply to [Company].\n\nBest,\n[Your Name]"
+    }
+  },
+  "automation_triggers": {
+    "add_lead": {
+      "keywords": ["add lead", "new prospect", "found a lead", "qualified someone"],
+      "action": "prompt_for_lead_details"
+    },
+    "update_deal": {
+      "keywords": ["move to", "qualified", "send proposal", "update deal"],
+      "action": "prompt_for_deal_update"
+    },
+    "pipeline_status": {
+      "keywords": ["pipeline", "sales status", "how many deals", "total value"],
+      "action": "show_pipeline_summary"
+    },
+    "meeting_scheduling": {
+      "keywords": ["schedule", "book call", "set up meeting"],
+      "action": "prompt_for_meeting_details"
+    },
+    "outreach": {
+      "keywords": ["send email", "follow up", "outreach"],
+      "action": "prompt_for_email"
+    }
+  }
+}

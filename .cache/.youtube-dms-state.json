@@ -1,13 +1,38 @@
 {
-  "last_processed_ids": ["dm-20260416-001", "dm-20260416-002", "dm-20260416-003", "dm-20260416-004", "creator_dev", "news_outlet", "curious_fan", "UC_alex_turner_999", "UC_marketing_pulse_001", "UC_james_liu_555"],
-  "last_run": "2026-04-17T01:03:58.873856",
-  "total_lifetime_dms": 10,
+  "last_processed_ids": [
+    "dm-20260416-001",
+    "dm-20260416-002",
+    "dm-20260416-003",
+    "dm-20260416-004",
+    "creator_dev",
+    "news_outlet",
+    "curious_fan",
+    "UC_alex_turner_999",
+    "UC_marketing_pulse_001",
+    "UC_james_liu_555"
+  ],
+  "last_run": "2026-04-18T02:03:50.621822",
+  "last_run_local": "2026-04-18 02:03:50 AM ",
+  "total_lifetime_dms": 17,
   "total_lifetime_responses": 4,
-  "total_lifetime_flagged": 3,
+  "total_lifetime_flagged": 2,
   "latest_run_summary": {
-    "dms_processed": 10,
-    "responses_sent": 4,
-    "flagged_partnerships": 2,
-    "high_value_inquiries": 2
+    "execution_date": "2026-04-18",
+    "execution_time": "02:03:50 AM ",
+    "dms_processed": 0,
+    "new_dms": 0,
+    "responses_sent": 0,
+    "flagged_partnerships": 0,
+    "high_value_inquiries": 0
+  },
+  "lifetime_stats": {
+    "setup_help": 2,
+    "newsletter": 1,
+    "product_inquiry": 3,
+    "partnership": 2,
+    "other": 2,
+    "conversion_potential_leads": 0,
+    "estimated_revenue_low": 1500,
+    "estimated_revenue_high": 2500
   }
 }

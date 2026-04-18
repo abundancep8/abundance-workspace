@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-04-16T23:06:00Z",
-  "date_local": "2026-04-16 16:06 PT",
+  "timestamp": "2026-04-18T07:04:00Z",
+  "status": "error",
+  "error": "ANTHROPIC_API_KEY not configured",
   "tokens_today": null,
   "cost_today": null,
   "tokens_month": null,
   "cost_month": null,
   "budget_daily": 5.00,
   "budget_monthly": 155.00,
-  "status": "FAILED - CREDENTIALS_REQUIRED",
-  "error": "Anthropic console login credentials not found. Cannot authenticate to https://console.anthropic.com to fetch usage data.",
-  "notes": "To automate this task, provide one of: (1) Anthropic console email/password stored securely, (2) API endpoint with usage data, or (3) Cached session token"
+  "alert_triggered": false,
+  "note": "To enable usage tracking, set ANTHROPIC_API_KEY environment variable in your OpenClaw config"
 }

@@ -1,0 +1,81 @@
+=== YouTube Comment Monitor Cron Run ===
+Start Time: 2026-04-18 00:31:38 PDT
+
+Traceback (most recent call last):
+  File "/Users/abundance/.openclaw/workspace/.cache/youtube-comment-monitor.py", line 440, in <module>
+    main()
+  File "/Users/abundance/.openclaw/workspace/.cache/youtube-comment-monitor.py", line 435, in main
+    stats = monitor.run()
+  File "/Users/abundance/.openclaw/workspace/.cache/youtube-comment-monitor.py", line 423, in run
+    self.monitor_channel()
+  File "/Users/abundance/.openclaw/workspace/.cache/youtube-comment-monitor.py", line 185, in monitor_channel
+    return self._monitor_demo_mode()
+  File "/Users/abundance/.openclaw/workspace/.cache/youtube-comment-monitor.py", line 360, in _monitor_demo_mode
+    self.state["processed_comment_ids"].add(comment_id)
+AttributeError: 'list' object has no attribute 'add'
+
+End Time: 2026-04-18 00:31:38 PDT
+Exit Code: 1
+=== YouTube Comment Monitor Cron Run ===
+Start Time: 2026-04-18 01:01:38 PDT
+
+YouTube Comment Monitor Report
+Channel: Concessa Obvius
+Report Time: 2026-04-18T08:01:38.434087
+
+📊 Statistics:
+  Total Comments Processed: 0
+  Auto-Responses Sent: 0
+  Flagged for Review: 0
+
+📈 Breakdown by Category:
+  Questions: 0
+  Praise: 0
+  Spam: 0
+  Sales/Partnerships: 0
+
+
+End Time: 2026-04-18 01:01:38 PDT
+Exit Code: 0
+=== YouTube Comment Monitor Cron Run ===
+Start Time: 2026-04-18 01:31:38 PDT
+
+YouTube Comment Monitor Report
+Channel: Concessa Obvius
+Report Time: 2026-04-18T08:31:38.602629
+
+📊 Statistics:
+  Total Comments Processed: 0
+  Auto-Responses Sent: 0
+  Flagged for Review: 0
+
+📈 Breakdown by Category:
+  Questions: 0
+  Praise: 0
+  Spam: 0
+  Sales/Partnerships: 0
+
+
+End Time: 2026-04-18 01:31:38 PDT
+Exit Code: 0
+=== YouTube Comment Monitor Cron Run ===
+Start Time: 2026-04-18 02:01:38 PDT
+
+YouTube Comment Monitor Report
+Channel: Concessa Obvius
+Report Time: 2026-04-18T09:01:38.758543
+
+📊 Statistics:
+  Total Comments Processed: 0
+  Auto-Responses Sent: 0
+  Flagged for Review: 0
+
+📈 Breakdown by Category:
+  Questions: 0
+  Praise: 0
+  Spam: 0
+  Sales/Partnerships: 0
+
+
+End Time: 2026-04-18 02:01:38 PDT
+Exit Code: 0

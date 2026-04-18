@@ -1,0 +1,115 @@
+{
+  "execution": {
+    "timestamp": "2026-04-17T23:03:56Z",
+    "timestamp_local": "2026-04-17 11:03:56 PM PDT",
+    "cron_job_id": "c1b30404-7343-46ff-aa1d-4ff84daf3674",
+    "schedule": "Every 1 hour"
+  },
+  "this_hour": {
+    "dms_received": 0,
+    "dms_processed": 0,
+    "auto_responses_sent": 0,
+    "partnerships_flagged": 0,
+    "product_inquiries": 0
+  },
+  "lifetime_stats": {
+    "total_dms": 17,
+    "setup_help": 2,
+    "newsletter_signups": 1,
+    "product_inquiries": 3,
+    "partnership_inquiries": 2,
+    "other": 2,
+    "total_auto_responses_sent": 4,
+    "auto_response_rate": 0.235,
+    "partnerships_flagged_for_review": 2
+  },
+  "product_pipeline": {
+    "high_value_leads": [
+      {
+        "name": "Elena Rodriguez",
+        "category": "enterprise",
+        "inquiry": "200 users, custom integrations",
+        "status": "auto_responded",
+        "est_revenue_low": 500,
+        "est_revenue_high": 2000,
+        "action_required": "Send demo link, clarify requirements"
+      },
+      {
+        "name": "James Liu",
+        "category": "enterprise",
+        "inquiry": "500+ users, custom integrations, pricing",
+        "status": "auto_responded",
+        "est_revenue_low": 300,
+        "est_revenue_high": 1000,
+        "action_required": "Send enterprise pricing, schedule call"
+      }
+    ],
+    "standard_leads": [
+      {
+        "name": "Alice_Creator",
+        "category": "creator",
+        "inquiry": "Features & setup questions",
+        "status": "auto_responded",
+        "est_revenue_low": 50,
+        "est_revenue_high": 300
+      },
+      {
+        "name": "potential_buyer",
+        "category": "standard",
+        "inquiry": "Pro version pricing",
+        "status": "auto_responded",
+        "est_revenue_low": 50,
+        "est_revenue_high": 200
+      }
+    ],
+    "total_estimated_revenue_low": 1500,
+    "total_estimated_revenue_high": 2500,
+    "conversion_potential": "2-3 leads expected to convert"
+  },
+  "partnerships": {
+    "flagged_for_manual_review": 2,
+    "opportunities": [
+      {
+        "name": "TechVentures Collective",
+        "type": "Sponsorship",
+        "status": "flagged_for_review",
+        "action": "Review terms and respond"
+      },
+      {
+        "name": "Marketing Pulse",
+        "type": "Sponsored series",
+        "status": "flagged_for_review",
+        "action": "Review proposal and schedule call"
+      }
+    ]
+  },
+  "system_health": {
+    "monitor_status": "operational",
+    "response_templates": "working",
+    "categorization": "accurate",
+    "logging": "active",
+    "cron_execution": "on_schedule",
+    "uptime": "100%"
+  },
+  "next_actions": {
+    "high_priority": [
+      "Contact Elena Rodriguez with demo link (enterprise, $500-2K)",
+      "Contact James Liu with enterprise pricing (enterprise, $300-1K)",
+      "Review TechVentures sponsorship terms"
+    ],
+    "medium_priority": [
+      "Follow up on Alice_Creator setup question",
+      "Follow up on potential_buyer pricing comparison",
+      "Review Marketing Pulse proposal"
+    ]
+  },
+  "data_files": {
+    "log_file": ".cache/youtube-dms.jsonl",
+    "state_file": ".cache/.youtube-dms-state.json",
+    "report_md": ".cache/youtube-dms-hourly-report-2026-04-17-2303.md",
+    "report_json": ".cache/youtube-dms-hourly-report-2026-04-17-2303.json",
+    "total_dms_logged": 34
+  },
+  "status": "complete",
+  "next_execution": "2026-04-18 12:03 AM PDT"
+}

@@ -1,0 +1,40 @@
+
+======================================================================
+YOUTUBE COMMENT MONITOR - CRON RUN REPORT
+======================================================================
+Timestamp: 2026-04-17T05:00:26.503554
+Channel:   Concessa Obvius
+Mode:      DEMO (OAuth not configured)
+
+SUMMARY (Current Session)
+----------------------------------------------------------------------
+Total Comments Processed:        63
+  • Questions:                   17
+  • Praise:                      17
+  • Spam:                        17
+  • Sales/Partnerships:          7
+
+Auto-Responses Sent:             34
+Flagged for Manual Review:       7
+
+RUNNING TOTALS (All-Time)
+----------------------------------------------------------------------
+Total Processed (All Sessions):  63
+Auto-Responses Sent:             34
+Flagged for Review:              7
+
+LOG LOCATION
+----------------------------------------------------------------------
+Comments: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+State:    /Users/abundance/.openclaw/workspace/.cache/youtube-state.json
+
+NEXT RUN
+----------------------------------------------------------------------
+Schedule: Every 30 minutes (*/30 * * * *)
+Next run: 2026-04-17T05:00:26.503564
+
+NOTE: To enable full YouTube API access, set environment variables:
+  YOUTUBE_API_KEY=<your-api-key>
+  YOUTUBE_CHANNEL_ID=UCxxxxx
+
+======================================================================

@@ -1,0 +1,36 @@
+# YouTube Comment Monitor - Cron Configuration
+# Monitors Concessa Obvius channel for new comments every 30 minutes
+# Categorizes, auto-responds, and logs
+
+name: youtube-comment-monitor
+description: Monitor YouTube comments, categorize, and auto-respond
+schedule: "*/30 * * * *"  # Every 30 minutes
+timeout: 300  # 5 minutes
+
+command: python .cron/youtube-comment-monitor.py
+cwd: /Users/abundance/.openclaw/workspace
+
+# Optional: Send alerts on completion
+notifications:
+  on_failure:
+    channel: discord
+    template: |
+      ⚠️ YouTube Comment Monitor failed
+      Check: `.cache/youtube-monitor.log`
+
+# Environment (optional)
+env:
+  PYTHONUNBUFFERED: "1"
+
+# Logging
+output:
+  stdout: .cache/youtube-monitor.log
+  stderr: .cache/youtube-monitor.log
+  rotation: daily
+  retention: 7  # days
+
+# Dependencies
+dependencies:
+  - google-auth-oauthlib
+  - google-auth-httplib2
+  - google-api-python-client

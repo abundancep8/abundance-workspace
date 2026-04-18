@@ -1,0 +1,59 @@
+{
+  "run_id": "subagent_f62f012d-50fb-4d64-b168-293fb33ac295",
+  "timestamp": "2026-04-17T06:03:00Z",
+  "task": "Monitor YouTube DMs for Concessa Obvius channel",
+  "status": "partial_completion",
+  "metrics": {
+    "dms_fetched_this_run": 0,
+    "auto_responses_sent": 0,
+    "partnerships_flagged": 0,
+    "processing_time_seconds": 0.8,
+    "errors": 1
+  },
+  "authentication": {
+    "youtube_api": "NOT_CONFIGURED",
+    "gcloud_auth": "NOT_AVAILABLE",
+    "status": "BLOCKED"
+  },
+  "lifetime_stats": {
+    "total_dms_processed": 10,
+    "total_responses_sent": 4,
+    "total_partnerships_flagged": 3,
+    "run_history": [
+      {
+        "date": "2026-04-16",
+        "dms": 4,
+        "responses": 3,
+        "flagged": 1
+      },
+      {
+        "date": "2026-04-17",
+        "dms": 6,
+        "responses": 1,
+        "flagged": 2
+      }
+    ]
+  },
+  "categories": {
+    "setup_help": 3,
+    "newsletter": 1,
+    "product_inquiry": 5,
+    "partnership": 4
+  },
+  "error_details": {
+    "error_code": "AUTH_MISSING",
+    "error_message": "YouTube API credentials not found. Set YOUTUBE_API_KEY or configure gcloud auth.",
+    "recovery_steps": [
+      "1. Configure YouTube API credentials",
+      "2. Set YOUTUBE_API_KEY environment variable",
+      "3. Or: Run 'gcloud auth application-default login'",
+      "4. Validate with 'youtube-dm-monitor.py --test'",
+      "5. Re-run monitoring task"
+    ]
+  },
+  "recommendations": [
+    "Configure YouTube Data API authentication before next scheduled run",
+    "Consider email forwarding from YouTube notifications as interim solution",
+    "Install Playwright for enhanced browser-based DM extraction (optional)"
+  ]
+}

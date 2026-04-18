@@ -1,113 +1,99 @@
 # YouTube Comment Monitor Setup
 
-## Prerequisites
+## Requirements
 
-### 1. Install Dependencies
+1. **Python Libraries**
+   ```bash
+   pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client anthropic
+   ```
 
-```bash
-pip install google-api-python-client
-```
+2. **YouTube API Credentials**
+   - Go to [Google Cloud Console](https://console.cloud.google.com)
+   - Create a new project
+   - Enable YouTube Data API v3
+   - Create OAuth 2.0 Desktop App credentials
+   - Download JSON and save as: `~/.openclaw/workspace/.cache/youtube-credentials.json`
 
-### 2. Get YouTube API Key
+3. **Anthropic API Key**
+   - Set `ANTHROPIC_API_KEY` environment variable
+   - Or configure in `~/.openclaw/workspace/.cache/.env`
 
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project (or use existing)
-3. Enable **YouTube Data API v3**:
-   - Search for "YouTube Data API v3"
-   - Click "Enable"
-4. Create credentials:
-   - Go to "Credentials" → "Create Credentials"
-   - Choose "API Key" (restrict later for production)
-   - Copy the key
-
-### 3. Set Environment Variable
-
-Add to your shell profile (`~/.zshrc`, `~/.bashrc`, etc.):
+## First Run
 
 ```bash
-export YOUTUBE_API_KEY="your-api-key-here"
+python ~/.openclaw/workspace/.cache/youtube-comment-monitor.py
 ```
 
-Then reload:
+This will:
+1. Open browser for YouTube OAuth2 login
+2. Save token to `~/.openclaw/workspace/.cache/youtube-token.json`
+3. Begin monitoring
+
+## Cron Setup
+
+Every 30 minutes:
 ```bash
-source ~/.zshrc  # or ~/.bashrc
-```
-
-### 4. Test the Script
-
-```bash
-python /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.py
-```
-
-### 5. Set Up Cron Job (Every 30 Minutes)
-
-Edit your crontab:
-```bash
-crontab -e
-```
-
-Add this line:
-```
-*/30 * * * * source ~/.zshrc && python /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.py >> /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log 2>&1
-```
-
-## Output Files
-
-- **youtube-comments.jsonl** — Log of all comments, categories, and responses
-- **youtube-last-check.json** — Timestamp of last check (prevents duplicates)
-- **youtube-monitor.log** — Cron execution log
-
-## Monitoring Logs
-
-View recent runs:
-```bash
-tail -f /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log
-```
-
-View logged comments:
-```bash
-tail -20 /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl | jq '.'
+*/30 * * * * /usr/bin/python3 ~/.openclaw/workspace/.cache/youtube-comment-monitor.py >> ~/.openclaw/workspace/.cache/monitor.log 2>&1
 ```
 
 ## Customization
 
-Edit `youtube-monitor.py` to:
+### Response Templates
+Edit `RESPONSE_TEMPLATES` in `youtube-comment-monitor.py`:
 
-1. **Change templates** — Update `RESPONSE_TEMPLATES` dict
-2. **Adjust patterns** — Modify `PATTERNS` dict for better categorization
-3. **Change channel** — Update `CHANNEL_NAME` variable
-4. **Modify categories** — Add/remove categories as needed
+```python
+RESPONSE_TEMPLATES = {
+    "questions": "Your custom response here...",
+    "praise": "Your custom response here..."
+}
+```
 
-## Limitations
+### Category Patterns
+Add or modify keywords in `CATEGORY_PATTERNS` to improve categorization.
 
-- **Read-only mode**: Current implementation only reads comments. To auto-post responses, you'd need:
-  - OAuth2 authentication (instead of API key)
-  - Channel owner's authorization
-  - Additional Google API scopes
-  
-- **Rate limits**: YouTube API has quota limits (~10,000 units/day for free tier)
+## Logs
+
+All comments logged to: `~/.openclaw/workspace/.cache/youtube-comments.jsonl`
+
+Each entry:
+```json
+{
+  "timestamp": "2026-04-18T05:30:00.123456",
+  "commenter": "User Name",
+  "text": "Comment text...",
+  "category": "questions|praise|spam|sales",
+  "response_status": "auto_responded|flagged_for_review|no_response",
+  "video_id": "dQw4w9WgXcQ"
+}
+```
+
+## Monitoring
+
+Check monitor log:
+```bash
+tail -f ~/.openclaw/workspace/.cache/monitor.log
+```
+
+View categorized comments:
+```bash
+cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | jq .
+```
+
+Count by category:
+```bash
+cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | jq -r .category | sort | uniq -c
+```
 
 ## Troubleshooting
 
-**"Could not find channel"**
-- Double-check channel name spelling
-- Channel must be public
+**"ERROR: youtube-credentials.json not found"**
+→ Download OAuth credentials from Google Cloud Console
 
-**"Permission denied" when posting**
-- You need OAuth2 auth + channel owner authorization
-- Current setup is read-only
+**"ERROR: Google API client not installed"**
+→ Run: `pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client`
 
-**"Quota exceeded"**
-- YouTube API has rate limits
-- Increase monitoring interval to 1+ hour
-- Consider upgrading to paid YouTube API tier
+**"No new comments in past hour"**
+→ Script is working; channel just hasn't received comments recently
 
-## Next Steps
-
-For **auto-posting responses**, we'd need to:
-1. Switch to OAuth2 authentication
-2. Add `youtube` scope for comment writing
-3. Implement comment reply logic using `commentThreads().insert()`
-4. Store refresh tokens securely
-
-Ask if you want to enable that feature.
+**Token expired**
+→ Delete `~/.openclaw/workspace/.cache/youtube-token.json` and re-run to re-authenticate

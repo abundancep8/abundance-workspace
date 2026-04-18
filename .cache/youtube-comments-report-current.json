@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-04-18T09:01:38.757388",
+  "total_comments_processed": 0,
+  "auto_responses_sent": 0,
+  "flagged_for_review": 0,
+  "comments_by_category": {
+    "questions": 0,
+    "praise": 0,
+    "spam": 0,
+    "sales": 0
+  },
+  "last_run": "2026-04-18T09:01:38.758107"
+}
