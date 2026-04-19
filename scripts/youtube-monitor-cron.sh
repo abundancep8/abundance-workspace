@@ -5,6 +5,14 @@
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 cd /Users/abundance/.openclaw/workspace
 
+# Activate virtual environment and run the monitor
+source .venv/bin/activate 2>/dev/null || {
+    echo "Virtual environment not found. Attempting to create..."
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install -q google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client
+}
+
 # Run the monitor
 python3 scripts/youtube-comment-monitor.py 2>&1 | tee -a .cache/youtube-monitor.log
 

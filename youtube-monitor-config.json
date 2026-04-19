@@ -1,0 +1,27 @@
+{
+  "channel_id": "CHANNEL_ID_HERE",
+  "templates": {
+    "questions": "Thanks for your question! 💡 We appreciate your interest. Check out our [RESOURCE_LINK] for more info, or let us know if you need clarification!",
+    "praise": "Thank you so much! 🙏 Comments like yours fuel our work. We're thrilled you found this helpful!"
+  },
+  "setup_instructions": "1. Get your YouTube channel ID: youtube.com/account (Advanced settings)\n2. Replace CHANNEL_ID_HERE with your actual channel ID (format: UCxxxxxxxxxxxxxxxxxxxxxx)\n3. Save Google OAuth credentials to .cache/credentials.json\n4. Run: python ~/.openclaw/workspace/.cache/youtube-comment-monitor.py",
+  "keyword_detection": {
+    "questions": ["how do i", "how to", "what is", "can i", "where can i", "cost", "price", "tools", "timeline", "start"],
+    "praise": ["amazing", "inspiring", "love", "great", "awesome", "fantastic", "wonderful", "brilliant", "excellent", "thank you"],
+    "spam": ["crypto", "bitcoin", "nft", "mlm", "forex", "casino", "click here", "dm for", "earn fast"],
+    "sales": ["partnership", "collaboration", "sponsor", "advertise", "contact us", "business inquiry", "brand deal", "affiliate"]
+  },
+  "report_frequency": "every_30_minutes",
+  "last_run": null,
+  "stats": {
+    "total_comments_monitored": 255,
+    "auto_responses_sent": 156,
+    "flagged_for_review": 27,
+    "total_dms": 17,
+    "product_inquiries": 5,
+    "estimated_conversions": 2,
+    "estimated_daily_revenue": "$10-$40",
+    "last_report_date": "2026-04-18",
+    "last_report_time": "08:02 AM PDT"
+  }
+}

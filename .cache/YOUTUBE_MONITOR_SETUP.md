@@ -1,235 +1,169 @@
-# YouTube Comment Monitor - Setup Guide
+# YouTube Comment Monitor Setup
 
-**Status:** 🚀 Ready to deploy  
-**Cron Schedule:** Every 30 minutes  
-**Current Time:** Thursday, April 16th, 2026 — 1:30 AM PST
+**Status:** ✅ Scripts created | ⏳ Awaiting credentials and cron setup
 
-## 📦 What's Installed
+## What's Running
 
-✅ **Script:** `.scripts/youtube-monitor.py` (1,100 lines)
-✅ **Wrapper:** `.scripts/youtube-monitor.sh`
-✅ **Log directory:** `.cache/` (auto-created)
-✅ **Output files:**
-   - `.cache/youtube-comments.jsonl` — all comments with metadata
-   - `.cache/youtube-monitor-summary.json` — latest run stats
-   - `.cache/youtube-monitor.log` — cron execution log
+The monitor is configured to run every 30 minutes and will:
 
-## 🔧 Setup Steps
+1. **Fetch comments** from the Concessa Obvius channel
+2. **Categorize** each comment:
+   - ❓ **Questions** (how-to, cost, tools, timeline) → auto-reply with helpful template
+   - 👍 **Praise** (amazing, inspiring, thank you) → auto-reply with gratitude
+   - 🚩 **Spam** (crypto, MLM, get-rich schemes) → skip, no response
+   - 🔗 **Sales/Partnerships** (collaboration, sponsorship) → flag for manual review
+   - Other → logged but not responded to
 
-### 1. Install Dependencies
-```bash
-pip install google-api-python-client google-auth-oauthlib google-auth-httplib2
-```
-
-### 2. Set Up YouTube API Credentials
-
-The monitor looks for credentials at:
-```
-~/.openclaw/credentials/youtube-api.json
-```
-
-**Option A: Service Account** (Recommended for automation)
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project (or select existing)
-3. Enable YouTube Data API v3
-4. Create a Service Account:
-   - Go to **Service Accounts** (in Credentials)
-   - Click "Create Service Account"
-   - Grant roles: **Editor** (for testing) or **YouTube API - YouTube Read Only** (production)
-5. Create a JSON key and save to `~/.openclaw/credentials/youtube-api.json`
-6. Share the channel with the service account email (or make the channel public)
-
-**Option B: OAuth 2.0** (For user-specific access)
-1. Create OAuth 2.0 credentials (Installed Application)
-2. Save the JSON and run once to generate refresh token
-3. The monitor will use the cached token
-
-### 3. Install Cron Job
-
-#### **Method A: Manual Setup** (If macOS crontab is finicky)
-```bash
-# Add to ~/.openclaw/crontab (create if doesn't exist):
-*/30 * * * * /Users/abundance/.openclaw/workspace/.scripts/youtube-monitor.sh
-
-# Install it:
-crontab ~/.openclaw/crontab
-
-# Verify:
-crontab -l
-```
-
-#### **Method B: Using launchd** (macOS native)
-Create `~/Library/LaunchAgents/com.openclaw.youtube-monitor.plist`:
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>com.openclaw.youtube-monitor</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/Users/abundance/.openclaw/workspace/.scripts/youtube-monitor.sh</string>
-    </array>
-    <key>StartInterval</key>
-    <integer>1800</integer>
-    <key>StandardOutPath</key>
-    <string>/Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log</string>
-    <key>StandardErrorPath</key>
-    <string>/Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log</string>
-</dict>
-</plist>
-```
-
-Then:
-```bash
-launchctl load ~/Library/LaunchAgents/com.openclaw.youtube-monitor.plist
-launchctl list | grep youtube-monitor  # Verify it's loaded
-```
-
-## 🎯 What It Does
-
-Every 30 minutes, the monitor:
-
-1. **Fetches** recent comments from Concessa Obvius channel
-2. **Categorizes** each new comment:
-   - **Questions** (keywords: how, what, cost, tools, timeline, start)
-   - **Praise** (keywords: amazing, inspiring, love, great, awesome)
-   - **Spam** (crypto, bitcoin, nft, mlm, pyramid, forex, dropship)
-   - **Sales** (partnership, collaboration, sponsor, brand deal, affiliate)
-
-3. **Auto-responds** to:
-   - Questions → Template response with resources & guidance
-   - Praise → Thank you + engagement message
-
-4. **Flags for Review:**
-   - Sales inquiries (partnerships, collaborations)
-
-5. **Logs Everything:**
+3. **Log everything** to `.cache/youtube-comments.jsonl`:
    ```json
    {
-     "timestamp": "2026-04-16T01:30:00",
-     "video_id": "abc123xyz",
-     "commenter": "John Doe",
+     "timestamp": "2026-04-19T08:00:00Z",
+     "comment_id": "...",
+     "author": "John Doe",
      "text": "How do I get started?",
-     "category": "questions",
+     "category": "question",
      "response_status": "auto_responded",
-     "response_template": "questions"
+     "emoji": "❓"
    }
    ```
 
-## 📊 Reports
+4. **Report metrics**:
+   - Total comments processed
+   - Auto-responses sent
+   - Flagged for review
 
-### Live Summary (every run)
-```
-📺 YouTube Comment Monitor - 2026-04-16T01:30:00
-📥 Fetched 5 comments
-  ✅ Auto-response queued for question by Jane
-  ✅ Auto-response queued for praise by Bob
-  🚩 Sales inquiry flagged from Alice
-  🚫 Spam marked from Spam Bot
+## Setup Required
 
-📊 Report (2026-04-16 01:30:00)
-  Total processed: 3
-  Questions: 1
-  Praise: 1
-  Spam: 1
-  Sales (flagged): 1
-  Auto-responses sent: 2
-  Flagged for review: 1
-```
+### 1. Install Dependencies
 
-### Historical Log
-Check `.cache/youtube-monitor-summary.json` for the latest run stats.
-
-## 🔍 Monitoring
-
-### Check Latest Report
 ```bash
-cat .cache/youtube-monitor-summary.json
+pip install google-auth-oauthlib google-api-python-client
 ```
 
-### View All Comments
+### 2. YouTube API Credentials
+
+You need a service account or OAuth2 credentials from Google Cloud Console.
+
+#### Option A: Service Account (Recommended for Automation)
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select existing
+3. Enable YouTube Data API v3
+4. Create a **Service Account** (not OAuth client)
+5. Download JSON credentials
+6. Save to: `.secrets/youtube-credentials.json`
+
 ```bash
-tail -20 .cache/youtube-comments.jsonl
+mkdir -p /Users/abundance/.openclaw/workspace/.secrets
+# Place credentials.json here
 ```
 
-### View Execution Log
+**Note:** The service account email must be added as a manager to the YouTube channel, OR you need OAuth2 refresh tokens (more complex).
+
+#### Option B: OAuth2 (If you own/manage the channel)
+
+Use OAuth2 with refresh tokens. Requires interactive login once, then runs unattended.
+
+### 3. Verify Channel Name
+
+The monitor looks for "Concessa Obvius" by name. Verify this is the correct channel name on YouTube.
+
+To use Channel ID instead, edit the script:
+```python
+CHANNEL_ID = "UCxxxxxxxxxxxxxx"  # Replace with actual ID
+# Then modify get_channel_comments() to skip the channel lookup
+```
+
+### 4. Install Required Packages
+
 ```bash
-tail -50 .cache/youtube-monitor.log
+cd /Users/abundance/.openclaw/workspace
+python3 -m pip install google-auth-oauthlib google-api-python-client --user
 ```
 
-### Check If Cron is Running
+### 5. Set Up Cron Job
+
+Once credentials are in place:
+
 ```bash
-# If using crontab:
-crontab -l | grep youtube
+# Add to crontab
+crontab -e
 
-# If using launchd:
-launchctl list | grep youtube-monitor
-ps aux | grep youtube-monitor
+# Add this line (runs every 30 minutes):
+*/30 * * * * /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.sh >> /tmp/youtube-monitor.log 2>&1
 ```
 
-## 🚀 To Get Started Right Now
+Or use OpenClaw's built-in cron scheduling.
 
-### Minimal Test Run
-```bash
-# Run once manually to test:
-python3 .scripts/youtube-monitor.py
-```
+## Files
 
-You'll see:
-- ✅ If credentials are found
-- ❌ If they're missing (with setup instructions)
-- 📊 Comment processing stats
+- **`youtube-monitor.py`** — Main monitoring script
+- **`youtube-monitor-cron.sh`** — Wrapper for scheduled execution
+- **`.cache/youtube-comments.jsonl`** — Log of all monitored comments
+- **`.cache/youtube-monitor-state.json`** — Processed comment IDs (prevents duplicates)
+- **`.cache/youtube-monitor-cron.log`** — Execution log (last 50 runs)
 
-### Full Activation Checklist
+## Customization
 
-- [ ] Install dependencies (`pip install google-api-...`)
-- [ ] Set up YouTube API credentials
-- [ ] Save credentials to `~/.openclaw/credentials/youtube-api.json`
-- [ ] Test with manual run: `python3 .scripts/youtube-monitor.py`
-- [ ] Verify output in `.cache/youtube-comments.jsonl`
-- [ ] Install cron job (Method A or B above)
-- [ ] Verify cron is running
-- [ ] Check logs after 30 minutes
+### Auto-Response Templates
 
-## 🎯 Channel
-
-For the Concessa Obvius channel:
-- **Channel ID:** `UCJa8b_2h5ztfGJ3F5Jqvswg` (configured in script)
-- Edit the script if you need to monitor a different channel
-
-## 📝 Templates
-
-Modify response templates in `.scripts/youtube-monitor.py`:
+Edit `CATEGORY_TEMPLATES` in `youtube-monitor.py`:
 
 ```python
-TEMPLATES = {
-    "questions": "Your custom question response here...",
-    "praise": "Your custom praise response here..."
+CATEGORY_TEMPLATES = {
+    "question": {
+        "keywords": ["how", "what", "cost", ...],
+        "response": "Your custom response here..."
+    },
+    ...
 }
 ```
 
-## ⚠️ Troubleshooting
+### Comment Categorization
 
-**"YouTube API libraries not available"**
-→ Run: `pip install google-api-python-client google-auth-oauthlib google-auth-httplib2`
+Add keywords or new categories as needed. Matching is case-insensitive.
 
-**"YouTube API credentials not found"**
-→ Set up credentials at `~/.openclaw/credentials/youtube-api.json` (see Setup Steps)
+### Rate Limiting
 
-**Cron not running**
-→ Check with `crontab -l` or `launchctl list | grep youtube`
-→ Verify script is executable: `chmod +x .scripts/youtube-monitor.sh`
+The script checks the last 5 videos to avoid YouTube API rate limits. Adjust if needed:
+```python
+for video_id in videos[:5]:  # Change 5 to desired limit
+```
 
-**No comments being processed**
-→ Channel might be set to private
-→ Check if API credentials have access to the channel
-→ Test manually: `python3 .scripts/youtube-monitor.py`
+## Monitoring
+
+Check execution logs:
+
+```bash
+tail -f /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.log
+```
+
+View processed comments:
+
+```bash
+tail -n 20 /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+```
+
+Check state (which comments have been processed):
+
+```bash
+cat /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-state.json | jq '.processed_ids | length'
+```
+
+## Troubleshooting
+
+### "ERROR: Credentials file not found"
+→ Create `.secrets/youtube-credentials.json` with YouTube API credentials
+
+### "Cannot find channel 'Concessa Obvius'"
+→ Verify the exact channel name, or use Channel ID instead
+
+### "Permission denied: YouTube API"
+→ Service account needs manager access to the channel, or use OAuth2 tokens
+
+### "Rate limit exceeded"
+→ Reduce the number of videos checked per run, or increase time between runs
 
 ---
 
-**Status:** Ready for deployment 🚀
-**Scheduled:** Every 30 minutes
-**Logs:** `.cache/youtube-monitor.log`
-**Data:** `.cache/youtube-comments.jsonl`
+**Next step:** Place your YouTube API credentials in `.secrets/youtube-credentials.json`, then I'll activate the cron job.

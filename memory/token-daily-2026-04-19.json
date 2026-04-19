@@ -1,0 +1,23 @@
+{
+  "date": "2026-04-19",
+  "budget_daily": 5.00,
+  "threshold_warning": 3.75,
+  "threshold_critical": 5.00,
+  "checks": [
+    {
+      "time": "01:02",
+      "session_id": "cron:5b8e5733-64b6-47aa-9dc9-7f0da1c98d4d",
+      "tokens_in": 24,
+      "tokens_out": 690,
+      "tokens_total": 714,
+      "estimated_cost": 0.00278,
+      "cumulative_cost": 0.00278,
+      "status": "🟢"
+    }
+  ],
+  "cumulative_tokens": 714,
+  "cumulative_cost_usd": 0.00278,
+  "remaining_budget": 4.99722,
+  "percent_spent": 0.056,
+  "notes": "Hourly token check activated at 01:02 UTC. YouTube monitors down (launchctl I/O error) - see daily notes."
+}

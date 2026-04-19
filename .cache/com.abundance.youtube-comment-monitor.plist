@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.abundance.youtube-comment-monitor</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/abundance/.openclaw/workspace/.cache/youtube-comment-monitor-prod.sh</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>1800</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/abundance/.openclaw/workspace/.cache/youtube-comment-monitor-cron.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/abundance/.openclaw/workspace/.cache/youtube-comment-monitor-error.log</string>
+    <key>WorkingDirectory</key>
+    <string>/Users/abundance/.openclaw/workspace</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+        <key>HOME</key>
+        <string>/Users/abundance</string>
+    </dict>
+</dict>
+</plist>

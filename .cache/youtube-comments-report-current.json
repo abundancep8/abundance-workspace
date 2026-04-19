@@ -1,13 +1,22 @@
 {
-  "timestamp": "2026-04-18T09:01:38.757388",
-  "total_comments_processed": 0,
-  "auto_responses_sent": 0,
-  "flagged_for_review": 0,
-  "comments_by_category": {
-    "questions": 0,
-    "praise": 0,
-    "spam": 0,
-    "sales": 0
+  "timestamp": "2026-04-18T18:30:42.099273+00:00",
+  "cron_id": "114e5c6d-ac8b-47ca-a695-79ac31b5c076",
+  "execution_time": "2026-04-18T18:30:42.099274+00:00",
+  "this_run": {
+    "comments_processed": 8,
+    "auto_responses_sent": 0,
+    "flagged_for_review": 2,
+    "by_category": {
+      "praise": 2,
+      "spam": 2,
+      "sales": 2,
+      "unknown": 1,
+      "questions": 1
+    }
   },
-  "last_run": "2026-04-18T09:01:38.758107"
+  "lifetime": {
+    "total_processed": 1180,
+    "total_auto_responses": 788,
+    "total_flagged": 195
+  }
 }

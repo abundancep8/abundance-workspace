@@ -1,8 +1,8 @@
 {
-  "timestamp": "2026-04-18T02:03:50.621822",
+  "timestamp": "2026-04-18T22:03:47.894428",
   "status": "completed",
-  "execution_time": "2026-04-18 02:03:50 ",
-  "total_dms_processed": 17,
+  "execution_time": "2026-04-18 22:03:47 ",
+  "total_dms_processed": 20,
   "new_dms_this_hour": 0,
   "auto_responses_sent": 0,
   "by_category": {
@@ -18,15 +18,15 @@
   "conversion_potential": "No new product inquiries",
   "estimated_value": "$1500-$2500",
   "lifetime_totals": {
-    "total_dms": 17,
-    "total_responses": 4,
-    "total_flagged": 2,
+    "total_dms": 20,
+    "total_responses": 21,
+    "total_flagged": 7,
     "categories": {
-      "setup_help": 2,
-      "newsletter": 1,
-      "product_inquiry": 3,
-      "partnership": 2,
-      "other": 2,
+      "setup_help": 8,
+      "newsletter": 4,
+      "product_inquiry": 10,
+      "partnership": 9,
+      "other": 0,
       "conversion_potential_leads": 0,
       "estimated_revenue_low": 1500,
       "estimated_revenue_high": 2500

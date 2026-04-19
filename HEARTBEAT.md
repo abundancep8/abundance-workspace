@@ -38,11 +38,17 @@ cat .cache/youtube-comments-report.txt | tail -10
 grep "sales\|partnership\|collaboration" .cache/youtube-comments.jsonl | grep -v "auto_replied"
 ```
 
-### Check C: Cron Health
+### Check C: Cron Health (Automated)
 ```bash
-# Verify both monitors are still running
-launchctl list | grep youtube
+# Automated health check — runs during nightly cycle
+bash ~/.cache/cron-health-monitor.sh
+
+# If health check fails: manually trigger monitors
+python3 ~/.cache/youtube_dm_monitor.py
+python3 ~/.cache/youtube-comment-monitor.py
 ```
+
+**Why automated:** Previous launchctl failures (2026-04-19 00:56 UTC) weren't detected until 2+ hours of backlog accumulated. Automated check prevents silent revenue loss.
 
 ---
 

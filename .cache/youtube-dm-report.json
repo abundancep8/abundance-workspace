@@ -1,23 +1,23 @@
 {
-  "timestamp": "2026-04-18T02:04:56.449853",
+  "timestamp": "2026-04-19T01:57:03.787602",
   "status": "completed",
-  "total_dms_processed": 17,
+  "total_dms_processed": 20,
   "total_this_run": 0,
-  "auto_responses_sent": 14,
+  "auto_responses_sent": 17,
   "by_category": {
     "Setup help": 1,
     "Newsletter": 1,
     "Product inquiry": 1,
     "Partnership": 1,
-    "setup_help": 3,
-    "product_inquiry": 4,
+    "setup_help": 4,
+    "product_inquiry": 5,
     "4": 2,
     "3": 1,
-    "partnership": 2,
+    "partnership": 3,
     "newsletter": 1
   },
   "partnerships_flagged": 0,
   "interesting_partnerships": [],
-  "product_inquiries_count": 4,
-  "conversion_potential": "4 lead(s) ready to follow up"
+  "product_inquiries_count": 5,
+  "conversion_potential": "5 lead(s) ready to follow up"
 }

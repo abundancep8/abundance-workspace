@@ -1,13 +1,15 @@
 {
-  "timestamp": "2026-04-18T07:04:00Z",
-  "status": "error",
-  "error": "ANTHROPIC_API_KEY not configured",
+  "timestamp": "2026-04-18T17:04:00Z",
+  "status": "pending_data",
+  "note": "Awaiting usage data from Anthropic console",
+  "budget_daily": 5.00,
+  "budget_monthly": 155.00,
   "tokens_today": null,
   "cost_today": null,
   "tokens_month": null,
   "cost_month": null,
-  "budget_daily": 5.00,
-  "budget_monthly": 155.00,
-  "alert_triggered": false,
-  "note": "To enable usage tracking, set ANTHROPIC_API_KEY environment variable in your OpenClaw config"
+  "rates": {
+    "input_per_1m": 0.4,
+    "output_per_1m": 1.2
+  }
 }

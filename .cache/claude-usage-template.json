@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-04-19T03:04:00Z",
+  "tokens_today": 0,
+  "tokens_month": 0,
+  "cost_today": 0.00,
+  "cost_month": 0.00,
+  "budget_daily": 5.00,
+  "budget_monthly": 155.00,
+  "status": "pending_data",
+  "notes": "Ready for usage data. Thresholds: $3.75 (75% daily) / $116.25 (75% monthly)"
+}

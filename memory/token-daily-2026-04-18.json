@@ -1,0 +1,21 @@
+{
+  "date": "2026-04-18",
+  "budget_daily": 5.00,
+  "threshold_warning": 3.75,
+  "threshold_critical": 5.00,
+  "checks": [
+    {
+      "time": "09:02",
+      "tokens_in": 24,
+      "tokens_out": 706,
+      "tokens_total": 730,
+      "estimated_cost": 0.0028,
+      "cumulative_cost": 0.0028,
+      "status": "🟢"
+    }
+  ],
+  "cumulative_tokens": 730,
+  "cumulative_cost": 0.0028,
+  "remaining_budget": 4.9972,
+  "percent_spent": 0.056
+}

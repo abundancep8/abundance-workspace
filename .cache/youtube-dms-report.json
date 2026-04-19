@@ -1,84 +1,17 @@
 {
-  "execution_time": "2026-04-17T18:03:00Z",
-  "execution_hour": "11:03 AM PDT",
-  "cron_id": "c1b30404-7343-46ff-aa1d-4ff84daf3674",
-  "status": "operational",
-  "metrics": {
-    "total_dms_all_time": 17,
-    "new_dms_this_run": 0,
-    "auto_responses_sent": 14,
-    "auto_response_rate": 0.82,
-    "partnerships_flagged": 2
-  },
-  "category_breakdown": {
-    "setup_help": {
-      "count": 4,
-      "percentage": 23.5,
-      "auto_responded": 4
-    },
-    "newsletter": {
-      "count": 2,
-      "percentage": 11.8,
-      "auto_responded": 2
-    },
-    "product_inquiry": {
-      "count": 4,
-      "percentage": 23.5,
-      "auto_responded": 4
-    },
-    "partnership": {
-      "count": 5,
-      "percentage": 29.4,
-      "auto_responded": 3,
-      "flagged_for_manual_review": 2
-    }
-  },
+  "timestamp": "2026-04-18T17:03:53.075Z",
+  "total_dms_processed": 3,
+  "auto_responses_sent": 3,
   "conversion_potential": {
-    "product_inquiry_leads": 4,
-    "estimated_conversion_rate": 0.15,
-    "potential_conversions": 0.6,
-    "estimated_revenue_low": 200,
-    "estimated_revenue_high": 800,
-    "currency": "USD"
+    "product_inquiries": 1,
+    "partnerships_flagged": 1
   },
-  "action_items": {
-    "high_priority": [
-      {
-        "sender": "Elena Rodriguez",
-        "category": "product_inquiry",
-        "action": "Follow up - Enterprise (200 users)",
-        "revenue_potential": "500-2000"
-      },
-      {
-        "sender": "James Liu",
-        "category": "product_inquiry",
-        "action": "Send demo link",
-        "revenue_potential": "300-1000"
-      }
-    ],
-    "medium_priority": [
-      {
-        "sender": "TechVentures Collective",
-        "category": "partnership",
-        "action": "Review and respond to sponsorship proposal",
-        "revenue_potential": "variable"
-      },
-      {
-        "sender": "Marketing Pulse",
-        "category": "partnership",
-        "action": "Review sponsored series collaboration",
-        "revenue_potential": "variable"
-      }
-    ]
-  },
-  "system_health": {
-    "monitor_running": true,
-    "cron_schedule": "hourly",
-    "response_templates_active": true,
-    "logging_active": true,
-    "demo_mode": true,
-    "credentials_configured": false
-  },
-  "next_execution": "2026-04-17T19:03:00Z",
-  "next_execution_time": "12:03 PM PDT"
+  "partnerships_for_review": [
+    {
+      "sender": "user_789",
+      "text": "I'd love to collaborate on a partnership opportunity!",
+      "timestamp": "2026-04-18T17:03:53.075Z",
+      "flag": "REVIEW_NEEDED"
+    }
+  ]
 }

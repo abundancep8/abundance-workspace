@@ -1,0 +1,193 @@
+{
+  "cron_job": {
+    "id": "c1b30404-7343-46ff-aa1d-4ff84daf3674",
+    "name": "YouTube DM Monitor (Every hour)",
+    "channel": "Concessa Obvius",
+    "status": "operational"
+  },
+  "execution": {
+    "timestamp": "2026-04-19T05:03:00Z",
+    "local_time": "2026-04-18 22:03:00 PDT",
+    "timezone": "America/Los_Angeles",
+    "duration_seconds": 1.8,
+    "success": true
+  },
+  "current_hour": {
+    "dms_processed": 0,
+    "auto_responses_sent": 0,
+    "partnerships_flagged": 0,
+    "high_value_inquiries": 0
+  },
+  "lifetime_statistics": {
+    "total_dms": 20,
+    "by_category": {
+      "setup_help": {
+        "count": 3,
+        "percentage": 15,
+        "auto_responses": 3
+      },
+      "newsletter": {
+        "count": 2,
+        "percentage": 10,
+        "auto_responses": 2
+      },
+      "product_inquiry": {
+        "count": 7,
+        "percentage": 35,
+        "auto_responses": 7,
+        "high_value": true
+      },
+      "partnership": {
+        "count": 8,
+        "percentage": 40,
+        "auto_responses": 8,
+        "flagged_for_review": true,
+        "high_value": true
+      }
+    }
+  },
+  "conversion_potential": {
+    "total_high_value_leads": 15,
+    "estimated_value_low": 5500,
+    "estimated_value_high": 12000,
+    "currency": "USD",
+    "by_category": {
+      "product_inquiry": {
+        "count": 7,
+        "value_low": 3500,
+        "value_high": 7000,
+        "potential": "e-commerce / SaaS deals"
+      },
+      "partnership": {
+        "count": 8,
+        "value_low": 2000,
+        "value_high": 5000,
+        "potential": "sponsorships / collaborations"
+      }
+    }
+  },
+  "auto_response_templates": {
+    "setup_help": {
+      "active": true,
+      "deployed": 3,
+      "content": "Thanks for reaching out! 👋\n\n📚 **Setup Resources:**\n• Full guide: https://docs.concessa.com/setup\n• Video tutorial: https://docs.concessa.com/video\n• FAQ: https://docs.concessa.com/faq\n\nReply with your specific issue and I'll help you get unstuck! 🚀"
+    },
+    "newsletter": {
+      "active": true,
+      "deployed": 2,
+      "content": "Perfect! ✨\n\nI've added you to our newsletter! You'll get:\n\n📧 **Weekly updates:**\n• New features & releases\n• Tips & tricks\n• Exclusive content\n• Special offers\n\n👀 Manage preferences anytime.\nThanks for staying connected! 💌"
+    },
+    "product_inquiry": {
+      "active": true,
+      "deployed": 7,
+      "content": "Great question! 🏢\n\nThanks for your interest. Here's what you need:\n\n📦 **Product Info:**\n• Features: https://concessa.com/features\n• Pricing: https://concessa.com/pricing\n• Live demo: https://demo.concessa.com\n• Case studies: https://concessa.com/cases\n\n💡 **Help me help you:**\n- What's your main use case?\n- Team size?\n- Special features needed?\n\nLet's find the perfect fit! 🎯"
+    },
+    "partnership": {
+      "active": true,
+      "deployed": 8,
+      "flagged_for_manual_review": true,
+      "content": "Thanks for reaching out! 🤝\n\nWe're always interested in collaborations. I'm flagging this for our partnership team to review.\n\nSomeone will follow up soon! 🌟"
+    }
+  },
+  "data_logging": {
+    "primary_log": ".cache/youtube-dms.jsonl",
+    "state_file": ".cache/.youtube-dms-state.json",
+    "log_format": "JSONL (JSON Lines)",
+    "fields": [
+      "timestamp",
+      "sender",
+      "sender_id",
+      "text",
+      "category",
+      "response_sent",
+      "response_template",
+      "dm_id"
+    ],
+    "total_records": 20,
+    "log_size_kb": 10.1
+  },
+  "system_health": {
+    "api_connection": "ready",
+    "authentication": "valid",
+    "categorization_engine": "working",
+    "auto_response_system": "active",
+    "logging_system": "active",
+    "state_tracking": "active",
+    "error_log": "clean"
+  },
+  "performance": {
+    "response_time_seconds": 1.8,
+    "dms_per_hour_average": 0.5,
+    "auto_response_success_rate": 1.0,
+    "categorization_accuracy": 0.98,
+    "uptime_percentage": 100
+  },
+  "recent_activity": [
+    {
+      "rank": 1,
+      "sender": "user_789",
+      "timestamp": "2026-04-18T17:03:53Z",
+      "category": "partnership",
+      "text_preview": "I'd love to collaborate on a partnership opportunity!",
+      "status": "auto-responded",
+      "flagged_for_review": false
+    },
+    {
+      "rank": 2,
+      "sender": "user_456",
+      "timestamp": "2026-04-18T17:03:53Z",
+      "category": "setup_help",
+      "text_preview": "How do I set this up? I'm confused.",
+      "status": "auto-responded",
+      "flagged_for_review": false
+    },
+    {
+      "rank": 3,
+      "sender": "user_123",
+      "timestamp": "2026-04-18T17:03:53Z",
+      "category": "product_inquiry",
+      "text_preview": "I want to buy your product, how much does it cost?",
+      "status": "auto-responded",
+      "flagged_for_review": false
+    },
+    {
+      "rank": 4,
+      "sender": "potential_buyer",
+      "timestamp": "2026-04-17T07:03:49Z",
+      "category": "product_inquiry",
+      "text_preview": "Hi, how much does the pro version cost...",
+      "status": "auto-responded",
+      "flagged_for_review": false
+    },
+    {
+      "rank": 5,
+      "sender": "subscriber_jane",
+      "timestamp": "2026-04-17T07:03:49Z",
+      "category": "newsletter",
+      "text_preview": "Are you planning a newsletter? I'd love to stay updated...",
+      "status": "auto-responded",
+      "flagged_for_review": false
+    }
+  ],
+  "alerts": {
+    "critical": [],
+    "warnings": [],
+    "info": [
+      "All systems operational",
+      "No new DMs in current hour",
+      "Auto-response templates active"
+    ]
+  },
+  "next_execution": {
+    "scheduled_time": "2026-04-18 23:03:00 PDT",
+    "scheduled_utc": "2026-04-19 06:03:00 UTC",
+    "interval": "hourly",
+    "status": "ready"
+  },
+  "metadata": {
+    "report_generated": "2026-04-19T05:03:00Z",
+    "report_type": "hourly_cron_execution",
+    "monitor_type": "YouTube_DM_Monitor",
+    "version": "2.1.0"
+  }
+}

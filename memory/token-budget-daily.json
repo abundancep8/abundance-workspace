@@ -1,0 +1,20 @@
+{
+  "date": "2026-04-18",
+  "daily_budget_usd": 5.00,
+  "alert_threshold_75_usd": 3.75,
+  "alert_threshold_100_usd": 5.00,
+  "sessions": [
+    {
+      "time": "17:02",
+      "session_id": "cron:5b8e5733-64b6-47aa-9dc9-7f0da1c98d4d",
+      "tokens_in": 24,
+      "tokens_out": 1024,
+      "tokens_total": 1048,
+      "estimated_cost_usd": 0.00415
+    }
+  ],
+  "cumulative_tokens_today": 1048,
+  "cumulative_cost_usd": 0.00415,
+  "status": "🟢",
+  "notes": "First hourly check - initial baseline established"
+}

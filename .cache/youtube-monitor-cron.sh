@@ -1,34 +1,29 @@
 #!/bin/bash
-# YouTube Comment Monitor - Cron Job
-# Runs every 30 minutes to monitor Concessa Obvius channel
+# Cron wrapper for YouTube comment monitor
+# Runs every 30 minutes
 
 set -e
 
 WORKSPACE="/Users/abundance/.openclaw/workspace"
-SCRIPT="$WORKSPACE/.cache/youtube_monitor.py"
-LOG="$WORKSPACE/.cache/youtube-monitor.log"
+LOG_DIR="${WORKSPACE}/.cache"
+SCRIPT="${LOG_DIR}/youtube-monitor.py"
+CRON_LOG="${LOG_DIR}/youtube-monitor-cron.log"
 
-# Ensure API key is set
-if [ -z "$YOUTUBE_API_KEY" ]; then
-    if [ -f "$WORKSPACE/.env" ]; then
-        export $(grep YOUTUBE_API_KEY $WORKSPACE/.env)
-    else
-        echo "[$(date)] ERROR: YOUTUBE_API_KEY not set. Configure in .env or environment." >> "$LOG"
-        exit 1
-    fi
+# Ensure directories exist
+mkdir -p "${LOG_DIR}"
+
+# Run with timestamp
+{
+    echo "=========================================="
+    echo "Run: $(date '+%Y-%m-%d %H:%M:%S')"
+    echo "=========================================="
+    cd "${WORKSPACE}"
+    python3 "${SCRIPT}" 2>&1 || echo "ERROR: Monitor script failed with exit code $?"
+    echo ""
+} >> "${CRON_LOG}"
+
+# Keep log rotation - last 50 runs
+if [ -f "${CRON_LOG}" ]; then
+    tail -n 2000 "${CRON_LOG}" > "${CRON_LOG}.tmp"
+    mv "${CRON_LOG}.tmp" "${CRON_LOG}"
 fi
-
-# Run the monitor
-cd "$WORKSPACE"
-python3 "$SCRIPT" >> "$LOG" 2>&1
-
-# Keep log file from growing too large (keep last 5000 lines)
-if [ -f "$LOG" ]; then
-    LINES=$(wc -l < "$LOG")
-    if [ "$LINES" -gt 10000 ]; then
-        tail -5000 "$LOG" > "$LOG.tmp"
-        mv "$LOG.tmp" "$LOG"
-    fi
-fi
-
-exit 0

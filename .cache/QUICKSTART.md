@@ -1,172 +1,341 @@
 # 🚀 YouTube Comment Monitor - Quick Start
 
-## ✨ What You Just Got
-
-A complete, production-ready system that:
-- ✅ Runs every 30 minutes (via cron)
-- 📝 Monitors YouTube comments in real-time
-- 🏷️ Categorizes: Questions, Praise, Spam, Sales
-- 🤖 Auto-responds to Questions & Praise
-- 🚩 Flags Sales inquiries for your review
-- 📊 Logs everything to JSONL format
-- 📈 Generates analytics dashboards
-
-## 🎯 30-Second Setup
-
-```bash
-# 1. Run setup
-cd ~/.openclaw/workspace/.cache
-./youtube-monitor-setup.sh
-
-# 2. That's it! Cron is installed and running
-```
-
-The monitor will execute every 30 minutes automatically.
-
-## 📊 Check Status Anytime
-
-```bash
-# View analytics dashboard
-python3 ~/.openclaw/workspace/.cache/youtube-analytics.py
-
-# View raw logs (latest 10)
-tail -10 ~/.openclaw/workspace/.cache/youtube-comments.jsonl | jq .
-
-# View cron execution logs
-tail -f ~/.openclaw/workspace/.cache/youtube-monitor-cron.log
-
-# View current state
-cat ~/.openclaw/workspace/.cache/youtube-monitor-state.json | jq .
-```
-
-## ⚙️ Configuration
-
-### Enable Real YouTube API (Recommended)
-
-1. Go to: https://console.cloud.google.com
-2. Create a project
-3. Enable "YouTube Data API v3"
-4. Create OAuth 2.0 credentials (Desktop app)
-5. Download as JSON
-6. Save to: `~/.openclaw/workspace/.cache/youtube-credentials.json`
-7. Update channel ID in `youtube-monitor.py` (line ~42)
-
-### Customize Responses
-
-Edit `youtube-monitor.py` lines 63-73:
-
-```python
-TEMPLATE_RESPONSES = {
-    "questions": [
-        "Your response here...",
-    ],
-    "praise": [
-        "Your thank you response...",
-    ],
-}
-```
-
-### Change Frequency
-
-Edit cron:
-```bash
-crontab -e
-```
-
-Change `*/30 * * * *` to:
-- `*/15` = every 15 minutes
-- `0 * * * *` = every hour
-- `0 9 * * *` = daily at 9 AM
-
-## 📖 File Guide
-
-```
-.cache/
-├── youtube-monitor.py           ← Main script (runs every 30 min)
-├── youtube-analytics.py         ← Dashboard & reporting
-├── youtube-monitor-setup.sh     ← One-time setup
-├── youtube-credentials.json     ← YouTube API key (you add)
-├── youtube-comments.jsonl       ← Comment log
-├── youtube-monitor-state.json   ← Last processed ID
-├── youtube-monitor-cron.log     ← Execution log
-├── YOUTUBE-MONITOR-README.md    ← Full documentation
-└── QUICKSTART.md                ← This file
-```
-
-## 🔍 Examples
-
-### View all questions
-```bash
-cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | jq 'select(.category=="questions")'
-```
-
-### View flagged sales inquiries
-```bash
-cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | jq 'select(.response_status=="flagged_for_review")'
-```
-
-### Count auto-responses this week
-```bash
-cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | jq 'select(.response_status=="auto_responded")' | wc -l
-```
-
-## 🆘 Troubleshooting
-
-### "Cron job not running?"
-```bash
-# Check if it exists
-crontab -l | grep youtube-monitor
-
-# View macOS system logs
-log stream --predicate 'eventMessage contains[cd] "youtube-monitor"' --level debug
-```
-
-### "Getting import errors?"
-```bash
-pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
-```
-
-### "Not detecting my channel?"
-- Update `CHANNEL_ID` variable in `youtube-monitor.py`
-- Find it: YouTube Settings → About → "Channel ID: UC..."
-- Enable YouTube API credentials
-
-## 📝 Next Steps
-
-1. ✅ Setup is running (you're done!)
-2. ⏳ Wait for first cron run (0-30 minutes)
-3. 📊 Check analytics: `python3 youtube-analytics.py`
-4. 🔑 (Optional) Add real YouTube API credentials
-5. 📝 Customize responses to match your brand
-
-## 💡 Tips
-
-**Before adding API credentials:**
-- The monitor runs in MOCK mode (sample data) so you can test everything
-- All logs, responses, and workflows are real
-- Perfect for customizing before connecting to YouTube
-
-**Once you add API credentials:**
-- Monitor will fetch real comments from your channel
-- All existing code works as-is
-- No changes needed except one JSON file
-
-**To pause monitoring:**
-```bash
-crontab -e
-# Comment out the youtube-monitor.py line with #
-```
-
-**To delete monitoring:**
-```bash
-crontab -e
-# Remove the youtube-monitor.py line entirely
-```
-
-## ❓ Questions?
-
-See `YOUTUBE-MONITOR-README.md` for full documentation.
+**Estimated setup time:** 10 minutes  
+**Status:** Production-ready  
+**Channel:** Concessa Obvius
 
 ---
 
-You're all set! 🚀 The system is running and waiting for comments.
+## 📋 Pre-Setup Checklist
+
+Before you begin, make sure you have:
+
+- [ ] Access to Google Cloud Console
+- [ ] Ability to create a new project
+- [ ] YouTube channel (Concessa Obvius)
+- [ ] macOS/Linux machine with Python 3.8+
+
+---
+
+## ⚡ TL;DR - Fast Track
+
+```bash
+# 1. Install dependencies (1 min)
+pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+
+# 2. Get credentials from Google Cloud Console (3 min)
+#    → Create project
+#    → Enable YouTube Data API v3
+#    → Create OAuth 2.0 credentials (Desktop)
+#    → Download JSON to ~/.openclaw/workspace/.cache/youtube_credentials.json
+
+# 3. Run setup wizard (5 min)
+python3 ~/.openclaw/workspace/.cache/setup-youtube-cron.py
+
+# 4. Done! Monitor runs automatically every 30 minutes
+```
+
+---
+
+## 🎯 Step-by-Step Setup
+
+### Step 1: Install Python Dependencies (2 min)
+
+```bash
+cd ~/.openclaw/workspace
+pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+```
+
+**What it does:** Installs YouTube API client libraries.
+
+---
+
+### Step 2: Create Google Cloud Project (5 min)
+
+1. **Go to Google Cloud Console:**
+   → https://console.cloud.google.com
+
+2. **Create a new project:**
+   - Click "Select a Project" (top)
+   - Click "NEW PROJECT"
+   - Name it: `Concessa Obvius Monitor`
+   - Click "CREATE"
+
+3. **Enable YouTube API:**
+   - Search for "YouTube Data API v3"
+   - Click on it
+   - Click "ENABLE"
+   - Wait for it to activate
+
+4. **Create OAuth Credentials:**
+   - Go to "Credentials" (left sidebar)
+   - Click "CREATE CREDENTIALS" → "OAuth client ID"
+   - If prompted, configure OAuth consent screen first:
+     - User Type: External
+     - App name: Concessa Monitor
+     - Scopes: Add `https://www.googleapis.com/auth/youtube.force-ssl`
+   - Application type: **Desktop application**
+   - Name: `Concessa Monitor`
+   - Click "CREATE"
+
+5. **Download JSON:**
+   - Click the download icon on your new credentials
+   - Save file to: **`~/.openclaw/workspace/.cache/youtube_credentials.json`**
+
+---
+
+### Step 3: Update Channel ID (1 min)
+
+Find your actual channel ID:
+
+1. **Go to your YouTube channel:** https://www.youtube.com/@concessaobvius
+2. **Get the channel ID:**
+   - Right-click → "View page source"
+   - Search for `"channelId":"UC`
+   - Copy the full ID
+   - Or check the URL for `/c/...` or `/@...`
+
+3. **Update the script:**
+   ```bash
+   nano ~/.openclaw/workspace/.cache/youtube-comment-monitor.py
+   
+   # Find this line:
+   CHANNEL_ID = "UCa_mZVVqV5Aq48a0MnIjS-w"
+   
+   # Replace with your actual channel ID:
+   CHANNEL_ID = "UC_your_actual_id_here_"
+   
+   # Save: Ctrl+O, Enter, Ctrl+X
+   ```
+
+---
+
+### Step 4: Run Setup Wizard (3 min)
+
+```bash
+python3 ~/.openclaw/workspace/.cache/setup-youtube-cron.py
+```
+
+The wizard will:
+- ✓ Verify dependencies
+- ✓ Check credentials exist
+- ✓ Make scripts executable
+- ✓ Set up cron job (every 30 min)
+- ✓ Guide you through first-time authorization
+
+**When prompted:** Authorize in your browser.
+
+---
+
+### Step 5: Verify Setup (1 min)
+
+```bash
+# Check cron job is installed
+crontab -l | grep youtube
+
+# Should show something like:
+# */30 * * * * /bin/bash /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+```
+
+---
+
+## ✅ You're Done!
+
+Your YouTube comment monitor is now running. Here's what happens:
+
+1. **Every 30 minutes:**
+   - Fetches new comments from Concessa Obvius channel
+   - Categorizes them (Questions, Praise, Spam, Sales, Other)
+   - Auto-responds to Questions & Praise
+   - Flags Sales inquiries for manual review
+
+2. **Logs everything:**
+   - All comments saved to `.cache/youtube-comments.jsonl`
+   - Execution logs in `.cache/youtube-monitor.log`
+
+---
+
+## 🎛️ First-Run Commands
+
+### View Dashboard
+```bash
+python3 ~/.openclaw/workspace/.cache/youtube-monitor-dashboard.py
+```
+
+Shows:
+- Total comments processed
+- Breakdown by category
+- Auto-responses sent
+- Flagged for review
+- Recent comments
+
+### View Live Logs
+```bash
+tail -f ~/.openclaw/workspace/.cache/youtube-monitor.log
+```
+
+### Manual Test Run
+```bash
+python3 ~/.openclaw/workspace/.cache/youtube-comment-monitor.py
+```
+
+### View All Comments
+```bash
+cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | python3 -m json.tool | less
+```
+
+---
+
+## 📊 What Gets Logged
+
+Each comment is logged with:
+```json
+{
+  "timestamp": "2026-04-18T19:30:45",
+  "commenter": "John Doe",
+  "text": "How do I get started?",
+  "category": "question",
+  "response_status": "auto_responded"
+}
+```
+
+---
+
+## 🎯 Comment Categories
+
+| Category | Pattern | Response | Example |
+|----------|---------|----------|---------|
+| **Question** | How, tools, price, timeline | Auto-reply with resources | "How do I get started?" |
+| **Praise** | Amazing, inspiring, thank you | Auto-reply with thanks | "This is life-changing!" |
+| **Spam** | Crypto, MLM, click here | None (manual delete) | "Bitcoin opportunity! 🚀" |
+| **Sales** | Partnership, sponsorship | 🚩 Flagged for review | "Let's collaborate!" |
+| **Other** | Doesn't fit above | None | Random comment |
+
+---
+
+## 🔧 Customization
+
+### Change Response Templates
+
+Edit in `.cache/youtube-comment-monitor.py`:
+
+```python
+RESPONSE_TEMPLATES = {
+    "question": "Your custom response for questions...",
+    "praise": "Your custom response for praise...",
+}
+```
+
+### Change Check Frequency
+
+Edit your crontab:
+```bash
+crontab -e
+
+# Change from:
+*/30 * * * * ...     # every 30 minutes
+
+# To:
+*/15 * * * * ...     # every 15 minutes
+0 * * * * ...        # every hour
+0 9 * * * ...        # daily at 9 AM
+```
+
+### Add Custom Category
+
+Edit `PATTERNS` dict in the script:
+```python
+PATTERNS = {
+    "your_category": [r"pattern1", r"pattern2"],
+}
+```
+
+---
+
+## 🆘 Troubleshooting
+
+### "No valid YouTube credentials found"
+```bash
+# Fix: Download JSON from Google Cloud Console again
+# Save to: ~/.openclaw/workspace/.cache/youtube_credentials.json
+# Then restart the script
+```
+
+### "Channel not found"
+```bash
+# Fix: Verify CHANNEL_ID in the script is correct
+nano ~/.openclaw/workspace/.cache/youtube-comment-monitor.py
+# Update CHANNEL_ID with your actual channel ID
+```
+
+### Cron job not running
+```bash
+# Check it's installed
+crontab -l | grep youtube
+
+# If not there, run setup again
+python3 ~/.openclaw/workspace/.cache/setup-youtube-cron.py
+
+# Test manually
+bash ~/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+```
+
+### Not seeing comments
+```bash
+# Make sure channel has comments enabled
+# Check logs for errors
+tail -f ~/.openclaw/workspace/.cache/youtube-monitor.log
+
+# Try manual run
+python3 ~/.openclaw/workspace/.cache/youtube-comment-monitor.py
+```
+
+---
+
+## 📚 Learn More
+
+| Topic | File |
+|-------|------|
+| Full setup guide | `YOUTUBE-SETUP.md` |
+| Command reference | `YOUTUBE-CHEATSHEET.md` |
+| Complete documentation | `README-YOUTUBE-MONITOR.md` |
+| Verification test | `test-youtube-setup.py` |
+
+---
+
+## 🚨 Quick Diagnostics
+
+Run the test suite:
+```bash
+python3 ~/.openclaw/workspace/.cache/test-youtube-setup.py
+```
+
+Shows exactly what's working and what needs fixing.
+
+---
+
+## 📞 Stuck?
+
+1. **Check logs:** `tail -f ~/.openclaw/workspace/.cache/youtube-monitor.log`
+2. **Run diagnostics:** `python3 ~/.openclaw/workspace/.cache/test-youtube-setup.py`
+3. **Read full guide:** `~/.openclaw/workspace/.cache/YOUTUBE-SETUP.md`
+
+---
+
+## ✨ You're Ready!
+
+Your monitor is now:
+- ✓ Installed
+- ✓ Configured  
+- ✓ Running (every 30 min via cron)
+- ✓ Logging all comments
+- ✓ Auto-responding to questions & praise
+- ✓ Flagging sales inquiries
+
+**Enjoy automated YouTube comment management!** 🎬
+
+---
+
+**Last Updated:** April 18, 2026  
+**Time Estimate:** 10 minutes total  
+**Difficulty:** ⭐ Easy (guided setup)

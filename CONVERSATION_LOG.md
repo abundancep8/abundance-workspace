@@ -52,6 +52,23 @@
 
 ---
 
+## 2026-04-19
+
+### Critical System Failure Detection Framework (02:00 AM)
+- **Problem:** YouTube monitor cron failed silently at 00:56 UTC; wasn't detected until 2+ hours of backlog accumulated (missed partnerships, DMs, comments)
+- **Decision:** Build automated health monitor that alerts immediately if critical revenue-generating systems fail
+- **Rationale:** Manual discovery of cron failures is too slow and creates revenue risk. Need automatic detection + fallback workflow.
+- **Insight:** The gap between "system fails" and "we know it failed" creates silent backlog. Automate that detection.
+- **Implementation:**
+  - `cron-health-monitor.sh` — Checks if YouTube monitors' state files have been updated in last 2 hours
+  - If stale: alerts with system name + fallback manual trigger commands
+  - Integrated into HEARTBEAT.md (runs during nightly cycle + can run manually anytime)
+  - Integrated into SYSTEMS_STATUS.md health check
+- **Framework:** Critical revenue systems must have automated failure detection + human-readable fallback commands. Don't rely on manual discovery.
+- **Next:** Monitor will run nightly and catch any future launchctl/cron failures automatically
+
+---
+
 ## 2026-04-18
 
 ### Nightly Cycle Formalization (02:00 AM)

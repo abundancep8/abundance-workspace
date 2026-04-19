@@ -1,0 +1,15 @@
+# YouTube Comment Monitor - Cron Entry
+# Add this to your crontab with: crontab -e
+# Then paste these lines:
+
+# Run every 30 minutes
+*/30 * * * * export YOUTUBE_API_KEY="YOUR_API_KEY_HERE" YOUTUBE_CHANNEL_NAME="Concessa Obvius" && cd /Users/abundance/.openclaw/workspace && python3 cron/youtube-comment-monitor.py >> cron/.cache/youtube-monitor-cron.log 2>&1
+
+# Or run every hour:
+# 0 * * * * export YOUTUBE_API_KEY="YOUR_API_KEY_HERE" YOUTUBE_CHANNEL_NAME="Concessa Obvius" && cd /Users/abundance/.openclaw/workspace && python3 cron/youtube-comment-monitor.py >> cron/.cache/youtube-monitor-cron.log 2>&1
+
+# Or run every 4 hours:
+# 0 */4 * * * export YOUTUBE_API_KEY="YOUR_API_KEY_HERE" YOUTUBE_CHANNEL_NAME="Concessa Obvius" && cd /Users/abundance/.openclaw/workspace && python3 cron/youtube-comment-monitor.py >> cron/.cache/youtube-monitor-cron.log 2>&1
+
+# Or run daily at 9 AM:
+# 0 9 * * * export YOUTUBE_API_KEY="YOUR_API_KEY_HERE" YOUTUBE_CHANNEL_NAME="Concessa Obvius" && cd /Users/abundance/.openclaw/workspace && python3 cron/youtube-comment-monitor.py >> cron/.cache/youtube-monitor-cron.log 2>&1

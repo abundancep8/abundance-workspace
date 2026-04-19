@@ -1,0 +1,77 @@
+{
+  "channel": {
+    "id": "UCwhateverYourChannelIdIs",
+    "name": "Concessa Obvius",
+    "description": "Your channel name here"
+  },
+  "api": {
+    "credentials_file": "~/.openclaw/workspace/.cache/youtube-credentials.json",
+    "token_file": "~/.openclaw/workspace/.cache/youtube-token.json",
+    "scopes": [
+      "https://www.googleapis.com/auth/youtube.force-ssl"
+    ]
+  },
+  "logging": {
+    "comments_log": "~/.openclaw/workspace/.cache/youtube-comments.jsonl",
+    "state_file": "~/.openclaw/workspace/.cache/youtube-monitor-state.json",
+    "execution_log": "~/.openclaw/workspace/.cache/youtube-monitor.log",
+    "report_file": "~/.openclaw/workspace/.cache/youtube-monitor-report.txt"
+  },
+  "monitoring": {
+    "frequency_minutes": 30,
+    "videos_per_check": 5,
+    "comments_per_video": 20,
+    "order_by": "relevance"
+  },
+  "categorization": {
+    "patterns": {
+      "questions": [
+        "how (do|can|should|would) i",
+        "what (is|are|do you|should i)",
+        "when should",
+        "where (do|can)",
+        "cost|price|pricing",
+        "timeline|how long|how many hours",
+        "tools?|software|platform|requirements",
+        "\\?$"
+      ],
+      "praise": [
+        "amazing|awesome|incredible|fantastic|brilliant|genius",
+        "love|adore|appreciate",
+        "thank you|thanks",
+        "inspiring|motivated|helped",
+        "game.?changer",
+        "life.?changing"
+      ],
+      "spam": [
+        "crypto|bitcoin|ethereum|nft|defi",
+        "mlm|multi.?level|network marketing",
+        "forex|binary options",
+        "get.?rich.?quick",
+        "click here|dm me|message me"
+      ],
+      "sales": [
+        "partnership|collaboration|partner",
+        "promote|sponsor|advertise",
+        "work together|team up",
+        "business opportunity|proposal"
+      ]
+    }
+  },
+  "responses": {
+    "questions": "Thanks for the question! Here's what I'd recommend: {answer}\n\nFeel free to reach out if you need more details!",
+    "praise": "Thank you so much for the kind words! 🙏 This really means a lot. Excited to share more content with you!",
+    "enabled": {
+      "questions": true,
+      "praise": true,
+      "spam": false,
+      "sales": false
+    }
+  },
+  "actions": {
+    "auto_respond_questions": true,
+    "auto_respond_praise": true,
+    "flag_sales": true,
+    "delete_spam": false
+  }
+}

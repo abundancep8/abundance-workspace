@@ -8,27 +8,30 @@ Logs all activity to .cache/youtube-comments.jsonl
 import json
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional
 import re
 
 try:
     from google.auth.transport.requests import Request
-    from google.oauth2.service_account import Credentials
-    from google.auth.oauthlib.flow import InstalledAppFlow
+    from google.oauth2.credentials import Credentials as OAuth2Credentials
+    from google_auth_oauthlib.flow import InstalledAppFlow
     from googleapiclient.discovery import build
     import google.auth
-except ImportError:
-    print("Error: Google API libraries not installed. Run: pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client")
+except ImportError as e:
+    print(f"Error: Google API libraries not installed. {e}")
+    print("Run: pip install google-auth google-auth-oauthlib google-auth-httplib2 google-api-python-client")
     sys.exit(1)
 
 # Configuration
-CHANNEL_ID = "UCH_YOUR_CHANNEL_ID"  # Replace with actual Concessa Obvius channel ID
+CHANNEL_ID = "UC326742c_CXvNQ6IcnZ8Jkw"  # Concessa Obvius channel
 CACHE_DIR = Path(".cache")
 LOG_FILE = CACHE_DIR / "youtube-comments.jsonl"
 STATE_FILE = CACHE_DIR / "youtube-monitor-state.json"
-CREDENTIALS_FILE = Path.home() / ".openclaw" / "youtube-credentials.json"
+CREDENTIALS_FILE = Path(".secrets") / "youtube-credentials.json"
+TOKEN_FILE = Path(".secrets") / "youtube-token.json"
+SCOPES = ["https://www.googleapis.com/auth/youtube.force-ssl"]
 
 # Template responses
 TEMPLATES = {
@@ -98,18 +101,46 @@ class YouTubeCommentMonitor:
         CACHE_DIR.mkdir(exist_ok=True)
 
     def _authenticate(self):
-        """Authenticate with YouTube API."""
+        """Authenticate with YouTube API using OAuth2."""
         try:
-            if CREDENTIALS_FILE.exists():
-                credentials = Credentials.from_service_account_file(CREDENTIALS_FILE)
-                self.youtube = build("youtube", "v3", credentials=credentials)
-            else:
-                print(f"Error: Credentials file not found at {CREDENTIALS_FILE}")
-                print("Set up YouTube API credentials and save to:", CREDENTIALS_FILE)
-                sys.exit(1)
+            credentials = None
+            
+            # Try to load existing token
+            if TOKEN_FILE.exists():
+                with open(TOKEN_FILE) as f:
+                    token_data = json.load(f)
+                credentials = OAuth2Credentials.from_authorized_user_info(token_data, SCOPES)
+            
+            # If no valid token, get a new one via OAuth2 flow
+            if not credentials or not credentials.valid:
+                if credentials and credentials.expired and credentials.refresh_token:
+                    try:
+                        req = Request()
+                        credentials.refresh(req)
+                    except Exception:
+                        credentials = None
+                
+                if not credentials:
+                    if CREDENTIALS_FILE.exists():
+                        flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES)
+                        credentials = flow.run_local_server(port=0)
+                        
+                        # Save the token for next time
+                        with open(TOKEN_FILE, "w") as f:
+                            f.write(credentials.to_json())
+                    else:
+                        print(f"Error: Credentials file not found at {CREDENTIALS_FILE}")
+                        print("Set up YouTube API credentials and save to:", CREDENTIALS_FILE)
+                        sys.exit(1)
+            
+            # Build the service
+            self.youtube = build("youtube", "v3", credentials=credentials)
+            print("✓ YouTube API authenticated")
+        
         except Exception as e:
             print(f"Authentication error: {e}")
             self.stats["errors"] += 1
+            self.youtube = None
 
     def _categorize_comment(self, text: str) -> str:
         """Categorize a comment based on patterns."""
@@ -267,7 +298,7 @@ class YouTubeCommentMonitor:
     def generate_report(self) -> dict:
         """Generate a summary report."""
         return {
-            "timestamp": datetime.now(datetime.timezone.utc).isoformat(),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
             "stats": self.stats,
             "log_file": str(LOG_FILE),
             "log_entries": self._count_log_entries(),

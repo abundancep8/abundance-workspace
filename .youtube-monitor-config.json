@@ -1,0 +1,60 @@
+{
+  "monitor": {
+    "channel_id": "UC326742c_CXvNQ6IcnZ8Jkw",
+    "channel_name": "Concessa Obvius",
+    "enabled": true,
+    "schedule": "*/30 * * * *",
+    "schedule_description": "Every 30 minutes"
+  },
+  "api": {
+    "credentials_file": ".secrets/youtube-credentials.json",
+    "token_file": ".secrets/youtube-token.json",
+    "scopes": ["https://www.googleapis.com/auth/youtube.force-ssl"],
+    "api_version": "v3",
+    "quota_per_run": 200
+  },
+  "logging": {
+    "cache_dir": ".cache",
+    "comment_log": ".cache/youtube-comments.jsonl",
+    "state_file": ".cache/youtube-monitor-state.json",
+    "report_text": ".cache/youtube-comments-report.txt",
+    "report_json": ".cache/youtube-comments-report.json",
+    "exec_log": ".cache/youtube-monitor.log"
+  },
+  "categorization": {
+    "categories": ["questions", "praise", "spam", "sales"],
+    "min_confidence": 0.5
+  },
+  "responses": {
+    "question": {
+      "enabled": true,
+      "template": "Thanks for the question! For more details, check out our FAQ or docs. Feel free to reach out!"
+    },
+    "praise": {
+      "enabled": true,
+      "template": "Thank you so much for the kind words! 🙏 We're so glad you found this valuable. Keep building!"
+    },
+    "spam": {
+      "enabled": false,
+      "action": "filter"
+    },
+    "sales": {
+      "enabled": false,
+      "action": "flag_for_review"
+    }
+  },
+  "monitoring": {
+    "max_comments_per_run": 100,
+    "retry_on_rate_limit": true,
+    "max_retries": 3,
+    "timeout_seconds": 300
+  },
+  "notifications": {
+    "on_failure": false,
+    "on_high_spam": false,
+    "min_spam_threshold": 0.3
+  },
+  "version": "1.0.0",
+  "last_updated": "2026-04-18T18:00:00Z",
+  "status": "production"
+}
