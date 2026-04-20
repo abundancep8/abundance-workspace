@@ -1,0 +1,84 @@
+2026-04-20 00:02:20,192 [INFO] ================================================================================
+2026-04-20 00:02:20,192 [INFO] YouTube Comment Monitor - Cron Worker Started
+2026-04-20 00:02:20,192 [INFO] Time: 2026-04-20T07:02:20.192373
+2026-04-20 00:02:20,192 [INFO] ================================================================================
+2026-04-20 00:02:20,193 [INFO] Loaded 94 total comments
+2026-04-20 00:02:20,193 [INFO] Summary: {'questions': 26, 'praise': 26, 'spam': 25, 'sales': 9, 'other': 8}
+2026-04-20 00:02:20,193 [INFO] Responses: {'auto_responded': 32, 'flagged_for_review': 8, 'processed': 54}
+2026-04-20 00:02:20,193 [INFO] Report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+2026-04-20 00:02:20,193 [INFO] JSON report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.json
+2026-04-20 00:02:20,193 [INFO] Report generated successfully
+2026-04-20 00:02:20,193 [INFO] State saved
+2026-04-20 00:02:20,193 [INFO] ================================================================================
+2026-04-20 00:02:20,193 [INFO] YouTube Comment Monitor - Cron Worker Completed
+2026-04-20 00:02:20,193 [INFO] ================================================================================
+2026-04-20 00:02:53,318 [INFO] ================================================================================
+2026-04-20 00:02:53,318 [INFO] YouTube Comment Monitor - Cron Worker Started
+2026-04-20 00:02:53,318 [INFO] Time: 2026-04-20T07:02:53.318211
+2026-04-20 00:02:53,318 [INFO] ================================================================================
+2026-04-20 00:02:53,318 [INFO] Loaded 94 total comments
+2026-04-20 00:02:53,318 [INFO] Summary: {'questions': 26, 'praise': 26, 'spam': 25, 'sales': 9, 'other': 8}
+2026-04-20 00:02:53,318 [INFO] Responses: {'auto_responded': 32, 'flagged_for_review': 8, 'processed': 54}
+2026-04-20 00:02:53,318 [INFO] Report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+2026-04-20 00:02:53,318 [INFO] JSON report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.json
+2026-04-20 00:02:53,319 [INFO] Report generated successfully
+2026-04-20 00:02:53,319 [INFO] State saved
+2026-04-20 00:02:53,319 [INFO] ================================================================================
+2026-04-20 00:02:53,319 [INFO] YouTube Comment Monitor - Cron Worker Completed
+2026-04-20 00:02:53,319 [INFO] ================================================================================
+2026-04-20 00:32:53,396 [INFO] ================================================================================
+2026-04-20 00:32:53,397 [INFO] YouTube Comment Monitor - Cron Worker Started
+2026-04-20 00:32:53,397 [INFO] Time: 2026-04-20T07:32:53.397256
+2026-04-20 00:32:53,397 [INFO] ================================================================================
+2026-04-20 00:32:53,397 [INFO] Loaded 105 total comments
+2026-04-20 00:32:53,397 [INFO] Summary: {'questions': 29, 'praise': 29, 'spam': 28, 'sales': 10, 'other': 9}
+2026-04-20 00:32:53,397 [INFO] Responses: {'auto_responded': 36, 'flagged_for_review': 9, 'processed': 60}
+2026-04-20 00:32:53,397 [INFO] Report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+2026-04-20 00:32:53,398 [INFO] JSON report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.json
+2026-04-20 00:32:53,398 [INFO] Report generated successfully
+2026-04-20 00:32:53,398 [INFO] State saved
+2026-04-20 00:32:53,398 [INFO] ================================================================================
+2026-04-20 00:32:53,398 [INFO] YouTube Comment Monitor - Cron Worker Completed
+2026-04-20 00:32:53,398 [INFO] ================================================================================
+2026-04-20 01:02:53,476 [INFO] ================================================================================
+2026-04-20 01:02:53,477 [INFO] YouTube Comment Monitor - Cron Worker Started
+2026-04-20 01:02:53,477 [INFO] Time: 2026-04-20T08:02:53.477088
+2026-04-20 01:02:53,477 [INFO] ================================================================================
+2026-04-20 01:02:53,477 [INFO] Loaded 116 total comments
+2026-04-20 01:02:53,477 [INFO] Summary: {'questions': 32, 'praise': 32, 'spam': 31, 'sales': 11, 'other': 10}
+2026-04-20 01:02:53,477 [INFO] Responses: {'auto_responded': 40, 'flagged_for_review': 10, 'processed': 66}
+2026-04-20 01:02:53,477 [INFO] Report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+2026-04-20 01:02:53,478 [INFO] JSON report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.json
+2026-04-20 01:02:53,478 [INFO] Report generated successfully
+2026-04-20 01:02:53,478 [INFO] State saved
+2026-04-20 01:02:53,478 [INFO] ================================================================================
+2026-04-20 01:02:53,478 [INFO] YouTube Comment Monitor - Cron Worker Completed
+2026-04-20 01:02:53,478 [INFO] ================================================================================
+2026-04-20 01:32:53,552 [INFO] ================================================================================
+2026-04-20 01:32:53,553 [INFO] YouTube Comment Monitor - Cron Worker Started
+2026-04-20 01:32:53,553 [INFO] Time: 2026-04-20T08:32:53.553060
+2026-04-20 01:32:53,553 [INFO] ================================================================================
+2026-04-20 01:32:53,553 [INFO] Loaded 127 total comments
+2026-04-20 01:32:53,553 [INFO] Summary: {'questions': 35, 'praise': 35, 'spam': 34, 'sales': 12, 'other': 11}
+2026-04-20 01:32:53,553 [INFO] Responses: {'auto_responded': 44, 'flagged_for_review': 11, 'processed': 72}
+2026-04-20 01:32:53,553 [INFO] Report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+2026-04-20 01:32:53,554 [INFO] JSON report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.json
+2026-04-20 01:32:53,554 [INFO] Report generated successfully
+2026-04-20 01:32:53,554 [INFO] State saved
+2026-04-20 01:32:53,554 [INFO] ================================================================================
+2026-04-20 01:32:53,554 [INFO] YouTube Comment Monitor - Cron Worker Completed
+2026-04-20 01:32:53,554 [INFO] ================================================================================
+2026-04-20 02:02:53,630 [INFO] ================================================================================
+2026-04-20 02:02:53,630 [INFO] YouTube Comment Monitor - Cron Worker Started
+2026-04-20 02:02:53,631 [INFO] Time: 2026-04-20T09:02:53.630954
+2026-04-20 02:02:53,631 [INFO] ================================================================================
+2026-04-20 02:02:53,631 [INFO] Loaded 138 total comments
+2026-04-20 02:02:53,631 [INFO] Summary: {'questions': 38, 'praise': 38, 'spam': 37, 'sales': 13, 'other': 12}
+2026-04-20 02:02:53,631 [INFO] Responses: {'auto_responded': 48, 'flagged_for_review': 12, 'processed': 78}
+2026-04-20 02:02:53,631 [INFO] Report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
+2026-04-20 02:02:53,632 [INFO] JSON report written to /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.json
+2026-04-20 02:02:53,632 [INFO] Report generated successfully
+2026-04-20 02:02:53,632 [INFO] State saved
+2026-04-20 02:02:53,632 [INFO] ================================================================================
+2026-04-20 02:02:53,632 [INFO] YouTube Comment Monitor - Cron Worker Completed
+2026-04-20 02:02:53,632 [INFO] ================================================================================

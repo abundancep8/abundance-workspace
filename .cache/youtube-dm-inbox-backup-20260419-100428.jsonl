@@ -1,0 +1,4 @@
+{"sender": "Sarah Chen", "sender_id": "UC_sarah_chen", "text": "Hi! I'm trying to set up the tool but I keep getting an SSL error. Can you help?", "timestamp": "2026-04-19T02:45:00Z", "dm_id": "dm-demo-001"}
+{"sender": "newsletter@marketing.co", "sender_id": "UC_marketing_co", "text": "Hi! We'd love to be added to your newsletter list to stay updated on new releases!", "timestamp": "2026-04-19T02:55:00Z", "dm_id": "dm-demo-002"}
+{"sender": "Enterprise Tech Corp", "sender_id": "UC_enterprise_001", "text": "What's the pricing for your enterprise plan? We have 500 team members interested.", "timestamp": "2026-04-19T03:00:00Z", "dm_id": "dm-demo-003"}
+{"sender": "Alex from Velocity Partners", "sender_id": "UC_velocity_partners", "text": "Hey Concessa! We think there's a great partnership opportunity here. Your product would be perfect to integrate with our platform. Can we discuss?", "timestamp": "2026-04-19T03:01:00Z", "dm_id": "dm-demo-004"}

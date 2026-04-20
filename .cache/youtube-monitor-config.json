@@ -1,105 +1,65 @@
 {
+  "job_name": "youtube-comment-monitor",
+  "description": "Monitor Concessa Obvius YouTube channel for new comments, categorize, auto-respond, and log",
+  "schedule": "*/30 * * * *",
+  "schedule_human": "Every 30 minutes",
+  "script": ".cache/youtube_comment_monitor.py",
   "channel": {
     "name": "Concessa Obvius",
-    "username": "@ConcessaObvius",
-    "check_interval_minutes": 30
+    "id": "UCa_mZVVqV5Aq48a0MnIjS-w"
+  },
+  "environment": {
+    "YOUTUBE_API_KEY": "SET_YOUR_API_KEY_HERE"
+  },
+  "output": {
+    "comments_log": ".cache/youtube-comments.jsonl",
+    "state_file": ".cache/youtube-monitor-state.json"
   },
   "categories": {
-    "1_questions": {
-      "name": "Questions",
-      "keywords": [
+    "questions": {
+      "patterns": [
         "how do i",
-        "how to",
-        "how can",
         "what is",
-        "where can",
+        "where to start",
         "cost",
-        "price",
-        "timeline",
-        "when",
-        "tools",
-        "setup",
-        "start",
-        "getting started",
-        "tutorial",
-        "help",
-        "how does",
-        "can i",
-        "?"
+        "timeline"
       ],
-      "auto_respond": true,
-      "template": "Thanks for the question! Check our docs at [docs link] or reach out directly. We're here to help! 🚀"
+      "action": "auto_respond_with_template"
     },
-    "2_praise": {
-      "name": "Praise",
-      "keywords": [
+    "praise": {
+      "patterns": [
         "amazing",
-        "awesome",
-        "incredible",
-        "love this",
-        "thank you",
-        "great",
-        "brilliant",
         "inspiring",
-        "fantastic",
-        "excellent",
-        "genius",
-        "mind-blowing",
-        "game-changer",
-        "❤️",
-        "👏"
+        "thank you",
+        "love"
       ],
-      "auto_respond": true,
-      "template": "Thank you so much! 🙏 Glad this is helpful. Keep building!"
+      "action": "auto_respond_with_template"
     },
-    "3_spam": {
-      "name": "Spam",
-      "keywords": [
+    "spam": {
+      "patterns": [
         "crypto",
         "bitcoin",
-        "ethereum",
-        "nft",
         "mlm",
-        "multi-level",
-        "join now",
-        "click here",
-        "limited time",
-        "act fast",
-        "click link",
-        "earn money fast",
-        "work from home",
-        "guaranteed",
-        "forex",
-        "casino",
-        "betting"
+        "click here"
       ],
-      "auto_respond": false,
-      "action": "delete"
+      "action": "flag_and_hide"
     },
-    "4_sales": {
-      "name": "Sales/Partnership",
-      "keywords": [
+    "sales": {
+      "patterns": [
         "partnership",
-        "collaboration",
-        "sponsor",
-        "advertisement",
-        "promote",
-        "business opportunity",
-        "affiliate",
-        "brand deal",
-        "looking to work",
-        "interested in working",
-        "can we partner",
-        "let's collaborate",
-        "white label",
-        "reseller"
+        "collaborate",
+        "sponsorship"
       ],
-      "auto_respond": false,
       "action": "flag_for_review"
     }
   },
-  "auto_response_templates": {
-    "question_template": "Thanks for asking! 👋\n\nYour question is great. Check our documentation or reply with more details and we'll point you in the right direction.\n\nBuilding together!",
-    "praise_template": "Thank you! 🙏 We're excited you find this valuable. Keep building amazing things!"
+  "response_templates": {
+    "questions": "Thanks for the question! Here's how to get started: [CUSTOMIZED_ANSWER]. Check out [RELEVANT_LINK] for more details.",
+    "praise": "Thank you so much! 🙏 This means everything to us. Keep supporting and we'll keep creating great content!"
+  },
+  "notifications": {
+    "flagged_comments": true,
+    "summary_report": true,
+    "report_channel": "discord"
   }
 }

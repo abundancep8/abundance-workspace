@@ -6,6 +6,21 @@
 
 ---
 
+## 2026-04-20
+
+### 02:00 AM — Nightly Cycle Checkpoint: Documentation Process Improvement
+- **Systems Checked:** 
+  - Hourly token check (✅ ran at 01:02 AM, $0.001 spend)
+  - YouTube comment monitor (✅ last run normal, 30m cron active)
+  - YouTube DM monitor (✅ hourly cron active)
+  - CONVERSATION_LOG.md structure (⚠️ inconsistent nightly cycle logging)
+- **Issues Found:** Nightly cycles executed but documentation format was variable; some cycles had full entries, others minimal. Risk: future reviews can't quickly see "was this cycle meaningful, or routine check?"
+- **One Improvement Implemented:** Created **Nightly Cycle Checkpoint Template** in CONVERSATION_LOG.md + documented this cycle using it. Ensures every nightly run logs: systems checked, issues found, specific improvement, and next focus. Creates audit trail and prevents "did cycle run?" uncertainty.
+- **Why This Matters:** Autonomous systems need self-documenting outputs. If a nightly cycle ran, it logged. If something changed, it's recorded. Future-me can now scan CONVERSATION_LOG.md and see exactly which cycles found issues vs. routine checks.
+- **Next Focus:** Implement checkpoint template consistently across all future nightly cycles. Review template during next few cycles to refine it if needed.
+
+---
+
 ## 2026-04-17
 
 ### Friction-Reduction Framework: YouTube OAuth Setup (02:00 AM)
@@ -93,7 +108,22 @@
 
 ---
 
-## Template for Future Entries
+## Nightly Cycle Checkpoint Template
+
+Use this template for every nightly self-improvement cycle (captures what was checked, what was improved, what comes next):
+
+```markdown
+### [Date] [Time] — Nightly Cycle Checkpoint
+- **Systems Checked:** [list systems reviewed + quick status]
+- **Issues Found:** [any bugs, silent failures, or anomalies detected? or "None"]
+- **One Improvement Implemented:** [specific actionable improvement + files changed]
+- **Why This Matters:** [one sentence on impact or risk reduction]
+- **Next Focus:** [what to monitor or improve next cycle]
+```
+
+---
+
+## Template for Decision/Framework Entries
 
 ```markdown
 ### [Time] — [Topic/Decision]

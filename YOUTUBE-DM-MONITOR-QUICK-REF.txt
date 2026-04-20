@@ -1,0 +1,223 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                 YOUTUBE DM MONITOR — QUICK REFERENCE                       ║
+║                         Concessa Obvius Channel                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+🚀 GETTING STARTED
+
+  Test the Monitor:
+  $ python3 ~/.openclaw/workspace/.bin/youtube-dm-hourly-monitor.py
+
+  Queue a Test DM:
+  $ python3 ~/.openclaw/workspace/.bin/youtube-dm-ingester.py \
+    --sender "Test User" --text "I need help setting up" --id "test_001"
+
+  View Latest Report:
+  $ cat ~/.openclaw/workspace/.cache/youtube-dm-report.txt
+
+════════════════════════════════════════════════════════════════════════════════
+
+📊 KEY FILES
+
+  Monitor Script ........... ~/.openclaw/workspace/.bin/youtube-dm-hourly-monitor.py
+  DM Ingester ............ ~/.openclaw/workspace/.bin/youtube-dm-ingester.py
+  Install Script .......... ~/.openclaw/workspace/.bin/install-youtube-dm-cron.sh
+
+  DM Log (Master) ......... ~/.openclaw/workspace/.cache/youtube-dms.jsonl
+  Partnerships Log ........ ~/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+  Metrics Log ............ ~/.openclaw/workspace/.cache/youtube-metrics.jsonl
+  Hourly Report .......... ~/.openclaw/workspace/.cache/youtube-dm-report.txt
+  State/Dedup File ....... ~/.openclaw/workspace/.cache/youtube-dms-state.json
+
+  Cron Log ............... ~/.openclaw/workspace/.cache/youtube-dm-cron.log
+  Error Log .............. ~/.openclaw/workspace/.cache/youtube-dm-monitor-error.log
+
+════════════════════════════════════════════════════════════════════════════════
+
+🔧 DM CATEGORIES & AUTO-RESPONSES
+
+  1️⃣ SETUP HELP (🔧)
+     Keywords: setup, help, error, stuck, tutorial, how to, troubleshoot...
+     Response: Links to docs, FAQ, troubleshooting guides
+
+  2️⃣ NEWSLETTER (📧)
+     Keywords: newsletter, email list, subscribe, updates, mailing list...
+     Response: Confirmation + welcome to newsletter
+
+  3️⃣ PRODUCT INQUIRY (🛍️)
+     Keywords: price, pricing, buy, purchase, cost, plan, features, demo...
+     Response: Product overview, pricing tiers, features, call-to-action
+
+  4️⃣ PARTNERSHIP (🤝)
+     Keywords: partner, collaborate, sponsor, brand deal, affiliate, integr...
+     Response: Acknowledgment + escalation to partnerships@concessa.com
+
+════════════════════════════════════════════════════════════════════════════════
+
+📈 REPORTS & METRICS
+
+  Hourly Report:
+    • New DMs in queue
+    • DMs processed
+    • Auto-responses sent
+    • Partnerships flagged
+    • Category breakdown
+    • Conversion potential
+
+  Metrics Format: JSON Lines (one metric per line)
+    timestamp, new_dms, processed, auto_responses, by_category object
+
+  Conversion Potential:
+    • Product inquiries = potential leads
+    • Est. 15% conversion = ~1 customer per 7 inquiries
+
+════════════════════════════════════════════════════════════════════════════════
+
+⚙️ SERVICE MANAGEMENT (macOS)
+
+  Check Service Status:
+  $ launchctl list | grep youtube-dm-monitor
+
+  Reload Service:
+  $ launchctl unload ~/Library/LaunchAgents/com.openclaw.youtube-dm-monitor.plist
+  $ launchctl load ~/Library/LaunchAgents/com.openclaw.youtube-dm-monitor.plist
+
+  View Service Logs:
+  $ tail -100f ~/.openclaw/workspace/.cache/youtube-dm-cron.log
+
+  Uninstall Service:
+  $ launchctl unload ~/Library/LaunchAgents/com.openclaw.youtube-dm-monitor.plist
+  $ rm ~/Library/LaunchAgents/com.openclaw.youtube-dm-monitor.plist
+
+════════════════════════════════════════════════════════════════════════════════
+
+🧪 TESTING & DEBUGGING
+
+  Manual Run:
+  $ cd ~/.openclaw/workspace && python3 .bin/youtube-dm-hourly-monitor.py
+
+  Queue 5 Test DMs:
+  $ python3 .bin/youtube-dm-ingester.py --sender "User1" --text "help setup" --id "u1"
+  $ python3 .bin/youtube-dm-ingester.py --sender "User2" --text "subscribe me" --id "u2"
+  $ python3 .bin/youtube-dm-ingester.py --sender "User3" --text "pricing" --id "u3"
+  $ python3 .bin/youtube-dm-ingester.py --sender "User4" --text "collaboration" --id "u4"
+  $ python3 .bin/youtube-dm-ingester.py --sender "User5" --text "random" --id "u5"
+
+  Then run: $ python3 .bin/youtube-dm-hourly-monitor.py
+
+  View Results:
+  $ tail -20 ~/.openclaw/workspace/.cache/youtube-dms.jsonl
+  $ cat ~/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+  Check Processing State:
+  $ cat ~/.openclaw/workspace/.cache/youtube-dms-state.json
+
+════════════════════════════════════════════════════════════════════════════════
+
+🔧 CUSTOMIZATION
+
+  Edit Auto-Response Templates:
+  → Edit self.templates dict in .bin/youtube-dm-hourly-monitor.py
+
+  Add/Modify Category Keywords:
+  → Edit self.category_keywords dict in .bin/youtube-dm-hourly-monitor.py
+
+  Change Execution Schedule:
+  → Edit StartInterval in ~/Library/LaunchAgents/com.openclaw.youtube-dm-monitor.plist
+    (3600 = 1 hour, 1800 = 30 min, 300 = 5 min, etc.)
+
+  Add More Categories:
+  → Add to DMCategory enum + templates + keywords in monitor script
+
+════════════════════════════════════════════════════════════════════════════════
+
+❌ TROUBLESHOOTING
+
+  Monitor not running?
+  → Check: launchctl list | grep youtube-dm-monitor
+  → Reload service (see above)
+
+  Script errors?
+  → View: tail -50 ~/.openclaw/workspace/.cache/youtube-dm-monitor-error.log
+
+  No DMs being processed?
+  → Check: ls -la ~/.openclaw/workspace/.cache/youtube-dm-inbox.jsonl
+  → Queue test DM (see above)
+  → Run monitor manually to see output
+
+  Duplicate responses?
+  → State file may be corrupted. Clear and restart:
+    $ rm ~/.openclaw/workspace/.cache/youtube-dms-state.json
+
+  DMs not ingesting?
+  → Check DM sources:
+    a) YouTube API credentials: .secrets/youtube-credentials.json exists?
+    b) Email queue: .cache/youtube-dm-email-queue.jsonl has entries?
+    c) Manual queue: Use youtube-dm-ingester.py
+
+════════════════════════════════════════════════════════════════════════════════
+
+📊 KEY METRICS TO MONITOR
+
+  Daily:
+    • New DMs received
+    • Auto-response success rate (should be 100%)
+    • Partnership flags (review manually)
+
+  Weekly:
+    • Total DMs processed
+    • Category distribution
+    • Product inquiry rate
+
+  Monthly:
+    • Conversion rate (leads → customers)
+    • Partnership deal outcomes
+    • Newsletter subscriber growth
+
+════════════════════════════════════════════════════════════════════════════════
+
+🔗 INTEGRATION POINTS
+
+  YouTube API:
+  → Credentials: .secrets/youtube-credentials.json
+  → Scope: youtube.force-ssl
+  → Endpoint: YouTube Messages API (requires enterprise account)
+
+  Email Forwarding:
+  → Source: Forward YouTube DMs to monitoring email
+  → Processor: Email parser writes to .cache/youtube-dm-email-queue.jsonl
+  → Format: One JSON object per DM with sender, text, sender_id
+
+  Manual Queue:
+  → Method: youtube-dm-ingester.py command-line tool
+  → Storage: .cache/youtube-dm-inbox.jsonl
+  → Auto-clear: Monitor deletes queue file after processing
+
+  Web Hooks (Optional):
+  → Endpoint: /api/youtube-dms (future enhancement)
+  → Method: POST with {sender, text, sender_id}
+  → Response: 200 OK
+
+════════════════════════════════════════════════════════════════════════════════
+
+⏰ SCHEDULE (Current)
+
+  LaunchD Service: Every 1 hour (3600 seconds)
+  Starts: Immediately on system boot and every hour after
+  Run Time: ~30-60 seconds per cycle (depends on DM count)
+  Log Retention: Indefinite (jsonl files append-only)
+
+════════════════════════════════════════════════════════════════════════════════
+
+✅ STATUS
+
+  Installation: ✅ Complete
+  Service: ✅ Running
+  Last Test: 2026-04-20 06:05 UTC
+  DMs Processed (All Time): 5
+  Auto-Responses Sent: 5
+  Partnerships Flagged: 1
+
+════════════════════════════════════════════════════════════════════════════════
+Last Updated: April 20, 2026 | Next run: Hourly (automated)
+════════════════════════════════════════════════════════════════════════════════

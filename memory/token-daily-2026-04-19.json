@@ -13,11 +13,21 @@
       "estimated_cost": 0.00278,
       "cumulative_cost": 0.00278,
       "status": "🟢"
+    },
+    {
+      "time": "10:02",
+      "session_id": "cron:5b8e5733-64b6-47aa-9dc9-7f0da1c98d4d",
+      "tokens_in": 24,
+      "tokens_out": 888,
+      "tokens_total": 912,
+      "estimated_cost": 0.00215,
+      "cumulative_cost": 0.00493,
+      "status": "🟢"
     }
   ],
-  "cumulative_tokens": 714,
-  "cumulative_cost_usd": 0.00278,
-  "remaining_budget": 4.99722,
-  "percent_spent": 0.056,
-  "notes": "Hourly token check activated at 01:02 UTC. YouTube monitors down (launchctl I/O error) - see daily notes."
+  "cumulative_tokens": 1626,
+  "cumulative_cost_usd": 0.00493,
+  "remaining_budget": 4.99507,
+  "percent_spent": 0.099,
+  "notes": "Hourly token check continues. Nightly backup and self-improvement completed (~187 files synced, context improved)."
 }

@@ -1,15 +1,20 @@
 {
-  "timestamp": "2026-04-14T15:31:07.787969",
-  "total_processed": 6,
-  "auto_responded": 3,
-  "flagged_review": 1,
-  "spam_ignored": 1,
-  "general_logged": 1,
-  "flagged_comments": [
-    {
-      "commenter": "Alex Martinez",
-      "text": "I'm interested in a partnership opportunity to collaborate. Would love to discuss sponsorship options.",
-      "category": 4
-    }
-  ]
+  "timestamp": "2026-04-20T09:02:53.631556",
+  "channel": "Concessa Obvius",
+  "channel_id": "UCa_mZVVqV5Aq48a0MnIjS-w",
+  "status": "operational",
+  "comments_processed": 138,
+  "breakdown": {
+    "questions": 38,
+    "praise": 38,
+    "spam": 37,
+    "sales": 13,
+    "other": 12
+  },
+  "responses": {
+    "auto_responded": 48,
+    "flagged_for_review": 12,
+    "processed": 78
+  },
+  "cron_id": "114e5c6d-ac8b-47ca-a695-79ac31b5c076"
 }

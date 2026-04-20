@@ -1,4 +1,4 @@
-# Token Ledger — April 17, 2026
+# Token Ledger — April 19, 2026
 
 ## Daily Budget
 - **Budget:** $5.00
@@ -11,4 +11,4 @@
 
 | Time | Tokens (Session) | Estimated Total Today | Cumulative Spend | % of Budget | Status |
 |------|------------------|----------------------|------------------|-------------|--------|
-| 00:02 (12:02 AM) | 1,024 | ~1.0k | ~$0.004 | 0.08% | 🟢 |
+| 19:02 (7:02 PM) | 835 (24 in / 811 out) | ~835 | ~$0.0032 | 0.06% | 🟢 |

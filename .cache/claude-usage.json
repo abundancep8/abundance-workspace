@@ -1,15 +1,14 @@
 {
-  "timestamp": "2026-04-18T17:04:00Z",
-  "status": "pending_data",
-  "note": "Awaiting usage data from Anthropic console",
-  "budget_daily": 5.00,
-  "budget_monthly": 155.00,
+  "timestamp": "2026-04-19T11:04:00Z",
+  "status": "fetch_failed_manual_check_required",
+  "reason": "Anthropic console API not publicly available. Requires interactive login to https://console.anthropic.com",
+  "note": "To automate this, you can either: (1) provide API credentials for a usage tracking API if Anthropic exposes one, (2) set up browser automation with stored credentials, or (3) manually log usage from console.anthropic.com/account/usage",
   "tokens_today": null,
   "cost_today": null,
   "tokens_month": null,
   "cost_month": null,
-  "rates": {
-    "input_per_1m": 0.4,
-    "output_per_1m": 1.2
-  }
+  "budget_daily": 5.00,
+  "budget_monthly": 155.00,
+  "alert_triggered": false,
+  "next_action": "manual_check"
 }

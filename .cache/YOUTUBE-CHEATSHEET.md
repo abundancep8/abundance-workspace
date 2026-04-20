@@ -1,210 +1,165 @@
-# YouTube Monitor - Cheat Sheet
+# 🎥 YouTube Monitor - Quick Reference
 
-Quick reference for common operations.
+## Commands
 
-## Installation
-
+### Run Monitor
 ```bash
-# Install dependencies
-pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+python3 .cache/youtube-monitor.py
+```
+Fetch new comments, categorize, auto-respond, and log.
 
-# Run setup (handles everything)
-python3 ~/.openclaw/workspace/.cache/setup-youtube-cron.py
+### View Analytics
+```bash
+python3 .cache/youtube-analytics.py
+```
+Detailed report with stats, timeline, top commenters.
+
+### Export as JSON (last 10 comments)
+```bash
+python3 .cache/youtube-analytics.py --json 10
 ```
 
-## Monitoring
-
+### Export as CSV
 ```bash
-# Dashboard (stats, recent comments)
-python3 ~/.openclaw/workspace/.cache/youtube-monitor-dashboard.py
-
-# Live log
-tail -f ~/.openclaw/workspace/.cache/youtube-monitor.log
-
-# Cron execution log
-tail -f ~/.openclaw/workspace/.cache/youtube-monitor-cron.log
-
-# Manual run
-python3 ~/.openclaw/workspace/.cache/youtube-comment-monitor.py
+python3 .cache/youtube-analytics.py --csv > comments.csv
 ```
 
-## Queries
-
+### Initial Setup
 ```bash
-# View all comments (pretty-printed)
-cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | python3 -m json.tool
-
-# Last 10 comments
-tail -10 ~/.openclaw/workspace/.cache/youtube-comments.jsonl | python3 -m json.tool
-
-# Count by category
-jq -r '.category' ~/.openclaw/workspace/.cache/youtube-comments.jsonl | sort | uniq -c
-
-# View questions only
-jq 'select(.category == "question")' ~/.openclaw/workspace/.cache/youtube-comments.jsonl
-
-# View sales (flagged for review)
-jq 'select(.category == "sales")' ~/.openclaw/workspace/.cache/youtube-comments.jsonl
-
-# Find by commenter
-jq 'select(.commenter == "Name Here")' ~/.openclaw/workspace/.cache/youtube-comments.jsonl
-
-# View auto-responses sent
-jq 'select(.response_status == "auto_responded")' ~/.openclaw/workspace/.cache/youtube-comments.jsonl
-
-# Export to CSV
-jq -r '[.timestamp, .commenter, .category, .text] | @csv' \
-  ~/.openclaw/workspace/.cache/youtube-comments.jsonl > comments.csv
+./.cache/youtube-setup.sh
 ```
+Install deps, save credentials, set channel ID.
+
+---
 
 ## Configuration
 
+### Set Channel ID
 ```bash
-# Edit monitor script (response templates, patterns)
-nano ~/.openclaw/workspace/.cache/youtube-comment-monitor.py
-
-# Update cron frequency
-crontab -e
-
-# View cron job
-crontab -l | grep youtube
+export YOUTUBE_CHANNEL_ID="UCxxxxxxxxxxxxxxxxxxxxxxxx"
 ```
 
-## Cron Management
-
-```bash
-# Check if running
-crontab -l | grep youtube
-
-# Install cron job
-*/30 * * * * /bin/bash /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.sh
-
-# Remove cron job
-crontab -e  # Remove the line and save
-
-# Test manually
-bash /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+### Edit Auto-Response Templates
+File: `youtube-monitor.py`
+```python
+TEMPLATES = {
+    1: "Thanks for the question!",  # Questions
+    2: "Thanks so much!",            # Praise
+}
 ```
 
-## Credentials
+### Edit Categorization Logic
+Function: `categorize_comment()` in `youtube-monitor.py`
+- Add regex patterns for custom categories
+- Adjust priority order (spam checks first, then sales, etc.)
 
-```bash
-# Reset OAuth token (force re-auth)
-rm ~/.openclaw/workspace/.cache/youtube_token.json
+---
 
-# Verify credentials file exists
-ls -la ~/.openclaw/workspace/.cache/youtube_credentials.json
+## Files Reference
 
-# Check permissions
-stat ~/.openclaw/workspace/.cache/youtube_token.json
-```
+| File | What It Is |
+|------|-----------|
+| `.cache/youtube-monitor.py` | Main script |
+| `.cache/youtube-analytics.py` | Analytics tool |
+| `.cache/youtube-setup.sh` | Setup helper |
+| `.cache/youtube-comments.jsonl` | Comment log |
+| `.cache/youtube-monitor-state.json` | Last processed comment ID |
+| `.cache/README-YOUTUBE.md` | Full guide (this repo) |
+| `~/.openclaw/youtube-credentials.json` | API credentials (created by setup) |
 
-## Troubleshooting
+---
 
-```bash
-# Check logs for errors
-grep -i error ~/.openclaw/workspace/.cache/youtube-monitor.log
+## Categories
 
-# See recent activity
-tail -20 ~/.openclaw/workspace/.cache/youtube-monitor.log
+| # | Name | Examples | Action |
+|---|------|----------|--------|
+| 1 | Question | "How do I...?", "What's the cost?" | Auto-respond |
+| 2 | Praise | "Amazing!", "Inspiring" | Auto-respond |
+| 3 | Spam | "Buy crypto!", "Check my channel!" | Log only |
+| 4 | Sales | "Partnership?", "Let's collaborate" | Flag for review |
 
-# Count comments processed
-wc -l ~/.openclaw/workspace/.cache/youtube-comments.jsonl
+---
 
-# Verify script syntax
-python3 -m py_compile ~/.openclaw/workspace/.cache/youtube-comment-monitor.py
+## JSON Log Format
 
-# Test cron permissions
-ls -la ~/.openclaw/workspace/.cache/youtube-monitor-cron.sh
-```
-
-## Commands by Frequency
-
-### Daily
-```bash
-python3 ~/.openclaw/workspace/.cache/youtube-monitor-dashboard.py
-```
-
-### Weekly
-```bash
-# Review flagged sales comments
-jq 'select(.response_status == "flagged_for_review")' \
-  ~/.openclaw/workspace/.cache/youtube-comments.jsonl
-```
-
-### Monthly
-```bash
-# Archive old logs
-cp ~/.openclaw/workspace/.cache/youtube-comments.jsonl \
-   ~/.openclaw/workspace/.cache/youtube-comments-$(date +%Y-%m).jsonl
-
-# Backup credentials
-cp ~/.openclaw/workspace/.cache/youtube_credentials.json \
-   ~/.openclaw/workspace/.cache/youtube_credentials.backup.json
-```
-
-## Quick Stats
-
-```bash
-# Total comments
-jq -s 'length' ~/.openclaw/workspace/.cache/youtube-comments.jsonl
-
-# By category
-jq -r '.category' ~/.openclaw/workspace/.cache/youtube-comments.jsonl | sort | uniq -c
-
-# Questions without response
-jq -r 'select(.category == "question" and .response_status == "none")' \
-  ~/.openclaw/workspace/.cache/youtube-comments.jsonl | wc -l
-
-# Auto-responses sent
-jq -r 'select(.response_status == "auto_responded")' \
-  ~/.openclaw/workspace/.cache/youtube-comments.jsonl | wc -l
-
-# Flagged for review
-jq -r 'select(.response_status == "flagged_for_review")' \
-  ~/.openclaw/workspace/.cache/youtube-comments.jsonl | wc -l
-```
-
-## File Locations
-
-```
-~/.openclaw/workspace/.cache/
-├── youtube-comment-monitor.py          # Main script
-├── youtube-monitor-cron.sh             # Cron wrapper
-├── setup-youtube-cron.py               # Setup assistant
-├── youtube-monitor-dashboard.py        # Dashboard viewer
-├── youtube_credentials.json            # OAuth credentials (secret!)
-├── youtube_token.json                  # OAuth token (secret!)
-├── youtube-comments.jsonl              # All comments log
-├── youtube-monitor.log                 # Monitor logs
-├── youtube-monitor-cron.log            # Cron execution logs
-├── youtube-monitor-state.json          # Last check time
-├── README-YOUTUBE-MONITOR.md           # Full documentation
-├── YOUTUBE-SETUP.md                    # Setup guide
-└── YOUTUBE-CHEATSHEET.md               # This file
-```
-
-## Tips & Tricks
-
-**Use aliases** in your shell:
-```bash
-alias ytmon='python3 ~/.openclaw/workspace/.cache/youtube-monitor-dashboard.py'
-alias ytlog='tail -f ~/.openclaw/workspace/.cache/youtube-monitor.log'
-alias ytflagged='jq "select(.response_status == \"flagged_for_review\")" ~/.openclaw/workspace/.cache/youtube-comments.jsonl'
-```
-
-**Monitor in background:**
-```bash
-# Run dashboard and update every 30 seconds
-watch -n 30 'python3 ~/.openclaw/workspace/.cache/youtube-monitor-dashboard.py'
-```
-
-**Alert on new flagged comments:**
-```bash
-# Run daily cron to email if flagged comments exist
-0 9 * * * test $(jq 'select(.response_status == "flagged_for_review")' ~/.openclaw/workspace/.cache/youtube-comments.jsonl | wc -l) -gt 0 && mail -s "YouTube: New flagged comments" user@example.com
+```json
+{
+  "timestamp": "2026-04-19T13:30:00+00:00",
+  "comment_id": "Zxxxxxxxxxxxx",
+  "commenter": "John Doe",
+  "text": "This is amazing!",
+  "category": 2,
+  "response_status": "auto_response_queued"
+}
 ```
 
 ---
 
-**Questions?** See `YOUTUBE-SETUP.md` for detailed guide.
+## Response Statuses
+
+- `none` — No response (spam)
+- `auto_response_queued` — Template queued (questions/praise)
+- `flagged_for_review` — Sales inquiry, awaiting review
+
+---
+
+## Cron Job
+
+**ID:** `114e5c6d-ac8b-47ca-a695-79ac31b5c076`  
+**Schedule:** Every 30 minutes  
+**Command:** `python3 ~/.openclaw/workspace/.cache/youtube-monitor.py`
+
+---
+
+## Typical Workflow
+
+1. **Setup once:**
+   ```bash
+   ./.cache/youtube-setup.sh
+   ```
+
+2. **Monitor runs automatically every 30 min**
+   - Fetches comments
+   - Auto-responds to Q&A
+   - Flags sales inquiries
+
+3. **Check daily:**
+   ```bash
+   python3 .cache/youtube-analytics.py
+   ```
+   Look for flagged items needing review.
+
+4. **Customize as needed:**
+   - Edit templates in `youtube-monitor.py`
+   - Adjust categorization patterns
+   - Enable auto-posting (requires auth)
+
+---
+
+## Environment Variables
+
+```bash
+# Required for monitor to run
+export YOUTUBE_CHANNEL_ID="UCxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Optional: for custom YouTube Data API quota project
+export YOUTUBE_API_KEY="your-api-key-here"  # If using API key instead of OAuth
+```
+
+Add to `~/.zshrc` or `~/.bashrc` to persist.
+
+---
+
+## Troubleshooting Quick Fixes
+
+| Problem | Fix |
+|---------|-----|
+| Credentials not found | `.cache/youtube-setup.sh` |
+| No comments detected | Check channel ID and API quota |
+| Import errors | `pip install google-auth-oauthlib google-api-python-client` |
+| Cron not running | Check cron status: `crontab -l` |
+| Comments not logging | Check `.cache/youtube-comments.jsonl` permissions |
+
+---
+
+**Remember:** Monitor runs every 30 minutes automatically. Manually run to test or force an immediate check.

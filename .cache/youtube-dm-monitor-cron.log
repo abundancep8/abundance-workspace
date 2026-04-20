@@ -1,0 +1,38 @@
+==========================================
+YouTube DM Monitor - Hourly Run
+Time: 2026-04-19 04:03:45 PDT
+==========================================
+[2026-04-19 04:03:45,073] INFO: Starting YouTube DM Monitor for 'Concessa Obvius'
+[2026-04-19 04:03:45,073] INFO: Fetching DMs from YouTube Studio...
+[2026-04-19 04:03:45,073] WARNING: Playwright not installed; using demo mode
+[2026-04-19 04:03:45,073] INFO: Using existing DM log (no new DMs from YouTube Studio)
+[2026-04-19 04:03:45,073] INFO: No new DMs to process
+[2026-04-19 04:03:45,073] INFO: ✅ Monitor run completed successfully
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-19T04:03:45.073750
+
+✅ Total DMs (all time): 24
+✉️  This run: 0
+📤 Auto-responses sent: 21
+
+📂 By Category:
+  • Setup Help: 1
+  • Newsletter: 1
+  • Product Inquiry: 1
+  • Partnership: 1
+  • Setup Help: 6
+  • Product Inquiry: 5
+  • Partnership: 4
+  • Newsletter: 2
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  5 lead(s) ready to follow up
+==================================================
+
+✅ Run completed successfully
+

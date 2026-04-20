@@ -1,140 +1,155 @@
 #!/usr/bin/env python3
 """
-YouTube Comment Monitor - Analytics Dashboard
-View logs, generate reports, and analyze comment trends
+YouTube Comment Monitor - Analytics & Reporting
+Reads youtube-comments.jsonl and generates detailed reports.
 """
 
 import json
 from pathlib import Path
 from datetime import datetime, timedelta
-from collections import Counter
+from collections import defaultdict
 
-WORKSPACE_ROOT = Path.home() / ".openclaw" / "workspace"
-CACHE_DIR = WORKSPACE_ROOT / ".cache"
-LOG_FILE = CACHE_DIR / "youtube-comments.jsonl"
+JSONL_PATH = Path(".cache/youtube-comments.jsonl")
 
-def load_logs():
-    """Load all comments from JSONL file."""
+CATEGORY_NAMES = {
+    1: "Questions",
+    2: "Praise",
+    3: "Spam",
+    4: "Sales",
+}
+
+def load_comments():
+    """Load all comments from JSONL."""
     comments = []
-    if LOG_FILE.exists():
-        with open(LOG_FILE) as f:
-            for line in f:
+    if not JSONL_PATH.exists():
+        return comments
+    
+    with open(JSONL_PATH) as f:
+        for line in f:
+            if line.strip():
                 try:
                     comments.append(json.loads(line))
-                except:
+                except json.JSONDecodeError:
                     pass
+    
     return comments
 
-def print_header(text):
-    """Print a formatted header."""
-    print("\n" + "=" * 70)
-    print(f"  {text}")
-    print("=" * 70)
-
-def analyze_by_category(comments):
-    """Analyze comments by category."""
-    categories = Counter(c.get("category", "unknown") for c in comments)
-    print_header("COMMENTS BY CATEGORY")
-    for cat, count in sorted(categories.items(), key=lambda x: -x[1]):
-        pct = (count / len(comments) * 100) if comments else 0
-        emoji = {"questions": "❓", "praise": "👏", "spam": "🚫", "sales": "🚩"}.get(cat, "•")
-        print(f"  {emoji} {cat:15} : {count:5} ({pct:5.1f}%)")
-
-def analyze_by_status(comments):
-    """Analyze responses by status."""
-    statuses = Counter(c.get("response_status", "unknown") for c in comments)
-    print_header("RESPONSE STATUS")
-    for status, count in sorted(statuses.items(), key=lambda x: -x[1]):
-        pct = (count / len(comments) * 100) if comments else 0
-        print(f"  • {status:20} : {count:5} ({pct:5.1f}%)")
-
-def analyze_time(comments):
-    """Analyze comments over time."""
-    print_header("COMMENTS OVER TIME")
-    
-    # Group by hour
-    hourly = Counter()
-    for comment in comments:
-        ts = comment.get("timestamp", "")
-        if ts:
-            try:
-                dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
-                hour = dt.strftime("%Y-%m-%d %H:00")
-                hourly[hour] += 1
-            except:
-                pass
-    
-    for hour in sorted(hourly.keys()):
-        count = hourly[hour]
-        bar = "█" * min(count, 30)
-        print(f"  {hour} | {bar} ({count})")
-
-def find_flagged(comments):
-    """Find sales inquiries flagged for review."""
-    print_header("FLAGGED FOR REVIEW (SALES INQUIRIES)")
-    flagged = [c for c in comments if c.get("response_status") == "flagged_for_review"]
-    
-    if not flagged:
-        print("  ✅ No flagged comments - all clear!")
+def print_report(comments):
+    """Generate and print detailed report."""
+    if not comments:
+        print("📭 No comments logged yet.")
         return
     
-    for comment in flagged[-10:]:  # Last 10
-        commenter = comment.get("commenter", "Unknown")
-        text = comment.get("text", "")[:60]
-        ts = comment.get("timestamp", "")
-        print(f"\n  👤 {commenter}")
-        print(f"     💬 {text}...")
-        print(f"     📅 {ts[:10]}")
-
-def find_questions(comments):
-    """Find unanswered questions."""
-    print_header("RECENT QUESTIONS")
-    questions = [c for c in comments if c.get("category") == "questions"]
-    
-    if not questions:
-        print("  No questions found")
-        return
-    
-    for comment in questions[-5:]:  # Last 5
-        commenter = comment.get("commenter", "Unknown")
-        text = comment.get("text", "")[:70]
-        responded = "✅" if comment.get("response_status") == "auto_responded" else "⏳"
-        print(f"\n  {responded} {commenter}")
-        print(f"     {text}...")
-
-def summary(comments):
-    """Print summary stats."""
-    print_header("SUMMARY STATISTICS")
-    
-    total = len(comments)
-    auto_responded = len([c for c in comments if c.get("response_status") == "auto_responded"])
-    flagged = len([c for c in comments if c.get("response_status") == "flagged_for_review"])
-    spam = len([c for c in comments if c.get("category") == "spam"])
-    
-    print(f"  📊 Total comments logged    : {total}")
-    print(f"  ✅ Auto-responses sent      : {auto_responded} ({auto_responded/total*100:.1f}%)" if total else "  ✅ Auto-responses sent      : 0")
-    print(f"  🚩 Flagged for review       : {flagged}")
-    print(f"  🚫 Spam filtered            : {spam}")
-    print(f"  📅 Last update              : {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-
-def main():
-    """Run analytics."""
-    comments = load_logs()
+    # Filter out system messages
+    comments = [c for c in comments if c.get("category", 0) != 0]
     
     if not comments:
-        print("📭 No comments logged yet. Run the monitor to collect data.")
-        print(f"    Log file: {LOG_FILE}")
+        print("📭 No comments logged yet (excluding system messages).")
         return
     
-    # Print reports
-    summary(comments)
-    analyze_by_category(comments)
-    analyze_by_status(comments)
-    analyze_time(comments)
-    find_questions(comments)
-    find_flagged(comments)
+    # Summary stats
+    print("\n" + "="*60)
+    print("📊 YOUTUBE COMMENT MONITOR - DETAILED REPORT")
+    print("="*60)
     
-    print("\n" + "=" * 70 + "\n")
+    print(f"\n📈 Overall Statistics")
+    print(f"   Total comments: {len(comments)}")
+    print(f"   Date range: {comments[0]['timestamp'][:10]} → {comments[-1]['timestamp'][:10]}")
+    
+    # By category
+    by_category = defaultdict(int)
+    by_status = defaultdict(int)
+    
+    for c in comments:
+        cat = c.get("category", 0)
+        if cat > 0:
+            by_category[cat] += 1
+        by_status[c.get("response_status", "none")] += 1
+    
+    print(f"\n📂 By Category")
+    for cat in sorted(by_category.keys()):
+        name = CATEGORY_NAMES.get(cat, f"Unknown({cat})")
+        count = by_category[cat]
+        pct = (count / len(comments)) * 100
+        print(f"   {name:15} {count:3d}  ({pct:5.1f}%)")
+    
+    # By response status
+    print(f"\n💬 By Response Status")
+    for status in sorted(by_status.keys()):
+        count = by_status[status]
+        pct = (count / len(comments)) * 100
+        print(f"   {status:20} {count:3d}  ({pct:5.1f}%)")
+    
+    # Activity timeline (last 7 days)
+    print(f"\n📅 Last 7 Days Activity")
+    now = datetime.fromisoformat(comments[-1]['timestamp'].replace('Z', '+00:00'))
+    week_ago = now - timedelta(days=7)
+    
+    by_day = defaultdict(int)
+    for c in comments:
+        ts = datetime.fromisoformat(c['timestamp'].replace('Z', '+00:00'))
+        if ts >= week_ago:
+            day = ts.strftime("%a %m/%d")
+            by_day[day] += 1
+    
+    for day in sorted(by_day.keys()):
+        count = by_day[day]
+        bar = "█" * (count // 2) if count > 0 else "  -  "
+        print(f"   {day}  {count:3d}  {bar}")
+    
+    # Top commenters
+    print(f"\n👥 Top Commenters")
+    by_commenter = defaultdict(int)
+    for c in comments:
+        by_commenter[c.get("commenter", "Unknown")] += 1
+    
+    top_commenters = sorted(by_commenter.items(), key=lambda x: x[1], reverse=True)[:5]
+    for commenter, count in top_commenters:
+        print(f"   {commenter:30} {count:3d} comments")
+    
+    # Recent comments needing action
+    print(f"\n🚩 Recent Comments Flagged for Review (Sales)")
+    flagged = [c for c in comments if c.get("response_status") == "flagged_for_review"][-3:]
+    if flagged:
+        for c in reversed(flagged):
+            ts = datetime.fromisoformat(c['timestamp'].replace('Z', '+00:00'))
+            print(f"\n   [{ts.strftime('%m/%d %H:%M')}] {c.get('commenter', 'Unknown')}")
+            print(f"   \"{c.get('text', '')[:80]}...\"")
+    else:
+        print("   None")
+    
+    print("\n" + "="*60)
+
+def print_json_export(comments, limit=None):
+    """Export comments as pretty JSON."""
+    if limit:
+        comments = comments[-limit:]
+    
+    print(json.dumps(comments, indent=2))
+
+def main():
+    """Main analytics runner."""
+    import sys
+    
+    comments = load_comments()
+    
+    if len(sys.argv) > 1:
+        if sys.argv[1] == "--json":
+            limit = int(sys.argv[2]) if len(sys.argv) > 2 else None
+            print_json_export(comments, limit)
+        elif sys.argv[1] == "--csv":
+            # CSV export
+            print("timestamp,commenter,category,text,response_status")
+            for c in comments:
+                if c.get("category", 0) > 0:
+                    ts = c['timestamp'][:19].replace('T', ' ')
+                    commenter = c.get('commenter', 'Unknown').replace('"', '""')
+                    category = c.get('category', 0)
+                    text = c.get('text', '').replace('"', '""')[:100]
+                    status = c.get('response_status', 'none')
+                    print(f'"{ts}","{commenter}",{category},"{text}","{status}"')
+    else:
+        print_report(comments)
 
 if __name__ == "__main__":
     main()

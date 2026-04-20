@@ -1,210 +1,172 @@
 # YouTube Comment Monitor - Setup Guide
 
-This automated monitor tracks new comments on the Concessa Obvius YouTube channel, categorizes them, auto-responds to questions/praise, and flags sales inquiries for review.
-
 ## Prerequisites
 
-1. **Python 3.8+**
-2. **Google Cloud Project** with YouTube Data API v3 enabled
-3. **OAuth 2.0 Credentials** (Desktop application)
+1. **YouTube API Key**
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Create a new project
+   - Enable YouTube Data API v3
+   - Create an API Key (restrict to YouTube Data API)
+   - Set environment variable: `export YOUTUBE_API_KEY="your-key-here"`
 
-## Step 1: Create Google Cloud Project
+2. **Channel ID**
+   - For "Concessa Obvius": Navigate to the channel
+   - Check the URL for the channel ID (usually in `/c/...` or `/@...` format)
+   - Or use the YouTube Data API: `https://www.googleapis.com/youtube/v3/search?part=snippet&q=Concessa%20Obvius&key=YOUR_KEY`
+   - Update `CONFIG.channelId` in `youtube-monitor.js`
 
-1. Go to [Google Cloud Console](https://console.cloud.google.com)
-2. Create a new project: **"Concessa Obvius Monitor"**
-3. Enable YouTube Data API v3:
-   - Search for "YouTube Data API v3"
-   - Click "Enable"
-4. Create OAuth 2.0 credentials:
-   - Go to **Credentials** → **Create Credentials** → **OAuth client ID**
-   - Choose **Desktop application**
-   - Download the JSON file
-   - Save it to: `~/.openclaw/workspace/.cache/youtube_credentials.json`
+3. **Node.js** (v14+)
+   ```bash
+   node --version
+   ```
 
-## Step 2: Install Dependencies
-
-```bash
-cd ~/.openclaw/workspace
-pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
-```
-
-## Step 3: Get Channel ID
-
-If you don't know the exact channel ID:
+## Installation
 
 ```bash
-python3 -c "
-from urllib.parse import urlparse, parse_qs
-url = input('Paste Concessa Obvius channel URL: ')
-# Extract from various URL formats
-if 'youtube.com/c/' in url:
-    channel_handle = url.split('/c/')[1].split('/')[0]
-    print(f'Channel handle: @{channel_handle}')
-elif 'youtube.com/@' in url:
-    channel_handle = url.split('@')[1].split('/')[0]
-    print(f'Channel handle: @{channel_handle}')
-elif 'youtube.com/channel/' in url:
-    channel_id = url.split('/channel/')[1].split('/')[0]
-    print(f'Channel ID: {channel_id}')
-"
+# Make the script executable
+chmod +x /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.js
+
+# Ensure .cache directory exists
+mkdir -p /Users/abundance/.openclaw/workspace/.cache
 ```
 
-Update `CHANNEL_ID` in the monitor script with the actual ID.
+## Configuration
 
-## Step 4: First Run (Interactive)
+Edit the `CONFIG` object in `youtube-monitor.js`:
 
-The first time you run the script, it will:
-1. Read your credentials from `youtube_credentials.json`
-2. Open a browser for you to authorize
-3. Save the token to `youtube_token.json`
+```javascript
+const CONFIG = {
+  channelId: 'ACTUAL_CHANNEL_ID_HERE',  // ← Update this
+  logFile: '/Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl',
+  stateFile: '/Users/abundance/.openclaw/workspace/.cache/youtube-monitor-state.json',
+  apiKey: process.env.YOUTUBE_API_KEY,  // Set via env var
+};
+```
+
+## Running Manually
 
 ```bash
-python3 ~/.openclaw/workspace/.cache/youtube-comment-monitor.py
+export YOUTUBE_API_KEY="your-api-key"
+node /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.js
 ```
 
-Follow the browser prompt to authorize.
+Expected output:
+```
+📊 YouTube Comment Monitor Report
+──────────────────────────────────
+✅ Processed:      5 comments
+💬 Auto-responses: 2 sent
+🚩 Flagged review: 1 comments
+...
+```
 
-## Step 5: Configure Cron
+## Cron Setup (Every 30 minutes)
 
-Make the cron wrapper executable:
+Add to crontab (`crontab -e`):
 
 ```bash
-chmod +x ~/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+# Run every 30 minutes
+*/30 * * * * export YOUTUBE_API_KEY="your-api-key" && node /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.js >> /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log 2>&1
 ```
 
-Install the cron job (every 30 minutes):
+Or use OpenClaw's built-in cron support:
 
 ```bash
-# Use crontab -e to edit your crontab, then add:
-*/30 * * * * /bin/bash /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+openclaw cron add --interval 30m --task "node /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.js"
 ```
 
-Or use the setup script:
+## Output Files
 
-```bash
-python3 ~/.openclaw/workspace/.cache/setup-youtube-cron.py
-```
+- **youtube-comments.jsonl** - Timestamped log of all comments
+  ```json
+  {"timestamp": "2026-04-20T01:30:00Z", "commenter": "John Doe", "text": "How do I get started?", "category": "question", "responseStatus": "auto-responded"}
+  ```
 
-## Monitoring
+- **youtube-monitor-state.json** - Tracks last check time and processed comment IDs
+  ```json
+  {
+    "lastCheckTime": "2026-04-20T01:30:00Z",
+    "processedIds": ["aaaa.bbbb.cccc", ...]
+  }
+  ```
 
-### View Logs
-
-Monitor the live monitor logs:
-```bash
-tail -f ~/.openclaw/workspace/.cache/youtube-monitor.log
-tail -f ~/.openclaw/workspace/.cache/youtube-monitor-cron.log
-```
-
-### View Comment History
-
-All comments are logged to `.cache/youtube-comments.jsonl`:
-
-```bash
-# Pretty-print the last 10 comments
-cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl | tail -10 | python3 -m json.tool
-
-# Count comments by category
-jq -r '.category' ~/.openclaw/workspace/.cache/youtube-comments.jsonl | sort | uniq -c
-
-# Find flagged sales comments
-jq 'select(.response_status == "flagged_for_review")' ~/.openclaw/workspace/.cache/youtube-comments.jsonl
-```
-
-### Dashboard Command
-
-Get current stats:
-```bash
-tail -100 ~/.openclaw/workspace/.cache/youtube-monitor.log | grep -A 20 "Stats:"
-```
+- **youtube-monitor.log** - Execution logs (if using cron)
 
 ## Customization
 
-### Response Templates
+### Add Custom Response Templates
 
-Edit `RESPONSE_TEMPLATES` in the monitor script to customize auto-responses:
+Edit the `TEMPLATES` object:
 
-```python
-RESPONSE_TEMPLATES = {
-    "question": "Your custom response for questions...",
-    "praise": "Your custom response for praise...",
-}
+```javascript
+const TEMPLATES = {
+  question: `Thanks for the question! ...[personalized response]...`,
+  praise: `Thank you! ...[acknowledgment]...`,
+};
 ```
 
-### Category Patterns
+### Adjust Categorization Rules
 
-Update `PATTERNS` dict to adjust categorization logic:
+Modify the `categorizeComment()` function to refine detection patterns.
 
-```python
-PATTERNS = {
-    "spam": [r"pattern1", r"pattern2"],
-    "sales": [r"partnership", r"sponsorship"],
-    # ...
+### Auto-Reply to Comments (Advanced)
+
+Current implementation logs auto-responses but doesn't actually post them yet. To enable:
+
+1. Set up OAuth 2.0 credentials (not just API key)
+2. Implement the YouTube Comments API `insert` method
+3. Handle rate limits (500 requests/day for non-whitelisted apps)
+
+Example (requires OAuth):
+```javascript
+async function replyToComment(commentId, text) {
+  // Use YouTube API to insert a reply
+  // POST /youtube/v3/comments with snippet.parentId = commentId
 }
-```
-
-### Upgrade to LLM-Based Categorization
-
-For more accurate categorization, modify `categorize_comment()` to use Claude or another LLM:
-
-```python
-def categorize_comment(text: str) -> str:
-    """Use Claude to categorize comments."""
-    # Call to Claude API for smarter categorization
-    pass
 ```
 
 ## Troubleshooting
 
-### "No valid YouTube credentials found"
+**"YOUTUBE_API_KEY not set"**
+- Ensure the environment variable is exported before running
+- Check: `echo $YOUTUBE_API_KEY`
 
-- Verify `youtube_credentials.json` exists and is valid
-- Delete `youtube_token.json` and run the script again to re-authorize
-- Check that you've enabled YouTube Data API v3 in Google Cloud Console
+**"No comments found"**
+- Verify the channel ID is correct
+- Check that comments are public on the channel
+- Ensure API key has YouTube Data API v3 enabled
 
-### "Channel not found"
+**Rate Limit Errors**
+- Standard API quota: 10,000 units/day
+- Each request uses ~3 units
+- Monitor at [Google Cloud Console](https://console.cloud.google.com/apis/dashboard)
 
-- Verify `CHANNEL_ID` is correct
-- Run the channel lookup command above
+**Comments Not Being Processed**
+- Check `youtube-monitor-state.json` to ensure state is persisting
+- Verify file permissions: `ls -la .cache/`
 
-### Cron job not running
+## Monitoring the Monitor
 
-- Check crontab: `crontab -l`
-- Check system logs: `log stream --predicate 'process == "cron"'`
-- Verify script is executable: `ls -la ~/.openclaw/workspace/.cache/youtube-monitor-cron.sh`
-- Test manually: `bash ~/.openclaw/workspace/.cache/youtube-monitor-cron.sh`
+View recent comments:
+```bash
+tail -f /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+```
 
-### Rate limiting
+View logs (if using cron):
+```bash
+tail -f /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log
+```
 
-The script respects YouTube API quotas. Each operation costs quota:
-- Get comments: 1 quota unit
-- Post reply: 50 quota units
-- Typical daily limit: 10,000 quota units
-
-Monitor your quota in Google Cloud Console > YouTube Data API v3 > Quotas.
-
-## API Reference
-
-The monitor integrates with:
-
-- **YouTube Data API v3**: Fetch comments, post replies
-- **OAuth 2.0**: Secure authentication
-- **Local JSON storage**: `.cache/youtube-comments.jsonl` for audit trail
-
-## Security Notes
-
-- `youtube_credentials.json`: **Never commit to git**. Add to `.gitignore`.
-- `youtube_token.json`: Contains refresh token. Keep secure.
-- Auto-responses are logged and can be reviewed/edited before posting (optional manual approval step can be added)
+Check state:
+```bash
+cat /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-state.json
+```
 
 ## Next Steps
 
-1. ✅ Create Google Cloud Project
-2. ✅ Download credentials JSON
-3. ✅ Run script for first authorization
-4. ✅ Set up cron job
-5. 📊 Monitor logs and adjust templates as needed
-6. 🔄 Periodic review of flagged sales comments
-
----
-
-**Questions?** Check the logs or reach out for customization help.
+1. ✅ Get YouTube API key
+2. ✅ Find the channel ID for Concessa Obvius
+3. ✅ Update CONFIG in the script
+4. ✅ Test manually: `node youtube-monitor.js`
+5. ✅ Set up cron job
+6. 📊 Monitor logs and tweak categorization as needed

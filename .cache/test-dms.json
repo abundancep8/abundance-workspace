@@ -1,0 +1,26 @@
+[
+  {
+    "id": "dm_001",
+    "sender": "alex_creator",
+    "text": "Hey! I'm trying to set up the creator studio but I'm confused about the initial configuration. How do I connect my YouTube channel?",
+    "timestamp": "2026-04-20T06:45:00Z"
+  },
+  {
+    "id": "dm_002",
+    "sender": "jordan_fan",
+    "text": "Hi Concessa! I'd love to stay updated with your latest content and announcements. Is there an email list I can join?",
+    "timestamp": "2026-04-20T07:00:00Z"
+  },
+  {
+    "id": "dm_003",
+    "sender": "tech_brand",
+    "text": "We're interested in partnering with you for a brand collaboration. Our product aligns perfectly with your audience. Let's discuss sponsorship opportunities!",
+    "timestamp": "2026-04-20T07:15:00Z"
+  },
+  {
+    "id": "dm_004",
+    "sender": "maya_customer",
+    "text": "I'm interested in purchasing your premium package. What's the pricing and what's included?",
+    "timestamp": "2026-04-20T07:30:00Z"
+  }
+]

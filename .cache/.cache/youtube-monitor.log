@@ -178,3 +178,291 @@
 2026-04-19 02:27:06,161 - INFO - ============================================================
 2026-04-19 02:27:06,161 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
 2026-04-19 02:27:06,161 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 02:57:06,242 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 02:57:06,242 - INFO - ============================================================
+2026-04-19 02:57:06,242 - INFO - YouTube Comment Monitor Starting
+2026-04-19 02:57:06,242 - INFO - ============================================================
+2026-04-19 02:57:06,242 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 02:57:06,242 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 03:27:06,314 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 03:27:06,314 - INFO - ============================================================
+2026-04-19 03:27:06,314 - INFO - YouTube Comment Monitor Starting
+2026-04-19 03:27:06,314 - INFO - ============================================================
+2026-04-19 03:27:06,314 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 03:27:06,314 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 03:57:06,397 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 03:57:06,397 - INFO - ============================================================
+2026-04-19 03:57:06,397 - INFO - YouTube Comment Monitor Starting
+2026-04-19 03:57:06,397 - INFO - ============================================================
+2026-04-19 03:57:06,397 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 03:57:06,397 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 04:27:06,492 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 04:27:06,493 - INFO - ============================================================
+2026-04-19 04:27:06,493 - INFO - YouTube Comment Monitor Starting
+2026-04-19 04:27:06,493 - INFO - ============================================================
+2026-04-19 04:27:06,493 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 04:27:06,493 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 04:57:06,571 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 04:57:06,571 - INFO - ============================================================
+2026-04-19 04:57:06,571 - INFO - YouTube Comment Monitor Starting
+2026-04-19 04:57:06,571 - INFO - ============================================================
+2026-04-19 04:57:06,571 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 04:57:06,571 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 05:27:06,651 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 05:27:06,651 - INFO - ============================================================
+2026-04-19 05:27:06,651 - INFO - YouTube Comment Monitor Starting
+2026-04-19 05:27:06,651 - INFO - ============================================================
+2026-04-19 05:27:06,651 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 05:27:06,651 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 05:57:06,729 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 05:57:06,729 - INFO - ============================================================
+2026-04-19 05:57:06,729 - INFO - YouTube Comment Monitor Starting
+2026-04-19 05:57:06,729 - INFO - ============================================================
+2026-04-19 05:57:06,729 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 05:57:06,729 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 06:27:06,810 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 06:27:06,810 - INFO - ============================================================
+2026-04-19 06:27:06,810 - INFO - YouTube Comment Monitor Starting
+2026-04-19 06:27:06,810 - INFO - ============================================================
+2026-04-19 06:27:06,811 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 06:27:06,811 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 06:57:06,888 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 06:57:06,888 - INFO - ============================================================
+2026-04-19 06:57:06,888 - INFO - YouTube Comment Monitor Starting
+2026-04-19 06:57:06,888 - INFO - ============================================================
+2026-04-19 06:57:06,888 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 06:57:06,888 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 07:27:06,965 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 07:27:06,965 - INFO - ============================================================
+2026-04-19 07:27:06,965 - INFO - YouTube Comment Monitor Starting
+2026-04-19 07:27:06,965 - INFO - ============================================================
+2026-04-19 07:27:06,965 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 07:27:06,965 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 07:57:07,046 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 07:57:07,047 - INFO - ============================================================
+2026-04-19 07:57:07,047 - INFO - YouTube Comment Monitor Starting
+2026-04-19 07:57:07,047 - INFO - ============================================================
+2026-04-19 07:57:07,047 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 07:57:07,047 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 08:27:07,127 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 08:27:07,127 - INFO - ============================================================
+2026-04-19 08:27:07,127 - INFO - YouTube Comment Monitor Starting
+2026-04-19 08:27:07,127 - INFO - ============================================================
+2026-04-19 08:27:07,127 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 08:27:07,128 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 08:57:07,200 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 08:57:07,200 - INFO - ============================================================
+2026-04-19 08:57:07,200 - INFO - YouTube Comment Monitor Starting
+2026-04-19 08:57:07,200 - INFO - ============================================================
+2026-04-19 08:57:07,200 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 08:57:07,201 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 09:27:07,281 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 09:27:07,281 - INFO - ============================================================
+2026-04-19 09:27:07,281 - INFO - YouTube Comment Monitor Starting
+2026-04-19 09:27:07,281 - INFO - ============================================================
+2026-04-19 09:27:07,281 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 09:27:07,281 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 09:57:07,353 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 09:57:07,353 - INFO - ============================================================
+2026-04-19 09:57:07,353 - INFO - YouTube Comment Monitor Starting
+2026-04-19 09:57:07,353 - INFO - ============================================================
+2026-04-19 09:57:07,353 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 09:57:07,353 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 10:27:07,431 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 10:27:07,431 - INFO - ============================================================
+2026-04-19 10:27:07,431 - INFO - YouTube Comment Monitor Starting
+2026-04-19 10:27:07,431 - INFO - ============================================================
+2026-04-19 10:27:07,431 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 10:27:07,431 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 10:57:07,511 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 10:57:07,512 - INFO - ============================================================
+2026-04-19 10:57:07,512 - INFO - YouTube Comment Monitor Starting
+2026-04-19 10:57:07,512 - INFO - ============================================================
+2026-04-19 10:57:07,512 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 10:57:07,512 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 11:27:07,593 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 11:27:07,594 - INFO - ============================================================
+2026-04-19 11:27:07,594 - INFO - YouTube Comment Monitor Starting
+2026-04-19 11:27:07,594 - INFO - ============================================================
+2026-04-19 11:27:07,594 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 11:27:07,594 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 11:57:07,675 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 11:57:07,675 - INFO - ============================================================
+2026-04-19 11:57:07,675 - INFO - YouTube Comment Monitor Starting
+2026-04-19 11:57:07,675 - INFO - ============================================================
+2026-04-19 11:57:07,675 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 11:57:07,675 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 12:27:07,758 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 12:27:07,758 - INFO - ============================================================
+2026-04-19 12:27:07,758 - INFO - YouTube Comment Monitor Starting
+2026-04-19 12:27:07,758 - INFO - ============================================================
+2026-04-19 12:27:07,758 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 12:27:07,758 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 12:57:07,832 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 12:57:07,833 - INFO - ============================================================
+2026-04-19 12:57:07,833 - INFO - YouTube Comment Monitor Starting
+2026-04-19 12:57:07,833 - INFO - ============================================================
+2026-04-19 12:57:07,833 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 12:57:07,833 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 13:27:07,907 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 13:27:07,907 - INFO - ============================================================
+2026-04-19 13:27:07,907 - INFO - YouTube Comment Monitor Starting
+2026-04-19 13:27:07,907 - INFO - ============================================================
+2026-04-19 13:27:07,907 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 13:27:07,907 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 13:57:07,986 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 13:57:07,986 - INFO - ============================================================
+2026-04-19 13:57:07,986 - INFO - YouTube Comment Monitor Starting
+2026-04-19 13:57:07,986 - INFO - ============================================================
+2026-04-19 13:57:07,986 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 13:57:07,986 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 14:27:08,086 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 14:27:08,086 - INFO - ============================================================
+2026-04-19 14:27:08,086 - INFO - YouTube Comment Monitor Starting
+2026-04-19 14:27:08,086 - INFO - ============================================================
+2026-04-19 14:27:08,086 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 14:27:08,086 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 14:57:08,172 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 14:57:08,172 - INFO - ============================================================
+2026-04-19 14:57:08,172 - INFO - YouTube Comment Monitor Starting
+2026-04-19 14:57:08,172 - INFO - ============================================================
+2026-04-19 14:57:08,172 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 14:57:08,172 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 15:27:08,262 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 15:27:08,262 - INFO - ============================================================
+2026-04-19 15:27:08,262 - INFO - YouTube Comment Monitor Starting
+2026-04-19 15:27:08,262 - INFO - ============================================================
+2026-04-19 15:27:08,262 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 15:27:08,262 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 15:57:08,341 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 15:57:08,341 - INFO - ============================================================
+2026-04-19 15:57:08,341 - INFO - YouTube Comment Monitor Starting
+2026-04-19 15:57:08,341 - INFO - ============================================================
+2026-04-19 15:57:08,341 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 15:57:08,341 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 16:27:08,429 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 16:27:08,429 - INFO - ============================================================
+2026-04-19 16:27:08,429 - INFO - YouTube Comment Monitor Starting
+2026-04-19 16:27:08,429 - INFO - ============================================================
+2026-04-19 16:27:08,429 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 16:27:08,430 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 16:57:08,498 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 16:57:08,498 - INFO - ============================================================
+2026-04-19 16:57:08,498 - INFO - YouTube Comment Monitor Starting
+2026-04-19 16:57:08,498 - INFO - ============================================================
+2026-04-19 16:57:08,498 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 16:57:08,498 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 17:27:08,578 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 17:27:08,578 - INFO - ============================================================
+2026-04-19 17:27:08,578 - INFO - YouTube Comment Monitor Starting
+2026-04-19 17:27:08,578 - INFO - ============================================================
+2026-04-19 17:27:08,578 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 17:27:08,578 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 17:57:08,659 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 17:57:08,659 - INFO - ============================================================
+2026-04-19 17:57:08,659 - INFO - YouTube Comment Monitor Starting
+2026-04-19 17:57:08,659 - INFO - ============================================================
+2026-04-19 17:57:08,659 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 17:57:08,659 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 18:27:08,739 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 18:27:08,739 - INFO - ============================================================
+2026-04-19 18:27:08,739 - INFO - YouTube Comment Monitor Starting
+2026-04-19 18:27:08,739 - INFO - ============================================================
+2026-04-19 18:27:08,739 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 18:27:08,739 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 18:57:08,811 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 18:57:08,811 - INFO - ============================================================
+2026-04-19 18:57:08,811 - INFO - YouTube Comment Monitor Starting
+2026-04-19 18:57:08,811 - INFO - ============================================================
+2026-04-19 18:57:08,811 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 18:57:08,811 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 19:27:08,885 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 19:27:08,885 - INFO - ============================================================
+2026-04-19 19:27:08,885 - INFO - YouTube Comment Monitor Starting
+2026-04-19 19:27:08,885 - INFO - ============================================================
+2026-04-19 19:27:08,885 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 19:27:08,885 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 19:57:08,956 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 19:57:08,956 - INFO - ============================================================
+2026-04-19 19:57:08,956 - INFO - YouTube Comment Monitor Starting
+2026-04-19 19:57:08,956 - INFO - ============================================================
+2026-04-19 19:57:08,956 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 19:57:08,956 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 20:27:09,036 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 20:27:09,036 - INFO - ============================================================
+2026-04-19 20:27:09,036 - INFO - YouTube Comment Monitor Starting
+2026-04-19 20:27:09,036 - INFO - ============================================================
+2026-04-19 20:27:09,037 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 20:27:09,037 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 20:57:09,112 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 20:57:09,112 - INFO - ============================================================
+2026-04-19 20:57:09,112 - INFO - YouTube Comment Monitor Starting
+2026-04-19 20:57:09,112 - INFO - ============================================================
+2026-04-19 20:57:09,112 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 20:57:09,112 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 21:27:09,194 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 21:27:09,194 - INFO - ============================================================
+2026-04-19 21:27:09,194 - INFO - YouTube Comment Monitor Starting
+2026-04-19 21:27:09,194 - INFO - ============================================================
+2026-04-19 21:27:09,194 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 21:27:09,194 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 21:57:09,267 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 21:57:09,267 - INFO - ============================================================
+2026-04-19 21:57:09,267 - INFO - YouTube Comment Monitor Starting
+2026-04-19 21:57:09,267 - INFO - ============================================================
+2026-04-19 21:57:09,267 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 21:57:09,268 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 22:27:09,352 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 22:27:09,352 - INFO - ============================================================
+2026-04-19 22:27:09,352 - INFO - YouTube Comment Monitor Starting
+2026-04-19 22:27:09,352 - INFO - ============================================================
+2026-04-19 22:27:09,352 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 22:27:09,352 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 22:57:09,423 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 22:57:09,423 - INFO - ============================================================
+2026-04-19 22:57:09,423 - INFO - YouTube Comment Monitor Starting
+2026-04-19 22:57:09,423 - INFO - ============================================================
+2026-04-19 22:57:09,423 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 22:57:09,423 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 23:27:09,503 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 23:27:09,503 - INFO - ============================================================
+2026-04-19 23:27:09,503 - INFO - YouTube Comment Monitor Starting
+2026-04-19 23:27:09,503 - INFO - ============================================================
+2026-04-19 23:27:09,503 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 23:27:09,503 - ERROR - Failed to authenticate with YouTube API
+2026-04-19 23:57:09,581 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 23:57:09,581 - INFO - ============================================================
+2026-04-19 23:57:09,582 - INFO - YouTube Comment Monitor Starting
+2026-04-19 23:57:09,582 - INFO - ============================================================
+2026-04-19 23:57:09,582 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-19 23:57:09,582 - ERROR - Failed to authenticate with YouTube API
+2026-04-20 00:27:09,671 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-20 00:27:09,672 - INFO - ============================================================
+2026-04-20 00:27:09,672 - INFO - YouTube Comment Monitor Starting
+2026-04-20 00:27:09,672 - INFO - ============================================================
+2026-04-20 00:27:09,672 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-20 00:27:09,672 - ERROR - Failed to authenticate with YouTube API
+2026-04-20 00:57:09,766 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-20 00:57:09,766 - INFO - ============================================================
+2026-04-20 00:57:09,766 - INFO - YouTube Comment Monitor Starting
+2026-04-20 00:57:09,766 - INFO - ============================================================
+2026-04-20 00:57:09,766 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-20 00:57:09,766 - ERROR - Failed to authenticate with YouTube API
+2026-04-20 01:27:09,847 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-20 01:27:09,847 - INFO - ============================================================
+2026-04-20 01:27:09,847 - INFO - YouTube Comment Monitor Starting
+2026-04-20 01:27:09,847 - INFO - ============================================================
+2026-04-20 01:27:09,847 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-20 01:27:09,847 - ERROR - Failed to authenticate with YouTube API
+2026-04-20 01:57:09,941 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-20 01:57:09,941 - INFO - ============================================================
+2026-04-20 01:57:09,941 - INFO - YouTube Comment Monitor Starting
+2026-04-20 01:57:09,941 - INFO - ============================================================
+2026-04-20 01:57:09,941 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-20 01:57:09,941 - ERROR - Failed to authenticate with YouTube API
+2026-04-20 02:27:10,031 - WARNING - Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-20 02:27:10,032 - INFO - ============================================================
+2026-04-20 02:27:10,032 - INFO - YouTube Comment Monitor Starting
+2026-04-20 02:27:10,032 - INFO - ============================================================
+2026-04-20 02:27:10,032 - ERROR - Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+2026-04-20 02:27:10,032 - ERROR - Failed to authenticate with YouTube API

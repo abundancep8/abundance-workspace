@@ -366,8 +366,11 @@ def main():
                         if line and not line.startswith("#"):
                             try:
                                 entry = json.loads(line)
-                                senders.add(entry["sender"])
-                            except json.JSONDecodeError:
+                                # Handle various sender key formats
+                                sender = entry.get("sender") or entry.get("sender_name") or entry.get("sender_id") or "Unknown"
+                                if sender:
+                                    senders.add(sender)
+                            except (json.JSONDecodeError, KeyError):
                                 pass
                 return senders
         

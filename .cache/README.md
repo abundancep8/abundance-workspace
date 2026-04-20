@@ -1,226 +1,297 @@
-# YouTube DM Monitor for Concessa Obvius
+# YouTube Comment Monitor - Concessa Obvius
 
-## 📋 Summary
-
-A fully automated system that monitors, categorizes, and responds to YouTube DMs for the Concessa Obvius channel. Runs every hour via cron.
-
----
+Complete automated comment monitoring system for the Concessa Obvius YouTube channel. Fetches comments every 30 minutes, categorizes them, auto-responds to questions & praise, and flags sales inquiries for manual review.
 
 ## 📦 What's Included
 
-| File | Purpose |
-|------|---------|
-| `youtube-dms-monitor.js` | Main monitoring script |
-| `youtube-dm-monitor-config.json` | Configuration & category definitions |
-| `YOUTUBE-DM-SETUP.md` | Setup instructions |
-| `INTEGRATION-GUIDE.md` | How to wire up data sources |
-| `youtube-dms.jsonl` | Log of all processed DMs |
-| `youtube-dms-report.json` | Latest hourly report |
-
----
-
-## 🎯 Features
-
-✅ **Automatic Categorization**
-- Setup help
-- Newsletter
-- Product inquiry
-- Partnership (flagged for manual review)
-
-✅ **Auto-Response Templates**
-- Context-specific responses for each category
-- Easy to customize
-
-✅ **Comprehensive Logging**
-- JSONL format (searchable, parseable)
-- Timestamp, sender, text, category, response
-
-✅ **Partnership Detection**
-- Flags interesting collab/sponsorship opportunities
-- Includes sender details and message content
-
-✅ **Hourly Reports**
-- Total DMs processed
-- Auto-responses sent
-- Conversion potential (product inquiries)
-- Partnership opportunities highlighted
-
----
+```
+.cache/
+├── youtube_monitor.py          # Main monitoring script
+├── report_generator.py         # Report generation tool
+├── AUTH_SETUP.md              # OAuth 2.0 authentication guide
+├── CRON_CONFIG.sh             # Cron scheduler installation
+├── youtube-comments.jsonl     # All comments log (auto-created)
+├── youtube-monitor-state.json # Processing state (auto-created)
+└── cron.log                   # Cron execution log (auto-created)
+```
 
 ## 🚀 Quick Start
 
-### 1. Test Locally
+### 1. Install Dependencies
+
 ```bash
-cd /Users/abundance/.openclaw/workspace
-node .cache/youtube-dms-monitor.js
+pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
 ```
 
-Output:
-```
-✓ Logged 3 DMs to .cache/youtube-dms.jsonl
-=== DM Monitor Report ===
-Total DMs processed: 3
-Auto-responses sent: 3
-Product inquiries: 1
-Partnerships flagged for review: 1
-✓ Report saved to .cache/youtube-dms-report.json
+### 2. Setup OAuth 2.0 Authentication
+
+```bash
+python3 ~/.openclaw/workspace/.cache/youtube_monitor.py --setup-auth
 ```
 
-### 2. Feed Real DMs
-Choose an integration method:
-- **Browser Extension** (monitor actual YouTube messages)
-- **Webhook Server** (local HTTP endpoint)
-- **Manual Export** (JSON file)
-- **Email Forwarding** (parsed from notifications)
+See [AUTH_SETUP.md](AUTH_SETUP.md) for detailed instructions.
 
-See `INTEGRATION-GUIDE.md` for detailed setup.
+### 3. Test Single Run
 
-### 3. Enable Cron
-OpenClaw will automatically run hourly (configured).
+```bash
+python3 ~/.openclaw/workspace/.cache/youtube_monitor.py
+```
 
----
+Expected output:
+```
+2026-04-20 01:00:00 - INFO - 🚀 Starting YouTube Comment Monitor
+2026-04-20 01:00:02 - INFO - ✅ Authenticated with YouTube API
+2026-04-20 01:00:05 - INFO - ✅ Resolved 'Concessa Obvius' to UC...
+2026-04-20 01:00:15 - INFO - 📝 Fetched 42 comments
+2026-04-20 01:00:16 - INFO - 📌 Processed: User1 (Cat 1, auto_responded)
+2026-04-20 01:00:16 - INFO - ✅ Session complete: 3 processed, 2 responded, 1 flagged
+```
 
-## 📊 Sample Output
+### 4. Setup Scheduled Execution (Every 30 Minutes)
 
-### Log Entry (youtube-dms.jsonl)
+```bash
+bash ~/.openclaw/workspace/.cache/CRON_CONFIG.sh
+```
+
+Or manually:
+
+```bash
+crontab -e
+# Add this line:
+*/30 * * * * /usr/bin/python3 ~/.openclaw/workspace/.cache/youtube_monitor.py >> ~/.openclaw/workspace/.cache/cron.log 2>&1
+```
+
+## 📊 How It Works
+
+### Comment Categorization
+
+The script automatically categorizes each comment into one of four types:
+
+| Category | Type | Keywords | Action |
+|----------|------|----------|--------|
+| **1** | **Questions** | how-to, cost, timeline, tools, where, when | ✅ Auto-respond |
+| **2** | **Praise** | amazing, inspiring, love, thanks, brilliant | ✅ Auto-respond |
+| **3** | **Spam** | crypto, bitcoin, MLM, "make money", follow me | 🚫 No action |
+| **4** | **Sales** | partnership, collaboration, sponsor, advertise | 🚩 Flag for review |
+| **0** | **No Match** | Other comments | 🚫 No action |
+
+### Auto-Responses
+
+**Category 1 (Questions):**
+> "Thanks for asking! Check our FAQ or reply for more details."
+
+**Category 2 (Praise):**
+> "Thanks so much for the kind words! 🙏"
+
+## 📝 Data Logging
+
+Every comment is logged to `youtube-comments.jsonl` with full context:
+
 ```json
 {
-  "timestamp": "2026-04-14T21:03:58.834Z",
-  "sender": "Alice_Creator",
-  "sender_id": "UC_alice123",
-  "text": "How do I set this up? I'm confused.",
-  "category": "setup_help",
-  "response_sent": true,
-  "template_used": "setup_help"
+  "timestamp": "2026-04-20T01:00:00Z",
+  "comment_id": "UgxABCD123XYZ...",
+  "commenter": "Jane Viewer",
+  "text": "How do you get started with this?",
+  "category": 1,
+  "response_status": "auto_responded"
 }
 ```
 
-### Report (youtube-dms-report.json)
+The script maintains state in `youtube-monitor-state.json` to avoid reprocessing:
+
 ```json
 {
-  "timestamp": "2026-04-14T21:03:58.835Z",
-  "total_dms_processed": 3,
-  "auto_responses_sent": 3,
-  "conversion_potential": {
-    "product_inquiries": 1,
-    "partnerships_flagged": 1
-  },
-  "partnerships_for_review": [
-    {
-      "sender": "TechVenture Studios",
-      "text": "Hi! We'd love to collaborate on sponsorship...",
-      "timestamp": "2026-04-14T21:03:58Z",
-      "flag": "REVIEW_NEEDED"
-    }
-  ]
+  "processed_comment_ids": ["UgxABCD123...", "UgxDEF456..."],
+  "last_run": "2026-04-20T01:00:00Z"
 }
 ```
 
----
+## 📊 Generating Reports
 
-## 🔧 Customization
+### Interactive Report
 
-### Change Response Templates
-Edit `youtube-dms-monitor.js`, find `TEMPLATES`:
-```javascript
-const TEMPLATES = {
-  setup_help: {
-    category: 'Setup help',
-    response: `Your custom response here...`
-  },
-  // ... etc
-};
+```bash
+python3 ~/.openclaw/workspace/.cache/report_generator.py
 ```
 
-### Improve Categorization
-Edit `KEYWORDS` to fine-tune detection:
-```javascript
-const KEYWORDS = {
-  setup_help: ['how to', 'help', 'confused', 'error', ...],
-  // ... etc
-};
+Menu options:
+1. **Full report** - All-time statistics
+2. **Last hour** - Recent activity
+3. **Last 24 hours** - Daily summary
+4. **Last 7 days** - Weekly trend
+5. **Show flagged** - Comments awaiting review
+6. **Exit**
+
+### Command-Line Reports
+
+```bash
+# Full statistics
+python3 ~/.openclaw/workspace/.cache/report_generator.py --full
+
+# Flagged comments (sales/partnerships)
+python3 ~/.openclaw/workspace/.cache/report_generator.py --flagged
+
+# Last 6 hours
+python3 ~/.openclaw/workspace/.cache/report_generator.py --hours 6
 ```
 
-### Add New Categories
-1. Add to `KEYWORDS`
-2. Add to `TEMPLATES`
-3. Script auto-detects the new category
-
----
-
-## 📍 File Locations
+### Sample Report Output
 
 ```
-.cache/
-├── youtube-dms-monitor.js           # Main script
-├── youtube-dm-monitor-config.json   # Configuration
-├── YOUTUBE-DM-SETUP.md              # Setup guide
-├── INTEGRATION-GUIDE.md             # Data source integration
-├── youtube-dms.jsonl                # DM log (JSONL)
-├── youtube-dms-report.json          # Latest report (JSON)
-├── youtube-dms-cron.log             # Cron execution log
-└── README.md                        # This file
+======================================================================
+📊 YOUTUBE COMMENT MONITOR - SESSION REPORT
+======================================================================
+
+📈 OVERVIEW
+   Total comments processed: 127
+   First comment: 2026-04-18T14:30:00Z
+   Latest comment: 2026-04-20T00:30:00Z
+
+📂 COMMENTS BY CATEGORY
+   ├─ Category 1 (Questions): 34
+   ├─ Category 2 (Praise): 28
+   ├─ Category 3 (Spam): 12
+   ├─ Category 4 (Sales): 5
+   └─ Category 0 (No Action): 48
+
+✅ ACTIONS TAKEN
+   Auto-responded: 62
+   Flagged for review: 5
+   No action taken: 60
+
+👥 TOP COMMENTERS
+   John Developer: 3 comments
+   Sarah Enthusiast: 2 comments
+   Mike Supporter: 2 comments
 ```
 
----
+## 🔧 Configuration
 
-## 📈 Metrics Tracked
+### Channel Selection
 
-- **Total DMs processed** - How many messages handled this hour
-- **Auto-responses sent** - How many templates deployed
-- **Product inquiries** - Conversion opportunities
-- **Partnerships flagged** - Manual review items
+To monitor a different YouTube channel, edit `youtube_monitor.py`:
 
----
+```python
+# Line ~47
+CHANNEL_NAME = "Concessa Obvius"  # Change this to your channel name
+```
 
-## 🔒 Data Handling
+### Response Templates
 
-- All DMs logged to `.cache/youtube-dms.jsonl` with full metadata
-- Partnership details captured for follow-up
-- Responses tracked (enables A/B testing later)
-- Timestamp all records for trend analysis
+Customize auto-responses in `youtube_monitor.py`:
 
----
+```python
+# Lines ~60-63
+RESPONSES = {
+    1: "Thanks for asking! Check our FAQ or reply for more details.",
+    2: "Thanks so much for the kind words! 🙏"
+}
+```
 
-## 🛠️ Troubleshooting
+### Categorization Keywords
 
-**Monitor not running?**
-- Check if `/tmp/new-dms.json` exists
-- Verify JSON format with `jq` or a validator
-- Check cron logs: `cat .cache/youtube-dms-cron.log`
+Add or modify keyword patterns in the `categorize_comment()` method:
 
-**Wrong categorization?**
-- Review KEYWORDS in script
-- Test specific messages with console.log
-- Adjust keyword scoring if needed
+```python
+# Lines ~190-230
+spam_keywords = [
+    r'\bcrypto\b', r'\bbitcoin\b', ...
+]
+```
 
-**Missing partnerships?**
-- Check if keyword detection is working
-- Review flagged items in the report
-- Add more partnership keywords if needed
+## 📋 Monitoring Checklist
 
----
+- [ ] Dependencies installed (`pip install`)
+- [ ] OAuth 2.0 credentials configured (`--setup-auth`)
+- [ ] Single test run successful (`python3 youtube_monitor.py`)
+- [ ] First comment logged to `.cache/youtube-comments.jsonl`
+- [ ] Cron job installed (`CRON_CONFIG.sh`)
+- [ ] Cron log verified (`tail .cache/cron.log`)
+- [ ] Report generated successfully (`report_generator.py`)
 
-## 🚀 Next Steps
+## 🐛 Troubleshooting
 
-1. ✅ System is ready and tested
-2. 📡 **Wire up a data source** (see INTEGRATION-GUIDE.md)
-3. 🧪 Test with real YouTube DMs
-4. 🎯 Monitor reports hourly
-5. 📧 Set up partnership review workflow (optional)
+### "Credentials file not found"
+Run authentication setup again:
+```bash
+python3 youtube_monitor.py --setup-auth
+```
 
----
+### "Channel not found"
+Verify the exact channel name in YouTube. Edit `youtube_monitor.py` line ~47.
+
+### "No comments fetched"
+- Check that the channel has public comments enabled
+- Verify YouTube Data API quota (10,000 units/day)
+- Check API permissions in Google Cloud Console
+
+### "Cron not running"
+Verify cron is running:
+```bash
+sudo launchctl list | grep cron  # macOS
+sudo systemctl status cron       # Linux
+```
+
+Check cron log:
+```bash
+tail -f ~/.openclaw/workspace/.cache/cron.log
+```
+
+### "Auto-responses failing"
+- Verify the YouTube channel is owned/managed by your Google account
+- Check comment thread settings (replies must be enabled)
+- Some comments may not support replies (community posts, etc.)
+
+## 📦 Files Reference
+
+| File | Purpose |
+|------|---------|
+| `youtube_monitor.py` | Main script - handles auth, fetching, categorizing, responding |
+| `report_generator.py` | Standalone report tool for analyzing logs |
+| `AUTH_SETUP.md` | Step-by-step OAuth 2.0 configuration |
+| `CRON_CONFIG.sh` | Bash script to install cron job |
+| `youtube-comments.jsonl` | NDJSON log of all processed comments |
+| `youtube-monitor-state.json` | JSON state file tracking processed comment IDs |
+| `youtube-token.pickle` | OAuth token (auto-created, keep safe) |
+| `youtube-credentials.json` | OAuth credentials (auto-created from setup) |
+| `cron.log` | Execution logs from cron runs |
+
+## 🔐 Security Notes
+
+- **Credentials:** Keep `youtube-credentials.json` and `youtube-token.pickle` private
+- **API Key:** Never hardcode API keys; use OAuth 2.0 for authentication
+- **Quota:** YouTube Data API has 10,000 units/day; monitor usage
+- **Data:** All comments are logged locally; no cloud storage
 
 ## 📞 Support
 
-- **Configuration:** Edit `youtube-dms-monitor.js`
-- **Data integration:** See `INTEGRATION-GUIDE.md`
-- **Testing:** Run `node .cache/youtube-dms-monitor.js` manually
-- **Logs:** Check `.cache/youtube-dms.jsonl` and `.cache/youtube-dms-report.json`
+For issues with the monitor:
+1. Check the logs: `tail -f ~/.openclaw/workspace/.cache/cron.log`
+2. Review [AUTH_SETUP.md](AUTH_SETUP.md) for authentication issues
+3. Verify YouTube API is enabled: https://console.developers.google.com
+
+## ✨ Features
+
+✅ Automated fetching every 30 minutes  
+✅ Intelligent comment categorization  
+✅ Auto-responses to questions & praise  
+✅ Flags sales inquiries for manual review  
+✅ Complete JSONL logging  
+✅ State tracking (no reprocessing)  
+✅ Interactive & CLI reports  
+✅ Cron-ready for scheduling  
+✅ OAuth 2.0 authentication  
+✅ Configurable keywords & responses  
+
+## 📈 Next Steps
+
+1. **Monitor logs:** `tail -f ~/.openclaw/workspace/.cache/cron.log`
+2. **Review flagged:** `python3 report_generator.py` → Option 5
+3. **Adjust keywords:** Edit categorization patterns in `youtube_monitor.py`
+4. **Customize responses:** Update `RESPONSES` dict in `youtube_monitor.py`
+5. **Schedule variations:** See options in `CRON_CONFIG.sh`
 
 ---
 
-**Status:** ✅ Ready for production
-**Schedule:** Every hour (0 * * * * America/Los_Angeles)
-**Last Run:** 2026-04-14 21:03:58 UTC
-**Next Run:** 2026-04-14 22:00:00 UTC (approx)
+**Version 1.0** | Built for Concessa Obvius | Last updated: 2026-04-20

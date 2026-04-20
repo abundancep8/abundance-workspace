@@ -1,46 +1,36 @@
-YouTube Comment Monitor Report
-Generated: 2026-04-19T09:01:59.463659+00:00
-Channel: Concessa Obvius
-Monitor Mode: DEMO
+╔════════════════════════════════════════════════════════════════════════════╗
+║         YOUTUBE COMMENT MONITOR - CONCESSA OBVIUS CHANNEL                  ║
+║                        2026-04-20T09:02:53.631556                           ║
+╚════════════════════════════════════════════════════════════════════════════╝
 
-=== SESSION SUMMARY ===
-Total Comments Processed: 6
-Auto-Responses Sent: 4
-Flagged for Review: 1
+SUMMARY
+├─ Channel: Concessa Obvius (UCa_mZVVqV5Aq48a0MnIjS-w)
+├─ Monitor Status: operational
+├─ Last Run: 2026-04-20T09:02:53.631182
+└─ Cron Job ID: 114e5c6d-ac8b-47ca-a695-79ac31b5c076
 
-=== LIFETIME STATS ===
-Total Processed (Lifetime): 1366
-Total Auto-Replied (Lifetime): 912
-Total Flagged (Lifetime): 226
+COMMENTS PROCESSED
+├─ Total Comments in Log: 138
+├─ Questions: 38
+├─ Praise: 38
+├─ Spam: 37
+├─ Sales (Flagged): 13
+└─ Other: 12
 
-=== BREAKDOWN BY CATEGORY ===
-  PRAISE: 2
-  QUESTIONS: 2
-  SALES: 1
-  SPAM: 1
+AUTO-RESPONSES
+├─ Auto-Responded: 48
+├─ Flagged for Review: 12
+└─ Processed/Spam: 78
 
-=== RECENT COMMENTS ===
+CATEGORIZATION RULES
+├─ Questions: how, help, tools, cost, timeline, tutorial, start
+├─ Praise: amazing, inspiring, love, great, awesome, thank, brilliant
+├─ Spam: crypto, bitcoin, mlm, forex, dm me, click here
+└─ Sales: partnership, collaboration, sponsor, work with, brand deal
 
-[QUESTIONS] Sarah Chen
-  "How do I get started with this? What tools do I need?..."
-  Status: auto_responded
+STATUS: ✓ OPERATIONAL
+Next run: 30 minutes from last execution
+Log file: /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+Report: /Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt
 
-[QUESTIONS] Marcus Johnson
-  "What's the timeline for implementation? When can I start?..."
-  Status: auto_responded
-
-[PRAISE] Elena Rodriguez
-  "This is absolutely amazing! So inspiring and well-explained. Thank you!..."
-  Status: auto_responded
-
-[PRAISE] Alex Kim
-  "Love the approach here! Really impressed with the quality. Great work!..."
-  Status: auto_responded
-
-[SPAM] Crypto Trading Bot
-  "BUY CRYPTO NOW!!! Limited offer, DM me for details..."
-  Status: processed
-
-[SALES] Jessica Parker
-  "Hi! Love your content. Would love to explore a partnership opportunity with you. Let's connect!..."
-  Status: flagged_for_review
+════════════════════════════════════════════════════════════════════════════════

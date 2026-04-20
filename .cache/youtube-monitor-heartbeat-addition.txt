@@ -1,0 +1,23 @@
+## YouTube Comment Monitor
+
+Run or check status:
+```bash
+# Run the monitor (executes immediately)
+python3 .cache/youtube-monitor.py
+
+# Quick status check (recent 6h)
+python3 .cache/youtube-monitor-report.py recent 6
+
+# Check for flagged sales
+python3 .cache/youtube-monitor-report.py sales
+```
+
+**What to look for:**
+- Sales opportunities (for review)
+- High-engagement questions (>10 likes but unanswered)
+- Spam patterns to adjust categorization
+
+**If something's wrong:**
+- Check `.cache/youtube-monitor.log` for errors
+- Verify YouTube API credentials at `~/.openclaw/youtube-credentials.json`
+- Test manually: `python3 .cache/youtube-monitor.py`

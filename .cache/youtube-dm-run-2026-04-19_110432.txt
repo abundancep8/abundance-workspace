@@ -1,0 +1,26 @@
+
+╔════════════════════════════════════════════════════════════════╗
+║        YouTube DM Monitor Report - Concessa Obvius              ║
+╚════════════════════════════════════════════════════════════════╝
+
+📊 PROCESSING SUMMARY
+  • Timestamp: 2026-04-19T18:04:32.207192+00:00
+  • Total DMs Processed: 4
+  • Auto-Responses Sent: 4
+  • Product Inquiries Found: 1
+  • Partnership Opportunities: 1
+
+📈 CATEGORIZATION BREAKDOWN
+  • Setup Help: 1
+  • Newsletter Signups: 1
+  • Product Inquiries: 1
+  • Partnerships: 1
+
+📂 STORAGE
+  • Main Log: /Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl
+  • Partnership Queue: /Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+  • Total DMs in History: 45
+
+
+⚠️  ERRORS ENCOUNTERED:
+  • Authentication failed: ('invalid_client: The provided client secret is invalid.', {'error': 'invalid_client', 'error_description': 'The provided client secret is invalid.'})

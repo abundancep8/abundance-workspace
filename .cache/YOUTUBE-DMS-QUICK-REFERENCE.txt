@@ -1,0 +1,161 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    YouTube DM Monitor - Quick Reference                     ║
+║                    Concessa Obvius Channel (Cron Job)                       ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+📊 DASHBOARD COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  View Summary Stats
+  $ python3 ~/.openclaw/workspace/.cache/youtube-dms-dashboard.py summary
+
+  View Recent DMs (last 10)
+  $ python3 ~/.openclaw/workspace/.cache/youtube-dms-dashboard.py recent
+
+  View Flagged Partnerships
+  $ python3 ~/.openclaw/workspace/.cache/youtube-dms-dashboard.py partnerships
+
+  View Category Breakdown
+  $ python3 ~/.openclaw/workspace/.cache/youtube-dms-dashboard.py categories
+
+  View Everything
+  $ python3 ~/.openclaw/workspace/.cache/youtube-dms-dashboard.py all
+
+
+🔧 MONITOR COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Run Monitor Manually
+  $ cd ~/.openclaw/workspace && python3 .cache/youtube-dms-monitor-cron.py
+
+  Queue DM from Command Line
+  $ echo '[{"sender":"User","text":"Help!"}]' | \
+    python3 ~/.openclaw/workspace/.cache/youtube-dms-ingester.py
+
+  Queue DM from File
+  $ cat my-dms.json | python3 ~/.openclaw/workspace/.cache/youtube-dms-ingester.py
+
+
+📁 KEY FILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  All DMs Logged (JSONL format)
+  ~/.openclaw/workspace/.cache/youtube-dms.jsonl
+
+  Flagged Partnerships (JSONL format)
+  ~/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl
+
+  Latest Report (JSON)
+  ~/.openclaw/workspace/.cache/youtube-dms-report.json
+
+  Processing State
+  ~/.openclaw/workspace/.cache/youtube-dms-state.json
+
+  Monitor Config
+  ~/.openclaw/workspace/.cache/youtube-dm-monitor-config.json
+
+  Cron Log
+  ~/.openclaw/workspace/.cache/youtube-dms-cron.log
+
+
+📋 DM CATEGORIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1️⃣  SETUP HELP
+      Keywords: how to, help, confused, error, broken, setup, install
+      Response: Links to setup guide, video tutorial, FAQ
+
+  2️⃣  NEWSLETTER
+      Keywords: subscribe, email list, updates, news, mailing list
+      Response: Newsletter signup link with benefits
+
+  3️⃣  PRODUCT INQUIRY
+      Keywords: price, cost, buy, purchase, product, pricing
+      Response: Product info, pricing, call-to-action
+
+  4️⃣  PARTNERSHIP ⭐
+      Keywords: collaborate, partnership, sponsor, business
+      Response: Escalation email + 🚩 MANUAL REVIEW FLAG
+
+
+📈 METRICS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Total DMs Processed       - Count of all DMs handled
+  Auto-Responses Sent       - Count of response templates
+  Product Inquiries         - Sales leads (potential customers)
+  Partnerships Flagged      - Collaboration opportunities (need review)
+  Conversion Potential      - Est. customers (15% conversion rate)
+
+
+🔄 CRON JOB
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Schedule:  Every hour at top of hour (0 * * * *)
+  Command:   cd ~/.openclaw/workspace && python3 .cache/youtube-dms-monitor-cron.py
+  Cron ID:   c1b30404-7343-46ff-aa1d-4ff84daf3674
+
+  Check Cron Status
+  $ crontab -l | grep youtube-dms
+
+  View Latest Cron Log
+  $ tail -50 ~/.openclaw/workspace/.cache/youtube-dms-cron.log
+
+
+💡 TIPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  • Check dashboard daily for metrics
+  • Review partnerships file regularly for opportunities
+  • Adjust keywords in config if categorization is wrong
+  • Use ingester to manually queue DMs for testing
+  • Run monitor manually anytime: python3 .cache/youtube-dms-monitor-cron.py
+
+
+📚 DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Full Setup Guide
+  ~/.openclaw/workspace/.cache/YOUTUBE-DMS-MONITOR-SETUP.md
+
+  Deployment Summary
+  ~/.openclaw/workspace/.cache/YOUTUBE-DMS-DEPLOYMENT-SUMMARY.md
+
+  This Quick Reference
+  ~/.openclaw/workspace/.cache/YOUTUBE-DMS-QUICK-REFERENCE.txt
+
+
+✨ EXAMPLE WORKFLOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Get new DMs (hourly via cron)
+  2. Monitor categorizes each one
+  3. Auto-responses generated
+  4. All logged to JSONL with full audit trail
+  5. Partnerships flagged for manual review
+  6. Report generated with metrics
+  7. Check dashboard for stats
+  8. Review flagged partnerships for opportunities
+
+
+🚀 QUICK START (Right Now)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  # View current dashboard
+  python3 ~/.openclaw/workspace/.cache/youtube-dms-dashboard.py all
+
+  # Queue a test DM
+  echo '[{"sender":"Test User","text":"How do I set this up?"}]' | \
+    python3 ~/.openclaw/workspace/.cache/youtube-dms-ingester.py
+
+  # Run monitor immediately
+  python3 ~/.openclaw/workspace/.cache/youtube-dms-monitor-cron.py
+
+  # Check if it worked
+  python3 ~/.openclaw/workspace/.cache/youtube-dms-dashboard.py summary
+
+
+════════════════════════════════════════════════════════════════════════════════
+                        Status: ✅ Production Ready
+                     Last Updated: 2026-04-20 04:05 UTC
+════════════════════════════════════════════════════════════════════════════════
