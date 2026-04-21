@@ -1,0 +1,39 @@
+
+╔════════════════════════════════════════════════════════════════╗
+║         YouTube Comment Monitor Report - Concessa Obvius            ║
+║                    2026-04-21T09:01:57.293088                         ║
+╚════════════════════════════════════════════════════════════════╝
+
+📊 METRICS
+──────────────────────────────────────────────────────────────────
+Total Comments Processed:        0
+Auto-Responses Sent:             0
+Flagged for Review (Sales):      0
+
+📂 BREAKDOWN BY CATEGORY
+──────────────────────────────────────────────────────────────────
+Questions:                       0
+Praise:                          0
+Spam:                            0
+Sales/Partnerships:              0
+Other:                           0
+
+📍 LOGS
+──────────────────────────────────────────────────────────────────
+All comments:  /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+Flagged items: /Users/abundance/.openclaw/workspace/.cache/youtube-comments-flagged.jsonl
+State:         /Users/abundance/.openclaw/workspace/.cache/youtube-comment-state.json
+
+💬 MANUAL REVIEW
+──────────────────────────────────────────────────────────────────
+If flagged comments exist, review them at:
+  cat /Users/abundance/.openclaw/workspace/.cache/youtube-comments-flagged.jsonl
+
+To respond to a flagged comment manually, create a reply in YouTube Studio.
+
+⏰ NEXT RUN
+──────────────────────────────────────────────────────────────────
+Schedule: Every 30 minutes
+Last Run: 2026-04-21T09:01:57.293193
+
+════════════════════════════════════════════════════════════════════

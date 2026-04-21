@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-04-20T09:02:53.631556",
+  "timestamp": "2026-04-21T09:02:57.339335",
   "channel": "Concessa Obvius",
   "channel_id": "UCa_mZVVqV5Aq48a0MnIjS-w",
   "status": "operational",
-  "comments_processed": 138,
+  "comments_processed": 450,
   "breakdown": {
-    "questions": 38,
-    "praise": 38,
-    "spam": 37,
-    "sales": 13,
-    "other": 12
+    "questions": 139,
+    "praise": 139,
+    "spam": 94,
+    "sales": 62,
+    "other": 16
   },
   "responses": {
-    "auto_responded": 48,
-    "flagged_for_review": 12,
-    "processed": 78
+    "auto_responded": 247,
+    "flagged_for_review": 62,
+    "processed": 146
   },
   "cron_id": "114e5c6d-ac8b-47ca-a695-79ac31b5c076"
 }

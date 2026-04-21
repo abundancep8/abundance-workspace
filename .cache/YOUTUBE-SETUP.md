@@ -1,172 +1,212 @@
-# YouTube Comment Monitor - Setup Guide
+# YouTube Comment Monitor Setup
 
-## Prerequisites
+## 🎯 What This Does
 
-1. **YouTube API Key**
-   - Go to [Google Cloud Console](https://console.cloud.google.com/)
-   - Create a new project
-   - Enable YouTube Data API v3
-   - Create an API Key (restrict to YouTube Data API)
-   - Set environment variable: `export YOUTUBE_API_KEY="your-key-here"`
+Monitors the **Concessa Obvius** YouTube channel every 30 minutes for new comments, categorizes them, auto-responds to some, and flags others for manual review.
 
-2. **Channel ID**
-   - For "Concessa Obvius": Navigate to the channel
-   - Check the URL for the channel ID (usually in `/c/...` or `/@...` format)
-   - Or use the YouTube Data API: `https://www.googleapis.com/youtube/v3/search?part=snippet&q=Concessa%20Obvius&key=YOUR_KEY`
-   - Update `CONFIG.channelId` in `youtube-monitor.js`
+**Categories:**
+1. **Questions** — "How do I start?", "What tools?", "Cost?", "Timeline?" → Auto-responds with template
+2. **Praise** — "Amazing!", "Inspiring", "Thank you!" → Auto-responds with appreciation
+3. **Spam** — Crypto, MLM, forex, gambling → Logs, no response
+4. **Sales** — Partnerships, collaborations, sponsorships → Flagged for review
+5. **Neutral** — Default category
 
-3. **Node.js** (v14+)
-   ```bash
-   node --version
-   ```
+**Log Location:** `~/.openclaw/workspace/.cache/youtube-comments.jsonl`
 
-## Installation
+Each line is a JSON object with: timestamp, commenter, text, category, response_status, response_text.
 
+---
+
+## 🔧 Setup Steps
+
+### 1. Install Python Dependencies
 ```bash
-# Make the script executable
-chmod +x /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.js
-
-# Ensure .cache directory exists
-mkdir -p /Users/abundance/.openclaw/workspace/.cache
+pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
 ```
 
-## Configuration
+### 2. Set Up YouTube API Credentials
 
-Edit the `CONFIG` object in `youtube-monitor.js`:
+**Option A: Using Google Cloud Console (Full OAuth2)**
 
-```javascript
-const CONFIG = {
-  channelId: 'ACTUAL_CHANNEL_ID_HERE',  // ← Update this
-  logFile: '/Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl',
-  stateFile: '/Users/abundance/.openclaw/workspace/.cache/youtube-monitor-state.json',
-  apiKey: process.env.YOUTUBE_API_KEY,  // Set via env var
-};
+1. Go to https://console.cloud.google.com/
+2. Create a new project: "YouTube Comment Monitor"
+3. Enable **YouTube Data API v3**
+4. Create an **OAuth 2.0 Client ID** (type: Desktop app)
+5. Download the JSON and save to: `~/.config/youtube/credentials.json`
+6. Run the monitor script once — it will prompt you to authorize and save a token
+
+**Option B: Using API Key (Read-Only, Simpler)**
+
+1. Create a new project in Google Cloud
+2. Enable YouTube Data API v3
+3. Create an **API Key** in the Credentials section
+4. Set environment variable: `export YOUTUBE_API_KEY=your_key_here`
+5. Modify the script to use the API key instead of OAuth2
+
+### 3. Set the Channel ID
+
+In `youtube-monitor.py`, find the line:
+```python
+CHANNEL_ID = None  # Will be resolved from channel name
 ```
 
-## Running Manually
-
-```bash
-export YOUTUBE_API_KEY="your-api-key"
-node /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.js
+Replace with your channel ID (search for "Concessa Obvius" on YouTube, then use `?channel=...` in the URL):
+```python
+CHANNEL_ID = "UCxxxxxxxxxxxxxxxxxxx"
 ```
 
-Expected output:
-```
-📊 YouTube Comment Monitor Report
-──────────────────────────────────
-✅ Processed:      5 comments
-💬 Auto-responses: 2 sent
-🚩 Flagged review: 1 comments
-...
-```
+Or leave as `None` and the script will resolve it automatically on first run.
 
-## Cron Setup (Every 30 minutes)
+### 4. Customize Response Templates (Optional)
 
-Add to crontab (`crontab -e`):
+Edit the `RESPONSES` dict in `youtube-monitor.py`:
 
-```bash
-# Run every 30 minutes
-*/30 * * * * export YOUTUBE_API_KEY="your-api-key" && node /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.js >> /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log 2>&1
-```
-
-Or use OpenClaw's built-in cron support:
-
-```bash
-openclaw cron add --interval 30m --task "node /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.js"
-```
-
-## Output Files
-
-- **youtube-comments.jsonl** - Timestamped log of all comments
-  ```json
-  {"timestamp": "2026-04-20T01:30:00Z", "commenter": "John Doe", "text": "How do I get started?", "category": "question", "responseStatus": "auto-responded"}
-  ```
-
-- **youtube-monitor-state.json** - Tracks last check time and processed comment IDs
-  ```json
-  {
-    "lastCheckTime": "2026-04-20T01:30:00Z",
-    "processedIds": ["aaaa.bbbb.cccc", ...]
-  }
-  ```
-
-- **youtube-monitor.log** - Execution logs (if using cron)
-
-## Customization
-
-### Add Custom Response Templates
-
-Edit the `TEMPLATES` object:
-
-```javascript
-const TEMPLATES = {
-  question: `Thanks for the question! ...[personalized response]...`,
-  praise: `Thank you! ...[acknowledgment]...`,
-};
-```
-
-### Adjust Categorization Rules
-
-Modify the `categorizeComment()` function to refine detection patterns.
-
-### Auto-Reply to Comments (Advanced)
-
-Current implementation logs auto-responses but doesn't actually post them yet. To enable:
-
-1. Set up OAuth 2.0 credentials (not just API key)
-2. Implement the YouTube Comments API `insert` method
-3. Handle rate limits (500 requests/day for non-whitelisted apps)
-
-Example (requires OAuth):
-```javascript
-async function replyToComment(commentId, text) {
-  // Use YouTube API to insert a reply
-  // POST /youtube/v3/comments with snippet.parentId = commentId
+```python
+RESPONSES = {
+    "questions": "Thank you for the question! {comment_preview} I'd recommend checking out [LINK]. DM for details.",
+    "praise": "🙏 Thank you so much! We're thrilled to hear this. Keep building!",
 }
 ```
 
-## Troubleshooting
+---
 
-**"YOUTUBE_API_KEY not set"**
-- Ensure the environment variable is exported before running
-- Check: `echo $YOUTUBE_API_KEY`
+## ⏰ Set Up Cron (Every 30 Minutes)
 
-**"No comments found"**
-- Verify the channel ID is correct
-- Check that comments are public on the channel
-- Ensure API key has YouTube Data API v3 enabled
+### macOS / Linux
 
-**Rate Limit Errors**
-- Standard API quota: 10,000 units/day
-- Each request uses ~3 units
-- Monitor at [Google Cloud Console](https://console.cloud.google.com/apis/dashboard)
-
-**Comments Not Being Processed**
-- Check `youtube-monitor-state.json` to ensure state is persisting
-- Verify file permissions: `ls -la .cache/`
-
-## Monitoring the Monitor
-
-View recent comments:
 ```bash
-tail -f /Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl
+# Edit crontab
+crontab -e
+
+# Add this line (runs at :00 and :30 of every hour):
+*/30 * * * * /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+
+# Save and exit (Ctrl+X, then Y in nano)
 ```
 
-View logs (if using cron):
+### Verify Cron is Active
+
 ```bash
-tail -f /Users/abundance/.openclaw/workspace/.cache/youtube-monitor.log
+# Check installed crons
+crontab -l
+
+# Monitor the log file
+tail -f ~/.openclaw/workspace/.cache/monitor.log
 ```
 
-Check state:
-```bash
-cat /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-state.json
+---
+
+## 📊 Monitor Output
+
+Each run outputs JSON with stats:
+
+```json
+{
+  "processed": 5,
+  "auto_responses": 3,
+  "flagged": 1,
+  "by_category": {
+    "questions": 2,
+    "praise": 1,
+    "spam": 1,
+    "sales": 1
+  }
+}
 ```
 
-## Next Steps
+### View All Comments Logged
 
-1. ✅ Get YouTube API key
-2. ✅ Find the channel ID for Concessa Obvius
-3. ✅ Update CONFIG in the script
-4. ✅ Test manually: `node youtube-monitor.js`
-5. ✅ Set up cron job
-6. 📊 Monitor logs and tweak categorization as needed
+```bash
+# Pretty-print all logged comments
+jq . ~/.openclaw/workspace/.cache/youtube-comments.jsonl
+
+# Count by category
+jq -s 'group_by(.category) | map({category: .[0].category, count: length})' \
+  ~/.openclaw/workspace/.cache/youtube-comments.jsonl
+
+# Show flagged for review
+jq 'select(.response_status == "flagged_for_review")' \
+  ~/.openclaw/workspace/.cache/youtube-comments.jsonl
+```
+
+---
+
+## 🔌 Integration Options
+
+### Send Report to Discord
+Add to cron script or create a separate webhook:
+
+```bash
+# After running monitor, send to Discord webhook
+REPORT=$(python3 youtube-monitor.py | tail -1)
+curl -X POST -H "Content-Type: application/json" \
+  -d "{\"content\": \"YouTube Monitor Report: $REPORT\"}" \
+  YOUR_DISCORD_WEBHOOK_URL
+```
+
+### Send Flagged Comments to Email
+Add after processing:
+
+```python
+# In youtube-monitor.py, after categorization:
+if category == "sales":
+    send_email_notification(comment, category)
+```
+
+### Manual Review Dashboard
+
+Check comments flagged for review:
+
+```bash
+jq 'select(.response_status == "flagged_for_review") | {timestamp, commenter, text}' \
+  ~/.openclaw/workspace/.cache/youtube-comments.jsonl
+```
+
+---
+
+## 🛠️ Troubleshooting
+
+### "No module named google.auth"
+```bash
+pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client
+```
+
+### "Credentials not found"
+- Did you save credentials to `~/.config/youtube/credentials.json`?
+- Run the script manually first to set up OAuth2: `python3 youtube-monitor.py`
+
+### "Channel not found"
+- Make sure CHANNEL_NAME matches exactly: "Concessa Obvius"
+- Or set CHANNEL_ID manually in the script
+
+### Cron not running
+```bash
+# Check system logs
+log stream --level debug --predicate 'eventMessage contains "cron"'
+
+# Test script directly
+/Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+
+# Check permissions
+ls -la /Users/abundance/.openclaw/workspace/.cache/youtube-monitor-cron.sh
+```
+
+---
+
+## 📝 Next Steps
+
+1. ✅ Install dependencies: `pip install google-auth-oauthlib ...`
+2. ✅ Get YouTube API credentials
+3. ✅ Update CHANNEL_ID in script
+4. ✅ Test manually: `python3 youtube-monitor.py`
+5. ✅ Add to crontab: `crontab -e`
+6. ✅ Monitor output: `tail -f ~/.openclaw/workspace/.cache/monitor.log`
+
+---
+
+## 📚 Resources
+
+- [YouTube Data API Docs](https://developers.google.com/youtube/v3)
+- [OAuth 2.0 Setup](https://developers.google.com/identity/protocols/oauth2)
+- [Cron Expression Reference](https://crontab.guru/)
+- [jq Manual](https://stedolan.github.io/jq/manual/)

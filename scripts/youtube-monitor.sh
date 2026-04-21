@@ -1,21 +1,23 @@
 #!/bin/bash
-# YouTube Comment Monitor - Cron Wrapper
-# Runs every 30 minutes via macOS LaunchAgent
-# Logs to .cache/youtube-comments.jsonl
+# YouTube Comment Monitor - Cron wrapper
+# Runs every 30 minutes via cron
 
-WORKSPACE="$HOME/.openclaw/workspace"
-CACHE_DIR="$WORKSPACE/.cache"
-SCRIPT="$CACHE_DIR/youtube-comment-monitor-v2.py"
-LOG="$CACHE_DIR/youtube-monitor.log"
+set -e
 
-# Create directories if needed
-mkdir -p "$CACHE_DIR"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+WORKSPACE_DIR="$(dirname "$SCRIPT_DIR")"
+PYTHON_SCRIPT="$SCRIPT_DIR/youtube-monitor.py"
 
-# Add timestamp and run
-{
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] ==== YouTube Comment Monitor Run ===="
-  python3 "$SCRIPT" 2>&1
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] ==== Run Complete ===="
-} >> "$LOG" 2>&1
+# Ensure cache directory exists
+mkdir -p "$WORKSPACE_DIR/.cache"
 
-exit 0
+# Check if credentials exist
+if [ ! -f "$WORKSPACE_DIR/.cache/youtube-credentials.json" ]; then
+    echo "[ERROR] YouTube credentials not found!"
+    echo "Please complete setup at: docs/youtube-monitor-setup.md"
+    exit 1
+fi
+
+# Run the monitor
+cd "$WORKSPACE_DIR"
+python3 "$PYTHON_SCRIPT"

@@ -1,0 +1,22 @@
+{
+  "setup_help": {
+    "subject": "Setup Help - Let's Get You Started! 👋",
+    "body": "Thanks for reaching out about setup!\n\nHere are the resources that should get you going:\n\n📚 **Full Setup Guide:** [link to setup guide]\n🎥 **Video Tutorial:** [link to 10-min walkthrough]\n💬 **Common Issues FAQ:** [link to FAQ]\n\nIf you get stuck on a specific step, just let me know and I'll help you through it!\n\nCheers,\nThe Concessa Obvius Team"
+  },
+  "newsletter": {
+    "subject": "Join Our Newsletter! 🔔",
+    "body": "Thanks for wanting to stay in the loop!\n\nWe're building something awesome and I'd love to keep you updated:\n\n✉️ **Subscribe Here:** [link to newsletter signup]\n\nYou'll get:\n📧 Weekly tips & updates\n🚀 Early access to new features\n🎁 Exclusive member-only content\n💬 Direct channel to share feedback\n\nSee you there!\n\nCheers,\nThe Concessa Obvius Team"
+  },
+  "product_inquiry": {
+    "subject": "Product Info & Pricing 🎯",
+    "body": "Great question!\n\nHere's everything you need to know about our product:\n\n📦 **Full Product Overview:** [link]\n💰 **Pricing & Plans:** [link]\n✨ **Features Comparison:** [link]\n\nTo help you find the perfect fit, I'd love to know:\n- What's your main use case?\n- Rough budget range?\n- Team size or scale?\n\nHappy to answer any questions!\n\nCheers,\nThe Concessa Obvius Team"
+  },
+  "partnership": {
+    "subject": "Let's Explore a Partnership! 🤝",
+    "body": "Ooh, I love hearing partnership ideas!\n\nFor collaboration, sponsorship, or other business opportunities, let's take this conversation to email so we can dive deeper and move fast:\n\n📧 **Email:** partnerships@concessa.com\n\nWhen you reach out, please tell me:\n- What kind of partnership you have in mind\n- Your company/audience size\n- What you think we could achieve together\n\nLooking forward to exploring this!\n\nCheers,\nThe Concessa Obvius Team"
+  },
+  "default": {
+    "subject": "Thanks for Reaching Out! 👋",
+    "body": "Thanks for your message!\n\nWe read every DM and will get back to you soon with a thoughtful response.\n\nIn the meantime, check out our:\n🌐 **Website:** [link]\n📚 **Help Center:** [link]\n📧 **Email:** support@concessa.com\n\nCheers,\nThe Concessa Obvius Team"
+  }
+}

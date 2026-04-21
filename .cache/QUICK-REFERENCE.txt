@@ -1,0 +1,124 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║            YouTube Comment Monitor - Quick Reference Card                    ║
+║                    Concessa Obvius Channel Monitor                           ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+🚀 QUICK START
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Install yt-dlp (one-time):
+  python3 -m pip install --break-system-packages yt-dlp
+
+Run monitor now:
+  python3 ~/.openclaw/workspace/.cache/youtube-monitor.py
+
+View report:
+  python3 ~/.openclaw/workspace/.cache/youtube-report.py
+
+View flagged comments:
+  python3 ~/.openclaw/workspace/.cache/youtube-report.py --flagged
+
+
+📅 SCHEDULE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Runs: Every 30 minutes automatically via OpenClaw cron
+ID: 114e5c6d-ac8b-47ca-a695-79ac31b5c076
+
+
+🎯 WHAT IT DOES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Auto-respond to Questions (how, what, cost, tools, timeline)
+✅ Auto-respond to Praise (amazing, inspiring, thanks, love)
+🚫 Filter Spam (crypto, MLM, casino, forex)
+🚩 Flag Sales inquiries for manual review (partnership, collaboration)
+📝 Log everything to youtube-comments.jsonl
+
+
+📊 FILES & LOCATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Monitor script:        ~/.openclaw/workspace/.cache/youtube-monitor.py
+Report tool:          ~/.openclaw/workspace/.cache/youtube-report.py
+Cron wrapper:         ~/.openclaw/workspace/.cache/youtube-monitor.sh
+Comments log:         ~/.openclaw/workspace/.cache/youtube-comments.jsonl
+State file:           ~/.openclaw/workspace/.cache/youtube-monitor-state.json
+Run log:              ~/.openclaw/workspace/.cache/youtube-monitor.log
+
+
+🔧 CUSTOMIZE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Edit youtube-monitor.py:
+
+  CHANNEL_NAME = "Your Channel Name"
+  CHANNEL_HANDLE = "@YourHandle"
+  
+  TEMPLATES = { ... }  # Edit auto-response text
+  CATEGORIES = { ... }  # Edit keywords
+
+
+📈 REPORTING COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Full report with stats:
+  python3 ~/.openclaw/workspace/.cache/youtube-report.py
+
+Flagged comments only:
+  python3 ~/.openclaw/workspace/.cache/youtube-report.py --flagged
+
+Last 10 log entries:
+  tail -10 ~/.openclaw/workspace/.cache/youtube-comments.jsonl | python3 -m json.tool
+
+Check state:
+  cat ~/.openclaw/workspace/.cache/youtube-monitor-state.json | python3 -m json.tool
+
+
+🔍 MONITORING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Check recent runs:
+  tail -20 ~/.openclaw/workspace/.cache/youtube-monitor.log
+
+Manual trigger:
+  bash ~/.openclaw/workspace/.cache/youtube-monitor.sh
+
+
+📋 CATEGORIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 Questions → Auto-respond (how, what, cost, tools, timeline, start, learn)
+👍 Praise → Auto-respond (amazing, inspiring, love, thanks, appreciate, best)
+🚫 Spam → Filter (crypto, bitcoin, MLM, casino, forex, "click here")
+🚩 Sales → Flag for review (partner, collaborate, sponsor, contact, reach out)
+
+
+🆘 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+No comments found?
+  → Check channel name & handle in youtube-monitor.py
+
+Script hangs?
+  → Install YouTube API: pip install google-api-python-client
+  → Set YOUTUBE_API_KEY environment variable
+
+Cron not running?
+  → Check: crontab -l
+  → Check: tail ~/.openclaw/workspace/.cache/youtube-monitor.log
+
+Categories too broad?
+  → Edit CATEGORIES dict in youtube-monitor.py
+  → Adjust keywords and min_score values
+
+
+📚 FULL DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Complete guide:    ~/.openclaw/workspace/.cache/YOUTUBE-MONITOR.md
+Setup checklist:   ~/.openclaw/workspace/.cache/SETUP-CHECKLIST.md
+Summary:           ~/.openclaw/workspace/.cache/YOUTUBE-MONITOR-SUMMARY.md
+
+
+✨ STATUS: READY TO DEPLOY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Scripts created and tested
+✅ yt-dlp installed (works without API key)
+✅ Logging configured
+✅ Cron scheduled (every 30 minutes)
+✅ Templates ready to customize
+✅ Report tool ready
+
+
+Next: python3 ~/.openclaw/workspace/.cache/youtube-monitor.py

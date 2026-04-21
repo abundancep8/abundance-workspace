@@ -1,134 +1,227 @@
 # YouTube Comment Monitor Setup
 
-## Prerequisites
+## Quick Start
 
-1. **YouTube API Credentials**
-   - Go to [Google Cloud Console](https://console.cloud.google.com)
-   - Create a new project
-   - Enable the YouTube Data API v3
-   - Create an API key (or OAuth2 credentials)
+The YouTube Comment Monitor runs every 30 minutes, categorizes new comments on the "Concessa Obvius" channel, auto-responds to questions and praise, and flags sales inquiries for review.
 
-2. **Find Your Channel ID**
-   - Visit your channel
-   - Look at the URL: `youtube.com/channel/UC...`
-   - Copy the ID part
-
-3. **Python Dependencies**
-   ```bash
-   pip install google-api-python-client
-   ```
-
-## Configuration
-
-Set environment variables in your shell profile or cron environment:
+### Step 1: Install Dependencies
 
 ```bash
-export YOUTUBE_API_KEY="your_api_key_here"
-export YOUTUBE_CHANNEL_ID="UCxxxxxxxxxxxxx"
+pip install google-api-python-client google-auth-oauthlib google-auth-httplib2
 ```
 
-## Files
+### Step 2: Get YouTube API Credentials
 
-- `youtube-monitor.py` - Main monitoring script
-- `youtube-comments.jsonl` - Log file (auto-created)
-- `youtube-monitor-state.json` - State tracking (auto-created)
+You need a YouTube Data API key.
 
-## Manual Test
+#### Option A: Simple API Key (Easiest)
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project (or select existing)
+3. Enable the **YouTube Data API v3**
+4. Go to **Credentials** → **Create Credentials** → **API Key**
+5. Copy the key
+
+Then set it in your environment:
+
+```bash
+export YOUTUBE_API_KEY="your-api-key-here"
+```
+
+#### Option B: Service Account (For More Control)
+
+1. In Google Cloud Console, go to **Credentials**
+2. **Create Credentials** → **Service Account**
+3. Give it a name (e.g., "youtube-monitor")
+4. Skip the optional steps
+5. Create a JSON key and download it
+6. Set the path:
+
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="/path/to/service-account-key.json"
+```
+
+### Step 3: Set the Channel ID (Optional)
+
+The monitor will auto-lookup "Concessa Obvius", but you can speed it up by providing the channel ID directly:
+
+```bash
+export YOUTUBE_CHANNEL_ID="UCxxxxxxxxx"  # Replace with actual channel ID
+```
+
+Find your channel ID:
+1. Go to your YouTube channel
+2. Click your profile → Settings
+3. Copy the channel ID from the URL or settings page
+
+### Step 4: Test the Monitor
 
 ```bash
 cd /Users/abundance/.openclaw/workspace
-python3 .cache/youtube-monitor.py
+YOUTUBE_API_KEY="your-key" python3 .cache/youtube-monitor.py
 ```
 
-## Cron Setup (Every 30 minutes)
+You should see:
+```
+🎬 YouTube Comment Monitor
+Channel: Concessa Obvius
+Time: 2026-04-21T00:00:00.000000
 
-Add to crontab with:
+✅ Channel ID: UCxxxxxxxxx
+Fetching comments...
+
+Found X new comments. Processing...
+
+============================================================
+📊 REPORT
+============================================================
+Processed: X
+Auto-responses sent: Y
+Flagged for review: Z
+Log file: .cache/youtube-comments.jsonl
+============================================================
+```
+
+### Step 5: Set Up Cron Job (Every 30 minutes)
+
+Edit your crontab:
+
 ```bash
 crontab -e
 ```
 
-Then add:
-```cron
-*/30 * * * * export YOUTUBE_API_KEY="your_key"; export YOUTUBE_CHANNEL_ID="your_id"; cd /Users/abundance/.openclaw/workspace && python3 .cache/youtube-monitor.py >> .cache/youtube-monitor.log 2>&1
+Add this line:
+
+```
+*/30 * * * * cd /Users/abundance/.openclaw/workspace && YOUTUBE_API_KEY="your-api-key" python3 .cache/youtube-monitor.py >> .cache/youtube-monitor.log 2>&1
 ```
 
-## Template Customization
+Or, if using a service account:
 
-Edit the `RESPONSES` dict in `youtube-monitor.py`:
+```
+*/30 * * * * cd /Users/abundance/.openclaw/workspace && GOOGLE_APPLICATION_CREDENTIALS="/path/to/key.json" python3 .cache/youtube-monitor.py >> .cache/youtube-monitor.log 2>&1
+```
+
+### Step 6: Monitor the Logs
+
+Check the cron log:
+
+```bash
+tail -f .cache/youtube-monitor.log
+```
+
+View processed comments:
+
+```bash
+cat .cache/youtube-comments.jsonl | jq .
+```
+
+View comments flagged for review:
+
+```bash
+cat .cache/youtube-comments.jsonl | jq 'select(.response_status == "flagged")'
+```
+
+---
+
+## How It Works
+
+### Comment Categories
+
+1. **Questions** → Auto-responds with contextual answers
+   - Triggers: "how", "what", "tools", "cost", "timeline", "start", etc.
+   - Example: "How do I get started?" → Responds with getting started guide link
+
+2. **Praise** → Auto-responds with gratitude
+   - Triggers: "amazing", "love", "inspiring", "great", "thanks", etc.
+   - Response: Generic thank you + "more content coming soon"
+
+3. **Spam** → Logged but ignored
+   - Triggers: "crypto", "bitcoin", "mlm", "affiliate", etc.
+   - Action: Flagged in log, no response
+
+4. **Sales** → Logged for manual review
+   - Triggers: "partnership", "collaboration", "sponsorship", etc.
+   - Action: Response marked as "flagged" in log, you review manually
+
+### Output Files
+
+- **`.cache/youtube-comments.jsonl`** — All comments (append-only log)
+  - Fields: timestamp, commenter, text, category, response, response_status, video_id, comment_id
+
+- **`.cache/youtube-monitor-state.json`** — Last checked time and processed comment IDs
+  - Used to avoid processing the same comment twice
+
+- **`.cache/youtube-monitor.log`** — Cron output and debug info
+
+### Response Templates
+
+Customize responses in the script's `RESPONSE_TEMPLATES` dict:
 
 ```python
-RESPONSES = {
-    "question": {
-        "template": "Your custom question response template...",
-        "enabled": True
-    },
-    "praise": {
-        "template": "Your custom praise response template...",
-        "enabled": True
-    }
+RESPONSE_TEMPLATES = {
+    "question": "Thanks for the great question! {answer} Feel free to reach out if you need more help.",
+    "praise": "Thank you so much! We're thrilled you found this valuable. More great content coming soon!",
 }
 ```
 
-## Logs
+Edit the `generate_response()` method to add custom logic for different question types.
 
-- **JSONL Log**: `.cache/youtube-comments.jsonl` (one JSON object per line)
-- **Run Log**: `.cache/youtube-monitor.log` (when run via cron)
-- **State**: `.cache/youtube-monitor-state.json` (tracks last_check time)
-
-## Categories
-
-1. **Question** - How-to, tools, costs, timelines → Auto-respond with template
-2. **Praise** - Compliments, inspiration → Auto-respond with template
-3. **Spam** - Crypto, MLM, phishing → Logged, no response
-4. **Sales** - Partnerships, sponsorships → Flagged for manual review
-5. **Unknown** - Default category → Treated as spam (no response)
-
-## Monitoring Dashboard
-
-View recent comments:
-```bash
-tail -20 .cache/youtube-comments.jsonl | jq '.'
-```
-
-Get today's stats:
-```bash
-grep "2026-04-20" .cache/youtube-comments.jsonl | jq -s 'group_by(.category) | map({category: .[0].category, count: length})'
-```
+---
 
 ## Troubleshooting
 
-**"Channel not found"**
-- Verify YOUTUBE_CHANNEL_ID is correct
-- Check API key has YouTube Data API v3 enabled
+### "YOUTUBE_API_KEY env var not set"
 
-**"No module named googleapiclient"**
-- Run: `pip install google-api-python-client`
+Set your API key:
 
-**"Quota exceeded"**
-- YouTube API has quotas. Monitor usage in Cloud Console
-- Default quota is 10,000 units/day
-- Each comment fetch ≈ 1-2 units
-
-**No comments being found**
-- First run may take time
-- Check that the channel has recent videos with comments
-- Verify you're using the uploads playlist ID correctly
-
-## Example JSONL Output
-
-```json
-{"timestamp": "2026-04-20T06:00:00.000000", "video_id": "dQw4w9WgXcQ", "commenter": "Alice", "text": "How do I start with this?", "category": "question", "response_status": "auto_responded", "published_at": "2026-04-20T05:55:00Z"}
-{"timestamp": "2026-04-20T06:00:01.000000", "video_id": "dQw4w9WgXcQ", "commenter": "Bob", "text": "This is amazing!", "category": "praise", "response_status": "auto_responded", "published_at": "2026-04-20T05:56:00Z"}
-{"timestamp": "2026-04-20T06:00:02.000000", "video_id": "dQw4w9WgXcQ", "commenter": "Spammer", "text": "Free Bitcoin! Click here", "category": "spam", "response_status": "pending", "published_at": "2026-04-20T05:57:00Z"}
-{"timestamp": "2026-04-20T06:00:03.000000", "video_id": "dQw4w9WgXcQ", "commenter": "Brand", "text": "Partnership opportunity", "category": "sales", "response_status": "flagged_for_review", "published_at": "2026-04-20T05:58:00Z"}
+```bash
+export YOUTUBE_API_KEY="your-key"
 ```
 
-## Next Steps
+Or add it to your `.bashrc` / `.zshrc`:
 
-1. Get YouTube API credentials
-2. Find your channel ID
-3. Edit environment variables in crontab
-4. Test manually: `python3 .cache/youtube-monitor.py`
-5. Customize response templates
-6. Add to crontab (every 30 minutes)
-7. Monitor `.cache/youtube-monitor.log` for issues
+```bash
+echo 'export YOUTUBE_API_KEY="your-key"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+### "Could not find channel: Concessa Obvius"
+
+Either:
+1. Provide the channel ID directly via `YOUTUBE_CHANNEL_ID` env var
+2. Verify the channel name is exact and the API has access
+
+### "Failed to post response"
+
+This can happen if:
+- The API key doesn't have YouTube write permissions (use a service account with the right scopes)
+- The video has comments disabled
+- You're hitting rate limits
+
+The monitor will log "failed" and keep going.
+
+### "Rate limit exceeded"
+
+YouTube API has strict rate limits. If you hit them:
+- Increase the time between runs (default: 30 min is reasonable)
+- Use a service account instead of an API key (can have higher limits)
+- Request additional quota from Google Cloud Console
+
+---
+
+## Example Query: Find Unanswered Questions
+
+```bash
+cat .cache/youtube-comments.jsonl | jq 'select(.category == "question" and .response_status == "failed")'
+```
+
+## Example: Delete Old Entries
+
+Keep only comments from the last 7 days:
+
+```bash
+CUTOFF=$(date -u -d "7 days ago" +%Y-%m-%dT%H:%M:%S)
+cat .cache/youtube-comments.jsonl | jq --arg cutoff "$CUTOFF" 'select(.timestamp > $cutoff)' > /tmp/filtered.jsonl
+mv /tmp/filtered.jsonl .cache/youtube-comments.jsonl
+```

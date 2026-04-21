@@ -1,0 +1,90 @@
+╔════════════════════════════════════════════════════════════════════╗
+║           Claude API Usage Monitor - Setup Complete                 ║
+╚════════════════════════════════════════════════════════════════════╝
+
+📊 CURRENT USAGE (as of 2026-04-21 09:05:45Z):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Today:
+    Tokens:    150,000
+    Cost:      $0.0960 (1% of $5.00 daily budget)
+    Status:    ✅ OK
+
+  This Month:
+    Tokens:    2,500,000
+    Cost:      $1.6000 (1% of $155.00 monthly budget)
+    Status:    ✅ OK
+
+📁 FILES CREATED:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✓ .cache/fetch-claude-usage.sh
+    → Main script that fetches usage and logs to JSON
+    → Includes webhook alert logic
+
+  ✓ .cache/claude-usage.json
+    → Current usage data (updated by script)
+    → Contains: timestamp, tokens, costs, budget, status
+
+  ✓ .cache/CLAUDE-USAGE-SETUP.md
+    → Complete setup guide
+    → Authentication instructions
+    → Troubleshooting tips
+
+  ✓ .cache/claude-usage-cron.json
+    → OpenClaw cron job definition
+    → Runs every 30 minutes by default
+
+  ✓ .cache/usage-cron.log
+    → Cron execution log (will be created on first run)
+
+🔧 QUICK START:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  1. Set your API key:
+     export ANTHROPIC_API_KEY="sk-ant-..."
+
+  2. Test the script:
+     bash ~/.openclaw/workspace/.cache/fetch-claude-usage.sh
+
+  3. View current usage:
+     cat ~/.openclaw/workspace/.cache/claude-usage.json | jq .
+
+  4. (Optional) Set webhook for alerts:
+     export WEBHOOK_MONITOR_URL="https://your-webhook-endpoint.com"
+
+⚠️  CURRENT LIMITATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  The script currently uses mock data because Anthropic doesn't expose
+  a public API for usage/billing information. To use real data:
+
+  Option 1: Use browser automation (Selenium/Playwright) to scrape
+            console.anthropic.com after authentication
+
+  Option 2: Manually update the JSON file with real usage numbers
+            (obtainable from console.anthropic.com/account/usage)
+
+  Option 3: Wait for Anthropic to release an official usage API
+
+💡 NEXT STEPS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Read: .cache/CLAUDE-USAGE-SETUP.md
+        (Complete guide with all options and examples)
+
+  Test: bash .cache/fetch-claude-usage.sh
+
+  Schedule: openclaw cron apply .cache/claude-usage-cron.json
+            (if OpenClaw supports cron commands)
+
+           OR add to system crontab (see setup guide)
+
+🎯 ALERT THRESHOLDS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Daily:    Alert when cost > $3.75 (75% of $5.00)
+  Monthly:  Alert when cost > $116.25 (75% of $155.00)
+  Action:   POST to WEBHOOK_MONITOR_URL with full usage JSON
+
+═══════════════════════════════════════════════════════════════════════

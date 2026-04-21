@@ -1,20 +1,17 @@
 {
-  "timestamp": "2026-04-20T00:04:17.941923",
-  "session_duration": 0.000993,
-  "total_dms_processed": 4,
-  "auto_responses_sent": 4,
-  "conversion_potential": 1,
-  "categories": {
-    "setup_help": 1,
-    "newsletter": 1,
-    "product_inquiry": 1,
-    "partnership": 1
+  "timestamp": "2026-04-20T15:03:52.554860",
+  "status": "completed",
+  "total_dms_processed": 12,
+  "total_this_run": 0,
+  "auto_responses_sent": 12,
+  "by_category": {
+    "setup_help": 3,
+    "newsletter": 2,
+    "partnership": 2,
+    "product_inquiry": 5
   },
-  "partnership_flags": [
-    {
-      "dm_id": "dm_003",
-      "sender": "tech_brand",
-      "text": "We're interested in partnering with you for a brand collaboration. Our product aligns perfectly with your audience. Let's discuss sponsorship opportunities!"
-    }
-  ]
+  "partnerships_flagged": 0,
+  "interesting_partnerships": [],
+  "product_inquiries_count": 5,
+  "conversion_potential": "5 lead(s) ready to follow up"
 }

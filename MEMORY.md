@@ -31,6 +31,33 @@
 - **Next Step:** Configure YouTube API credentials from Google Cloud Console, test first run, enable cron
 - **Key Decision:** Keyword-based categorization for speed; AI-based option available for future enhancement
 
+### Campaign 3: YouTube DM Monitor (Concessa Obvius) — NEW
+- **Status:** ✅ INITIALIZED & READY (April 21, 2026 4:04 AM UTC)
+- **Cron ID:** c1b30404-7343-46ff-aa1d-4ff84daf3674
+- **Schedule:** Every hour (0 * * * *)
+- **Purpose:** Monitor direct messages to Concessa Obvius YouTube channel, categorize, and send auto-responses
+- **Features:**
+  - 4-category auto-response system (Setup Help, Newsletter, Product Inquiry, Partnership)
+  - Smart keyword-based categorization
+  - Partnership flagging for manual review
+  - JSONL audit logging (all DMs recorded)
+  - Hourly JSON reports with metrics
+- **Files Created:**
+  - `scripts/youtube-dm-monitor.js` (7.2 KB) — Main monitoring script with templates
+  - `scripts/youtube-dm-fetch.js` (2.4 KB) — DM fetcher (YouTube API + browser automation fallback)
+  - `youtube-dm-monitor-README.md` (5.8 KB) — Quick reference guide
+  - `docs/youtube-dm-monitor-setup.md` (5.9 KB) — Full documentation
+  - `.cache/youtube-dms.jsonl` — DM audit log (JSONL format)
+  - `.cache/youtube-dms-report.json` — Latest hourly report
+- **Categories & Keywords:**
+  - **Setup Help:** "how to", "confused", "help", "tutorial", "guide", "problem", "error"
+  - **Newsletter:** "newsletter", "email list", "subscribe", "updates", "sign up"
+  - **Product Inquiry:** "buy", "price", "product", "recommend", "interested", "cost"
+  - **Partnership:** "collaborate", "sponsorship", "business", "affiliate", "opportunity"
+- **Current Stats:** Ready (0 DMs processed — awaiting YouTube API config or browser automation)
+- **Next Step:** Configure YouTube API token (`export YOUTUBE_API_KEY="..."`) or verify OpenClaw browser is running for fallback mode
+- **Key Decision:** Dual-mode architecture: API (fast, preferred) + browser automation (fallback). Allows flexibility without API key blocking operation.
+
 ## Patterns & Systems
 
 ### Daily Workflow
@@ -116,7 +143,7 @@
     - Partnership: 6 DMs (21%) 🚩 _Flagged for review_
     - Newsletter: 4 DMs (14%)
     - Other: 3 DMs (11%)
-  - **Last Run:** 2026-04-19 8:03 PM (just completed)
+  - **Last Run:** 2026-04-20 1:03 PM (just completed)
   - **Data Files (Active):**
     - `.cache/youtube-dms.jsonl` (45 total lines, 28 valid JSON DM records)
     - `.cache/youtube-dm-report.txt` (latest report)

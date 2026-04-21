@@ -1,26 +1,26 @@
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║         YOUTUBE COMMENT MONITOR - CONCESSA OBVIUS CHANNEL                  ║
-║                        2026-04-20T09:02:53.631556                           ║
+║                        2026-04-21T09:02:57.339335                           ║
 ╚════════════════════════════════════════════════════════════════════════════╝
 
 SUMMARY
 ├─ Channel: Concessa Obvius (UCa_mZVVqV5Aq48a0MnIjS-w)
 ├─ Monitor Status: operational
-├─ Last Run: 2026-04-20T09:02:53.631182
+├─ Last Run: 2026-04-21T09:02:57.338287
 └─ Cron Job ID: 114e5c6d-ac8b-47ca-a695-79ac31b5c076
 
 COMMENTS PROCESSED
-├─ Total Comments in Log: 138
-├─ Questions: 38
-├─ Praise: 38
-├─ Spam: 37
-├─ Sales (Flagged): 13
-└─ Other: 12
+├─ Total Comments in Log: 450
+├─ Questions: 139
+├─ Praise: 139
+├─ Spam: 94
+├─ Sales (Flagged): 62
+└─ Other: 16
 
 AUTO-RESPONSES
-├─ Auto-Responded: 48
-├─ Flagged for Review: 12
-└─ Processed/Spam: 78
+├─ Auto-Responded: 247
+├─ Flagged for Review: 62
+└─ Processed/Spam: 146
 
 CATEGORIZATION RULES
 ├─ Questions: how, help, tools, cost, timeline, tutorial, start

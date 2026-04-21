@@ -1843,3 +1843,244 @@ Status: Success
 2026-04-20 00:04:17,942 - YouTubeDMMonitor - INFO - Categories: {'setup_help': 1, 'newsletter': 1, 'product_inquiry': 1, 'partnership': 1}
 2026-04-20 00:04:17,942 - YouTubeDMMonitor - INFO - ⚠️  1 partnerships flagged for review
 2026-04-20 00:04:17,942 - YouTubeDMMonitor - INFO - ============================================================
+2026-04-20 14:03:46,008 - YouTubeDMMonitor - INFO - ============================================================
+2026-04-20 14:03:46,009 - YouTubeDMMonitor - INFO - YouTube DM Monitor started
+2026-04-20 14:03:46,009 - YouTubeDMMonitor - INFO - ============================================================
+2026-04-20 14:03:46,009 - YouTubeDMMonitor - INFO - Processing 4 DMs...
+2026-04-20 14:03:46,009 - YouTubeDMMonitor - INFO - ============================================================
+2026-04-20 14:03:46,009 - YouTubeDMMonitor - INFO - Total DMs processed: 0
+2026-04-20 14:03:46,009 - YouTubeDMMonitor - INFO - Auto-responses sent: 0
+2026-04-20 14:03:46,009 - YouTubeDMMonitor - INFO - Conversion potential: 0 partnerships
+2026-04-20 14:03:46,009 - YouTubeDMMonitor - INFO - Categories: {'setup_help': 0, 'newsletter': 0, 'product_inquiry': 0, 'partnership': 0}
+2026-04-20 14:03:46,009 - YouTubeDMMonitor - INFO - ============================================================
+[2026-04-20 15:03:44] =========================================
+[2026-04-20 15:03:44] YouTube DM Monitor - Hourly Run
+[2026-04-20 15:03:44] =========================================
+[2026-04-20 15:03:44] Activating virtual environment...
+[2026-04-20 15:03:44] Checking dependencies...
+[2026-04-20 15:03:44] Starting DM monitor...
+[2026-04-20 15:03:44,987] INFO: Starting YouTube DM Monitor for 'Concessa Obvius'
+[2026-04-20 15:03:44,987] INFO: Fetching DMs from YouTube Studio...
+[2026-04-20 15:03:52,529] ERROR: Authentication required - YouTube Studio not accessible
+[2026-04-20 15:03:52,554] INFO: No new DMs to process
+[2026-04-20 15:03:52,555] INFO: ✅ Monitor run completed successfully
+
+==================================================
+📊 YOUTUBE DM MONITOR REPORT
+==================================================
+⏰ Generated: 2026-04-20T15:03:52.554860
+
+✅ Total DMs (all time): 12
+✉️  This run: 0
+📤 Auto-responses sent: 12
+
+📂 By Category:
+  • Setup Help: 3
+  • Newsletter: 2
+  • Partnership: 2
+  • Product Inquiry: 5
+
+🤝 Partnerships Flagged: 0
+
+🎯 Conversion Potential:
+  5 lead(s) ready to follow up
+==================================================
+
+[2026-04-20 15:03:52] ✅ Monitor completed successfully
+[2026-04-20 15:03:52] ✅ Completed at 2026-04-20 15:03:52
+[2026-04-20 15:03:52] 
+2026-04-20 20:05:06,294 [INFO] ============================================================
+2026-04-20 20:05:06,294 [INFO] YouTube DM Monitor - Cron Job Started
+2026-04-20 20:05:06,294 [INFO] Run count: 1
+2026-04-20 20:05:06,294 [INFO] ============================================================
+2026-04-20 20:05:06,294 [ERROR] Fatal error: 'processed_ids'
+Traceback (most recent call last):
+  File "/Users/abundance/.openclaw/workspace/youtube-dm-monitor-cron.py", line 411, in main
+    test_dms = monitor.fetch_test_dms()
+  File "/Users/abundance/.openclaw/workspace/youtube-dm-monitor-cron.py", line 235, in fetch_test_dms
+    return [dm for dm in base_dms if not self.state.is_processed(dm["id"])]
+                                         ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/abundance/.openclaw/workspace/youtube-dm-monitor-cron.py", line 84, in is_processed
+    return dm_id in self.state["processed_ids"]
+                    ~~~~~~~~~~^^^^^^^^^^^^^^^^^
+KeyError: 'processed_ids'
+2026-04-20 20:05:13,162 [INFO] ============================================================
+2026-04-20 20:05:13,162 [INFO] YouTube DM Monitor - Cron Job Started
+2026-04-20 20:05:13,162 [INFO] Run count: 2
+2026-04-20 20:05:13,162 [INFO] ============================================================
+2026-04-20 20:05:13,163 [INFO] Processing 1 new DM(s)...
+2026-04-20 20:05:13,163 [ERROR] Error processing DM dm_005: slice(None, 50, None)
+2026-04-20 20:05:13,163 [ERROR] Fatal error: can't subtract offset-naive and offset-aware datetimes
+Traceback (most recent call last):
+  File "/Users/abundance/.openclaw/workspace/youtube-dm-monitor-cron.py", line 431, in main
+    if monitor.state.should_generate_hourly_report():
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/abundance/.openclaw/workspace/youtube-dm-monitor-cron.py", line 100, in should_generate_hourly_report
+    hours_elapsed = (datetime.now() - last_report_time).total_seconds() / 3600
+                     ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2026-04-20 20:05:37,863 [INFO] ============================================================
+2026-04-20 20:05:37,863 [INFO] YouTube DM Monitor - Cron Job Started
+2026-04-20 20:05:37,863 [INFO] Run count: 2
+2026-04-20 20:05:37,863 [INFO] ============================================================
+2026-04-20 20:05:37,863 [INFO] Processing 1 new DM(s)...
+2026-04-20 20:05:37,863 [ERROR] Error processing DM dm_005: slice(None, 50, None)
+2026-04-20 20:05:37,863 [ERROR] Fatal error: can't subtract offset-naive and offset-aware datetimes
+Traceback (most recent call last):
+  File "/Users/abundance/.openclaw/workspace/youtube-dm-monitor-cron.py", line 431, in main
+    if monitor.state.should_generate_hourly_report():
+       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/abundance/.openclaw/workspace/youtube-dm-monitor-cron.py", line 100, in should_generate_hourly_report
+    hours_elapsed = (datetime.now() - last_report_time).total_seconds() / 3600
+                     ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~
+TypeError: can't subtract offset-naive and offset-aware datetimes
+2026-04-20 20:05:46,556 [INFO] ============================================================
+2026-04-20 20:05:46,556 [INFO] YouTube DM Monitor - Cron Job Started
+2026-04-20 20:05:46,556 [INFO] Run count: 2
+2026-04-20 20:05:46,556 [INFO] ============================================================
+2026-04-20 20:05:46,556 [INFO] Processing 1 new DM(s)...
+2026-04-20 20:05:46,556 [INFO] ✓ Logged DM from enterprise_contact (ID: dm_005, Category: partnership)
+2026-04-20 20:05:46,556 [ERROR] Error processing DM dm_005: 'list' object has no attribute 'add'
+2026-04-20 20:05:46,556 [INFO] ✓ Run complete: 0 processed, 0 flagged, 1 errors
+2026-04-20 20:05:46,556 [INFO] ============================================================
+2026-04-20 20:05:51,316 [INFO] ============================================================
+2026-04-20 20:05:51,316 [INFO] YouTube DM Monitor - Cron Job Started
+2026-04-20 20:05:51,316 [INFO] Run count: 2
+2026-04-20 20:05:51,316 [INFO] ============================================================
+2026-04-20 20:05:51,316 [INFO] Processing 1 new DM(s)...
+2026-04-20 20:05:51,316 [INFO] ✓ Logged DM from enterprise_contact (ID: dm_005, Category: partnership)
+2026-04-20 20:05:51,316 [INFO] ✓ Run complete: 1 processed, 1 flagged, 0 errors
+2026-04-20 20:05:51,316 [INFO] ============================================================
+2026-04-20 20:05:52,693 [INFO] ============================================================
+2026-04-20 20:05:52,693 [INFO] YouTube DM Monitor - Cron Job Started
+2026-04-20 20:05:52,693 [INFO] Run count: 3
+2026-04-20 20:05:52,693 [INFO] ============================================================
+2026-04-20 20:05:52,693 [INFO] No new DMs to process
+2026-04-20 20:05:52,693 [INFO] ✓ Run complete: 0 processed, 0 flagged, 0 errors
+2026-04-20 20:05:52,693 [INFO] ============================================================
+2026-04-20 20:05:54,495 [INFO] ============================================================
+2026-04-20 20:05:54,495 [INFO] YouTube DM Monitor - Cron Job Started
+2026-04-20 20:05:54,495 [INFO] Run count: 1
+2026-04-20 20:05:54,495 [INFO] ============================================================
+2026-04-20 20:05:54,495 [INFO] Processing 5 new DM(s)...
+2026-04-20 20:05:54,495 [INFO] ✓ Logged DM from Alice_Creator (ID: dm_001, Category: setup_help)
+2026-04-20 20:05:54,495 [INFO] ✓ Logged DM from marketing_guy (ID: dm_002, Category: partnership)
+2026-04-20 20:05:54,495 [INFO] ✓ Logged DM from subscriber_jane (ID: dm_003, Category: newsletter)
+2026-04-20 20:05:54,496 [INFO] ✓ Logged DM from potential_buyer (ID: dm_004, Category: product_inquiry)
+2026-04-20 20:05:54,496 [INFO] ✓ Logged DM from enterprise_contact (ID: dm_005, Category: partnership)
+2026-04-20 20:05:54,496 [INFO] ✓ Hourly report saved: .cache/reports/report_2026-04-20_20-05-54.txt
+2026-04-20 20:05:54,496 [INFO] 
+╔════════════════════════════════════════════════════════════╗
+║   YOUTUBE DM MONITOR - HOURLY REPORT                       ║
+║   Generated: 2026-04-20 20:05:54                        ║
+╚════════════════════════════════════════════════════════════╝
+
+📊 ACTIVITY SUMMARY
+  Total DMs Processed:     19
+  Auto-responses Sent:     19
+  Response Rate:           100.0%
+
+📂 BY CATEGORY
+  Setup Help           4
+  Newsletter           3
+  Partnership          6
+  Product Inquiry      6
+
+🤝 PARTNERSHIPS
+  Total Flagged:           4
+  
+💰 CONVERSION POTENTIAL
+  6 product inquiries (follow-up candidates)
+
+⚠️  ACTION NEEDED: Review flagged partnerships!
+
+
+2026-04-20 20:05:54,496 [INFO] ✓ Run complete: 5 processed, 2 flagged, 0 errors
+2026-04-20 20:05:54,496 [INFO] ============================================================
+2026-04-20 20:06:04,631 [INFO] ============================================================
+2026-04-20 20:06:04,631 [INFO] YouTube DM Monitor - Cron Job Started
+2026-04-20 20:06:04,631 [INFO] Run count: 1
+2026-04-20 20:06:04,631 [INFO] ============================================================
+2026-04-20 20:06:04,631 [INFO] Processing 5 new DM(s)...
+2026-04-20 20:06:04,631 [INFO] ✓ Logged DM from Alice_Creator (ID: dm_001, Category: setup_help)
+2026-04-20 20:06:04,632 [INFO] ✓ Logged DM from marketing_guy (ID: dm_002, Category: partnership)
+2026-04-20 20:06:04,632 [INFO] ✓ Logged DM from subscriber_jane (ID: dm_003, Category: newsletter)
+2026-04-20 20:06:04,632 [INFO] ✓ Logged DM from potential_buyer (ID: dm_004, Category: product_inquiry)
+2026-04-20 20:06:04,632 [INFO] ✓ Logged DM from enterprise_contact (ID: dm_005, Category: partnership)
+2026-04-20 20:06:04,632 [INFO] ✓ Hourly report saved: .cache/reports/report_2026-04-20_20-06-04.txt
+2026-04-20 20:06:04,632 [INFO] 
+╔════════════════════════════════════════════════════════════╗
+║   YOUTUBE DM MONITOR - HOURLY REPORT                       ║
+║   Generated: 2026-04-20 20:06:04                        ║
+╚════════════════════════════════════════════════════════════╝
+
+📊 ACTIVITY SUMMARY
+  Total DMs Processed:     5
+  Auto-responses Sent:     5
+  Response Rate:           100.0%
+
+📂 BY CATEGORY
+  Setup Help           1
+  Partnership          2
+  Newsletter           1
+  Product Inquiry      1
+
+🤝 PARTNERSHIPS
+  Total Flagged:           2
+  
+💰 CONVERSION POTENTIAL
+  1 product inquiries (follow-up candidates)
+
+⚠️  ACTION NEEDED: Review flagged partnerships!
+
+
+2026-04-20 20:06:04,632 [INFO] ✓ Run complete: 5 processed, 2 flagged, 0 errors
+2026-04-20 20:06:04,632 [INFO] ============================================================
+2026-04-20 20:06:13,655 [INFO] ============================================================
+2026-04-20 20:06:13,655 [INFO] YouTube DM Monitor - Cron Job Started
+2026-04-20 20:06:13,655 [INFO] Run count: 6
+2026-04-20 20:06:13,655 [INFO] ============================================================
+2026-04-20 20:06:13,655 [INFO] No new DMs to process
+2026-04-20 20:06:13,655 [INFO] ✓ Run complete: 0 processed, 0 flagged, 0 errors
+2026-04-20 20:06:13,655 [INFO] ============================================================
+2026-04-20 20:06:23,337 [INFO] ============================================================
+2026-04-20 20:06:23,337 [INFO] YouTube DM Monitor - Cron Job Started
+2026-04-20 20:06:23,337 [INFO] Run count: 6
+2026-04-20 20:06:23,337 [INFO] ============================================================
+2026-04-20 20:06:23,337 [INFO] No new DMs to process
+2026-04-20 20:06:23,337 [INFO] ✓ Run complete: 0 processed, 0 flagged, 0 errors
+2026-04-20 20:06:23,337 [INFO] ============================================================
+2026-04-21 01:03:53,195 [INFO] ============================================================
+2026-04-21 01:03:53,195 [INFO] YouTube DM Monitor - Cron Job Started
+2026-04-21 01:03:53,196 [INFO] Run count: 6
+2026-04-21 01:03:53,196 [INFO] ============================================================
+2026-04-21 01:03:53,196 [INFO] No new DMs to process
+2026-04-21 01:03:53,197 [INFO] ✓ Hourly report saved: .cache/reports/report_2026-04-21_01-03-53.txt
+2026-04-21 01:03:53,197 [INFO] 
+╔════════════════════════════════════════════════════════════╗
+║   YOUTUBE DM MONITOR - HOURLY REPORT                       ║
+║   Generated: 2026-04-21 01:03:53                        ║
+╚════════════════════════════════════════════════════════════╝
+
+📊 ACTIVITY SUMMARY
+  Total DMs Processed:     5
+  Auto-responses Sent:     5
+  Response Rate:           100.0%
+
+📂 BY CATEGORY
+  Setup Help           1
+  Partnership          2
+  Newsletter           1
+  Product Inquiry      1
+
+🤝 PARTNERSHIPS
+  Total Flagged:           2
+  
+💰 CONVERSION POTENTIAL
+  1 product inquiries (follow-up candidates)
+
+⚠️  ACTION NEEDED: Review flagged partnerships!
+
+
+2026-04-21 01:03:53,197 [INFO] ✓ Run complete: 0 processed, 0 flagged, 0 errors
+2026-04-21 01:03:53,197 [INFO] ============================================================

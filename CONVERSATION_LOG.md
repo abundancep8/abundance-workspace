@@ -6,6 +6,37 @@
 
 ---
 
+## 🌙 Nightly Cycle Archive
+**Quick audit trail of all nightly self-improvement runs. Scan for issues detected, improvements implemented, and system health over time.**
+
+### 2026-04-21 02:00 AM — Nightly Cycle Checkpoint
+- **Systems Checked:** Hourly token check (✅ $0.002 spend, 0.04% of budget), cron health, CONVERSATION_LOG.md structure
+- **Issues Found:** None in active systems; low activity today (sleep period)
+- **One Improvement Implemented:** Created dedicated "Nightly Cycle Archive" section in CONVERSATION_LOG.md to consolidate all nightly runs in reverse chronological order with standardized checkpoint format. Makes audit trail scannable and clarifies when issues were detected vs. routine runs.
+- **Why This Matters:** Autonomous systems need auditability. Quick scans of nightly cycles reveal system patterns, failure detection timing, and improvement momentum. Single entry point prevents decision log fragmentation.
+- **Next Focus:** Maintain consistent checkpoint logging across all future nightly cycles; monitor if archive structure helps identify patterns in system failures.
+
+---
+
+## Previous Nightly Cycle (Pre-Archive)
+
+### 2026-04-20 02:00 AM — Nightly Cycle Checkpoint: Documentation Process Improvement
+- **Systems Checked:** 
+  - Hourly token check (✅ ran at 01:02 AM, $0.001 spend)
+  - YouTube comment monitor (✅ last run normal, 30m cron active)
+  - YouTube DM monitor (✅ hourly cron active)
+  - CONVERSATION_LOG.md structure (⚠️ inconsistent nightly cycle logging)
+- **Issues Found:** Nightly cycles executed but documentation format was variable; some cycles had full entries, others minimal. Risk: future reviews can't quickly see "was this cycle meaningful, or routine check?"
+- **One Improvement Implemented:** Created **Nightly Cycle Checkpoint Template** in CONVERSATION_LOG.md + documented this cycle using it. Ensures every nightly run logs: systems checked, issues found, specific improvement, and next focus. Creates audit trail and prevents "did cycle run?" uncertainty.
+- **Why This Matters:** Autonomous systems need self-documenting outputs. If a nightly cycle ran, it logged. If something changed, it's recorded. Future-me can now scan CONVERSATION_LOG.md and see exactly which cycles found issues vs. routine checks.
+- **Next Focus:** Implement checkpoint template consistently across all future nightly cycles. Review template during next few cycles to refine it if needed.
+
+---
+
+## 📋 Decisions & Frameworks
+
+---
+
 ## 2026-04-20
 
 ### 02:00 AM — Nightly Cycle Checkpoint: Documentation Process Improvement

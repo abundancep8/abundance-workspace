@@ -1,0 +1,31 @@
+{
+  "channel_name": "Concessa Obvius",
+  "monitor_interval_minutes": 60,
+  "auto_respond": true,
+  "log_file": ".cache/youtube-dms.jsonl",
+  "last_check_file": ".cache/youtube-dms-lastcheck.json",
+  "categories": {
+    "setup_help": {
+      "priority": "high",
+      "auto_respond": true,
+      "flag_for_review": false
+    },
+    "newsletter": {
+      "priority": "low",
+      "auto_respond": true,
+      "flag_for_review": false
+    },
+    "product_inquiry": {
+      "priority": "high",
+      "auto_respond": true,
+      "flag_for_review": false
+    },
+    "partnership": {
+      "priority": "critical",
+      "auto_respond": true,
+      "flag_for_review": true
+    }
+  },
+  "stats_report_enabled": true,
+  "stats_include_partnership_summary": true
+}

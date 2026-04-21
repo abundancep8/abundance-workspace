@@ -1,0 +1,15 @@
+{
+  "last_run": "2026-04-21T18:30:45.123456",
+  "processed_comments": [
+    "UgxAbC123_xYzDefGhI",
+    "UgyJklMno456PqrStuVw",
+    "UgzXyzAbC789DefGhIj"
+  ],
+  "next_page_token": null,
+  "api_quota_used": 400,
+  "stats": {
+    "total_processed": 47,
+    "total_auto_responses": 18,
+    "total_flagged_for_review": 5
+  }
+}

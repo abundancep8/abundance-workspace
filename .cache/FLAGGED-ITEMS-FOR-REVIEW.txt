@@ -1,0 +1,62 @@
+═════════════════════════════════════════════════════════════════════════════════
+  🚩 ITEMS FLAGGED FOR MANUAL REVIEW
+  YouTube Channel: Concessa Obvius
+  Generated: 2026-04-21 10:30 PM Pacific
+═════════════════════════════════════════════════════════════════════════════════
+
+PARTNERSHIP & SALES OPPORTUNITIES (54 TOTAL)
+──────────────────────────────────────────────────────────────────────────────
+
+Recent Examples:
+
+1. Jessica Parker
+   Category: Sales (Partnership)
+   Text: "Hi! Love your content. Would love to explore a partnership opportunity 
+           with you. Let's connect!"
+   Status: FLAGGED - Awaiting your review
+   Recommendation: Respond with partnership inquiry process
+   
+   ✉️ Suggested Response Template:
+      "Hi Jessica! Thanks so much for reaching out. I'd love to explore this 
+       further. Let me connect you with our partnerships team. They'll follow 
+       up with next steps shortly."
+
+──────────────────────────────────────────────────────────────────────────────
+
+SPAM COMMENTS FILTERED (86 TOTAL - NO RESPONSE SENT)
+──────────────────────────────────────────────────────────────────────────────
+
+These comments were automatically categorized as spam and filtered.
+No auto-response was sent. Review if needed, otherwise these can be deleted.
+
+Sample:
+  • "BUY CRYPTO NOW!!! Limited offer, DM me for details" — Crypto Spam
+  • "EARN $5K WEEKLY - WORK FROM HOME!!!" — MLM/Job Scam
+  • "Click here: [sketchy-link].tk" — Phishing/Malware
+  • "FREE MONEY HACK - CLICK NOW!!!" — Clickbait
+
+These are typically safe to delete without review.
+
+════════════════════════════════════════════════════════════════════════════════
+
+REVIEW CHECKLIST
+──────────────────────────────────────────────────────────────────────────────
+
+□ Check all "sales" flagged items in the log
+□ Respond to legitimate partnership inquiries
+□ Update response templates with your actual resources/links
+□ Consider blocking repeat spam commenters
+□ Archive processed items (optional)
+
+ACCESS FLAGGED ITEMS WITH:
+
+# Find all sales/partnership comments
+jq 'select(.category=="sales")' .cache/youtube-comments.jsonl
+
+# Find unresponded flagged items
+jq 'select(.response_status=="flagged_for_review")' .cache/youtube-comments.jsonl
+
+# Find spam comments
+jq 'select(.category=="spam")' .cache/youtube-comments.jsonl
+
+════════════════════════════════════════════════════════════════════════════════

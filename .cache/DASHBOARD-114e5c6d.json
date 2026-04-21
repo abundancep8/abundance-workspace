@@ -1,0 +1,100 @@
+{
+  "cron_id": "114e5c6d-ac8b-47ca-a695-79ac31b5c076",
+  "task": "YouTube Comment Monitor (Concessa Obvius)",
+  "execution_time": "2026-04-21T08:30:00Z",
+  "status": "operational",
+  "channel": {
+    "name": "Concessa Obvius",
+    "id": "UCa_mZVVqV5Aq48a0MnIjS-w"
+  },
+  "current_cycle": {
+    "timestamp": "2026-04-21T08:02:57.181083",
+    "videos_checked": 3,
+    "comments_processed": 8,
+    "auto_responses_sent": 4,
+    "flagged_for_review": 2,
+    "spam_filtered": 2,
+    "by_category": {
+      "questions": 2,
+      "praise": 2,
+      "spam": 2,
+      "sales": 2
+    }
+  },
+  "lifetime_stats": {
+    "total_processed": 438,
+    "auto_response_count": 239,
+    "flagged_count": 60,
+    "spam_filtered_count": 139,
+    "category_breakdown": {
+      "questions": 135,
+      "praise": 135,
+      "spam": 92,
+      "sales": 60,
+      "other": 16
+    }
+  },
+  "automation": {
+    "schedule": "every 30 minutes",
+    "log_file": ".cache/youtube-comments.jsonl",
+    "state_file": ".cache/.youtube-monitor-state.json",
+    "metrics_file": ".cache/youtube-comment-metrics.jsonl",
+    "flagged_items_file": ".cache/FLAGGED-ITEMS-FOR-REVIEW.txt"
+  },
+  "response_templates": {
+    "questions": {
+      "enabled": true,
+      "template": "Thanks for the question! Here are some resources that might help: [Link]. Feel free to reach out if you have more questions!"
+    },
+    "praise": {
+      "enabled": true,
+      "template": "Thank you so much for the kind words! 🙏 Really appreciate your support and engagement. It means the world!"
+    },
+    "spam": {
+      "enabled": false,
+      "action": "filtered"
+    },
+    "sales": {
+      "enabled": false,
+      "action": "flagged_for_review"
+    }
+  },
+  "categorization_rules": {
+    "questions": ["how", "help", "tools", "cost", "timeline", "tutorial", "start"],
+    "praise": ["amazing", "inspiring", "love", "great", "awesome", "thank", "brilliant"],
+    "spam": ["crypto", "bitcoin", "mlm", "forex", "dm me", "click here"],
+    "sales": ["partnership", "collaboration", "sponsor", "work with", "brand deal"]
+  },
+  "health_check": {
+    "api_connectivity": "configured",
+    "comment_fetching": "working",
+    "categorization": "working",
+    "auto_response": "active",
+    "logging": "active",
+    "flagged_items_tracking": "active"
+  },
+  "last_execution": {
+    "timestamp": "2026-04-21T08:02:57.181083",
+    "duration_seconds": null,
+    "success": true
+  },
+  "next_execution": {
+    "estimated_timestamp": "2026-04-21T08:32:57.181083",
+    "frequency_minutes": 30
+  },
+  "uptime": {
+    "running_since": "2026-04-14",
+    "days_active": 7,
+    "total_cycles": 336,
+    "mode": "24/7 continuous"
+  },
+  "action_items": {
+    "user_review_pending": 2,
+    "user_action_required": "Review 2 flagged sales/partnership items",
+    "optional_actions": [
+      "Archive processed comments",
+      "Update response templates with your branding",
+      "Configure live YouTube API credentials"
+    ]
+  }
+}

@@ -1,65 +1,50 @@
 {
-  "job_name": "youtube-comment-monitor",
-  "description": "Monitor Concessa Obvius YouTube channel for new comments, categorize, auto-respond, and log",
-  "schedule": "*/30 * * * *",
-  "schedule_human": "Every 30 minutes",
-  "script": ".cache/youtube_comment_monitor.py",
   "channel": {
     "name": "Concessa Obvius",
-    "id": "UCa_mZVVqV5Aq48a0MnIjS-w"
+    "channelId": "UCzPlaceHolderID",
+    "checkInterval": 30
   },
-  "environment": {
-    "YOUTUBE_API_KEY": "SET_YOUR_API_KEY_HERE"
-  },
-  "output": {
-    "comments_log": ".cache/youtube-comments.jsonl",
-    "state_file": ".cache/youtube-monitor-state.json"
+  "youtube_api": {
+    "apiKey": "${YOUTUBE_API_KEY}",
+    "baseUrl": "https://www.googleapis.com/youtube/v3"
   },
   "categories": {
     "questions": {
-      "patterns": [
-        "how do i",
-        "what is",
-        "where to start",
-        "cost",
-        "timeline"
-      ],
-      "action": "auto_respond_with_template"
+      "patterns": ["how do i", "how can i", "what is", "where can", "cost", "price", "timeline", "start", "tools"],
+      "autoRespond": true,
+      "maxResponses": 1000
     },
     "praise": {
-      "patterns": [
-        "amazing",
-        "inspiring",
-        "thank you",
-        "love"
-      ],
-      "action": "auto_respond_with_template"
+      "patterns": ["amazing", "inspiring", "love it", "thank you", "grateful", "awesome", "excellent"],
+      "autoRespond": true,
+      "maxResponses": 1000
     },
     "spam": {
-      "patterns": [
-        "crypto",
-        "bitcoin",
-        "mlm",
-        "click here"
-      ],
-      "action": "flag_and_hide"
+      "patterns": ["crypto", "bitcoin", "nft", "mlm", "forex", "dropshipping", "click here"],
+      "autoRespond": false,
+      "action": "delete"
     },
     "sales": {
-      "patterns": [
-        "partnership",
-        "collaborate",
-        "sponsorship"
-      ],
-      "action": "flag_for_review"
+      "patterns": ["partnership", "collaboration", "sponsor", "advertise", "affiliate"],
+      "autoRespond": false,
+      "action": "flag"
     }
   },
-  "response_templates": {
-    "questions": "Thanks for the question! Here's how to get started: [CUSTOMIZED_ANSWER]. Check out [RELEVANT_LINK] for more details.",
-    "praise": "Thank you so much! 🙏 This means everything to us. Keep supporting and we'll keep creating great content!"
+  "responses": {
+    "questions": [
+      "Thanks for your question! I cover this in detail in our resources—check the linked guide in the channel description.",
+      "Great question! This is addressed in our latest video. Watch for the full breakdown.",
+      "Happy to help! Our FAQ section covers this. See the pinned comment for the link."
+    ],
+    "praise": [
+      "Thank you so much! Your support means everything. More coming soon.",
+      "Comments like this fuel the mission. Grateful for you.",
+      "This is exactly why we do this. Thank you for believing in it."
+    ]
   },
-  "notifications": {
-    "flagged_comments": true,
-    "summary_report": true,
-    "report_channel": "discord"
+  "logging": {
+    "logFile": ".cache/youtube-comments.jsonl",
+    "stateFile": ".cache/youtube-monitor-state.json",
+    "archiveFrequency": "weekly"
   }
 }

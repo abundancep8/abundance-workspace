@@ -1,0 +1,11 @@
+{
+  "processed_ids": [],
+  "last_run": null,
+  "run_count": 0,
+  "hourly_report_generated": null,
+  "_metadata": {
+    "description": "State tracking for YouTube DM Monitor",
+    "note": "Do not edit manually - managed by youtube-dm-monitor-cron.py",
+    "version": "1.0"
+  }
+}

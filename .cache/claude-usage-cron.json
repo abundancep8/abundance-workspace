@@ -1,0 +1,16 @@
+{
+  "id": "fetch-claude-api-usage",
+  "name": "Claude API Usage Monitor",
+  "description": "Fetch Claude API usage, calculate costs, and log to .cache/claude-usage.json with webhook alerts",
+  "schedule": "*/30 * * * *",
+  "command": "bash /Users/abundance/.openclaw/workspace/.cache/fetch-claude-usage.sh",
+  "environment": {
+    "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+    "WEBHOOK_MONITOR_URL": "${WEBHOOK_MONITOR_URL}"
+  },
+  "timeout": 60,
+  "onSuccess": "Cron: Claude usage updated",
+  "onFailure": "Cron: Claude usage check failed",
+  "logPath": "/Users/abundance/.openclaw/workspace/.cache/usage-cron.log",
+  "notifyOnAlert": true
+}

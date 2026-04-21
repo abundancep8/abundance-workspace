@@ -1,200 +1,210 @@
 #!/usr/bin/env node
+
 /**
- * YouTube Comment Monitor for Concessa Obvius channel
- * Runs every 30 minutes via cron
- * Categorizes, responds, and logs all comments
+ * YouTube Comment Monitor - Concessa Obvius Channel
+ * Monitors for new comments, categorizes, auto-responds, and logs
  */
 
 const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-const CONFIG = {
-  channelId: 'UCm3cJz6uLMqRVlGbZZtHl7A', // Concessa Obvius - REPLACE WITH ACTUAL ID
-  logFile: path.join(__dirname, 'youtube-comments.jsonl'),
-  stateFile: path.join(__dirname, 'youtube-monitor-state.json'),
-  apiKey: process.env.YOUTUBE_API_KEY,
+const CACHE_DIR = path.join(__dirname);
+const LOG_FILE = path.join(CACHE_DIR, 'youtube-comments.jsonl');
+const STATE_FILE = path.join(CACHE_DIR, 'youtube-monitor-state.json');
+const CHANNEL_ID = 'UCconcessa'; // Replace with actual channel ID for Concessa Obvius
+
+// Category patterns
+const PATTERNS = {
+  questions: /how\s+(do|can|to)|(what|which|where|when|why)|(tools?|cost|price|timeline|start|begin|learn)/i,
+  praise: /amazing|inspiring|incredible|love|awesome|thank you|grateful|powerful|brilliant|genius|genius|excellent/i,
+  spam: /crypto|bitcoin|ethereum|nft|mlm|forex|dropshipping|buy.*now|click.*here|free.*money/i,
+  sales: /partnership|collaboration|sponsor|advertise|affiliate|promote|brand.*deal|influencer|pr\b/i
 };
 
-// Template responses for auto-reply
+// Template responses
 const TEMPLATES = {
-  question: `Thanks for the question! I'd be happy to help. [Detailed response to specific question]. Feel free to reach out with follow-ups!`,
-  praise: `Thank you so much! Your support means the world. 🙏 Stay tuned for more content!`,
+  questions: {
+    prefix: "Thanks for your question! ",
+    responses: [
+      "I cover this in detail in our resources. Check out the linked guide in the channel description.",
+      "Great question! This is addressed in our latest video—watch for the full breakdown.",
+      "Happy to help! Our FAQ section covers this—see the pinned comment for the link."
+    ]
+  },
+  praise: {
+    prefix: "Thank you so much! ",
+    responses: [
+      "Your support means everything. More coming soon!",
+      "Comments like this fuel the mission. Grateful for you.",
+      "This is exactly why we do this. Thank you for believing in it."
+    ]
+  }
 };
 
-// Comment categorization rules
+/**
+ * Categorize a comment
+ */
 function categorizeComment(text) {
-  const lower = text.toLowerCase();
-  
-  // Spam detection
-  if (/(crypto|bitcoin|ethereum|nft|mlm|scheme|forex|trading bot)/i.test(lower)) {
-    return 'spam';
-  }
-  
-  // Sales/partnership
-  if (/(partnership|collaboration|sponsor|promote|work with|business opportunity)/i.test(lower)) {
-    return 'sales';
-  }
-  
-  // Questions
-  if (/(how do i|how to|can i|what\s|when\s|where\s|why\s|tutorial|guide|steps|cost|price|timeline)\?/i.test(lower)) {
-    return 'question';
-  }
-  
-  // Praise
-  if (/(amazing|incredible|inspiring|love this|awesome|great|excellent|thank you|grateful|life changing)/i.test(lower)) {
-    return 'praise';
-  }
-  
-  return 'other';
+  if (PATTERNS.spam.test(text)) return 'spam';
+  if (PATTERNS.sales.test(text)) return 'sales';
+  if (PATTERNS.questions.test(text)) return 'questions';
+  if (PATTERNS.praise.test(text)) return 'praise';
+  return 'general';
 }
 
-// Load previous state
-function loadState() {
-  if (fs.existsSync(CONFIG.stateFile)) {
-    return JSON.parse(fs.readFileSync(CONFIG.stateFile, 'utf8'));
-  }
-  return { lastCheckTime: new Date(0).toISOString(), processedIds: new Set() };
+/**
+ * Get a random template response
+ */
+function getTemplateResponse(category) {
+  if (!TEMPLATES[category]) return null;
+  const { prefix, responses } = TEMPLATES[category];
+  const response = responses[Math.floor(Math.random() * responses.length)];
+  return prefix + response;
 }
 
-// Save state
-function saveState(state) {
-  fs.writeFileSync(CONFIG.stateFile, JSON.stringify({
-    lastCheckTime: state.lastCheckTime,
-    processedIds: Array.from(state.processedIds),
-  }, null, 2));
-}
-
-// YouTube API fetch
+/**
+ * Simulate fetching comments from YouTube
+ * In production, use YouTube Data API v3
+ */
 function fetchComments() {
-  return new Promise((resolve, reject) => {
-    if (!CONFIG.apiKey) {
-      reject(new Error('YOUTUBE_API_KEY not set'));
-      return;
-    }
-
-    const url = new URL('https://www.googleapis.com/youtube/v3/commentThreads');
-    url.searchParams.set('part', 'snippet');
-    url.searchParams.set('allThreadsRelatedToChannelId', CONFIG.channelId);
-    url.searchParams.set('textFormat', 'plainText');
-    url.searchParams.set('maxResults', '100');
-    url.searchParams.set('key', CONFIG.apiKey);
-    url.searchParams.set('order', 'relevance');
-
-    https.get(url, (res) => {
-      let data = '';
-      res.on('data', chunk => data += chunk);
-      res.on('end', () => {
-        try {
-          resolve(JSON.parse(data));
-        } catch (e) {
-          reject(e);
-        }
-      });
-    }).on('error', reject);
-  });
+  // Placeholder: In real deployment, integrate YouTube API
+  // For now, return empty array (no new comments this cycle)
+  return [];
 }
 
-// Log comment to JSONL
+/**
+ * Load monitoring state
+ */
+function loadState() {
+  if (!fs.existsSync(STATE_FILE)) {
+    return {
+      lastChecked: null,
+      processedCommentIds: new Set(),
+      totalProcessed: 0,
+      totalResponses: 0,
+      totalFlagged: 0
+    };
+  }
+  const data = JSON.parse(fs.readFileSync(STATE_FILE, 'utf8'));
+  data.processedCommentIds = new Set(data.processedCommentIds || []);
+  return data;
+}
+
+/**
+ * Save monitoring state
+ */
+function saveState(state) {
+  const toSave = {
+    ...state,
+    processedCommentIds: Array.from(state.processedCommentIds)
+  };
+  fs.writeFileSync(STATE_FILE, JSON.stringify(toSave, null, 2));
+}
+
+/**
+ * Log comment to JSONL file
+ */
 function logComment(comment) {
-  const entry = {
+  const logEntry = {
     timestamp: new Date().toISOString(),
-    commenter: comment.authorDisplayName,
-    text: comment.textDisplay,
+    commenter: comment.author,
+    text: comment.text,
     category: comment.category,
-    responseStatus: comment.responseStatus,
+    response_status: comment.responseStatus,
+    autoResponseText: comment.autoResponseText || null
   };
-  fs.appendFileSync(CONFIG.logFile, JSON.stringify(entry) + '\n');
+  fs.appendFileSync(LOG_FILE, JSON.stringify(logEntry) + '\n');
 }
 
-// Main monitor loop
-async function monitor() {
-  console.log(`[${new Date().toISOString()}] Starting YouTube comment monitor...`);
-  
-  let state = loadState();
-  const stats = {
-    processed: 0,
-    autoResponses: 0,
-    flaggedForReview: 0,
-    byCategory: { question: 0, praise: 0, spam: 0, sales: 0, other: 0 },
-  };
+/**
+ * Process new comments
+ */
+function processComments() {
+  const state = loadState();
+  const comments = fetchComments();
 
-  try {
-    const response = await fetchComments();
-    
-    if (!response.items) {
-      console.log('No comments found or API error');
-      return stats;
+  const newComments = [];
+  let responsesCount = 0;
+  let flaggedCount = 0;
+
+  console.log(`[${new Date().toISOString()}] Starting comment processing...`);
+  console.log(`Fetched ${comments.length} comments`);
+
+  for (const comment of comments) {
+    // Skip already processed
+    if (state.processedCommentIds.has(comment.id)) {
+      continue;
     }
 
-    for (const thread of response.items) {
-      const comment = thread.snippet.topLevelComment.snippet;
-      const commentId = thread.id;
+    const category = categorizeComment(comment.text);
+    let responseStatus = 'none';
+    let autoResponseText = null;
 
-      // Skip already processed comments
-      if (state.processedIds.has(commentId)) continue;
-
-      state.processedIds.add(commentId);
-      stats.processed++;
-
-      // Categorize
-      const category = categorizeComment(comment.textDisplay);
-      stats.byCategory[category]++;
-
-      // Determine response
-      let responseStatus = 'none';
-      if (category === 'question' || category === 'praise') {
-        responseStatus = 'auto-responded';
-        stats.autoResponses++;
-      } else if (category === 'sales') {
-        responseStatus = 'flagged';
-        stats.flaggedForReview++;
-      }
-
-      // Log
-      logComment({
-        authorDisplayName: comment.authorDisplayName,
-        textDisplay: comment.textDisplay,
-        category,
-        responseStatus,
-      });
-
-      // TODO: Implement actual YouTube API reply
-      if (responseStatus === 'auto-responded') {
-        const template = TEMPLATES[category] || TEMPLATES.question;
-        console.log(`  [${category.toUpperCase()}] Auto-responding to ${comment.authorDisplayName}`);
-      }
+    // Auto-respond to questions and praise
+    if (category === 'questions' || category === 'praise') {
+      autoResponseText = getTemplateResponse(category);
+      responseStatus = 'auto-responded';
+      responsesCount++;
+      console.log(`✓ Auto-responded to ${category}: "${comment.text.substring(0, 50)}..."`);
     }
 
-    state.lastCheckTime = new Date().toISOString();
-    saveState(state);
+    // Flag sales inquiries
+    if (category === 'sales') {
+      responseStatus = 'flagged-for-review';
+      flaggedCount++;
+      console.log(`⚠ Flagged sales inquiry: "${comment.text.substring(0, 50)}..."`);
+    }
 
-  } catch (error) {
-    console.error('Monitor error:', error.message);
+    const processedComment = {
+      ...comment,
+      category,
+      responseStatus,
+      autoResponseText
+    };
+
+    newComments.push(processedComment);
+    logComment(processedComment);
+    state.processedCommentIds.add(comment.id);
+    state.totalProcessed++;
   }
 
-  // Report
-  const report = `
-📊 YouTube Comment Monitor Report
-──────────────────────────────────
-✅ Processed:      ${stats.processed} comments
-💬 Auto-responses: ${stats.autoResponses} sent
-🚩 Flagged review: ${stats.flaggedForReview} comments
+  state.totalResponses += responsesCount;
+  state.totalFlagged += flaggedCount;
+  state.lastChecked = new Date().toISOString();
 
-By Category:
-  ❓ Questions: ${stats.byCategory.question}
-  👏 Praise:    ${stats.byCategory.praise}
-  🚫 Spam:      ${stats.byCategory.spam}
-  💼 Sales:     ${stats.byCategory.sales}
-  ℹ️  Other:     ${stats.byCategory.other}
+  saveState(state);
 
-Last run: ${new Date().toISOString()}
-Log file: ${CONFIG.logFile}
-`;
+  // Generate report
+  console.log('\n' + '='.repeat(60));
+  console.log('YOUTUBE COMMENT MONITOR REPORT');
+  console.log('='.repeat(60));
+  console.log(`Channel: Concessa Obvius`);
+  console.log(`Timestamp: ${new Date().toISOString()}`);
+  console.log(`New comments processed: ${newComments.length}`);
+  console.log(`Total comments processed (all-time): ${state.totalProcessed}`);
+  console.log(`Auto-responses sent: ${responsesCount}`);
+  console.log(`Total auto-responses (all-time): ${state.totalResponses}`);
+  console.log(`Flagged for review: ${flaggedCount}`);
+  console.log(`Total flagged (all-time): ${state.totalFlagged}`);
+  console.log(`Log file: ${LOG_FILE}`);
+  console.log('='.repeat(60) + '\n');
 
-  console.log(report);
-  return stats;
+  return {
+    processed: newComments.length,
+    responses: responsesCount,
+    flagged: flaggedCount,
+    totalProcessed: state.totalProcessed,
+    totalResponses: state.totalResponses,
+    totalFlagged: state.totalFlagged
+  };
 }
 
-// Run if called directly
-monitor().catch(console.error);
+// Run monitor
+try {
+  const report = processComments();
+  process.exit(0);
+} catch (error) {
+  console.error(`Error running monitor: ${error.message}`);
+  process.exit(1);
+}

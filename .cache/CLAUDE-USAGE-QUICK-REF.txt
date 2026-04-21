@@ -1,0 +1,170 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                  CLAUDE API USAGE MONITOR – QUICK REFERENCE                     ║
+║                         April 21, 2026 | 12:04 AM PST                           ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 BUDGET THRESHOLDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Daily:   $5.00 budget   → Alert at $3.75 (75%)
+Monthly: $155.00 budget → Alert at $116.25 (75%)
+
+Rates:   Haiku Input  = $0.4 per 1M tokens
+         Haiku Output = $1.2 per 1M tokens
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 QUICK START
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣  SET TOKEN COUNTS
+   export ANTHROPIC_USAGE_INPUT_TOKENS_TODAY=2500000
+   export ANTHROPIC_USAGE_OUTPUT_TOKENS_TODAY=800000
+   export ANTHROPIC_USAGE_INPUT_TOKENS_MONTH=45000000
+   export ANTHROPIC_USAGE_OUTPUT_TOKENS_MONTH=12000000
+
+2️⃣  RUN THE MONITOR
+   python3 ~/.openclaw/workspace/.cache/fetch-claude-usage-complete.py
+
+3️⃣  CHECK RESULTS
+   jq . ~/.openclaw/workspace/.cache/claude-usage.json
+
+4️⃣  VIEW COSTS
+   jq '.cost_today, .cost_month' ~/.openclaw/workspace/.cache/claude-usage.json
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⏰ CRON SETUP (OPTIONAL)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Add to crontab:
+  0 * * * * /Users/abundance/.openclaw/workspace/.cache/claude-usage-monitor-cron.sh
+
+Or with environment variables:
+  0 * * * * export ANTHROPIC_USAGE_INPUT_TOKENS_TODAY=... && /path/to/script.sh
+
+View crontab:
+  crontab -l
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔔 WEBHOOK ALERTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Configure webhook:
+  export WEBHOOK_MONITOR_URL="https://your-endpoint/alerts"
+
+Alert triggers when:
+  ✓ Daily cost > $3.75
+  ✓ Monthly cost > $116.25
+
+Alert payload includes:
+  - timestamp
+  - type: "claude_usage_alert"
+  - severity: "warning"
+  - reasons (array of threshold violations)
+  - usage (current costs and tokens)
+  - budgets (configured limits)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 FILE LOCATIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Script:       ~/.openclaw/workspace/.cache/fetch-claude-usage-complete.py
+Wrapper:      ~/.openclaw/workspace/.cache/claude-usage-monitor-cron.sh
+Output JSON:  ~/.openclaw/workspace/.cache/claude-usage.json
+Exec Log:     ~/.openclaw/workspace/.cache/claude-usage-monitor.log
+Setup Guide:  ~/.openclaw/workspace/.cache/CLAUDE-USAGE-MONITOR-SETUP.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 OUTPUT EXAMPLE (claude-usage.json)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+{
+  "timestamp": "2026-04-21T07:05:14Z",
+  "status": "success",
+  "budget_daily": 5.0,
+  "budget_monthly": 155.0,
+  "tokens_today": 3300000,
+  "tokens_month": 57000000,
+  "cost_today": 1.96,           ← Daily cost
+  "cost_month": 32.4,           ← Monthly cost
+  "input_tokens_today": 2500000,
+  "output_tokens_today": 800000,
+  "input_tokens_month": 45000000,
+  "output_tokens_month": 12000000,
+  "rates": {
+    "haiku_input_per_1m": 0.4,
+    "haiku_output_per_1m": 1.2
+  }
+}
+
+If threshold exceeded, also includes:
+  "alert": true,
+  "alert_reasons": [
+    "Daily cost $6.20 exceeds 75% threshold ($3.75)"
+  ]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧪 TEST RUNS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Test 1: Normal usage (no alert)
+  cd ~/.openclaw/workspace/.cache
+  export ANTHROPIC_USAGE_INPUT_TOKENS_TODAY=2500000
+  export ANTHROPIC_USAGE_OUTPUT_TOKENS_TODAY=800000
+  export ANTHROPIC_USAGE_INPUT_TOKENS_MONTH=45000000
+  export ANTHROPIC_USAGE_OUTPUT_TOKENS_MONTH=12000000
+  python3 fetch-claude-usage-complete.py
+  → Cost Today: $1.96 ✓
+
+Test 2: Alert trigger
+  export ANTHROPIC_USAGE_INPUT_TOKENS_TODAY=8000000
+  export ANTHROPIC_USAGE_OUTPUT_TOKENS_TODAY=2500000
+  export ANTHROPIC_USAGE_INPUT_TOKENS_MONTH=200000000
+  export ANTHROPIC_USAGE_OUTPUT_TOKENS_MONTH=50000000
+  python3 fetch-claude-usage-complete.py
+  → Cost Today: $6.20 ⚠️ ALERT: Exceeds $3.75 threshold
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Problem: "No data in claude-usage.json"
+  → Check env vars: echo $ANTHROPIC_USAGE_INPUT_TOKENS_TODAY
+  → Set them: export ANTHROPIC_USAGE_INPUT_TOKENS_TODAY=0
+
+Problem: "Cron not running"
+  → Check logs: tail -f ~/.openclaw/workspace/.cache/claude-usage-monitor.log
+  → Test manually: python3 fetch-claude-usage-complete.py
+  → Verify cron: crontab -l
+
+Problem: "Python not found"
+  → Use full path: /usr/local/bin/python3 (or find it: which python3)
+  → Update crontab with full path
+
+Problem: "Webhook not triggering"
+  → Test webhook: curl https://your-endpoint/alerts
+  → Check alert status: jq '.alert' claude-usage.json
+  → Verify threshold exceeded: cost_today > $3.75 or cost_month > $116.25
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Full guide:  CLAUDE-USAGE-MONITOR-SETUP.md
+Script docs: fetch-claude-usage-complete.py (comments inside)
+This ref:    CLAUDE-USAGE-QUICK-REF.txt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ SETUP CHECKLIST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+□ Scripts downloaded and executable
+□ Environment variables configured (or cron wrapper with env)
+□ Test run successful (check claude-usage.json)
+□ Cron job added (optional but recommended)
+□ Webhook URL configured (optional but recommended)
+□ Read full documentation (CLAUDE-USAGE-MONITOR-SETUP.md)
+
+Ready to deploy? All systems go! 🚀
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

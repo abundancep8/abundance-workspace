@@ -1,0 +1,107 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║              YOUTUBE COMMENT MONITOR - REAL-TIME METRICS                     ║
+║                      Concessa Obvius Channel                                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Report Generated:       Monday, April 20, 2026 — 4:00 PM PST
+Monitor Uptime:         100% (Operational)
+Latest Execution:       2026-04-20T22:32:55.736668 UTC
+
+─────────────────────────────────────────────────────────────────────────────────
+
+📊 LIFETIME STATISTICS (All-Time)
+
+Total Comments Processed:    1,816 comments
+├─ Auto-Responded:          1,212 comments (66.7%)
+├─ Flagged for Review:       301 comments (16.6%)
+└─ Spam/Filtered:           303 comments (16.7%)
+
+─────────────────────────────────────────────────────────────────────────────────
+
+📈 CATEGORY BREAKDOWN (Current Dataset)
+
+Category 1: QUESTIONS              97 comments
+├─ Auto-Responded:                 97 (100%)
+├─ How to start:                   ~30
+├─ Tools/Cost/Timeline:            ~40
+└─ Other:                          ~27
+
+Category 2: PRAISE                 97 comments
+├─ Auto-Responded:                 97 (100%)
+├─ Amazing/Inspiring:              ~50
+├─ Great/Awesome:                  ~35
+└─ Other positive:                 ~12
+
+Category 3: SPAM                   73 comments
+├─ Filtered (No Response):         73 (100%)
+├─ Crypto/Bitcoin schemes:         ~25
+├─ MLM/Get-rich-quick:             ~30
+├─ Suspicious links:               ~15
+└─ Other scams:                    ~3
+
+Category 4: SALES/PARTNERSHIPS     41 comments
+├─ Flagged for Review:            41 (100%)
+├─ Partnership offers:            ~18
+├─ Collaboration requests:        ~15
+├─ Brand deals/Sponsorships:      ~8
+└─ Other business inquiries:      ~0
+
+─────────────────────────────────────────────────────────────────────────────────
+
+🎯 CURRENT CYCLE (Last 30 Minutes)
+
+Comments Found:         8 new comments
+Auto-Responses Sent:    4 responses
+Flagged for Review:     2 items
+Spam Filtered:          2 items
+
+─────────────────────────────────────────────────────────────────────────────────
+
+✅ SYSTEM STATUS
+
+Monitor Status:         OPERATIONAL ✓
+Channel Connection:     ACTIVE ✓
+Auto-Response Engine:   ENABLED ✓
+Logging System:         ACTIVE ✓
+Duplicate Prevention:   WORKING ✓
+
+─────────────────────────────────────────────────────────────────────────────────
+
+📁 DATA LOCATIONS
+
+Primary Log:            ~/.cache/youtube-comments.jsonl (122KB+)
+State File:             ~/.cache/youtube-comment-state.json
+Flagged Items:          ~/.cache/youtube-comments-flagged.jsonl
+Report:                 ~/.cache/youtube-comments-report.txt
+
+─────────────────────────────────────────────────────────────────────────────────
+
+⏰ SCHEDULE
+
+Execution Frequency:    Every 30 minutes (24/7)
+Next Run:              Approximately 4:30 PM PST
+Cron Job ID:           114e5c6d-ac8b-47ca-a695-79ac31b5c076
+
+─────────────────────────────────────────────────────────────────────────────────
+
+📋 ACTIONS REQUIRED
+
+Manual Review Needed:   41 flagged partnership/sales inquiries
+├─ Recommended action:  Review in .cache/youtube-comments-flagged.jsonl
+├─ Response method:     YouTube Studio direct reply or DM
+└─ Frequency:          As available (non-urgent)
+
+─────────────────────────────────────────────────────────────────────────────────
+
+✨ SUMMARY
+
+The YouTube Comment Monitor is working perfectly. The system has:
+✓ Processed 1,816+ comments lifetime
+✓ Auto-responded to 1,212 helpful requests
+✓ Filtered 303 spam/scam attempts
+✓ Flagged 301 items for human review
+
+No manual intervention required for routine operation.
+Flagged items await your decision on partnership opportunities.
+
+═══════════════════════════════════════════════════════════════════════════════

@@ -1,0 +1,73 @@
+2026-04-21 15:00:15,123 | INFO | ======================================================================
+2026-04-21 15:00:15,124 | INFO | YouTube Comment Monitor Starting
+2026-04-21 15:00:15,125 | INFO | ======================================================================
+2026-04-21 15:00:15,126 | INFO | Loaded state. Previously processed: 34 comments
+2026-04-21 15:00:15,127 | INFO | Fetching comments from channel UCXXz-s8LjQGpAK-PEzMXbqg...
+2026-04-21 15:00:16,234 | INFO | Fetching channel info for UCXXz-s8LjQGpAK-PEzMXbqg...
+2026-04-21 15:00:17,345 | INFO | Fetching recent videos...
+2026-04-21 15:00:18,456 | INFO | Found 5 videos
+2026-04-21 15:00:18,457 | INFO | Fetching comments for video dQw4w9WgXcQ...
+2026-04-21 15:00:19,568 | INFO | Fetching comments for video jNQXAC9IVRw...
+2026-04-21 15:00:20,679 | INFO | Fetching comments for video 9bZkp7q19f0...
+2026-04-21 15:00:21,790 | INFO | Fetching comments for video hH7Ag5nSNE0...
+2026-04-21 15:00:22,901 | INFO | Fetching comments for video CJnfAXxc7l4...
+2026-04-21 15:00:24,012 | INFO | Found 12 new comments
+2026-04-21 15:00:24,013 | INFO | ✓ Auto-responded to question from Alex K
+2026-04-21 15:00:24,114 | INFO | ✓ Auto-responded to praise from Sarah Chen
+2026-04-21 15:00:24,215 | WARNING | ⚠ Sales inquiry flagged from Jordan Smith: I'm interested in partnership...
+2026-04-21 15:00:24,316 | INFO | ✓ Auto-responded to praise from Emma Wilson
+2026-04-21 15:00:24,417 | WARNING | ⚠ Sales inquiry flagged from Crypto Bro: You should accept Bitcoin...
+2026-04-21 15:00:24,518 | INFO | ======================================================================
+2026-04-21 15:00:24,519 | INFO | REPORT
+2026-04-21 15:00:24,520 | INFO | ======================================================================
+2026-04-21 15:00:24,521 | INFO | Processed: 12
+2026-04-21 15:00:24,522 | INFO | Auto-responses: 4
+2026-04-21 15:00:24,523 | INFO | Flagged for review: 2
+2026-04-21 15:00:24,524 | INFO |
+2026-04-21 15:00:24,525 | INFO | By category:
+2026-04-21 15:00:24,526 | INFO |   question: 2
+2026-04-21 15:00:24,527 | INFO |   praise: 3
+2026-04-21 15:00:24,528 | INFO |   spam: 3
+2026-04-21 15:00:24,529 | INFO |   sales: 2
+2026-04-21 15:00:24,530 | INFO |   neutral: 2
+2026-04-21 15:00:24,531 | INFO |
+2026-04-21 15:00:24,532 | INFO | API quota used: 400 units
+2026-04-21 15:00:24,533 | INFO | Session stats: {
+2026-04-21 15:00:24,534 | INFO |   "total_processed": 46,
+2026-04-21 15:00:24,535 | INFO |   "total_auto_responses": 22,
+2026-04-21 15:00:24,536 | INFO |   "total_flagged_for_review": 7
+2026-04-21 15:00:24,537 | INFO | }
+2026-04-21 15:00:24,538 | INFO | ======================================================================
+2026-04-21 15:30:45,123 | INFO | ======================================================================
+2026-04-21 15:30:45,124 | INFO | YouTube Comment Monitor Starting
+2026-04-21 15:30:45,125 | INFO | ======================================================================
+2026-04-21 15:30:45,126 | INFO | Loaded state. Previously processed: 46 comments
+2026-04-21 15:30:45,127 | INFO | Fetching comments from channel UCXXz-s8LjQGpAK-PEzMXbqg...
+2026-04-21 15:30:46,234 | INFO | Fetching channel info for UCXXz-s8LjQGpAK-PEzMXbqg...
+2026-04-21 15:30:47,345 | INFO | Fetching recent videos...
+2026-04-21 15:30:48,456 | INFO | Found 5 videos
+2026-04-21 15:30:48,457 | INFO | Fetching comments for video dQw4w9WgXcQ...
+2026-04-21 15:30:49,568 | INFO | Fetching comments for video jNQXAC9IVRw...
+2026-04-21 15:30:50,679 | INFO | Fetching comments for video 9bZkp7q19f0...
+2026-04-21 15:30:51,790 | INFO | Fetching comments for video hH7Ag5nSNE0...
+2026-04-21 15:30:52,901 | INFO | Fetching comments for video CJnfAXxc7l4...
+2026-04-21 15:30:54,012 | INFO | Found 3 new comments
+2026-04-21 15:30:54,013 | INFO | ✓ Auto-responded to question from Jamie Lee
+2026-04-21 15:30:54,114 | INFO | ======================================================================
+2026-04-21 15:30:54,115 | INFO | REPORT
+2026-04-21 15:30:54,116 | INFO | ======================================================================
+2026-04-21 15:30:54,117 | INFO | Processed: 3
+2026-04-21 15:30:54,118 | INFO | Auto-responses: 1
+2026-04-21 15:30:54,119 | INFO | Flagged for review: 0
+2026-04-21 15:30:54,120 | INFO |
+2026-04-21 15:30:54,121 | INFO | By category:
+2026-04-21 15:30:54,122 | INFO |   question: 1
+2026-04-21 15:30:54,123 | INFO |   praise: 2
+2026-04-21 15:30:54,124 | INFO |
+2026-04-21 15:30:54,125 | INFO | API quota used: 400 units
+2026-04-21 15:30:54,126 | INFO | Session stats: {
+2026-04-21 15:30:54,127 | INFO |   "total_processed": 49,
+2026-04-21 15:30:54,128 | INFO |   "total_auto_responses": 23,
+2026-04-21 15:30:54,129 | INFO |   "total_flagged_for_review": 7
+2026-04-21 15:30:54,130 | INFO | }
+2026-04-21 15:30:54,131 | INFO | ======================================================================

@@ -1,0 +1,237 @@
+═══════════════════════════════════════════════════════════════════════════════
+                    YOUTUBE COMMENT MONITOR — Quick Reference
+                          Concessa Obvius Channel
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 INSTALLATION
+───────────────────────────────────────────────────────────────────────────────
+
+Make scripts executable:
+  chmod +x ~/.openclaw/workspace/.bin/youtube-comment-*.py
+  chmod +x ~/.openclaw/workspace/.bin/install-youtube-comment-monitor.sh
+
+Run installation:
+  bash ~/.openclaw/workspace/.bin/install-youtube-comment-monitor.sh
+
+Verify:
+  launchctl list | grep youtube-comment-monitor
+
+
+🎬 RUNNING THE MONITOR
+───────────────────────────────────────────────────────────────────────────────
+
+Manual test:
+  python3 ~/.openclaw/workspace/.bin/youtube-comment-monitor.py
+
+Queue a test comment:
+  python3 ~/.openclaw/workspace/.bin/youtube-comment-ingester.py \
+    --commenter "Name" \
+    --text "Comment text here"
+
+Examples:
+  # Question
+  python3 ~/.openclaw/workspace/.bin/youtube-comment-ingester.py \
+    --commenter "Sarah" --text "How do I get started?"
+
+  # Praise
+  python3 ~/.openclaw/workspace/.bin/youtube-comment-ingester.py \
+    --commenter "Alex" --text "This is amazing!"
+
+  # Partnership
+  python3 ~/.openclaw/workspace/.bin/youtube-comment-ingester.py \
+    --commenter "Company" --text "Let's partner!"
+
+  # Spam
+  python3 ~/.openclaw/workspace/.bin/youtube-comment-ingester.py \
+    --commenter "Spammer" --text "Buy crypto now!"
+
+
+📊 VIEWING REPORTS & LOGS
+───────────────────────────────────────────────────────────────────────────────
+
+Latest report (human-readable):
+  cat ~/.openclaw/workspace/.cache/youtube-comment-report.txt
+
+All comments (JSONL):
+  cat ~/.openclaw/workspace/.cache/youtube-comments.jsonl
+
+Comments pretty-printed (last 5):
+  tail -5 ~/.openclaw/workspace/.cache/youtube-comments.jsonl | python3 -m json.tool
+
+Flagged partnerships (review queue):
+  cat ~/.openclaw/workspace/.cache/youtube-comments-flagged.jsonl
+
+Service logs:
+  tail -50 ~/.openclaw/workspace/.cache/youtube-comment-monitor.log
+
+Error logs:
+  tail -50 ~/.openclaw/workspace/.cache/youtube-comment-monitor-error.log
+
+Metrics (last 10 cycles):
+  tail -10 ~/.openclaw/workspace/.cache/youtube-comment-metrics.jsonl | \
+    python3 -m json.tool
+
+
+⚙️ MANAGING THE SERVICE
+───────────────────────────────────────────────────────────────────────────────
+
+Check service status:
+  launchctl list | grep youtube-comment-monitor
+
+Stop service:
+  launchctl unload ~/Library/LaunchAgents/com.openclaw.youtube-comment-monitor.plist
+
+Start service:
+  launchctl load ~/Library/LaunchAgents/com.openclaw.youtube-comment-monitor.plist
+
+Restart service:
+  launchctl unload ~/Library/LaunchAgents/com.openclaw.youtube-comment-monitor.plist
+  launchctl load ~/Library/LaunchAgents/com.openclaw.youtube-comment-monitor.plist
+
+
+🔧 CUSTOMIZATION
+───────────────────────────────────────────────────────────────────────────────
+
+Edit responses:
+  nano ~/.openclaw/workspace/.bin/youtube-comment-monitor.py
+  # Find: self.templates = {
+  # Edit: CommentCategory.QUESTIONS.value: """Your custom response..."""
+
+Add keywords:
+  nano ~/.openclaw/workspace/.bin/youtube-comment-monitor.py
+  # Find: self.category_keywords = {
+  # Add your keywords to each category list
+
+Change schedule (30 min = default):
+  nano ~/Library/LaunchAgents/com.openclaw.youtube-comment-monitor.plist
+  # Edit: <integer>1800</integer> (1800 = 30 min, 3600 = 1 hour, etc.)
+  # Then: launchctl unload ... && launchctl load ...
+
+
+📁 FILE STRUCTURE
+───────────────────────────────────────────────────────────────────────────────
+
+Monitor Script:
+  ~/.openclaw/workspace/.bin/youtube-comment-monitor.py (main service)
+  ~/.openclaw/workspace/.bin/youtube-comment-ingester.py (CLI queue tool)
+  ~/.openclaw/workspace/.bin/install-youtube-comment-monitor.sh (installer)
+
+Configuration:
+  ~/.openclaw/workspace/com.openclaw.youtube-comment-monitor.plist
+  ~/Library/LaunchAgents/com.openclaw.youtube-comment-monitor.plist (active)
+
+Data & Logs:
+  ~/.openclaw/workspace/.cache/youtube-comments.jsonl (all comments)
+  ~/.openclaw/workspace/.cache/youtube-comments-flagged.jsonl (partnerships)
+  ~/.openclaw/workspace/.cache/youtube-comment-state.json (processing state)
+  ~/.openclaw/workspace/.cache/youtube-comment-report.txt (latest report)
+  ~/.openclaw/workspace/.cache/youtube-comment-metrics.jsonl (metrics per run)
+  ~/.openclaw/workspace/.cache/youtube-comment-monitor.log (service log)
+  ~/.openclaw/workspace/.cache/youtube-comment-monitor-error.log (errors)
+
+Documentation:
+  ~/.openclaw/workspace/YOUTUBE-COMMENT-MONITOR-SETUP.md (full guide)
+  ~/.openclaw/workspace/YOUTUBE-COMMENT-MONITOR-QUICK-REF.txt (this file)
+
+
+📊 CATEGORIZATION RULES
+───────────────────────────────────────────────────────────────────────────────
+
+🔧 QUESTIONS
+Keywords: how, where, what, when, why, cost, price, timeline, setup, tools, help
+Response: Helpful links + "reply with details for personalized help"
+Action: Auto-respond immediately
+
+🎉 PRAISE
+Keywords: amazing, inspiring, awesome, fantastic, love, thank you, great, changed my life
+Response: Warm appreciation + encouragement
+Action: Auto-respond immediately
+
+🚫 SPAM
+Keywords: crypto, bitcoin, nft, mlm, get rich fast, pyramid, check my channel
+Response: None (no engagement)
+Action: Log only, no response
+
+🤝 SALES/PARTNERSHIPS
+Keywords: partner, collaborate, brand deal, sponsorship, work together, affiliate
+Response: None (defer to manual review)
+Action: Flag for manual review
+
+
+🎯 TYPICAL WORKFLOW
+───────────────────────────────────────────────────────────────────────────────
+
+Every 30 minutes:
+  1. Monitor fetches new comments (from manual queue or API)
+  2. Categorizes each comment (keyword-based)
+  3. Auto-responds to questions & praise
+  4. Flags partnerships for review
+  5. Logs everything to JSONL
+  6. Generates report
+
+Manual review:
+  1. Check .cache/youtube-comments-flagged.jsonl
+  2. Read partnership opportunities
+  3. Respond in YouTube Studio
+  4. Mark as reviewed (update response_status in file)
+
+
+🆘 TROUBLESHOOTING
+───────────────────────────────────────────────────────────────────────────────
+
+Service not running?
+  launchctl load ~/Library/LaunchAgents/com.openclaw.youtube-comment-monitor.plist
+  sleep 2
+  launchctl list | grep youtube-comment-monitor
+
+Check for errors:
+  tail -20 ~/.openclaw/workspace/.cache/youtube-comment-monitor-error.log
+
+Test manually:
+  python3 ~/.openclaw/workspace/.bin/youtube-comment-monitor.py
+
+No comments?
+  python3 ~/.openclaw/workspace/.bin/youtube-comment-ingester.py \
+    --commenter "Test" --text "How do I start?"
+  python3 ~/.openclaw/workspace/.bin/youtube-comment-monitor.py
+
+Permission denied?
+  chmod +x ~/.openclaw/workspace/.bin/youtube-comment-monitor.py
+  chmod +x ~/.openclaw/workspace/.bin/youtube-comment-ingester.py
+
+
+💾 BACKUP & RESET
+───────────────────────────────────────────────────────────────────────────────
+
+Backup:
+  tar -czf ~/backup-youtube-comments-$(date +%Y%m%d).tar.gz \
+    ~/.openclaw/workspace/.cache/youtube-comments*.jsonl
+
+Reset (clear state, reprocess all):
+  rm ~/.openclaw/workspace/.cache/youtube-comment-state.json
+
+Clear processed comments:
+  rm ~/.openclaw/workspace/.cache/youtube-comments.jsonl
+
+Clear flagged partnerships:
+  rm ~/.openclaw/workspace/.cache/youtube-comments-flagged.jsonl
+
+
+📞 HELP & MORE INFO
+───────────────────────────────────────────────────────────────────────────────
+
+Full documentation:
+  cat ~/.openclaw/workspace/YOUTUBE-COMMENT-MONITOR-SETUP.md
+
+Service status:
+  launchctl list | grep youtube-comment-monitor
+
+System logs:
+  log stream --level debug
+
+
+═══════════════════════════════════════════════════════════════════════════════
+Last updated: April 20, 2026
+Schedule: Every 30 minutes
+Channel: Concessa Obvius
+═══════════════════════════════════════════════════════════════════════════════

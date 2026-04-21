@@ -1,431 +1,180 @@
 #!/usr/bin/env python3
 """
-YouTube Comment Monitor - Concessa Obvius Channel
-Monitors for new comments, categorizes, auto-responds, and logs.
+YouTube Comment Monitor for Concessa Obvius Channel
+Monitors for new comments every 30 minutes, categorizes, and auto-responds.
 """
 
-import os
 import json
-import re
-import sys
+import os
 from datetime import datetime, timedelta
-from pathlib import Path
-from typing import Optional, Dict, List
-import logging
+import sys
 
-# Configure logging
-log_dir = Path(".cache")
-log_dir.mkdir(exist_ok=True)
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(log_dir / "youtube-monitor.log"),
-        logging.StreamHandler()
-    ]
-)
-logger = logging.getLogger(__name__)
+# ===== CONFIGURATION =====
+CHANNEL_ID = "YOUR_CHANNEL_ID_HERE"  # Replace with Concessa Obvius channel ID
+CACHE_FILE = os.path.expanduser("~/.openclaw/workspace/.cache/youtube-comments.jsonl")
+STATE_FILE = os.path.expanduser("~/.openclaw/workspace/.cache/youtube-monitor-state.json")
 
-# Try to import YouTube API
+# Template responses
+TEMPLATES = {
+    "questions": """Thanks for the great question! Here are some resources that might help:
+- [Add resource/link]
+- [Add resource/link]
+
+Feel free to ask if you need clarification!""",
+    
+    "praise": """Thank you so much! Comments like this mean the world to us. Really glad it resonated! 💙"""
+}
+
+# ===== CATEGORY RULES =====
+QUESTION_KEYWORDS = ["how", "why", "what", "where", "when", "cost", "price", "timeline", "start", "tools", "tutorial", "help"]
+PRAISE_KEYWORDS = ["amazing", "inspiring", "love", "great", "awesome", "brilliant", "excellent", "thanks", "grateful"]
+SPAM_KEYWORDS = ["crypto", "nft", "mlm", "bitcoin", "forex", "dm", "link in bio", "click here", "buy now", "limited offer"]
+
+# ===== YOUTUBE API SETUP =====
 try:
-    from google.auth.transport.requests import Request
-    from google.oauth2.service_account import Credentials
-    from google.auth.oauthlib.flow import InstalledAppFlow
+    from google.oauth2.credentials import Credentials
     from google_auth_oauthlib.flow import InstalledAppFlow
+    from google.auth.transport.requests import Request
     from googleapiclient.discovery import build
-    HAS_GOOGLE_API = True
+    YOUTUBE_API_AVAILABLE = True
 except ImportError:
-    HAS_GOOGLE_API = False
-    logger.warning("Google API libraries not installed. Install with: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client")
+    print("ERROR: YouTube API not installed. Run: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client")
+    YOUTUBE_API_AVAILABLE = False
 
 
-# ============================================================================
-# CONFIGURATION
-# ============================================================================
-
-CHANNEL_ID = "UCa_mZVVqV5Aq48a0MnIjS-w"  # Concessa Obvius (update with actual ID)
-CREDENTIALS_FILE = Path.home() / ".openclaw" / "workspace" / ".cache" / "youtube_credentials.json"
-TOKEN_FILE = Path.home() / ".openclaw" / "workspace" / ".cache" / "youtube_token.json"
-COMMENTS_LOG = Path.home() / ".openclaw" / "workspace" / ".cache" / "youtube-comments.jsonl"
-STATE_FILE = Path.home() / ".openclaw" / "workspace" / ".cache" / "youtube-monitor-state.json"
-
-# Auto-response templates
-RESPONSE_TEMPLATES = {
-    "question": """Thanks for the question! Here are some resources to help:
-• Visit our website for detailed guides: [link]
-• Check our FAQ section for common topics
-• Feel free to ask more specific questions!""",
-    
-    "praise": """Thank you so much for the kind words! 🙏 We're thrilled you found value in this. Your support means everything to us!"""
-}
-
-# Category patterns (simple regex-based; can upgrade to LLM-based)
-PATTERNS = {
-    "spam": [
-        r"crypto|bitcoin|ethereum|nft|web3|blockchain",
-        r"mlm|multi.level|network marketing",
-        r"earn money fast|click here|limited time",
-        r"♻|💰|📱|🔗",  # Spam emoji patterns
-    ],
-    "sales": [
-        r"partnership|collaboration|sponsor|brand deal",
-        r"influencer|promotion|affiliate",
-        r"business opportunity|invest|roi",
-    ],
-    "question": [
-        r"how (do|can|to|would)",
-        r"what.*cost|price|pricing",
-        r"timeline|how long|when",
-        r"which.*tool|recommend",
-        r"can you|could you|would you",
-        r"\?$",  # Ends with question mark
-    ],
-    "praise": [
-        r"amazing|awesome|incredible|fantastic|great|love|excellent",
-        r"inspiring|motivating|helpful|useful|brilliant",
-        r"thank you|thanks|appreciate|grateful",
-        r"changed my life|game.?changer",
-    ]
-}
-
-
-# ============================================================================
-# YOUTUBE API INTEGRATION
-# ============================================================================
-
-def get_youtube_service():
-    """Authenticate and return YouTube API service."""
-    if not HAS_GOOGLE_API:
-        logger.error("Google API libraries required. Install: pip install google-auth-oauthlib google-auth-httplib2 google-api-python-client")
-        return None
-    
-    SCOPES = ['https://www.googleapis.com/auth/youtube.force-ssl']
-    
-    # Try to use existing token
-    if TOKEN_FILE.exists():
-        try:
-            from google.auth.transport.requests import Request
-            from google.oauth2.credentials import Credentials
-            credentials = Credentials.from_authorized_user_file(TOKEN_FILE, SCOPES)
-            if credentials and credentials.valid:
-                return build('youtube', 'v3', credentials=credentials)
-        except Exception as e:
-            logger.warning(f"Token file invalid: {e}")
-    
-    # Need to set up OAuth flow (requires user interaction)
-    logger.error("""
-    ❌ No valid YouTube credentials found.
-    
-    To set up:
-    1. Go to https://console.cloud.google.com
-    2. Create a project and enable YouTube Data API v3
-    3. Create OAuth 2.0 credentials (Desktop app)
-    4. Download JSON and save to: {creds}
-    5. Run this script again to complete authorization
-    """.format(creds=CREDENTIALS_FILE))
-    return None
-
-
-def get_channel_id_from_handle(service, handle: str) -> Optional[str]:
-    """Convert @handle to channel ID."""
-    try:
-        request = service.search().list(
-            part='snippet',
-            q=f"@{handle}",
-            type='channel',
-            maxResults=1
-        )
-        response = request.execute()
-        if response['items']:
-            return response['items'][0]['snippet']['channelId']
-    except Exception as e:
-        logger.error(f"Error looking up channel: {e}")
-    return None
-
-
-def fetch_new_comments(service) -> List[Dict]:
-    """Fetch new comments since last check."""
-    if not service:
-        logger.error("No YouTube service available")
-        return []
-    
-    # Load state
-    state = load_state()
-    last_check = datetime.fromisoformat(state.get('last_check', (datetime.utcnow() - timedelta(minutes=35)).isoformat()))
-    
-    new_comments = []
-    try:
-        # Get channel uploads
-        request = service.channels().list(
-            part='contentDetails',
-            id=CHANNEL_ID
-        )
-        response = request.execute()
-        
-        if not response['items']:
-            logger.warning(f"Channel {CHANNEL_ID} not found")
-            return []
-        
-        uploads_playlist_id = response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
-        
-        # Get recent videos
-        request = service.playlistItems().list(
-            part='snippet',
-            playlistId=uploads_playlist_id,
-            maxResults=5
-        )
-        videos = request.execute()
-        
-        # Fetch comments from each video
-        for video_item in videos.get('items', []):
-            video_id = video_item['snippet']['resourceId']['videoId']
-            
-            request = service.commentThreads().list(
-                part='snippet',
-                videoId=video_id,
-                maxResults=100,
-                order='relevance',
-                textFormat='plainText'
-            )
-            
-            while request:
-                response = request.execute()
-                
-                for thread in response.get('items', []):
-                    comment = thread['snippet']['topLevelComment']['snippet']
-                    comment_time = datetime.fromisoformat(
-                        comment['publishedAt'].replace('Z', '+00:00')
-                    )
-                    
-                    # Only include comments since last check
-                    if comment_time > last_check:
-                        new_comments.append({
-                            'videoId': video_id,
-                            'commentId': thread['id'],
-                            'authorName': comment['authorDisplayName'],
-                            'authorChannelId': comment.get('authorChannelId', {}).get('value', 'unknown'),
-                            'text': comment['textDisplay'],
-                            'publishedAt': comment['publishedAt'],
-                            'timestamp': datetime.utcnow().isoformat(),
-                        })
-                
-                # Check for next page
-                if 'nextPageToken' in response:
-                    request = service.commentThreads().list(
-                        part='snippet',
-                        videoId=video_id,
-                        pageToken=response['nextPageToken'],
-                        maxResults=100,
-                        order='relevance',
-                        textFormat='plainText'
-                    )
-                else:
-                    request = None
-        
-        logger.info(f"Found {len(new_comments)} new comments")
-        
-    except Exception as e:
-        logger.error(f"Error fetching comments: {e}")
-    
-    return new_comments
-
-
-# ============================================================================
-# CATEGORIZATION
-# ============================================================================
-
-def categorize_comment(text: str) -> str:
-    """Categorize comment: spam, sales, question, praise, or other."""
+def categorize_comment(text):
+    """Categorize a comment based on keywords."""
     text_lower = text.lower()
     
-    # Check patterns in order of priority
-    for category in ['spam', 'sales', 'question', 'praise']:
-        for pattern in PATTERNS[category]:
-            if re.search(pattern, text_lower, re.IGNORECASE):
-                return category
+    # Check for spam first (highest priority)
+    if any(keyword in text_lower for keyword in SPAM_KEYWORDS):
+        return "spam"
     
-    return 'other'
-
-
-# ============================================================================
-# AUTO-RESPONSES
-# ============================================================================
-
-def should_auto_respond(category: str) -> bool:
-    """Determine if comment should get auto-response."""
-    return category in ['question', 'praise']
-
-
-def post_response(service, comment_id: str, text: str) -> bool:
-    """Post a reply to a comment."""
-    if not service:
-        return False
+    # Check for sales/partnership mentions
+    if any(word in text_lower for word in ["partnership", "collaborate", "collab", "business", "sponsor", "campaign"]):
+        return "sales"
     
-    try:
-        request = service.comments().insert(
-            part='snippet',
-            body={
-                'snippet': {
-                    'parentId': comment_id,
-                    'textOriginal': text
-                }
-            }
-        )
-        request.execute()
-        logger.info(f"Posted response to {comment_id}")
-        return True
-    except Exception as e:
-        logger.warning(f"Could not post response: {e}")
-        return False
+    # Check for questions
+    if any(keyword in text_lower for keyword in QUESTION_KEYWORDS):
+        return "questions"
+    
+    # Check for praise
+    if any(keyword in text_lower for keyword in PRAISE_KEYWORDS):
+        return "praise"
+    
+    return "other"
 
 
-# ============================================================================
-# LOGGING & STATE
-# ============================================================================
-
-def load_state() -> Dict:
-    """Load monitor state."""
-    if STATE_FILE.exists():
+def load_state():
+    """Load the last checked comment ID from state file."""
+    if os.path.exists(STATE_FILE):
         try:
             with open(STATE_FILE) as f:
                 return json.load(f)
-        except Exception as e:
-            logger.warning(f"Could not load state: {e}")
-    
-    return {'last_check': (datetime.utcnow() - timedelta(hours=1)).isoformat()}
+        except:
+            return {"last_comment_id": None, "last_checked": None}
+    return {"last_comment_id": None, "last_checked": None}
 
 
-def save_state(state: Dict):
-    """Save monitor state."""
-    try:
-        with open(STATE_FILE, 'w') as f:
-            json.dump(state, f, indent=2)
-    except Exception as e:
-        logger.error(f"Could not save state: {e}")
+def save_state(state):
+    """Save state file."""
+    os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
+    with open(STATE_FILE, 'w') as f:
+        json.dump(state, f, indent=2)
 
 
-def log_comment(comment: Dict, category: str, response_status: str):
+def log_comment(comment_id, commenter, text, category, response_status, reply_text=None):
     """Log comment to JSONL file."""
-    try:
-        entry = {
-            'timestamp': datetime.utcnow().isoformat(),
-            'videoId': comment['videoId'],
-            'commentId': comment['commentId'],
-            'commenter': comment['authorName'],
-            'authorChannelId': comment['authorChannelId'],
-            'text': comment['text'],
-            'publishedAt': comment['publishedAt'],
-            'category': category,
-            'response_status': response_status,
-        }
-        
-        COMMENTS_LOG.parent.mkdir(parents=True, exist_ok=True)
-        with open(COMMENTS_LOG, 'a') as f:
-            f.write(json.dumps(entry) + '\n')
-        
-    except Exception as e:
-        logger.error(f"Could not log comment: {e}")
-
-
-# ============================================================================
-# REPORTING
-# ============================================================================
-
-def generate_report(stats: Dict) -> str:
-    """Generate monitoring report."""
-    report = f"""
-📊 YouTube Comment Monitor Report
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Channel: Concessa Obvius
-Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S %Z')}
-
-📈 Stats:
-  • Comments processed: {stats['total_comments']}
-  • Questions: {stats['questions']}
-  • Praise: {stats['praise']}
-  • Spam: {stats['spam']}
-  • Sales (flagged): {stats['sales']}
-  • Other: {stats['other']}
-
-✅ Auto-responses sent: {stats['auto_responses_sent']}
-🚩 Flagged for review: {stats['flagged_for_review']}
-
-Last run: {stats.get('last_run', 'N/A')}
-"""
-    return report
-
-
-# ============================================================================
-# MAIN LOOP
-# ============================================================================
-
-def run_monitor():
-    """Main monitoring loop."""
-    logger.info("=" * 60)
-    logger.info("YouTube Comment Monitor Starting")
-    logger.info("=" * 60)
+    os.makedirs(os.path.dirname(CACHE_FILE), exist_ok=True)
     
-    # Initialize stats
-    stats = {
-        'total_comments': 0,
-        'questions': 0,
-        'praise': 0,
-        'spam': 0,
-        'sales': 0,
-        'other': 0,
-        'auto_responses_sent': 0,
-        'flagged_for_review': 0,
-        'last_run': datetime.now().isoformat(),
+    entry = {
+        "timestamp": datetime.utcnow().isoformat(),
+        "comment_id": comment_id,
+        "commenter": commenter,
+        "text": text,
+        "category": category,
+        "response_status": response_status,
+        "reply_text": reply_text
     }
     
-    # Get YouTube service
-    service = get_youtube_service()
-    if not service:
-        logger.error("Failed to authenticate with YouTube API")
-        return stats
-    
-    # Fetch new comments
-    comments = fetch_new_comments(service)
-    stats['total_comments'] = len(comments)
-    
-    if not comments:
-        logger.info("No new comments found")
-        save_state({'last_check': datetime.utcnow().isoformat()})
-        return stats
-    
-    # Process each comment
-    for comment in comments:
-        category = categorize_comment(comment['text'])
-        stats[category] = stats.get(category, 0) + 1
-        
-        response_status = 'none'
-        
-        if should_auto_respond(category):
-            template = RESPONSE_TEMPLATES.get(category, '')
-            if template and post_response(service, comment['commentId'], template):
-                response_status = 'auto_responded'
-                stats['auto_responses_sent'] += 1
-        elif category == 'sales':
-            response_status = 'flagged_for_review'
-            stats['flagged_for_review'] += 1
-        
-        # Log the comment
-        log_comment(comment, category, response_status)
-        
-        logger.info(f"[{category.upper()}] {comment['authorName']}: {comment['text'][:60]}...")
-    
-    # Update state
-    save_state({'last_check': datetime.utcnow().isoformat()})
-    
-    # Generate and log report
-    report = generate_report(stats)
-    logger.info(report)
-    
-    print(report)
-    
-    return stats
+    with open(CACHE_FILE, 'a') as f:
+        f.write(json.dumps(entry) + "\n")
 
 
-if __name__ == '__main__':
-    stats = run_monitor()
-    sys.exit(0 if stats.get('total_comments', 0) >= 0 else 1)
+def get_youtube_service():
+    """Authenticate and return YouTube API service."""
+    if not YOUTUBE_API_AVAILABLE:
+        return None
+    
+    # You'll need to set up OAuth credentials
+    # Instructions: https://developers.google.com/youtube/v3/getting-started
+    # For now, this is a placeholder
+    try:
+        service = build('youtube', 'v3', credentials=None)  # Placeholder
+        return service
+    except:
+        print("WARNING: Could not authenticate with YouTube API")
+        return None
+
+
+def monitor_comments():
+    """Main monitoring function."""
+    state = load_state()
+    print(f"[{datetime.now().isoformat()}] Starting comment monitor...")
+    
+    stats = {
+        "total_comments": 0,
+        "auto_responses_sent": 0,
+        "flagged_for_review": 0,
+        "by_category": {}
+    }
+    
+    # Placeholder: In real implementation, fetch comments from YouTube API
+    # For now, showing the structure
+    
+    # Example comment processing:
+    # for comment in fetched_comments:
+    #     category = categorize_comment(comment['text'])
+    #     stats['total_comments'] += 1
+    #     stats['by_category'][category] = stats['by_category'].get(category, 0) + 1
+    #     
+    #     if category == "questions":
+    #         response_status = "auto_responded"
+    #         stats['auto_responses_sent'] += 1
+    #         reply_text = TEMPLATES['questions']
+    #     elif category == "praise":
+    #         response_status = "auto_responded"
+    #         stats['auto_responses_sent'] += 1
+    #         reply_text = TEMPLATES['praise']
+    #     elif category == "sales":
+    #         response_status = "flagged_for_review"
+    #         stats['flagged_for_review'] += 1
+    #         reply_text = None
+    #     else:
+    #         response_status = "logged_only"
+    #         reply_text = None
+    #     
+    #     log_comment(
+    #         comment['id'],
+    #         comment['commenter'],
+    #         comment['text'],
+    #         category,
+    #         response_status,
+    #         reply_text
+    #     )
+    
+    # Save state
+    state['last_checked'] = datetime.utcnow().isoformat()
+    save_state(state)
+    
+    # Print report
+    print(f"\n📊 YouTube Comment Monitor Report ({datetime.now().strftime('%Y-%m-%d %H:%M:%S')})")
+    print(f"Total comments processed: {stats['total_comments']}")
+    print(f"Auto-responses sent: {stats['auto_responses_sent']}")
+    print(f"Flagged for review: {stats['flagged_for_review']}")
+    print(f"By category: {stats['by_category']}")
+    print(f"Log file: {CACHE_FILE}")
+
+
+if __name__ == "__main__":
+    monitor_comments()

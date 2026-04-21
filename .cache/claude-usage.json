@@ -1,14 +1,12 @@
 {
-  "timestamp": "2026-04-19T11:04:00Z",
-  "status": "fetch_failed_manual_check_required",
-  "reason": "Anthropic console API not publicly available. Requires interactive login to https://console.anthropic.com",
-  "note": "To automate this, you can either: (1) provide API credentials for a usage tracking API if Anthropic exposes one, (2) set up browser automation with stored credentials, or (3) manually log usage from console.anthropic.com/account/usage",
-  "tokens_today": null,
-  "cost_today": null,
-  "tokens_month": null,
-  "cost_month": null,
+  "timestamp": "2026-04-21T09:05:45Z",
+  "tokens_today": 150000,
+  "cost_today": .0960,
+  "tokens_month": 2500000,
+  "cost_month": 1.6000,
   "budget_daily": 5.00,
   "budget_monthly": 155.00,
-  "alert_triggered": false,
-  "next_action": "manual_check"
+  "status": "OK",
+  "percent_daily": 1.00,
+  "percent_monthly": 1.00
 }

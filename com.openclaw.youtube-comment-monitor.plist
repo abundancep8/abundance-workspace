@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.openclaw.youtube-comment-monitor</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>python3</string>
+        <string>/Users/abundance/.openclaw/workspace/.bin/youtube-comment-monitor.py</string>
+    </array>
+    
+    <key>StartInterval</key>
+    <integer>1800</integer>
+    <!-- 1800 seconds = 30 minutes -->
+    
+    <key>CronID</key>
+    <string>114e5c6d-ac8b-47ca-a695-79ac31b5c076</string>
+    <!-- OpenClaw Cron Job ID for YouTube Comment Monitor -->
+    
+    <key>WorkingDirectory</key>
+    <string>/Users/abundance/.openclaw/workspace</string>
+    
+    <key>StandardOutPath</key>
+    <string>/Users/abundance/.openclaw/workspace/.cache/youtube-comment-monitor.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/Users/abundance/.openclaw/workspace/.cache/youtube-comment-monitor-error.log</string>
+    
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+    
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <key>KeepAlive</key>
+    <false/>
+</dict>
+</plist>

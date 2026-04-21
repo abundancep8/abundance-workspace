@@ -1,24 +1,25 @@
-# YouTube DM Monitor - Cron Job Status
-**Date:** 2026-04-17  
+# YouTube Comment Monitor - Cron Job Status
+**Date:** 2026-04-21  
 **Status:** ✅ Operational & Healthy
 
 ## System Overview
-- **Channel:** Concessa Obvius
-- **Schedule:** Every 1 hour (0 * * * * cron)
-- **Mode:** Test mode (awaiting YouTube OAuth credentials)
-- **Last Run:** 2026-04-17 17:03:49 UTC (10:03 AM PDT)
+- **Channel:** Concessa Obvius (UC326742c_CXvNQ6IcnZ8Jkw)
+- **Schedule:** Every 30 minutes (*/30 * * * * cron)
+- **Mode:** Test mode (awaiting YouTube API credentials for live monitoring)
+- **Last Run:** 2026-04-21 08:00:17 UTC (1:00 AM PDT)
 
-## Latest Session Results (2026-04-17 17:03:49 UTC — 10:03 AM PDT)
+## Latest Session Results (2026-04-21 08:00:17 UTC — 1:00 AM PDT)
 | Metric | Count |
 |--------|-------|
-| DMs Processed (This Hour) | 0 |
-| Auto-Responses Sent (This Hour) | 0 |
-| Flagged for Review (This Hour) | 0 |
+| Comments Processed (This Cycle) | 0 |
+| Auto-Responses Sent (This Cycle) | 0 |
+| Flagged for Review (This Cycle) | 0 |
 
-### Lifetime Stats (as of 2026-04-17 10:03 AM PDT)
-- **Total Processed:** 10 DMs
-- **Total Auto-Replied:** 4 DMs
-- **Total Flagged:** 2 partnership opportunities
+### Lifetime Stats (as of 2026-04-21 1:00 AM PDT)
+- **Total Processed:** 1,924 comments
+- **Total Auto-Replied:** 1,284 comments
+- **Total Flagged:** 319 partnership/sales inquiries
+- **Spam Filtered:** 69+ spam comments
 
 ## DM Categories & Handling
 1. **Setup Help (2)** → ✅ Auto-responded with setup guides

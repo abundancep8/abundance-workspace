@@ -1,0 +1,8 @@
+# YouTube Monitor Cache
+youtube-credentials.json
+youtube-token.json
+youtube-state.json
+youtube-comments.jsonl
+
+# Keep empty cache directory
+!.gitkeep

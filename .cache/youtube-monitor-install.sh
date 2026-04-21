@@ -1,52 +1,71 @@
 #!/bin/bash
-# Quick installation script for YouTube Comment Monitor
+# YouTube Comment Monitor - Installation Script
+# Usage: bash .cache/youtube-monitor-install.sh
 
 set -e
 
-echo "🚀 Installing YouTube Comment Monitor..."
+WORKSPACE="/Users/abundance/.openclaw/workspace"
+CACHE_DIR="$WORKSPACE/.cache"
+
+echo "🎬 YouTube Comment Monitor - Installation"
+echo "=========================================="
 
 # Check Python
 if ! command -v python3 &> /dev/null; then
-    echo "❌ Python 3 not found. Install Python 3.8+"
+    echo "❌ Python 3 not found. Install it first."
     exit 1
 fi
+
+echo "✅ Python 3 found: $(python3 --version)"
 
 # Install dependencies
-echo "📦 Installing Python dependencies..."
-pip install --quiet google-auth google-api-python-client
+echo ""
+echo "Installing dependencies..."
+python3 -m pip install google-api-python-client --quiet
+echo "✅ Dependencies installed"
 
-# Create cache directory
-mkdir -p .cache
+# Make scripts executable
+chmod +x "$CACHE_DIR/youtube-monitor.py"
 
-# Copy/verify script
-if [ ! -f .cache/youtube-monitor.py ]; then
-    echo "❌ youtube-monitor.py not found"
-    exit 1
-fi
-
-chmod +x .cache/youtube-monitor.py
-
-# Check for API key
-if [ -z "$YOUTUBE_API_KEY" ]; then
+# Create config if it doesn't exist
+if [ ! -f "$CACHE_DIR/youtube-monitor-config.json" ]; then
     echo ""
-    echo "⚠️  YOUTUBE_API_KEY not set"
+    echo "⚠️  Config file not found. Creating template..."
+    cp "$CACHE_DIR/youtube-monitor-config.json.template" "$CACHE_DIR/youtube-monitor-config.json"
+    echo "📝 Edit this file with your credentials:"
+    echo "   $CACHE_DIR/youtube-monitor-config.json"
     echo ""
-    echo "Get your API key:"
-    echo "  1. Go to https://console.cloud.google.com/"
-    echo "  2. Create a project or select existing"
-    echo "  3. Enable 'YouTube Data API v3'"
-    echo "  4. Create API Key credentials"
-    echo "  5. Export: export YOUTUBE_API_KEY='your-key-here'"
-    echo ""
+    echo "Need help? Read: $CACHE_DIR/YOUTUBE-MONITOR-SETUP.md"
 else
-    echo "✅ YOUTUBE_API_KEY found"
+    echo "✅ Config file exists"
 fi
 
+# Test the script
 echo ""
-echo "✅ Installation complete!"
+echo "Testing script..."
+python3 "$CACHE_DIR/youtube-monitor.py" && echo "✅ Test passed" || echo "⚠️  Test failed (check config)"
+
+# Show cron setup
 echo ""
-echo "Test run:"
-echo "  python3 .cache/youtube-monitor.py"
+echo "=========================================="
+echo "📋 Next Steps:"
+echo "=========================================="
 echo ""
-echo "View logs:"
-echo "  jq . .cache/youtube-comments.jsonl"
+echo "1. Fill in credentials:"
+echo "   nano $CACHE_DIR/youtube-monitor-config.json"
+echo ""
+echo "2. Set up cron (every 30 minutes):"
+echo ""
+echo "   crontab -e"
+echo ""
+echo "   Then add this line:"
+echo "   */30 * * * * cd $WORKSPACE && python3 .cache/youtube-monitor.py >> .cache/youtube-monitor.log 2>&1"
+echo ""
+echo "3. Verify cron is installed:"
+echo "   crontab -l"
+echo ""
+echo "4. Check logs:"
+echo "   tail -f $CACHE_DIR/youtube-monitor.log"
+echo ""
+echo "📚 Full setup guide: $CACHE_DIR/YOUTUBE-MONITOR-SETUP.md"
+echo ""

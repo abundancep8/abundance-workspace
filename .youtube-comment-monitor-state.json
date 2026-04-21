@@ -1,0 +1,38 @@
+{
+  "cron_id": "114e5c6d-ac8b-47ca-a695-79ac31b5c076",
+  "last_execution": "2026-04-20T14:00:34Z",
+  "last_update": "2026-04-20T14:00:39.072525+00:00",
+  "status": "active",
+  "monitoring_active": true,
+  "cron_interval_minutes": 30,
+  "total_comments_tracked": 224,
+  "total_auto_responses": 119,
+  "total_flagged": 25,
+  "total_spam_blocked": 57,
+  "session_started": "2026-04-13T22:00:00Z",
+  "uptime_days": 6.2,
+  "execution_count": 298,
+  "categories": {
+    "questions": 63,
+    "praise": 63,
+    "spam": 57,
+    "sales": 25
+  },
+  "response_stats": {
+    "questions_auto_replied": 59,
+    "questions_response_rate": 0.9365,
+    "praise_auto_replied": 60,
+    "praise_response_rate": 0.9524,
+    "sales_flagged": 25,
+    "sales_review_rate": 1.0,
+    "spam_blocked": 57,
+    "spam_block_rate": 1.0
+  },
+  "log_location": "/Users/abundance/.openclaw/workspace/.cache/youtube-comments.jsonl",
+  "flagged_location": "/Users/abundance/.openclaw/workspace/youtube-comments-flagged.jsonl",
+  "report_location": "/Users/abundance/.openclaw/workspace/.cache/youtube-comments-report.txt",
+  "next_scheduled_run": "2026-04-20T03:59:00-0700",
+  "health_check": "\u2705 OK",
+  "errors_last_24h": 0,
+  "warnings_last_24h": 0
+}

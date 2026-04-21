@@ -1,0 +1,88 @@
+📊 Claude API Usage Fetcher - Cron Setup
+==========================================
+
+## What This Does
+
+The fetch-claude-usage.py script:
+1. ✅ Queries OpenClaw session logs from the last 24 hours
+2. ✅ Extracts token counts (input & output)
+3. ✅ Calculates costs using Anthropic Haiku rates:
+   - Input: $0.4 per 1M tokens
+   - Output: $1.2 per 1M tokens
+4. ✅ Logs to ~/.openclaw/workspace/.cache/claude-usage.json
+5. ✅ Triggers webhook alert if cost exceeds 75% of budget
+
+## Budget Thresholds
+
+Daily Budget: $5.00
+  - Alert at: $3.75 (75%)
+  
+Monthly Budget: $155.00
+  - Alert at: $116.25 (75%)
+
+## Current Status
+
+Status: OK (Daily: 0.2% | Monthly: 0.1%)
+Today's Cost: $0.01 / $5.00
+Month's Cost: $0.23 / $155.00
+Tokens Today: 14,361 input / 4,787 output
+
+## Installation
+
+1. Make the script executable:
+   chmod +x ~/.openclaw/workspace/.cache/fetch-claude-usage.py
+
+2. Install cron job (hourly):
+   crontab -e
+   
+   # Add this line:
+   0 * * * * ~/.openclaw/workspace/.cache/fetch-claude-usage.py >> ~/.openclaw/workspace/.cache/logs/claude-usage-cron.log 2>&1
+
+3. Optional: Set webhook URL for alerts
+   export WEBHOOK_MONITOR_URL="https://your-webhook-url.com/path"
+
+## Monitoring
+
+View current usage:
+  cat ~/.openclaw/workspace/.cache/claude-usage.json | jq .
+
+View cron logs:
+  tail -f ~/.openclaw/workspace/.cache/logs/claude-usage-cron.log
+
+Manual run:
+  python3 ~/.openclaw/workspace/.cache/fetch-claude-usage.py
+
+## Important Notes
+
+⚠️ This script estimates costs from OpenClaw session logs, NOT from Anthropic's official console.
+
+For official usage, check: https://console.anthropic.com/account/usage
+
+Why the discrepancy?
+- Anthropic doesn't expose a public usage API
+- OpenClaw tracks tokens locally; Anthropic tracks actual API calls
+- Some tokens may be cached, reducing actual costs
+- This is an approximation for budget tracking purposes
+
+## Webhook Alert Format
+
+When 75% of budget is exceeded, this payload is POSTed:
+
+{
+  "alert_type": "ALERT_DAILY|ALERT_MONTHLY",
+  "timestamp": "2026-04-20T11:05:45Z",
+  "cost_today": 3.75,
+  "budget_daily": 5.00,
+  "daily_percent": 75.0,
+  "cost_month": 116.25,
+  "budget_monthly": 155.00,
+  "monthly_percent": 75.0
+}
+
+## Next Steps
+
+1. Set webhook URL if you want alerts (optional)
+2. Install the cron job above
+3. Monitor ~/.openclaw/workspace/.cache/claude-usage.json
+
+For real-time official usage, visit console.anthropic.com regularly.

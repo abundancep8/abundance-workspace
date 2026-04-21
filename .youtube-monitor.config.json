@@ -1,0 +1,46 @@
+{
+  "enabled": true,
+  "channel_name": "Concessa Obvius",
+  "check_interval_minutes": 30,
+  "max_videos_per_check": 5,
+  "max_comments_per_video": 20,
+  "auto_responses": {
+    "enabled": true,
+    "question": "Thanks for the question! I'm glad you're interested. Check our FAQ or feel free to reply here if you need more specific info.",
+    "praise": "Thank you so much! This means a lot to me. Keep an eye out for more content coming soon! 🙌"
+  },
+  "categorization": {
+    "question_keywords": [
+      "how", "what", "where", "when", "why", "which",
+      "can i", "do you", "could you", "would you",
+      "tools", "cost", "price", "timeline", "start",
+      "get started", "help", "guide", "tutorial"
+    ],
+    "praise_keywords": [
+      "amazing", "inspiring", "love", "great", "awesome",
+      "fantastic", "brilliant", "incredible", "wonderful",
+      "thanks", "thank you", "appreciate", "grateful"
+    ],
+    "spam_keywords": [
+      "bitcoin", "crypto", "mlm", "forex", "scheme",
+      "nft", "token", "presale", "buy now", "click here",
+      "limited time", "earn money", "work from home"
+    ],
+    "sales_keywords": [
+      "partnership", "collaboration", "sponsor", "sponsorship",
+      "brand deal", "ad", "advertise", "promote",
+      "business opportunity", "contact me", "dm me",
+      "affiliate", "reseller", "agent"
+    ]
+  },
+  "logging": {
+    "file": ".cache/youtube-comments.jsonl",
+    "max_history": 1000,
+    "verbose": false
+  },
+  "notifications": {
+    "enabled": false,
+    "on_sales_inquiry": true,
+    "on_error": true
+  }
+}

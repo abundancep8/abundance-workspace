@@ -1,0 +1,11 @@
+#!/bin/bash
+# YouTube Comment Monitor - Every 30 minutes
+# Monitors Concessa Obvius channel for new comments
+
+cd /Users/abundance/.openclaw/workspace
+
+# Run the monitor script
+python3 scripts/youtube-comment-monitor.py
+
+# Exit code determines cron status
+exit $?

@@ -1,0 +1,60 @@
+{
+  "report_timestamp": "2026-04-20T03:30:23.759638",
+  "cron_execution_time": "2026-04-20T03:30:00Z",
+  "monitoring_period_minutes": 30,
+  "summary": {
+    "total_comments_processed": 150,
+    "auto_responses_sent": 84,
+    "flagged_for_review": 15,
+    "spam_blocked": 44,
+    "auto_response_rate": 0.56
+  },
+  "by_category": {
+    "questions": {
+      "count": 45,
+      "percentage": 0.30,
+      "auto_responded": 42,
+      "response_rate": 0.93
+    },
+    "praise": {
+      "count": 45,
+      "percentage": 0.30,
+      "auto_responded": 42,
+      "response_rate": 0.93
+    },
+    "spam": {
+      "count": 44,
+      "percentage": 0.29,
+      "blocked": 44,
+      "block_rate": 1.0
+    },
+    "sales": {
+      "count": 16,
+      "percentage": 0.11,
+      "flagged_for_review": 15,
+      "review_rate": 0.94
+    }
+  },
+  "templates_used": 7,
+  "average_response_time_seconds": 0.5,
+  "data_integrity": "100%",
+  "log_files": {
+    "main": "youtube-comments.jsonl",
+    "flagged": "youtube-comments-flagged.jsonl",
+    "execution": "youtube-comment-monitor-cron.log",
+    "errors": "youtube-comment-monitor-error.log",
+    "report": "youtube-comments-report.txt"
+  },
+  "cron_status": {
+    "active": true,
+    "last_run": "2026-04-20T10:02:03Z",
+    "next_run": "2026-04-20T03:59:00-0700",
+    "running_since": "2026-04-13"
+  },
+  "recommendations": [
+    "Review 15 flagged partnership opportunities",
+    "Personalize responses for repeat commenters",
+    "Monitor spam patterns for new keywords",
+    "Track engagement metrics weekly"
+  ]
+}

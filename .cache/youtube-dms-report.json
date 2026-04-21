@@ -1,14 +1,28 @@
 {
-  "timestamp": "2026-04-20T05:03:54.359908Z",
-  "metrics": {
-    "total_dms_processed": 0,
-    "auto_responses_sent": 0,
-    "by_category": {},
-    "product_inquiries": 0,
-    "partnerships_flagged": 0,
-    "conversion_potential": 0
+  "timestamp": "2026-04-21T01:04:19Z",
+  "monitoring_channel": "Concessa Obvius",
+  "statistics": {
+    "total_dms_processed":       12,
+    "auto_responses_sent": 9,
+    "response_rate_percent": 75
   },
-  "log_file": "/Users/abundance/.openclaw/workspace/.cache/youtube-dms.jsonl",
-  "partnerships_file": "/Users/abundance/.openclaw/workspace/.cache/youtube-flagged-partnerships.jsonl",
-  "next_run": null
+  "by_category": {
+    "setup_help": 3,
+    "newsletter": 2,
+    "product_inquiry": 5,
+    "partnership": 2
+  },
+  "conversion_opportunities": "See partnership_flags below",
+  "partnership_flags": [
+  {
+    "timestamp": "2026-04-20T04:05:39.059840Z",
+    "sender": "TechStart Ventures",
+    "text_preview": "We think there's a great opportunity to collaborate on a sponsorship. Our team w..."
+  },
+  {
+    "timestamp": "2026-04-20T00:04:17.941840",
+    "sender": "tech_brand",
+    "text_preview": "We're interested in partnering with you for a brand collaboration. Our product a..."
+  }
+]
 }
